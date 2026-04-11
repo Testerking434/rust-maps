@@ -13,7 +13,7 @@ const path       = require('path');
 const fs         = require('fs');
 
 const app  = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 8001;
 const JWT_SECRET = process.env.JWT_SECRET || 'AENDER_MICH_VOR_PRODUKTIONSSTART';
 
 app.use(cors());

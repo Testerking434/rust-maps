@@ -1,0 +1,261 @@
+================================================================
+GEN:SELFCORE — HETZNER DEPLOY BEFEHLE
+Einfach Schritt für Schritt copy & paste
+Port: 8001 | Ordner: /var/www/genselfcore
+================================================================
+
+
+----------------------------------------------------------------
+SCHRITT 1 — Ordner erstellen
+----------------------------------------------------------------
+
+mkdir -p /var/www/genselfcore/data/lessons
+
+cd /var/www/genselfcore
+
+
+----------------------------------------------------------------
+SCHRITT 2 — package.json erstellen
+----------------------------------------------------------------
+
+cat > package.json << 'EOF'
+{
+  "name": "genselfcore-server",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2"
+  }
+}
+EOF
+
+
+----------------------------------------------------------------
+SCHRITT 3 — .env erstellen (JWT_SECRET anpassen!)
+----------------------------------------------------------------
+
+cat > .env << 'EOF'
+PORT=8001
+JWT_SECRET=HierEinenLangenZufaelligenStringEintippen123!AbcXyz
+EOF
+
+
+----------------------------------------------------------------
+SCHRITT 4 — server.js hochladen (aus GitHub)
+----------------------------------------------------------------
+
+apt-get install -y git
+
+git clone https://github.com/testerking434/rust-maps.git /tmp/selfcore-repo
+
+cp /tmp/selfcore-repo/SELFCORE/SERVER/server.js /var/www/genselfcore/server.js
+
+cp /tmp/selfcore-repo/SELFCORE/SERVER/join.html /var/www/genselfcore/join.html
+
+cp /tmp/selfcore-repo/SELFCORE/SERVER/apple-app-site-association /var/www/genselfcore/apple-app-site-association
+
+rm -rf /tmp/selfcore-repo
+
+
+----------------------------------------------------------------
+SCHRITT 5 — npm Pakete installieren
+----------------------------------------------------------------
+
+cd /var/www/genselfcore
+
+npm install
+
+
+----------------------------------------------------------------
+SCHRITT 6 — Testen ob server.js startet
+----------------------------------------------------------------
+
+node server.js &
+
+curl http://localhost:8001/health
+
+kill %1
+
+
+----------------------------------------------------------------
+SCHRITT 7 — PM2 installieren & Server dauerhaft starten
+----------------------------------------------------------------
+
+npm install -g pm2
+
+pm2 start server.js --name genselfcore --cwd /var/www/genselfcore
+
+pm2 save
+
+pm2 startup
+
+
+----------------------------------------------------------------
+SCHRITT 8 — Status prüfen
+----------------------------------------------------------------
+
+pm2 status
+
+curl http://localhost:8001/health
+
+
+----------------------------------------------------------------
+SCHRITT 9 — Nginx Config erstellen
+----------------------------------------------------------------
+
+cat > /etc/nginx/sites-available/genselfcore << 'EOF'
+server {
+    listen 80;
+    server_name api.genselfcore.de;
+
+    location / {
+        proxy_pass         http://localhost:8001;
+        proxy_http_version 1.1;
+        proxy_set_header   Host $host;
+        proxy_set_header   X-Real-IP $remote_addr;
+        proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}
+
+server {
+    listen 80;
+    server_name genselfcore.de www.genselfcore.de;
+
+    root /var/www/genselfcore;
+    index index.html;
+
+    location /join {
+        try_files $uri /join.html;
+    }
+
+    location /.well-known/apple-app-site-association {
+        default_type application/json;
+        alias /var/www/genselfcore/apple-app-site-association;
+    }
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+}
+EOF
+
+
+----------------------------------------------------------------
+SCHRITT 10 — Nginx aktivieren
+----------------------------------------------------------------
+
+ln -s /etc/nginx/sites-available/genselfcore /etc/nginx/sites-enabled/
+
+nginx -t
+
+systemctl reload nginx
+
+
+----------------------------------------------------------------
+SCHRITT 11 — SSL Zertifikat (HTTPS kostenlos)
+----------------------------------------------------------------
+
+apt install certbot python3-certbot-nginx -y
+
+certbot --nginx -d api.genselfcore.de -d genselfcore.de -d www.genselfcore.de
+
+
+----------------------------------------------------------------
+SCHRITT 12 — Index Seite erstellen
+----------------------------------------------------------------
+
+cat > /var/www/genselfcore/index.html << 'EOF'
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>GEN:SELFCORE</title></head>
+<body style="background:#0A0A0A;color:#F5A623;font-family:sans-serif;text-align:center;padding:80px">
+  <h1 style="font-size:42px;letter-spacing:3px">GEN:SELFCORE</h1>
+  <p style="color:#888;margin-top:12px">Coming Soon</p>
+</body>
+</html>
+EOF
+
+
+----------------------------------------------------------------
+SCHRITT 13 — .well-known Ordner für Apple
+----------------------------------------------------------------
+
+mkdir -p /var/www/genselfcore/.well-known
+
+cp /var/www/genselfcore/apple-app-site-association /var/www/genselfcore/.well-known/
+
+
+----------------------------------------------------------------
+SCHRITT 14 — ALLES TESTEN
+----------------------------------------------------------------
+
+curl https://api.genselfcore.de/health
+
+curl https://genselfcore.de/join?ref=TEST123
+
+pm2 logs genselfcore --lines 20
+
+
+================================================================
+FERTIG — Server läuft auf Port 8001
+================================================================
+
+Läuft jetzt:
+  Deine andere App  →  Port 3000 (unverändert)
+  GEN:SELFCORE      →  Port 8001
+
+Erreichbar unter:
+  https://api.genselfcore.de/health
+  https://genselfcore.de/join?ref=DEINCODE
+
+================================================================
+LEKTIONEN HOCHLADEN (optional, wenn du bereit bist)
+================================================================
+
+Beispiel-Format für /var/www/genselfcore/data/lessons/awakening.json:
+
+cat > /var/www/genselfcore/data/lessons/awakening.json << 'EOF'
+[
+  {
+    "id": "awakening-01",
+    "courseId": "awakening",
+    "title": "Der erste Schritt",
+    "subtitle": "Was Erwachen wirklich bedeutet",
+    "order": 1,
+    "contentMarkdown": "# Der erste Schritt\n\nHier kommt dein Lektionstext...",
+    "keyInsights": ["Erkenntnis 1", "Erkenntnis 2"],
+    "exercise": {
+      "type": "journaling",
+      "prompt": "Was bedeutet Erwachen für dich persönlich?"
+    }
+  }
+]
+EOF
+
+pm2 restart genselfcore
+
+================================================================
+TROUBLESHOOTING
+================================================================
+
+Server crasht:
+  pm2 logs genselfcore --lines 50
+
+Port 8001 belegt:
+  lsof -i :8001
+
+Nginx Fehler:
+  nginx -t
+
+Server neu starten:
+  pm2 restart genselfcore
+
+Alle laufenden Server anzeigen:
+  pm2 list
+
+================================================================
