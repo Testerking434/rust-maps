@@ -34,6 +34,138 @@ const userReferredBy    = {};   // { newUserId: referralCode }
 const rewardIDs         = new Set();
 const registrationLocks = new Set();
 const idempotencyCache  = {};   // { key: { response, expiresAt } }
+const userSubscriptions = {};   // { userId: { tier, courseId, purchasedCourses[], purchasedSignal, ... } }
+const userDnaResults    = {};   // { userId: { answers, type, dimensions, recommendedCourseId } }
+
+// ============================================================
+// ABO-STUFEN / SUBSCRIPTION TIERS
+// ============================================================
+
+const ABO_TIERS = {
+  FREE: {
+    id: 'FREE',
+    name: 'Kostenlos',
+    price: 0,
+    features: ['Profil erstellen', 'DNA-Test machen', '1 Probe-Lektion pro Kurs'],
+    maxCourses: 0,
+    signalAccess: false
+  },
+  START: {
+    id: 'START',
+    name: 'START',
+    priceMonthly: 9.99,
+    priceYearly: 89.99,
+    features: ['1 Kurs nach Wahl (DNA-Empfehlung)', 'Alle Lektionen des Kurses', 'PDF-Workbooks'],
+    maxCourses: 1,
+    signalAccess: false
+  },
+  PRO: {
+    id: 'PRO',
+    name: 'PRO',
+    priceMonthly: 19.99,
+    priceYearly: 179.99,
+    features: ['3 Kurse nach Wahl', 'Alle Lektionen', 'PDF-Workbooks', 'GEN:SIGNAL Basic (3 Tracks)'],
+    maxCourses: 3,
+    signalAccess: true,
+    signalTrackLimit: 3
+  },
+  COMPLETE: {
+    id: 'COMPLETE',
+    name: 'COMPLETE',
+    priceMonthly: 29.99,
+    priceYearly: 249.99,
+    features: ['Alle 5 Kurse', 'Alle Lektionen', 'PDF-Workbooks', 'GEN:SIGNAL Komplett (alle Tracks)', 'Priority Support'],
+    maxCourses: 5,
+    signalAccess: true,
+    signalTrackLimit: -1 // unlimited
+  }
+};
+
+// Einmalzahlung-Preise (one-time purchase)
+const EINMALZAHLUNG = {
+  course: {
+    price: 49.99,
+    description: 'Einzelner Kurs — einmaliger Kauf, lebenslanger Zugang'
+  },
+  signal_bundle: {
+    price: 79.99,
+    description: 'GEN:SIGNAL Komplett — alle Tracks, einmaliger Kauf',
+    notice: 'Digitales Produkt — kein Widerrufsrecht nach Freischaltung (§ 356 Abs. 5 BGB). Mit dem Kauf stimmst du zu, dass die Bereitstellung sofort beginnt und du auf dein Widerrufsrecht verzichtest.'
+  },
+  signal_single: {
+    price: 14.99,
+    description: 'Einzelner GEN:SIGNAL Track — einmaliger Kauf',
+    notice: 'Digitales Produkt — kein Widerrufsrecht nach Freischaltung (§ 356 Abs. 5 BGB). Mit dem Kauf stimmst du zu, dass die Bereitstellung sofort beginnt und du auf dein Widerrufsrecht verzichtest.'
+  }
+};
+
+// Alle 5 Kurse
+const ALL_COURSES = [
+  {
+    id: 'awakening',
+    title: 'AWAKENING',
+    subtitle: 'Erwache zu dir selbst',
+    description: 'Der erste Schritt: Erkenne wer du wirklich bist und lege falsche Masken ab.',
+    lessonCount: 42,
+    color: '#F5A623',
+    icon: 'sun.rise.fill',
+    dimension: 'selbstkenntnis',
+    coverImageURL: ''
+  },
+  {
+    id: 'origin',
+    title: 'ORIGIN',
+    subtitle: 'Verstehe deine Wurzeln',
+    description: 'Deine Vergangenheit erklärt deine Gegenwart. Verarbeite, was dich geformt hat.',
+    lessonCount: 36,
+    color: '#FF6B9D',
+    icon: 'tree.fill',
+    dimension: 'authentizitaet',
+    coverImageURL: ''
+  },
+  {
+    id: 'genesis',
+    title: 'GENESIS',
+    subtitle: 'Erschaffe neu',
+    description: 'Aus den Trümmern alter Muster entsteht eine neue Version von dir.',
+    lessonCount: 38,
+    color: '#4A90D9',
+    icon: 'sparkles',
+    dimension: 'klarheit',
+    coverImageURL: ''
+  },
+  {
+    id: 'foundation',
+    title: 'FOUNDATION',
+    subtitle: 'Baue unerschütterlich',
+    description: 'Fundamentale Gewohnheiten und Überzeugungen die dich tragen.',
+    lessonCount: 35,
+    color: '#FF6B35',
+    icon: 'building.columns.fill',
+    dimension: 'mut',
+    coverImageURL: ''
+  },
+  {
+    id: 'core-journey',
+    title: 'CORE JOURNEY',
+    subtitle: 'Deine finale Transformation',
+    description: 'Alles kommt zusammen. Du wirst nicht derselbe sein wie vorher.',
+    lessonCount: 40,
+    color: '#5CB85C',
+    icon: 'star.fill',
+    dimension: 'verbindung',
+    coverImageURL: ''
+  }
+];
+
+// DNA-Test → Persönlichkeitstyp-Zuordnung und Kurs-Empfehlung
+const DNA_TYPE_MAP = {
+  PIONEER:   { dimension: 'mut',            recommendedCourse: 'foundation', description: 'Du siehst Wege, die andere nicht sehen.' },
+  GUARDIAN:  { dimension: 'klarheit',       recommendedCourse: 'genesis',    description: 'Deine Stärke liegt im Schutz des Wesentlichen.' },
+  CREATOR:   { dimension: 'authentizitaet', recommendedCourse: 'origin',     description: 'Du erschaffst Welten aus reiner Vorstellungskraft.' },
+  CONNECTOR: { dimension: 'verbindung',     recommendedCourse: 'core-journey', description: 'Deine Energie verbindet Menschen mit Tiefe.' },
+  ACHIEVER:  { dimension: 'selbstkenntnis', recommendedCourse: 'awakening',  description: 'Du verwandelst Ziele in Realität.' }
+};
 
 // ============================================================
 // HILFSFUNKTIONEN
@@ -125,13 +257,27 @@ app.post('/v1/auth/register', checkIdempotency, async (req, res) => {
       name: name.trim(),
       email: normEmail,
       passwordHash,
-      selfcoreType: 'ACHIEVER',
+      selfcoreType: null,  // wird durch DNA-Test gesetzt
       dimensions: { selbstkenntnis: 5, authentizitaet: 5, klarheit: 5, mut: 5, verbindung: 5 },
-      createdAt: new Date().toISOString()
+      createdAt: new Date().toISOString(),
+      avatarColor: '#F5A623',
+      bio: ''
     };
 
     users[normEmail] = userData;
     userById[newUserId] = userData;
+
+    // Abo: Start als FREE
+    userSubscriptions[newUserId] = {
+      tier: 'FREE',
+      activeSince: new Date().toISOString(),
+      expiresAt: null,
+      selectedCourseIds: [],
+      purchasedCourseIds: [],
+      purchasedSignalTrackIds: [],
+      purchasedSignalBundle: false,
+      billingType: null  // 'monthly', 'yearly', oder 'einmalig'
+    };
 
     // Referral verarbeiten
     let signalFreeDays = 0;
@@ -143,6 +289,7 @@ app.post('/v1/auth/register', checkIdempotency, async (req, res) => {
       }
     }
 
+    const sub = userSubscriptions[newUserId];
     const responseData = {
       token,
       user: {
@@ -150,9 +297,19 @@ app.post('/v1/auth/register', checkIdempotency, async (req, res) => {
         name: userData.name,
         email: normEmail,
         selfcoreType: userData.selfcoreType,
-        dimensions: userData.dimensions
+        dimensions: userData.dimensions,
+        avatarColor: userData.avatarColor,
+        bio: userData.bio
       },
-      signalFreeDays
+      subscription: {
+        tier: sub.tier,
+        tierInfo: ABO_TIERS[sub.tier],
+        selectedCourseIds: sub.selectedCourseIds,
+        purchasedCourseIds: sub.purchasedCourseIds,
+        purchasedSignalBundle: sub.purchasedSignalBundle
+      },
+      signalFreeDays,
+      dnaTestCompleted: false
     };
 
     if (res.sendCachedResponse) res.sendCachedResponse(responseData);
@@ -181,6 +338,9 @@ app.post('/v1/auth/login', async (req, res) => {
 
   const token = jwt.sign({ userId: userData.id, email: normEmail }, JWT_SECRET, { expiresIn: '90d' });
 
+  const sub = userSubscriptions[userData.id] || { tier: 'FREE', selectedCourseIds: [], purchasedCourseIds: [], purchasedSignalBundle: false };
+  const dna = userDnaResults[userData.id];
+
   return res.json({
     token,
     user: {
@@ -188,8 +348,18 @@ app.post('/v1/auth/login', async (req, res) => {
       name: userData.name,
       email: normEmail,
       selfcoreType: userData.selfcoreType,
-      dimensions: userData.dimensions
-    }
+      dimensions: userData.dimensions,
+      avatarColor: userData.avatarColor || '#F5A623',
+      bio: userData.bio || ''
+    },
+    subscription: {
+      tier: sub.tier,
+      tierInfo: ABO_TIERS[sub.tier],
+      selectedCourseIds: sub.selectedCourseIds,
+      purchasedCourseIds: sub.purchasedCourseIds,
+      purchasedSignalBundle: sub.purchasedSignalBundle
+    },
+    dnaTestCompleted: !!dna
   });
 });
 
@@ -211,34 +381,102 @@ app.post('/v1/auth/reset-password', (req, res) => {
 app.get('/v1/user/profile', authMiddleware, (req, res) => {
   const user = userById[req.user.userId];
   if (!user) return res.status(404).json({ error: 'User nicht gefunden.' });
+
+  const sub = userSubscriptions[req.user.userId] || { tier: 'FREE', selectedCourseIds: [], purchasedCourseIds: [], purchasedSignalTrackIds: [], purchasedSignalBundle: false };
+  const dna = userDnaResults[req.user.userId];
+
   return res.json({
     id: user.id,
     name: user.name,
     email: user.email,
     selfcoreType: user.selfcoreType,
-    dimensions: user.dimensions
+    dimensions: user.dimensions,
+    avatarColor: user.avatarColor || '#F5A623',
+    bio: user.bio || '',
+    createdAt: user.createdAt,
+    subscription: {
+      tier: sub.tier,
+      tierInfo: ABO_TIERS[sub.tier],
+      activeSince: sub.activeSince,
+      expiresAt: sub.expiresAt,
+      billingType: sub.billingType,
+      selectedCourseIds: sub.selectedCourseIds,
+      purchasedCourseIds: sub.purchasedCourseIds,
+      purchasedSignalTrackIds: sub.purchasedSignalTrackIds,
+      purchasedSignalBundle: sub.purchasedSignalBundle
+    },
+    dnaTestCompleted: !!dna,
+    dnaResult: dna ? { type: dna.type, recommendedCourseId: dna.recommendedCourseId } : null
   });
 });
 
+// Profil bearbeiten (Name, Avatar, Bio)
+app.put('/v1/user/profile', authMiddleware, (req, res) => {
+  const user = userById[req.user.userId];
+  if (!user) return res.status(404).json({ error: 'User nicht gefunden.' });
+
+  const { name, avatarColor, bio } = req.body;
+  if (name !== undefined) user.name = name.trim();
+  if (avatarColor !== undefined) user.avatarColor = avatarColor;
+  if (bio !== undefined) user.bio = bio.substring(0, 500); // max 500 Zeichen
+
+  return res.json({
+    id: user.id,
+    name: user.name,
+    email: user.email,
+    selfcoreType: user.selfcoreType,
+    dimensions: user.dimensions,
+    avatarColor: user.avatarColor,
+    bio: user.bio
+  });
+});
+
+// Alle 5 Kurse — mit Zugangsinfo pro User
 app.get('/v1/user/courses', authMiddleware, (req, res) => {
-  // Kurse aus courses.json laden (oder hardcoded)
-  try {
-    const coursesPath = path.join(__dirname, 'data', 'courses.json');
-    if (fs.existsSync(coursesPath)) {
-      const courses = JSON.parse(fs.readFileSync(coursesPath, 'utf8'));
-      return res.json(courses);
-    }
-  } catch {}
-  // Fallback: Basis-Kursstruktur
-  return res.json([
-    { id: 'awakening', title: 'AWAKENING', subtitle: 'Erwache zu dir selbst', lessonCount: 42, coverImageURL: '' },
-    { id: 'origin',    title: 'ORIGIN',    subtitle: 'Dein DNA-Profil',       lessonCount: 10, coverImageURL: '' }
-  ]);
+  const userId = req.user.userId;
+  const sub = userSubscriptions[userId] || { tier: 'FREE', selectedCourseIds: [], purchasedCourseIds: [] };
+  const dna = userDnaResults[userId];
+
+  const courses = ALL_COURSES.map(course => {
+    // Zugang prüfen: Abo-Tier ODER Einzelkauf
+    const isSelectedInAbo = sub.selectedCourseIds.includes(course.id);
+    const isPurchased = sub.purchasedCourseIds.includes(course.id);
+    const isComplete = sub.tier === 'COMPLETE';
+    const hasAccess = isComplete || isSelectedInAbo || isPurchased;
+
+    // DNA-Empfehlung
+    const isRecommended = dna && dna.recommendedCourseId === course.id;
+
+    return {
+      ...course,
+      isUnlocked: hasAccess,
+      accessType: isPurchased ? 'purchased' : (isComplete ? 'complete_tier' : (isSelectedInAbo ? 'abo_selected' : 'locked')),
+      isRecommended,
+      canPurchaseSingle: !hasAccess,
+      singlePurchasePrice: EINMALZAHLUNG.course.price
+    };
+  });
+
+  return res.json(courses);
 });
 
 app.get('/v1/user/signal-status', authMiddleware, (req, res) => {
-  const freeDays = signalExtensions[req.user.userId] || 0;
-  return res.json({ isSubscribed: false, freeDaysRemaining: freeDays, hasAccess: freeDays > 0 });
+  const userId = req.user.userId;
+  const sub = userSubscriptions[userId] || { tier: 'FREE', purchasedSignalTrackIds: [], purchasedSignalBundle: false };
+  const freeDays = signalExtensions[userId] || 0;
+  const tierInfo = ABO_TIERS[sub.tier];
+  const hasSignalViaTier = tierInfo && tierInfo.signalAccess;
+  const hasSignalViaPurchase = sub.purchasedSignalBundle;
+
+  return res.json({
+    isSubscribed: hasSignalViaTier,
+    hasPurchasedBundle: hasSignalViaPurchase,
+    purchasedTrackIds: sub.purchasedSignalTrackIds || [],
+    freeDaysRemaining: freeDays,
+    hasAccess: hasSignalViaTier || hasSignalViaPurchase || freeDays > 0,
+    trackLimit: tierInfo ? tierInfo.signalTrackLimit : 0,
+    notice: EINMALZAHLUNG.signal_bundle.notice
+  });
 });
 
 app.get('/v1/user/weekly-stats', authMiddleware, (req, res) => {
@@ -294,20 +532,461 @@ app.post('/v1/lessons/:lessonId/complete', authMiddleware, (req, res) => {
 });
 
 // ============================================================
-// SIGNAL — AUDIO
+// ABO — PREISE & OPTIONEN ABRUFEN
+// ============================================================
+
+app.get('/v1/abo/tiers', (req, res) => {
+  return res.json({
+    tiers: ABO_TIERS,
+    einmalzahlung: EINMALZAHLUNG,
+    courses: ALL_COURSES.map(c => ({ id: c.id, title: c.title, subtitle: c.subtitle, description: c.description, color: c.color, icon: c.icon, dimension: c.dimension }))
+  });
+});
+
+// Aktuelles Abo des Users
+app.get('/v1/abo/status', authMiddleware, (req, res) => {
+  const sub = userSubscriptions[req.user.userId] || { tier: 'FREE', selectedCourseIds: [], purchasedCourseIds: [], purchasedSignalTrackIds: [], purchasedSignalBundle: false };
+  return res.json({
+    tier: sub.tier,
+    tierInfo: ABO_TIERS[sub.tier],
+    activeSince: sub.activeSince,
+    expiresAt: sub.expiresAt,
+    billingType: sub.billingType,
+    selectedCourseIds: sub.selectedCourseIds,
+    purchasedCourseIds: sub.purchasedCourseIds,
+    purchasedSignalTrackIds: sub.purchasedSignalTrackIds,
+    purchasedSignalBundle: sub.purchasedSignalBundle,
+    availableUpgrades: getAvailableUpgrades(sub.tier)
+  });
+});
+
+function getAvailableUpgrades(currentTier) {
+  const order = ['FREE', 'START', 'PRO', 'COMPLETE'];
+  const idx = order.indexOf(currentTier);
+  return order.slice(idx + 1).map(t => ({ tier: t, ...ABO_TIERS[t] }));
+}
+
+// ============================================================
+// ABO — ABONNIEREN / UPGRADEN
+// ============================================================
+
+app.post('/v1/abo/subscribe', checkIdempotency, authMiddleware, (req, res) => {
+  const userId = req.user.userId;
+  const { tier, billingType, selectedCourseIds } = req.body;
+
+  // Validierung
+  if (!ABO_TIERS[tier] || tier === 'FREE') {
+    return res.status(400).json({ error: 'Ungültiges Abo-Tier.' });
+  }
+  if (!['monthly', 'yearly'].includes(billingType)) {
+    return res.status(400).json({ error: 'billingType muss "monthly" oder "yearly" sein.' });
+  }
+
+  const tierInfo = ABO_TIERS[tier];
+
+  // Kurs-Auswahl validieren
+  const courseIds = selectedCourseIds || [];
+  const validCourseIds = courseIds.filter(id => ALL_COURSES.some(c => c.id === id));
+  if (tier !== 'COMPLETE' && validCourseIds.length > tierInfo.maxCourses) {
+    return res.status(400).json({
+      error: `Tier ${tier} erlaubt maximal ${tierInfo.maxCourses} Kurs(e). Du hast ${validCourseIds.length} ausgewählt.`
+    });
+  }
+
+  // Abo aktivieren
+  const sub = userSubscriptions[userId] || {};
+  const now = new Date();
+  const expiresAt = new Date(now);
+  if (billingType === 'monthly') expiresAt.setMonth(expiresAt.getMonth() + 1);
+  else expiresAt.setFullYear(expiresAt.getFullYear() + 1);
+
+  userSubscriptions[userId] = {
+    ...sub,
+    tier,
+    activeSince: now.toISOString(),
+    expiresAt: expiresAt.toISOString(),
+    billingType,
+    selectedCourseIds: tier === 'COMPLETE' ? ALL_COURSES.map(c => c.id) : validCourseIds,
+    purchasedCourseIds: sub.purchasedCourseIds || [],
+    purchasedSignalTrackIds: sub.purchasedSignalTrackIds || [],
+    purchasedSignalBundle: sub.purchasedSignalBundle || false
+  };
+
+  console.log(`✅ Abo: User ${userId} → ${tier} (${billingType}), Kurse: ${validCourseIds.join(', ')}`);
+
+  const responseData = {
+    message: `Abo ${tier} erfolgreich aktiviert!`,
+    subscription: {
+      tier,
+      tierInfo: ABO_TIERS[tier],
+      activeSince: userSubscriptions[userId].activeSince,
+      expiresAt: userSubscriptions[userId].expiresAt,
+      billingType,
+      selectedCourseIds: userSubscriptions[userId].selectedCourseIds
+    }
+  };
+
+  if (res.sendCachedResponse) res.sendCachedResponse(responseData);
+  return res.json(responseData);
+});
+
+// Kurse im Abo ändern (z.B. nach DNA-Test anderen Kurs wählen)
+app.put('/v1/abo/courses', authMiddleware, (req, res) => {
+  const userId = req.user.userId;
+  const sub = userSubscriptions[userId];
+  if (!sub || sub.tier === 'FREE') {
+    return res.status(403).json({ error: 'Du brauchst mindestens ein START-Abo um Kurse auszuwählen.' });
+  }
+  if (sub.tier === 'COMPLETE') {
+    return res.json({ message: 'COMPLETE-Abo hat bereits alle Kurse.', selectedCourseIds: sub.selectedCourseIds });
+  }
+
+  const { selectedCourseIds } = req.body;
+  const tierInfo = ABO_TIERS[sub.tier];
+  const validIds = (selectedCourseIds || []).filter(id => ALL_COURSES.some(c => c.id === id));
+
+  if (validIds.length > tierInfo.maxCourses) {
+    return res.status(400).json({ error: `Tier ${sub.tier} erlaubt maximal ${tierInfo.maxCourses} Kurs(e).` });
+  }
+
+  sub.selectedCourseIds = validIds;
+  return res.json({ message: 'Kurs-Auswahl aktualisiert.', selectedCourseIds: validIds });
+});
+
+// ============================================================
+// EINMALZAHLUNG — KURS EINZELN KAUFEN
+// ============================================================
+
+app.post('/v1/purchase/course', checkIdempotency, authMiddleware, (req, res) => {
+  const userId = req.user.userId;
+  const { courseId, paymentToken } = req.body;
+
+  // Kurs existiert?
+  const course = ALL_COURSES.find(c => c.id === courseId);
+  if (!course) return res.status(404).json({ error: 'Kurs nicht gefunden.' });
+
+  // Bereits gekauft?
+  const sub = userSubscriptions[userId] || {};
+  if ((sub.purchasedCourseIds || []).includes(courseId)) {
+    return res.status(409).json({ error: 'Kurs bereits gekauft.' });
+  }
+
+  // TODO: Echte Zahlungsvalidierung (Apple IAP Receipt / Stripe)
+  // paymentToken wird hier vorerst akzeptiert
+
+  if (!sub.purchasedCourseIds) sub.purchasedCourseIds = [];
+  sub.purchasedCourseIds.push(courseId);
+  userSubscriptions[userId] = { ...userSubscriptions[userId], ...sub };
+
+  console.log(`✅ Einzelkauf: User ${userId} → Kurs "${courseId}" für ${EINMALZAHLUNG.course.price}€`);
+
+  const responseData = {
+    message: `Kurs "${course.title}" erfolgreich gekauft! Lebenslanger Zugang.`,
+    courseId,
+    price: EINMALZAHLUNG.course.price,
+    accessType: 'purchased',
+    purchasedCourseIds: sub.purchasedCourseIds
+  };
+
+  if (res.sendCachedResponse) res.sendCachedResponse(responseData);
+  return res.json(responseData);
+});
+
+// ============================================================
+// EINMALZAHLUNG — GEN:SIGNAL (Audio) KAUFEN
+// ============================================================
+
+app.post('/v1/purchase/signal', checkIdempotency, authMiddleware, (req, res) => {
+  const userId = req.user.userId;
+  const { type, trackId, paymentToken } = req.body;
+  // type: 'bundle' oder 'single'
+
+  const sub = userSubscriptions[userId] || {};
+
+  if (type === 'bundle') {
+    if (sub.purchasedSignalBundle) {
+      return res.status(409).json({ error: 'GEN:SIGNAL Bundle bereits gekauft.' });
+    }
+
+    sub.purchasedSignalBundle = true;
+    userSubscriptions[userId] = { ...userSubscriptions[userId], ...sub };
+
+    console.log(`✅ Signal-Bundle: User ${userId} → Komplett-Paket für ${EINMALZAHLUNG.signal_bundle.price}€`);
+
+    const responseData = {
+      message: 'GEN:SIGNAL Komplett-Paket erfolgreich gekauft! Lebenslanger Zugang zu allen Tracks.',
+      price: EINMALZAHLUNG.signal_bundle.price,
+      notice: EINMALZAHLUNG.signal_bundle.notice,
+      purchasedSignalBundle: true
+    };
+
+    if (res.sendCachedResponse) res.sendCachedResponse(responseData);
+    return res.json(responseData);
+
+  } else if (type === 'single') {
+    if (!trackId) return res.status(400).json({ error: 'trackId erforderlich für Einzelkauf.' });
+
+    if (!sub.purchasedSignalTrackIds) sub.purchasedSignalTrackIds = [];
+    if (sub.purchasedSignalTrackIds.includes(trackId)) {
+      return res.status(409).json({ error: 'Track bereits gekauft.' });
+    }
+
+    sub.purchasedSignalTrackIds.push(trackId);
+    userSubscriptions[userId] = { ...userSubscriptions[userId], ...sub };
+
+    console.log(`✅ Signal-Track: User ${userId} → Track "${trackId}" für ${EINMALZAHLUNG.signal_single.price}€`);
+
+    const responseData = {
+      message: `Track erfolgreich gekauft! Lebenslanger Zugang.`,
+      trackId,
+      price: EINMALZAHLUNG.signal_single.price,
+      notice: EINMALZAHLUNG.signal_single.notice,
+      purchasedSignalTrackIds: sub.purchasedSignalTrackIds
+    };
+
+    if (res.sendCachedResponse) res.sendCachedResponse(responseData);
+    return res.json(responseData);
+
+  } else {
+    return res.status(400).json({ error: 'type muss "bundle" oder "single" sein.' });
+  }
+});
+
+// ============================================================
+// DNA-TEST — PERSÖNLICHKEITSTEST & KURS-EMPFEHLUNG
+// ============================================================
+
+app.post('/v1/dna-test/submit', authMiddleware, (req, res) => {
+  const userId = req.user.userId;
+  const { answers } = req.body;
+
+  // answers: Array von { questionId, value (1-10) } — mindestens 10 Fragen
+  if (!answers || !Array.isArray(answers) || answers.length < 10) {
+    return res.status(400).json({ error: 'Mindestens 10 Antworten erforderlich.' });
+  }
+
+  // Dimensionen berechnen aus Antworten
+  // Jede Antwort hat eine questionId die einer Dimension zugeordnet ist
+  const dimScores = { selbstkenntnis: [], authentizitaet: [], klarheit: [], mut: [], verbindung: [] };
+  const dimKeys = Object.keys(dimScores);
+
+  answers.forEach((a, i) => {
+    const dim = a.dimension || dimKeys[i % 5];
+    if (dimScores[dim]) dimScores[dim].push(Math.max(1, Math.min(10, a.value || 5)));
+  });
+
+  const dimensions = {};
+  for (const [dim, scores] of Object.entries(dimScores)) {
+    dimensions[dim] = scores.length > 0
+      ? Math.round((scores.reduce((a, b) => a + b, 0) / scores.length) * 10) / 10
+      : 5;
+  }
+
+  // Stärkste Dimension → Persönlichkeitstyp
+  const dimToType = {
+    selbstkenntnis: 'ACHIEVER',
+    authentizitaet: 'CREATOR',
+    klarheit: 'GUARDIAN',
+    mut: 'PIONEER',
+    verbindung: 'CONNECTOR'
+  };
+
+  let maxDim = 'selbstkenntnis';
+  let maxVal = 0;
+  for (const [dim, val] of Object.entries(dimensions)) {
+    if (val > maxVal) { maxVal = val; maxDim = dim; }
+  }
+
+  const selfcoreType = dimToType[maxDim];
+  const typeInfo = DNA_TYPE_MAP[selfcoreType];
+  const recommendedCourseId = typeInfo.recommendedCourse;
+  const recommendedCourse = ALL_COURSES.find(c => c.id === recommendedCourseId);
+
+  // User-Daten updaten
+  const user = userById[userId];
+  if (user) {
+    user.selfcoreType = selfcoreType;
+    user.dimensions = dimensions;
+  }
+
+  // DNA-Ergebnis speichern
+  userDnaResults[userId] = {
+    answers,
+    type: selfcoreType,
+    dimensions,
+    recommendedCourseId,
+    completedAt: new Date().toISOString()
+  };
+
+  console.log(`✅ DNA-Test: User ${userId} → Typ: ${selfcoreType}, Empfehlung: ${recommendedCourseId}`);
+
+  return res.json({
+    selfcoreType,
+    typeDescription: typeInfo.description,
+    dimensions,
+    recommendedCourse: {
+      id: recommendedCourse.id,
+      title: recommendedCourse.title,
+      subtitle: recommendedCourse.subtitle,
+      description: recommendedCourse.description,
+      color: recommendedCourse.color,
+      reason: `Als ${selfcoreType} empfehlen wir dir "${recommendedCourse.title}" — dieser Kurs stärkt deine ${typeInfo.dimension === 'mut' ? 'Mut' : typeInfo.dimension === 'klarheit' ? 'Klarheit' : typeInfo.dimension === 'verbindung' ? 'Verbindung' : typeInfo.dimension === 'authentizitaet' ? 'Authentizität' : 'Selbstkenntnis'}-Dimension.`
+    },
+    allCourses: ALL_COURSES.map(c => ({
+      id: c.id,
+      title: c.title,
+      subtitle: c.subtitle,
+      description: c.description,
+      color: c.color,
+      dimension: c.dimension,
+      isRecommended: c.id === recommendedCourseId
+    }))
+  });
+});
+
+// DNA-Test Ergebnis abrufen (falls schon gemacht)
+app.get('/v1/dna-test/result', authMiddleware, (req, res) => {
+  const dna = userDnaResults[req.user.userId];
+  if (!dna) return res.status(404).json({ error: 'DNA-Test noch nicht absolviert.' });
+
+  const typeInfo = DNA_TYPE_MAP[dna.type];
+  const recommendedCourse = ALL_COURSES.find(c => c.id === dna.recommendedCourseId);
+
+  return res.json({
+    selfcoreType: dna.type,
+    typeDescription: typeInfo.description,
+    dimensions: dna.dimensions,
+    recommendedCourse: recommendedCourse ? {
+      id: recommendedCourse.id,
+      title: recommendedCourse.title,
+      subtitle: recommendedCourse.subtitle,
+      color: recommendedCourse.color
+    } : null,
+    completedAt: dna.completedAt
+  });
+});
+
+// DNA-Test Fragen laden
+app.get('/v1/dna-test/questions', (req, res) => {
+  // 20 Fragen, je 4 pro Dimension
+  return res.json({
+    totalQuestions: 20,
+    estimatedMinutes: 5,
+    questions: [
+      { id: 'q1',  text: 'Ich kenne meine Stärken und Schwächen genau.',                dimension: 'selbstkenntnis', min: 1, max: 10 },
+      { id: 'q2',  text: 'Ich handle nach meinen eigenen Werten, auch wenn es schwer ist.', dimension: 'authentizitaet', min: 1, max: 10 },
+      { id: 'q3',  text: 'Ich habe eine klare Vorstellung davon, wo ich in 5 Jahren sein will.', dimension: 'klarheit', min: 1, max: 10 },
+      { id: 'q4',  text: 'Ich traue mich, unbequeme Wahrheiten auszusprechen.',           dimension: 'mut', min: 1, max: 10 },
+      { id: 'q5',  text: 'Ich pflege tiefe, bedeutungsvolle Beziehungen.',                dimension: 'verbindung', min: 1, max: 10 },
+      { id: 'q6',  text: 'Ich weiß, was mich emotional triggert und warum.',              dimension: 'selbstkenntnis', min: 1, max: 10 },
+      { id: 'q7',  text: 'Ich zeige mein wahres Ich, auch wenn ich mich verletzlich fühle.', dimension: 'authentizitaet', min: 1, max: 10 },
+      { id: 'q8',  text: 'Meine täglichen Handlungen führen mich zu meinen Zielen.',      dimension: 'klarheit', min: 1, max: 10 },
+      { id: 'q9',  text: 'Ich gehe bewusst Risiken ein für mein Wachstum.',               dimension: 'mut', min: 1, max: 10 },
+      { id: 'q10', text: 'Ich kann anderen Menschen wirklich zuhören.',                    dimension: 'verbindung', min: 1, max: 10 },
+      { id: 'q11', text: 'Ich verstehe, welche Muster mein Verhalten bestimmen.',         dimension: 'selbstkenntnis', min: 1, max: 10 },
+      { id: 'q12', text: 'Ich sage Nein zu Dingen, die nicht zu meinen Werten passen.',   dimension: 'authentizitaet', min: 1, max: 10 },
+      { id: 'q13', text: 'Ich kann Wichtiges von Unwichtigem unterscheiden.',              dimension: 'klarheit', min: 1, max: 10 },
+      { id: 'q14', text: 'Ich stehe zu meinen Entscheidungen, auch bei Gegenwind.',       dimension: 'mut', min: 1, max: 10 },
+      { id: 'q15', text: 'Ich investiere aktiv in meine wichtigsten Beziehungen.',        dimension: 'verbindung', min: 1, max: 10 },
+      { id: 'q16', text: 'Ich kann meine Emotionen benennen und einordnen.',              dimension: 'selbstkenntnis', min: 1, max: 10 },
+      { id: 'q17', text: 'Ich lebe nicht nach den Erwartungen anderer.',                  dimension: 'authentizitaet', min: 1, max: 10 },
+      { id: 'q18', text: 'Ich habe klare Prioritäten und halte mich daran.',              dimension: 'klarheit', min: 1, max: 10 },
+      { id: 'q19', text: 'Ich stelle mich meinen Ängsten statt ihnen auszuweichen.',      dimension: 'mut', min: 1, max: 10 },
+      { id: 'q20', text: 'Ich fühle mich mit den Menschen in meinem Leben verbunden.',    dimension: 'verbindung', min: 1, max: 10 }
+    ]
+  });
+});
+
+// ============================================================
+// SIGNAL — AUDIO (mit Zugangs-Check)
 // ============================================================
 
 app.get('/v1/signal/tracks', authMiddleware, (req, res) => {
+  const userId = req.user.userId;
+  const sub = userSubscriptions[userId] || { tier: 'FREE', purchasedSignalTrackIds: [], purchasedSignalBundle: false };
+  const tierInfo = ABO_TIERS[sub.tier];
+
+  // Tracks aus Datei oder hardcoded
+  let allTracks = [];
   try {
     const p = path.join(__dirname, 'data', 'signal_tracks.json');
-    if (fs.existsSync(p)) return res.json(JSON.parse(fs.readFileSync(p, 'utf8')));
+    if (fs.existsSync(p)) allTracks = JSON.parse(fs.readFileSync(p, 'utf8'));
   } catch {}
-  return res.json([]);
+
+  if (allTracks.length === 0) {
+    // Hardcoded Tracks
+    allTracks = [
+      { id: 'deep-sleep-delta',  title: 'Delta Depth',     duration: '60 Min', frequency: 'Delta 0.5–4 Hz',  category: 'DEEP SLEEP PROTOCOL',   coverColor: '#1A2980' },
+      { id: 'deep-sleep-theta',  title: 'Theta Gate',      duration: '45 Min', frequency: 'Theta 4–8 Hz',    category: 'DEEP SLEEP PROTOCOL',   coverColor: '#26274B' },
+      { id: 'burnout-alpha',     title: 'Alpha Reset',     duration: '30 Min', frequency: 'Alpha 8–13 Hz',   category: 'BURNOUT REVERSAL',      coverColor: '#4A0E0E' },
+      { id: 'burnout-theta',     title: 'Stress Dissolve', duration: '20 Min', frequency: 'Theta 6 Hz',      category: 'BURNOUT REVERSAL',      coverColor: '#5C1A1A' },
+      { id: 'burnout-recovery',  title: 'Recovery Mode',   duration: '45 Min', frequency: 'Alpha 10 Hz',     category: 'BURNOUT REVERSAL',      coverColor: '#3D1515' },
+      { id: 'hyperfocus-alpha',  title: 'Flow State',      duration: '50 Min', frequency: 'Alpha 12 Hz',     category: 'HYPERFOCUS FREQUENCY',  coverColor: '#004D40' },
+      { id: 'hyperfocus-beta',   title: 'Beta Peak',       duration: '40 Min', frequency: 'Beta 14–30 Hz',   category: 'HYPERFOCUS FREQUENCY',  coverColor: '#00695C' },
+      { id: 'hyperfocus-gamma',  title: 'Gamma Insight',   duration: '25 Min', frequency: 'Gamma 40 Hz',     category: 'HYPERFOCUS FREQUENCY',  coverColor: '#007A7A' }
+    ];
+  }
+
+  // Zugang pro Track berechnen
+  const hasBundle = sub.purchasedSignalBundle;
+  const hasSignalTier = tierInfo && tierInfo.signalAccess;
+  const freeDays = signalExtensions[userId] || 0;
+
+  const tracks = allTracks.map((track, idx) => {
+    const isPurchased = (sub.purchasedSignalTrackIds || []).includes(track.id);
+    const isInTierLimit = hasSignalTier && (tierInfo.signalTrackLimit === -1 || idx < tierInfo.signalTrackLimit);
+    const hasAccess = hasBundle || isPurchased || isInTierLimit || freeDays > 0;
+
+    return {
+      ...track,
+      hasAccess,
+      accessType: hasBundle ? 'purchased_bundle' : isPurchased ? 'purchased_single' : isInTierLimit ? 'abo_included' : freeDays > 0 ? 'free_days' : 'locked',
+      canPurchaseSingle: !hasAccess && !hasBundle,
+      singlePurchasePrice: EINMALZAHLUNG.signal_single.price,
+      notice: EINMALZAHLUNG.signal_single.notice
+    };
+  });
+
+  return res.json(tracks);
 });
 
 app.get('/v1/signal/tracks/:trackId/url', authMiddleware, (req, res) => {
   // TODO: Cloudflare R2 Signed URL für MP3 generieren
+  // Zugangs-Check
+  const userId = req.user.userId;
+  const sub = userSubscriptions[userId] || { tier: 'FREE', purchasedSignalTrackIds: [], purchasedSignalBundle: false };
+  const tierInfo = ABO_TIERS[sub.tier];
+  const freeDays = signalExtensions[userId] || 0;
+
+  const hasAccess = sub.purchasedSignalBundle
+    || (sub.purchasedSignalTrackIds || []).includes(req.params.trackId)
+    || (tierInfo && tierInfo.signalAccess)
+    || freeDays > 0;
+
+  if (!hasAccess) {
+    return res.status(403).json({
+      error: 'Kein Zugang zu diesem Track.',
+      canPurchase: true,
+      singlePrice: EINMALZAHLUNG.signal_single.price,
+      bundlePrice: EINMALZAHLUNG.signal_bundle.price,
+      notice: EINMALZAHLUNG.signal_single.notice
+    });
+  }
+
   return res.json({ url: '' });
+});
+
+// ============================================================
+// RECHTLICHE HINWEISE — Digitale Produkte
+// ============================================================
+
+app.get('/v1/legal/digital-purchase-notice', (req, res) => {
+  return res.json({
+    courseNotice: 'Digitaler Kurs — lebenslanger Zugang nach Kauf. Widerrufsrecht erlischt mit Beginn der Nutzung (§ 356 Abs. 5 BGB).',
+    signalNotice: EINMALZAHLUNG.signal_bundle.notice,
+    aboNotice: 'Abo verlängert sich automatisch. Kündigung jederzeit zum Ende der Laufzeit möglich. Zahlung über Apple ID (iOS) oder Stripe (Web).',
+    refundPolicy: 'Für digitale Inhalte (Audio-Tracks, Kurse) besteht nach Freischaltung kein Widerrufsrecht gemäß § 356 Abs. 5 BGB. Bei Abo-Modellen ist eine Kündigung jederzeit zum Ende der aktuellen Laufzeit möglich.'
+  });
 });
 
 // ============================================================
