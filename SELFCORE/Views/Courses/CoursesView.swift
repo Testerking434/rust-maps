@@ -13,9 +13,14 @@ struct CoursesView: View {
                         // Header stats
                         CourseStatsHeader(courses: appState.courses)
 
-                        // Course list
+                        // Course list — tippbar → öffnet Lektionsliste
                         ForEach(appState.courses) { course in
-                            CourseCard(course: course)
+                            NavigationLink {
+                                LessonListView(course: course)
+                            } label: {
+                                CourseCard(course: course)
+                            }
+                            .buttonStyle(.plain)
                         }
 
                         Color.clear.frame(height: 40)
