@@ -8,15 +8,17 @@ enum APIError: Error, LocalizedError {
     case serverError(String)
     case unauthorized
     case networkError
+    case conflict(String)    // 409 – e.g. email already registered
 
     var errorDescription: String? {
         switch self {
-        case .invalidURL:        return "Ungültige URL."
-        case .noData:            return "Keine Daten erhalten."
-        case .decodingError:     return "Daten konnten nicht gelesen werden."
+        case .invalidURL:         return "Ungültige URL."
+        case .noData:             return "Keine Daten erhalten."
+        case .decodingError:      return "Daten konnten nicht gelesen werden."
         case .serverError(let m): return m
-        case .unauthorized:      return "Bitte melde dich erneut an."
-        case .networkError:      return "Keine Verbindung. Überprüfe dein Internet."
+        case .unauthorized:       return "Bitte melde dich erneut an."
+        case .networkError:       return "Keine Verbindung. Überprüfe dein Internet."
+        case .conflict(let m):    return m
         }
     }
 }
@@ -37,6 +39,14 @@ struct LoginRequest: Encodable {
 struct LoginResponse: Decodable {
     let token: String
     let user: UserProfile
+    var signalFreeDays: Int = 0
+}
+
+struct RegisterRequest: Encodable {
+    let name: String
+    let email: String
+    let password: String
+    let referralCode: String?
 }
 
 struct CheckInRequest: Encodable {
@@ -57,11 +67,14 @@ struct CheckInRequest: Encodable {
 actor APIService {
     static let shared = APIService()
 
-    private func makeRequest<T: Decodable>(
+    // MARK: - Core request builder
+
+    func makeRequest<T: Decodable>(
         endpoint: String,
         method: String = "GET",
         body: Encodable? = nil,
-        requiresAuth: Bool = true
+        requiresAuth: Bool = true,
+        idempotencyKey: String? = nil
     ) async throws -> T {
         guard let url = URL(string: APIConfig.baseURL + endpoint) else {
             throw APIError.invalidURL
@@ -74,6 +87,11 @@ actor APIService {
         if requiresAuth {
             guard let token = APIConfig.token else { throw APIError.unauthorized }
             request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        }
+
+        // Idempotency header prevents duplicate processing on server
+        if let key = idempotencyKey {
+            request.setValue(key, forHTTPHeaderField: "Idempotency-Key")
         }
 
         if let body = body {
@@ -101,6 +119,9 @@ actor APIService {
             }
         case 401:
             throw APIError.unauthorized
+        case 409:
+            let msg = String(data: data, encoding: .utf8) ?? "Diese E-Mail ist bereits registriert."
+            throw APIError.conflict(msg)
         default:
             let msg = String(data: data, encoding: .utf8) ?? "Server-Fehler \(http.statusCode)"
             throw APIError.serverError(msg)
@@ -108,9 +129,34 @@ actor APIService {
     }
 
     // MARK: - Auth
+
     func login(email: String, password: String) async throws -> LoginResponse {
         let body = LoginRequest(email: email, password: password)
         return try await makeRequest(endpoint: "/auth/login", method: "POST", body: body, requiresAuth: false)
+    }
+
+    /// Register a new account.
+    ///
+    /// Uses a **stable idempotency key** stored in UserDefaults so that retries
+    /// (network failure, app crash) never create duplicate accounts or double-credit
+    /// the referral reward on the server side.
+    func register(name: String, email: String, password: String, referralCode: String?) async throws -> LoginResponse {
+        // Retrieve – or generate once – a stable key for this registration attempt.
+        // Cleared only after a successful registration, so all retries carry the same key.
+        let idempotencyKey = Self.registrationIdempotencyKey()
+
+        let body = RegisterRequest(name: name, email: email, password: password, referralCode: referralCode)
+        let response: LoginResponse = try await makeRequest(
+            endpoint: "/auth/register",
+            method: "POST",
+            body: body,
+            requiresAuth: false,
+            idempotencyKey: idempotencyKey
+        )
+
+        // Success → clear the key so the next registration attempt gets a fresh one
+        Self.clearRegistrationIdempotencyKey()
+        return response
     }
 
     func logout() async throws {
@@ -122,10 +168,16 @@ actor APIService {
     func resetPassword(email: String) async throws {
         struct Body: Encodable { let email: String }
         struct Empty: Decodable {}
-        let _: Empty = try await makeRequest(endpoint: "/auth/reset-password", method: "POST", body: Body(email: email), requiresAuth: false)
+        let _: Empty = try await makeRequest(
+            endpoint: "/auth/reset-password",
+            method: "POST",
+            body: Body(email: email),
+            requiresAuth: false
+        )
     }
 
     // MARK: - User
+
     func fetchProfile() async throws -> UserProfile {
         return try await makeRequest(endpoint: "/user/profile")
     }
@@ -135,6 +187,7 @@ actor APIService {
     }
 
     // MARK: - CheckIns
+
     func postCheckIn(_ checkIn: CheckIn) async throws {
         struct Empty: Decodable {}
         let body = CheckInRequest(checkIn: checkIn)
@@ -142,19 +195,37 @@ actor APIService {
     }
 
     // MARK: - Weekly Review
+
     func fetchWeeklyStats() async throws -> WeeklyStats {
         return try await makeRequest(endpoint: "/user/weekly-stats")
+    }
+
+    // MARK: - Idempotency key helpers (nonisolated, keyed on UserDefaults)
+
+    private static let registrationKeyUD = "registrationIdempotencyKey"
+
+    nonisolated static func registrationIdempotencyKey() -> String {
+        if let existing = UserDefaults.standard.string(forKey: registrationKeyUD) {
+            return existing
+        }
+        let fresh = UUID().uuidString
+        UserDefaults.standard.set(fresh, forKey: registrationKeyUD)
+        return fresh
+    }
+
+    nonisolated static func clearRegistrationIdempotencyKey() {
+        UserDefaults.standard.removeObject(forKey: registrationKeyUD)
     }
 }
 
 // MARK: - WeeklyStats model
+
 struct WeeklyStats: Codable {
     var checkInsCount: Int
     var actionsCompleted: Int
     var dominantMood: String?
     var dimensionChanges: [String: Double]
 
-    // Fallback for offline/no-server
     static let mock = WeeklyStats(
         checkInsCount: 5,
         actionsCompleted: 3,

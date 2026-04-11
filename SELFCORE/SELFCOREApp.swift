@@ -24,6 +24,23 @@ struct SELFCOREApp: App {
         UITabBar.appearance().scrollEdgeAppearance = tabAppearance
     }
 
+    // MARK: - Deep link / Universal Link
+
+    /// Extracts the referral code from the URL and stores it in UserDefaults.
+    ///
+    /// Supported formats:
+    ///   https://genselfcore.de/join?ref=MAX2K4
+    ///   selfcore://join?ref=MAX2K4
+    private func handleIncomingURL(_ url: URL) {
+        guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
+              let refItem = components.queryItems?.first(where: { $0.name == "ref" }),
+              let code = refItem.value, !code.isEmpty
+        else { return }
+
+        let sanitised = code.uppercased().trimmingCharacters(in: .alphanumerics.inverted)
+        UserDefaults.standard.set(sanitised, forKey: "pendingReferralCode")
+    }
+
     var body: some Scene {
         WindowGroup {
             Group {
@@ -43,6 +60,16 @@ struct SELFCOREApp: App {
             .onAppear {
                 NotificationService.shared.scheduleWeeklyReviewNotification()
                 NotificationService.shared.scheduleStreakReminderNotification()
+            }
+            // ── Universal Link / Deep Link handler ─────────────────────────────
+            // Handles both https://genselfcore.de/join?ref=CODE (Associated Domains)
+            // and the custom scheme selfcore://join?ref=CODE (Info.plist URL types).
+            //
+            // When the user opens a referral link BEFORE registering, the code is
+            // saved in UserDefaults("pendingReferralCode").  RegisterFormView reads it
+            // on appear and pre-fills the referral field automatically.
+            .onOpenURL { url in
+                handleIncomingURL(url)
             }
         }
     }

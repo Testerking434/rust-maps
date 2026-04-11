@@ -13,9 +13,14 @@ class ReferralService: ObservableObject {
 
     private let cacheKey = "cachedReferralData"
 
+    // Stable idempotency keys so repeated calls never double-count server-side
+    private let rewardSeenKeyUD  = "rewardSeenIdempotencyKey"
+    private let fetchCodeKeyUD   = "fetchCodeIdempotencyKey"
+
     init() { loadCache() }
 
     // MARK: - Load from server
+
     func loadReferralData() async {
         isLoading = true
         defer { isLoading = false }
@@ -25,23 +30,31 @@ class ReferralService: ObservableObject {
             saveCache(data)
             checkForNewRewards(data)
         } catch {
-            // Use cached data if server fails
+            // Use cached data if server is unreachable
         }
     }
 
-    // MARK: - Generate / Get Referral Link
+    // MARK: - Generate / Get Referral Code
+
     func fetchOrCreateCode() async {
         isLoading = true
         defer { isLoading = false }
+
+        // Use a stable key so retrying never creates a second code entry
+        let key = stableIdempotencyKey(forUD: fetchCodeKeyUD)
+
         do {
             let data: ReferralData = try await APIService.shared.makeRequest(
                 endpoint: "/referral/code",
-                method: "POST"
+                method: "POST",
+                idempotencyKey: key
             )
             referralData = data
             saveCache(data)
+            // Code successfully created/retrieved → clear the key for next install/re-fetch
+            clearIdempotencyKey(forUD: fetchCodeKeyUD)
         } catch {
-            // Generate local fallback code (server will validate later)
+            // Fallback: generate local code; server will validate/reconcile on next fetch
             if referralData.referralCode.isEmpty {
                 let code = generateLocalCode()
                 referralData.referralCode = code
@@ -51,6 +64,7 @@ class ReferralService: ObservableObject {
     }
 
     // MARK: - Share Sheet Items
+
     func shareItems(userName: String) -> [Any] {
         let link = referralData.referralLink.isEmpty
             ? "https://genselfcore.de/join"
@@ -71,6 +85,7 @@ Melde dich über meinen Link an — du bekommst 3 Tage GEN:SIGNAL gratis zum Rei
     }
 
     // MARK: - New Reward Notification
+
     private func checkForNewRewards(_ data: ReferralData) {
         let newReward = data.rewards.first(where: { $0.isNew })
         if let reward = newReward {
@@ -82,17 +97,27 @@ Melde dich über meinen Link an — du bekommst 3 Tage GEN:SIGNAL gratis zum Rei
     func dismissNewReward() {
         showNewReward = false
         latestReward = nil
+
+        // Use a stable idempotency key so rapidly tapping "dismiss" or a network retry
+        // never marks rewards as seen twice (server is a no-op anyway, but belt-and-suspenders).
+        let key = stableIdempotencyKey(forUD: rewardSeenKeyUD)
+
         Task {
-            // Mark reward as seen on server
             struct Empty: Decodable {}
             let _: Empty? = try? await APIService.shared.makeRequest(
                 endpoint: "/referral/rewards/seen",
-                method: "POST"
+                method: "POST",
+                idempotencyKey: key
             )
+            // After a confirmed server round-trip, clear the key
+            await MainActor.run {
+                self.clearIdempotencyKey(forUD: self.rewardSeenKeyUD)
+            }
         }
     }
 
     // MARK: - Cache
+
     private func loadCache() {
         if let data = UserDefaults.standard.data(forKey: cacheKey),
            let decoded = try? JSONDecoder().decode(ReferralData.self, from: data) {
@@ -106,18 +131,34 @@ Melde dich über meinen Link an — du bekommst 3 Tage GEN:SIGNAL gratis zum Rei
         }
     }
 
-    // Local code fallback (6 Zeichen)
+    // MARK: - Idempotency key helpers
+
+    /// Returns the stored key for this slot, or generates + stores a fresh one.
+    private func stableIdempotencyKey(forUD key: String) -> String {
+        if let existing = UserDefaults.standard.string(forKey: key) { return existing }
+        let fresh = UUID().uuidString
+        UserDefaults.standard.set(fresh, forKey: key)
+        return fresh
+    }
+
+    private func clearIdempotencyKey(forUD key: String) {
+        UserDefaults.standard.removeObject(forKey: key)
+    }
+
+    // MARK: - Local code fallback (6 chars, unambiguous alphabet)
+
     private func generateLocalCode() -> String {
         let chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"
         return String((0..<6).map { _ in chars.randomElement()! })
     }
 
     // MARK: - Computed Helpers
+
     var currentBadge: ReferralMilestone? {
         ReferralMilestone.all.last(where: { $0.required <= referralData.totalReferred })
     }
 
     var totalEarnedDays: Int {
-        referralData.totalReferred * 3  // 3 Tage pro Freund (statt 7)
+        referralData.totalReferred * 3  // 3 Tage pro erfolgreichem Freund
     }
 }

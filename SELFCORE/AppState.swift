@@ -34,12 +34,18 @@ class AppState: ObservableObject {
     }
 
     // MARK: - Login
+
     func login(email: String, password: String) async throws {
         let response = try await APIService.shared.login(email: email, password: password)
-        APIConfig.token = response.token
-        self.profile = response.user
+        await loginWithToken(response.token, user: response.user)
+    }
+
+    /// Called after registration (or login) when we already have a token + user object.
+    func loginWithToken(_ token: String, user: UserProfile) async {
+        APIConfig.token = token
+        self.profile = user
         self.isLoggedIn = true
-        cacheProfile(response.user)
+        cacheProfile(user)
         Task { await refreshData() }
     }
 
