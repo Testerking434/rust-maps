@@ -46,38 +46,44 @@ struct ReferralMilestone {
     let rewardDescription: String
     let rewardDays: Int               // Gratis-Tage für Signal
 
+    // BUSINESS-MATH pro Freund:
+    // Kosten: 3 Tage gratis = ~0,50 €
+    // Einnahme: geworbener zahlt Ø 3 Monate = 14,97 €
+    // ROI: ~3.000% — sehr profitabel selbst mit Boni
     static let all: [ReferralMilestone] = [
         ReferralMilestone(
             required: 1,
             badgeTitle: "CONNECTOR",
             badgeEmoji: "🤝",
             badgeColor: .scVerbindung,
-            rewardDescription: "7 Tage GEN:SIGNAL gratis",
-            rewardDays: 7
+            rewardDescription: "CONNECTOR-Badge + 3 Tage GEN:SIGNAL gratis",
+            rewardDays: 3  // ~0,50 € Kosten
         ),
         ReferralMilestone(
             required: 3,
             badgeTitle: "CATALYST",
             badgeEmoji: "⚡️",
             badgeColor: .scSignal,
-            rewardDescription: "3 Wochen GEN:SIGNAL gratis + exklusiver Track",
-            rewardDays: 21
+            // Exklusiver Track: einmalig produziert, danach 0€ Kosten pro Auslieferung
+            rewardDescription: "CATALYST-Badge + Exklusiver Track "Gratitude Flow"",
+            rewardDays: 0  // Kein Geld verschenkt — nur Content-Reward
         ),
         ReferralMilestone(
             required: 5,
             badgeTitle: "PIONEER",
             badgeEmoji: "🔥",
             badgeColor: .scMut,
-            rewardDescription: "2 Monate GEN:SIGNAL gratis",
-            rewardDays: 60
+            rewardDescription: "PIONEER-Badge + 1 Woche GEN:SIGNAL gratis",
+            rewardDays: 7  // ~1,17 € Kosten für 5 neue Zahler
         ),
         ReferralMilestone(
             required: 10,
             badgeTitle: "LEGEND",
             badgeEmoji: "👑",
             badgeColor: .scGold,
-            rewardDescription: "6 Monate GEN:SIGNAL gratis + LEGEND-Status",
-            rewardDays: 180
+            // 1 Monat statt 6 Monate → spart ~25 € pro LEGEND-User
+            rewardDescription: "LEGEND-Status + 1 Monat GEN:SIGNAL gratis + persönliche Dankes-Nachricht",
+            rewardDays: 30  // ~5 € Kosten für 10 neue Zahler = immer noch profitabel
         ),
     ]
 }

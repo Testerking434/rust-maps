@@ -61,7 +61,7 @@ Ich nutze GEN:SELFCORE für meine persönliche Entwicklung — und es verändert
 
 Der DNA-Test zeigt dir dein Persönlichkeitsprofil, deine 5 Dimensionen und deinen Wachstumsweg.
 
-Melde dich über meinen Link an — du bekommst 7 Tage GEN:SIGNAL gratis:
+Melde dich über meinen Link an — du bekommst 3 Tage GEN:SIGNAL gratis zum Reinschnuppern:
 
 \(link)
 
@@ -118,6 +118,6 @@ Melde dich über meinen Link an — du bekommst 7 Tage GEN:SIGNAL gratis:
     }
 
     var totalEarnedDays: Int {
-        referralData.totalReferred * 7
+        referralData.totalReferred * 3  // 3 Tage pro Freund (statt 7)
     }
 }

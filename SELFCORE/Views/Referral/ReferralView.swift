@@ -76,7 +76,7 @@ struct ReferralView: View {
                     Text("Wachse gemeinsam")
                         .font(SCFont.display(26))
                         .foregroundColor(.white)
-                    Text("Jeder erfolgreiche Freund = 7 Tage Signal gratis für euch beide")
+                    Text("Jeder erfolgreiche Freund = 3 Tage Signal gratis für euch beide")
                         .font(SCFont.body(14))
                         .foregroundColor(.scTextSecondary)
                         .multilineTextAlignment(.center)

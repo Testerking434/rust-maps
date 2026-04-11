@@ -126,16 +126,21 @@ app.post('/v1/auth/register', async (req, res) => {
     // Verhindern dass jemand sich selbst einlädt
     if (referrerId !== newUserId) {
 
-      // 1. Referrer belohnen (+7 Tage)
+      // BUSINESS-KALKULATION:
+      // Kosten pro Freund: 3 Tage ≈ 0,50 €
+      // Einnahme pro Freund: Ø 3 Monate Abo = 14,97 €
+      // ROI: ~3.000% — sehr profitabel
+
+      // 1. Referrer belohnen (+3 Tage statt 7 — balance zwischen Anreiz & Kosten)
       if (!referrals[referrerId]) referrals[referrerId] = { rewards: [], friends: [], badges: [], totalReferred: 0, earnedDays: 0 };
       referrals[referrerId].totalReferred += 1;
-      referrals[referrerId].earnedDays += 7;
+      referrals[referrerId].earnedDays += 3;
 
       const newReward = {
         id: 'reward_' + Date.now(),
         type: 'signal_days',
-        description: `${name || 'Dein Freund'} hat sich registriert!`,
-        daysGranted: 7,
+        description: `${name || 'Dein Freund'} hat sich registriert! +3 Tage GEN:SIGNAL`,
+        daysGranted: 3,
         earnedAt: new Date().toISOString(),
         isNew: true
       };
@@ -151,14 +156,15 @@ app.post('/v1/auth/register', async (req, res) => {
         avatarColor: avatarColors[Math.floor(Math.random() * avatarColors.length)]
       });
 
-      signalExtensions[referrerId] = (signalExtensions[referrerId] || 0) + 7;
+      signalExtensions[referrerId] = (signalExtensions[referrerId] || 0) + 3;
 
-      // 2. Meilenstein-Badges prüfen
+      // 2. Meilenstein-Badges prüfen + spezielle Milestone-Rewards
       const milestones = [
-        { required: 1, title: 'CONNECTOR', emoji: '🤝', color: '#5CB85C' },
-        { required: 3, title: 'CATALYST',  emoji: '⚡️', color: '#00C9C9' },
-        { required: 5, title: 'PIONEER',   emoji: '🔥', color: '#FF6B35' },
-        { required: 10, title: 'LEGEND',   emoji: '👑', color: '#F5A623' },
+        { required: 1,  title: 'CONNECTOR', emoji: '🤝', color: '#5CB85C', extraDays: 0  }, // Badge reicht
+        { required: 3,  title: 'CATALYST',  emoji: '⚡️', color: '#00C9C9', extraDays: 0,
+          exclusiveTrack: 'gratitude-flow' },                                                  // Exkl. Track — 0€ Kosten
+        { required: 5,  title: 'PIONEER',   emoji: '🔥', color: '#FF6B35', extraDays: 7  }, // +7 Tage extra
+        { required: 10, title: 'LEGEND',    emoji: '👑', color: '#F5A623', extraDays: 30  }, // +1 Monat (statt 6!)
       ];
       const total = referrals[referrerId].totalReferred;
       const earned = milestones.find(m => m.required === total);
@@ -170,11 +176,34 @@ app.post('/v1/auth/register', async (req, res) => {
           earnedAt: new Date().toISOString(),
           colorHex: earned.color
         });
+        // Milestone-Bonus-Tage obendrauf
+        if (earned.extraDays > 0) {
+          signalExtensions[referrerId] = (signalExtensions[referrerId] || 0) + earned.extraDays;
+          referrals[referrerId].earnedDays += earned.extraDays;
+          referrals[referrerId].rewards.push({
+            id: 'milestone_' + Date.now(),
+            type: 'signal_days',
+            description: `${earned.title} Meilenstein! +${earned.extraDays} Tage GEN:SIGNAL`,
+            daysGranted: earned.extraDays,
+            earnedAt: new Date().toISOString(),
+            isNew: true
+          });
+        }
+        if (earned.exclusiveTrack) {
+          referrals[referrerId].rewards.push({
+            id: 'track_' + Date.now(),
+            type: 'exclusive_track',
+            description: 'Exklusiver Track "Gratitude Flow" freigeschaltet',
+            daysGranted: 0,
+            earnedAt: new Date().toISOString(),
+            isNew: true
+          });
+        }
       }
 
-      // 3. Neuen User belohnen (+7 Tage als Willkommen)
-      signalExtensions[newUserId] = 7;
-      console.log(`✅ Referral: ${name} durch Code ${referralCode} (User ${referrerId}) → je +7 Tage`);
+      // 3. Neuen User belohnen (+3 Tage als Willkommen — reicht zum Reinschnuppern)
+      signalExtensions[newUserId] = 3;
+      console.log(`✅ Referral: ${name} durch Code ${referralCode} (Referrer ${referrerId}) → Referrer +3 Tage, Neuer User +3 Tage`);
     }
   }
 
@@ -187,7 +216,7 @@ app.post('/v1/auth/register', async (req, res) => {
       selfcoreType: 'ACHIEVER', // wird nach DNA-Test gesetzt
       dimensions: { selbstkenntnis: 5, authentizitaet: 5, klarheit: 5, mut: 5, verbindung: 5 }
     },
-    signalFreeDays: referralCode ? 7 : 0  // Neuer User weiß sofort: ich habe 7 Tage gratis
+    signalFreeDays: referralCode ? 3 : 0  // 3 Tage gratis — genug zum Reinschnuppern, fair für dich
   });
 });
 
