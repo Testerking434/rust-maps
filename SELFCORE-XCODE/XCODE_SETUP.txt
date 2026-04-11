@@ -1,0 +1,130 @@
+================================================================
+  GEN:SELFCORE — Xcode Setup (5 Minuten)
+================================================================
+
+
+SCHRITT 1: Diesen Ordner auf deinen Mac laden
+----------------------------------------------
+Option A: GitHub Desktop → Clone Repo → rust-maps
+Option B: Terminal:
+  git clone https://github.com/Testerking434/rust-maps.git
+  cd rust-maps/SELFCORE-XCODE
+
+
+SCHRITT 2: Xcode öffnen → Neues Projekt
+-----------------------------------------
+1. Xcode öffnen
+2. "Create New Project"
+3. iOS → App
+4. Einstellungen:
+   - Product Name:              SELFCORE
+   - Team:                      Dein Apple Developer Team
+   - Organization Identifier:   de.genselfcore
+   - Interface:                 SwiftUI
+   - Language:                  Swift
+5. Speicherort wählen → "Create"
+
+
+SCHRITT 3: Standard-Dateien löschen
+-------------------------------------
+Xcode erstellt automatisch:
+  - ContentView.swift
+  - SELFCOREApp.swift (die von Xcode)
+
+Diese BEIDE löschen (Move to Trash).
+
+
+SCHRITT 4: Dateien reinziehen
+-------------------------------
+1. Finder öffnen → Gehe zu: rust-maps/SELFCORE-XCODE/
+2. Den Ordner "SELFCORE" komplett in den Xcode Navigator ziehen
+   (links, dort wo die Dateien stehen)
+3. Im Dialog:
+   ☑ Copy items if needed
+   ☑ Create groups
+   → Finish
+
+4. Dann den Ordner "SELFCOREWidget" auch reinziehen
+   (gleiche Einstellungen)
+
+
+SCHRITT 5: Capabilities aktivieren
+-------------------------------------
+1. Klick links auf das Projekt (blaues Icon ganz oben)
+2. Tab "Signing & Capabilities"
+3. Team auswählen (dein Apple Developer Account)
+4. Bundle ID: de.genselfcore.app
+5. "+ Capability" klicken und hinzufügen:
+   - Sign in with Apple
+   - In-App Purchase
+   - HealthKit
+   - Push Notifications
+
+
+SCHRITT 6: Build & Run
+-------------------------
+1. Oben links ein Simulator wählen (z.B. iPhone 15 Pro)
+2. ▶ Play drücken (oder Cmd+R)
+3. App sollte starten mit dem Login-Screen:
+   - Sign in with Apple (oben)
+   - Sign in with Google
+   - E-Mail (unten)
+
+
+FERTIG!
+=========
+Die App verbindet sich automatisch mit:
+  https://api.genselfcore.de
+
+Dein Server läuft bereits auf dem Hetzner.
+
+
+================================================================
+ORDNER-ÜBERSICHT
+================================================================
+
+SELFCORE/
+├── SELFCOREApp.swift          ← App-Einstieg
+├── AppState.swift             ← Globaler State
+├── DesignSystem.swift         ← Farben, Fonts, Spacing
+│
+├── Models/                    ← Datenmodelle
+│   ├── Profile.swift
+│   ├── Course.swift
+│   ├── Lesson.swift
+│   ├── CheckIn.swift
+│   ├── DailyQuote.swift
+│   ├── ReferralData.swift
+│   ├── SignalProduct.swift
+│   └── StreakData.swift
+│
+├── Services/                  ← API & Business Logic
+│   ├── APIService.swift       ← Server-Kommunikation
+│   ├── ContentService.swift
+│   ├── SubscriptionService.swift
+│   ├── ReferralService.swift
+│   ├── StreakService.swift
+│   ├── HealthKitService.swift
+│   ├── NotificationService.swift
+│   ├── WeeklyReviewService.swift
+│   └── WidgetDataService.swift
+│
+├── Data/
+│   └── MicroActionsData.swift
+│
+└── Views/                     ← Alle Screens
+    ├── MainTabView.swift
+    ├── Auth/LoginView.swift   ← Apple/Google/Email Login
+    ├── Home/                  ← Dashboard
+    ├── Courses/               ← Kurse & Lektionen
+    ├── Signal/                ← Audio Player & Paywall
+    ├── Profile/               ← User Profil
+    ├── Referral/              ← Freunde einladen
+    ├── History/               ← Check-In Verlauf
+    ├── Settings/              ← Einstellungen
+    └── Legal/                 ← Impressum, Datenschutz
+
+SELFCOREWidget/                ← iOS Widget
+├── SELFCOREWidget.swift
+└── SELFCOREWidgetBundle.swift
+================================================================
