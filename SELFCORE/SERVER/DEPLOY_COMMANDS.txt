@@ -1,6 +1,6 @@
 ================================================================
-GEN:SELFCORE — HETZNER DEPLOY BEFEHLE
-Einfach Schritt für Schritt copy & paste
+GEN:SELFCORE — SERVER SETUP
+Einfach Schritt für Schritt copy & paste in Termius
 Port: 8001 | Ordner: /var/www/genselfcore
 ================================================================
 
@@ -9,21 +9,18 @@ Port: 8001 | Ordner: /var/www/genselfcore
 SCHRITT 1 — Ordner erstellen
 ----------------------------------------------------------------
 
-mkdir -p /var/www/genselfcore/data/lessons
-
-cd /var/www/genselfcore
+mkdir -p /var/www/genselfcore/data/lessons && cd /var/www/genselfcore
 
 
 ----------------------------------------------------------------
 SCHRITT 2 — package.json erstellen
 ----------------------------------------------------------------
 
-cat > package.json << 'EOF'
+cat > /var/www/genselfcore/package.json << 'EOF'
 {
   "name": "genselfcore-server",
   "version": "1.0.0",
   "main": "server.js",
-  "scripts": { "start": "node server.js" },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
@@ -36,46 +33,331 @@ EOF
 
 
 ----------------------------------------------------------------
-SCHRITT 3 — .env erstellen (JWT_SECRET anpassen!)
+SCHRITT 3 — .env erstellen (JWT_SECRET ist dein geheimes Passwort!)
 ----------------------------------------------------------------
 
-cat > .env << 'EOF'
+cat > /var/www/genselfcore/.env << 'EOF'
 PORT=8001
-JWT_SECRET=HierEinenLangenZufaelligenStringEintippen123!AbcXyz
+JWT_SECRET=Selfcore2024SuperGeheimXyzAbcDef987!
 EOF
 
 
 ----------------------------------------------------------------
-SCHRITT 4 — server.js hochladen (aus GitHub)
+SCHRITT 4 — server.js erstellen
 ----------------------------------------------------------------
 
-apt-get install -y git
+cat > /var/www/genselfcore/server.js << 'SERVEREOF'
+'use strict';
+require('dotenv').config();
+const express   = require('express');
+const bcrypt    = require('bcryptjs');
+const jwt       = require('jsonwebtoken');
+const cors      = require('cors');
+const path      = require('path');
+const fs        = require('fs');
 
-git clone https://github.com/testerking434/rust-maps.git /tmp/selfcore-repo
+const app        = express();
+const PORT       = process.env.PORT || 8001;
+const JWT_SECRET = process.env.JWT_SECRET || 'changeme';
 
-cp /tmp/selfcore-repo/SELFCORE/SERVER/server.js /var/www/genselfcore/server.js
+app.use(cors());
+app.use(express.json());
 
-cp /tmp/selfcore-repo/SELFCORE/SERVER/join.html /var/www/genselfcore/join.html
+const users             = {};
+const userById          = {};
+const referrals         = {};
+const codeToUser        = {};
+const signalExtensions  = {};
+const processedReferrals = new Set();
+const userReferredBy    = {};
+const rewardIDs         = new Set();
+const registrationLocks = new Set();
+const idempotencyCache  = {};
 
-cp /tmp/selfcore-repo/SELFCORE/SERVER/apple-app-site-association /var/www/genselfcore/apple-app-site-association
+function generateReferralCode(name) {
+  const base = ((name || '').substring(0,3).toUpperCase().replace(/[^A-Z]/g,'X')) || 'REF';
+  const suffix = Math.random().toString(36).substring(2,5).toUpperCase();
+  const code = base + suffix;
+  return codeToUser[code] ? generateReferralCode(name) : code;
+}
 
-rm -rf /tmp/selfcore-repo
+function createRewardId(prefix) {
+  let id;
+  do { id = (prefix||'r') + '_' + Date.now() + '_' + Math.random().toString(36).substring(2,6); }
+  while (rewardIDs.has(id));
+  rewardIDs.add(id);
+  return id;
+}
+
+function auth(req, res, next) {
+  const h = req.headers.authorization;
+  if (!h || !h.startsWith('Bearer ')) return res.status(401).json({error:'Nicht autorisiert.'});
+  try { req.user = jwt.verify(h.split(' ')[1], JWT_SECRET); next(); }
+  catch { return res.status(401).json({error:'Token ungültig.'}); }
+}
+
+function idempotency(req, res, next) {
+  const key = req.headers['idempotency-key'];
+  if (!key) return next();
+  const now = Date.now();
+  Object.keys(idempotencyCache).forEach(k => { if (idempotencyCache[k].exp < now) delete idempotencyCache[k]; });
+  if (idempotencyCache[key]) return res.json(idempotencyCache[key].data);
+  res.cache = d => { idempotencyCache[key] = {data:d, exp:now+1800000}; };
+  next();
+}
+
+function referralResponse(userId) {
+  const d = referrals[userId];
+  if (!d) return {referralCode:'',referralLink:'',totalReferred:0,pendingReferred:0,earnedDays:0,badges:[],rewards:[],referredFriends:[]};
+  return {referralCode:d.code,referralLink:`https://genselfcore.de/join?ref=${d.code}`,totalReferred:d.totalReferred,pendingReferred:0,earnedDays:d.earnedDays,badges:d.badges,rewards:d.rewards,referredFriends:d.friends};
+}
+
+function processReferral(newUserId, code, name) {
+  const pair = `${newUserId}:${code}`;
+  if (processedReferrals.has(pair)) return {skip:true};
+  const referrerId = codeToUser[code];
+  if (!referrerId || referrerId === newUserId || userReferredBy[newUserId]) return {skip:true};
+  processedReferrals.add(pair);
+  userReferredBy[newUserId] = code;
+  if (!referrals[referrerId]) referrals[referrerId] = {code,totalReferred:0,earnedDays:0,badges:[],rewards:[],friends:[],badgeTitles:new Set()};
+  const ref = referrals[referrerId];
+  ref.totalReferred++;
+  ref.earnedDays += 3;
+  signalExtensions[referrerId] = (signalExtensions[referrerId]||0) + 3;
+  const colors = ['#F5A623','#FF6B9D','#4A90D9','#FF6B35','#5CB85C','#00C9C9'];
+  ref.friends.push({id:newUserId,firstName:(name||'Freund').split(' ')[0],joinedAt:new Date().toISOString(),isActive:true,avatarColor:colors[Math.floor(Math.random()*colors.length)]});
+  ref.rewards.push({id:createRewardId('rw'),type:'signal_days',description:`${name||'Dein Freund'} hat sich registriert! +3 Tage`,daysGranted:3,earnedAt:new Date().toISOString(),isNew:true});
+  const milestones = [
+    {required:1, title:'CONNECTOR',emoji:'🤝',color:'#5CB85C',extraDays:0,track:null},
+    {required:3, title:'CATALYST', emoji:'⚡️',color:'#00C9C9',extraDays:0,track:'gratitude-flow'},
+    {required:5, title:'PIONEER',  emoji:'🔥',color:'#FF6B35',extraDays:7,track:null},
+    {required:10,title:'LEGEND',   emoji:'👑',color:'#F5A623',extraDays:30,track:null},
+  ];
+  const ms = milestones.find(m => m.required === ref.totalReferred);
+  if (ms && !ref.badgeTitles.has(ms.title)) {
+    ref.badgeTitles.add(ms.title);
+    ref.badges.push({id:createRewardId('b'),title:ms.title,emoji:ms.emoji,earnedAt:new Date().toISOString(),colorHex:ms.color});
+    if (ms.extraDays > 0) { signalExtensions[referrerId]=(signalExtensions[referrerId]||0)+ms.extraDays; ref.earnedDays+=ms.extraDays; ref.rewards.push({id:createRewardId('ms'),type:'signal_days',description:`${ms.title}! +${ms.extraDays} Tage`,daysGranted:ms.extraDays,earnedAt:new Date().toISOString(),isNew:true}); }
+    if (ms.track) ref.rewards.push({id:createRewardId('tr'),type:'exclusive_track',description:'Gratitude Flow freigeschaltet',daysGranted:0,earnedAt:new Date().toISOString(),isNew:true});
+  }
+  console.log(`Referral: ${name} via ${code} → Referrer ${referrerId} hat ${ref.totalReferred} Freunde`);
+  return {success:true};
+}
+
+app.get('/health', (_,res) => res.json({status:'ok',app:'GEN:SELFCORE',port:PORT}));
+
+app.post('/v1/auth/register', idempotency, async (req,res) => {
+  const {name,email,password,referralCode} = req.body;
+  if (!email||!password||!name) return res.status(400).json({error:'Alle Felder erforderlich.'});
+  const norm = email.toLowerCase().trim();
+  if (registrationLocks.has(norm)) return res.status(429).json({error:'Bitte warten.'});
+  registrationLocks.add(norm);
+  try {
+    if (users[norm]) return res.status(409).json({error:'E-Mail bereits registriert.'});
+    const hash = await bcrypt.hash(password, 12);
+    const id   = 'u_'+Date.now()+'_'+Math.random().toString(36).substring(2,7);
+    const tok  = jwt.sign({userId:id,email:norm},JWT_SECRET,{expiresIn:'90d'});
+    const u    = {id,name:name.trim(),email:norm,passwordHash:hash,selfcoreType:'ACHIEVER',dimensions:{selbstkenntnis:5,authentizitaet:5,klarheit:5,mut:5,verbindung:5}};
+    users[norm]=u; userById[id]=u;
+    let freeDays=0;
+    if (referralCode) { const r=processReferral(id,referralCode.toUpperCase().trim(),name.trim()); if(r.success){signalExtensions[id]=(signalExtensions[id]||0)+3;freeDays=3;} }
+    const out={token:tok,user:{id,name:u.name,email:norm,selfcoreType:u.selfcoreType,dimensions:u.dimensions},signalFreeDays:freeDays};
+    if(res.cache)res.cache(out);
+    return res.status(201).json(out);
+  } finally { registrationLocks.delete(norm); }
+});
+
+app.post('/v1/auth/login', async (req,res) => {
+  const {email,password} = req.body;
+  if (!email||!password) return res.status(400).json({error:'E-Mail und Passwort erforderlich.'});
+  const u = users[email.toLowerCase().trim()];
+  if (!u) return res.status(401).json({error:'E-Mail oder Passwort falsch.'});
+  if (!await bcrypt.compare(password,u.passwordHash)) return res.status(401).json({error:'E-Mail oder Passwort falsch.'});
+  const tok = jwt.sign({userId:u.id,email:u.email},JWT_SECRET,{expiresIn:'90d'});
+  return res.json({token:tok,user:{id:u.id,name:u.name,email:u.email,selfcoreType:u.selfcoreType,dimensions:u.dimensions}});
+});
+
+app.post('/v1/auth/reset-password', (_,res) => res.json({message:'Falls registriert, wurde ein Link gesendet.'}));
+app.post('/v1/auth/logout', auth, (_,res) => res.json({message:'Abgemeldet.'}));
+
+app.get('/v1/user/profile', auth, (req,res) => {
+  const u=userById[req.user.userId];
+  if(!u)return res.status(404).json({error:'Nicht gefunden.'});
+  return res.json({id:u.id,name:u.name,email:u.email,selfcoreType:u.selfcoreType,dimensions:u.dimensions});
+});
+
+app.get('/v1/user/courses', auth, (_,res) => {
+  try { const p=path.join(__dirname,'data','courses.json'); if(fs.existsSync(p))return res.json(JSON.parse(fs.readFileSync(p,'utf8'))); } catch{}
+  return res.json([{id:'awakening',title:'AWAKENING',subtitle:'Erwache zu dir selbst',lessonCount:42,coverImageURL:''},{id:'origin',title:'ORIGIN',subtitle:'Dein DNA-Profil',lessonCount:10,coverImageURL:''}]);
+});
+
+app.get('/v1/user/signal-status', auth, (req,res) => {
+  const d=signalExtensions[req.user.userId]||0;
+  return res.json({isSubscribed:false,freeDaysRemaining:d,hasAccess:d>0});
+});
+
+app.get('/v1/user/weekly-stats', auth, (_,res) => res.json({checkInsCount:0,actionsCompleted:0,dominantMood:null,dimensionChanges:{}}));
+
+const checkIns={};
+app.post('/v1/checkins', auth, (req,res) => {
+  const id=req.user.userId;
+  if(!checkIns[id])checkIns[id]=[];
+  checkIns[id].push({...req.body,savedAt:new Date().toISOString()});
+  return res.json({message:'Gespeichert.'});
+});
+
+app.get('/v1/courses/:courseId/lessons', auth, (req,res) => {
+  try { const p=path.join(__dirname,'data','lessons',`${req.params.courseId}.json`); if(fs.existsSync(p))return res.json(JSON.parse(fs.readFileSync(p,'utf8'))); } catch{}
+  return res.json([]);
+});
+
+app.get('/v1/courses/:courseId/lessons/:lessonId', auth, (req,res) => {
+  try { const p=path.join(__dirname,'data','lessons',req.params.courseId,`${req.params.lessonId}.json`); if(fs.existsSync(p))return res.json(JSON.parse(fs.readFileSync(p,'utf8'))); } catch{}
+  return res.status(404).json({error:'Nicht gefunden.'});
+});
+
+app.get('/v1/lessons/:lessonId/workbook-url', auth, (_,res) => res.json({url:''}));
+app.post('/v1/lessons/:lessonId/complete', auth, (_,res) => res.json({message:'Abgeschlossen.'}));
+app.get('/v1/signal/tracks', auth, (_,res) => { try{const p=path.join(__dirname,'data','signal_tracks.json');if(fs.existsSync(p))return res.json(JSON.parse(fs.readFileSync(p,'utf8')));}catch{} return res.json([]); });
+app.get('/v1/signal/tracks/:id/url', auth, (_,res) => res.json({url:''}));
+
+app.get('/v1/referral/code', auth, (req,res) => {
+  const id=req.user.userId, u=userById[id];
+  if(!referrals[id]){const code=generateReferralCode(u?.name||'');referrals[id]={code,totalReferred:0,earnedDays:0,badges:[],rewards:[],friends:[],badgeTitles:new Set()};codeToUser[code]=id;}
+  return res.json(referralResponse(id));
+});
+
+app.post('/v1/referral/code', idempotency, auth, (req,res) => {
+  const id=req.user.userId, u=userById[id];
+  if(!referrals[id]){const code=generateReferralCode(u?.name||'');referrals[id]={code,totalReferred:0,earnedDays:0,badges:[],rewards:[],friends:[],badgeTitles:new Set()};codeToUser[code]=id;}
+  const out=referralResponse(id);
+  if(res.cache)res.cache(out);
+  return res.json(out);
+});
+
+app.get('/v1/referral/data', auth, (req,res) => res.json(referralResponse(req.user.userId)));
+
+app.post('/v1/referral/rewards/seen', idempotency, auth, (req,res) => {
+  const d=referrals[req.user.userId];
+  if(d)d.rewards=d.rewards.map(r=>({...r,isNew:false}));
+  const out={};
+  if(res.cache)res.cache(out);
+  return res.json(out);
+});
+
+['data','data/lessons'].forEach(d => { const p=path.join(__dirname,d); if(!fs.existsSync(p))fs.mkdirSync(p,{recursive:true}); });
+
+app.listen(PORT, () => console.log(`GEN:SELFCORE läuft auf Port ${PORT}`));
+SERVEREOF
 
 
 ----------------------------------------------------------------
-SCHRITT 5 — npm Pakete installieren
+SCHRITT 5 — join.html erstellen (Einladungsseite)
 ----------------------------------------------------------------
 
-cd /var/www/genselfcore
-
-npm install
+cat > /var/www/genselfcore/join.html << 'EOF'
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GEN:SELFCORE — Einladung</title>
+  <meta property="og:title" content="GEN:SELFCORE — Du wurdest eingeladen!">
+  <meta property="og:description" content="3 Tage GEN:SIGNAL gratis für dich.">
+  <meta property="og:image" content="https://genselfcore.de/og_image_share.png">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{background:#0A0A0A;color:white;font-family:-apple-system,sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:20px;text-align:center}
+    .logo{font-size:32px;font-weight:800;color:#F5A623;letter-spacing:3px;margin-bottom:8px}
+    .sub{color:#555;font-size:14px;margin-bottom:32px}
+    .card{background:#141414;border:1px solid #222;border-radius:20px;padding:28px;max-width:360px;width:100%}
+    h1{font-size:22px;margin:12px 0 8px}
+    p{color:#777;font-size:14px;line-height:1.6;margin-bottom:20px}
+    .cyan{color:#00C9C9;font-weight:600}
+    .code{display:inline-block;background:#1a1a1a;border:1px solid #F5A623;color:#F5A623;font-family:monospace;font-size:22px;font-weight:700;letter-spacing:4px;padding:10px 20px;border-radius:10px;margin-bottom:20px}
+    .btn{display:block;background:linear-gradient(135deg,#F5A623,#FFD700);color:#000;font-weight:700;font-size:16px;padding:14px;border-radius:12px;text-decoration:none;margin-bottom:10px}
+    .btn2{color:#555;font-size:13px;text-decoration:none;padding:6px}
+  </style>
+</head>
+<body>
+  <div class="logo">GEN:SELFCORE</div>
+  <div class="sub">Persönlichkeit · Wachstum · Signal</div>
+  <div class="card">
+    <div style="font-size:48px">🎁</div>
+    <h1>Du wurdest eingeladen!</h1>
+    <p>Dein Freund hat dich eingeladen.<br>Als Willkommensgeschenk bekommst du<br><span class="cyan">3 Tage GEN:SIGNAL gratis</span>.</p>
+    <div class="code" id="code">------</div><br>
+    <a href="#" class="btn" id="btn">App kostenlos laden →</a>
+    <a href="https://apps.apple.com/app/genselfcore" class="btn2">Direkt zum App Store</a>
+  </div>
+  <script>
+    const ref = new URLSearchParams(window.location.search).get('ref');
+    if(ref){
+      document.cookie=`selfcore_ref=${ref};max-age=2592000;path=/`;
+      document.getElementById('code').textContent=ref;
+      document.getElementById('btn').href=`https://genselfcore.de/join?ref=${ref}`;
+      setTimeout(()=>{ window.location=`selfcore://join?ref=${ref}`; },600);
+    } else {
+      document.getElementById('btn').href='https://apps.apple.com/app/genselfcore';
+      document.getElementById('code').style.display='none';
+    }
+  </script>
+</body>
+</html>
+EOF
 
 
 ----------------------------------------------------------------
-SCHRITT 6 — Testen ob server.js startet
+SCHRITT 6 — Apple App Site Association erstellen
+----------------------------------------------------------------
+
+mkdir -p /var/www/genselfcore/.well-known
+
+cat > /var/www/genselfcore/.well-known/apple-app-site-association << 'EOF'
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "DEINE_TEAM_ID.de.genselfcore.app",
+        "paths": ["/join", "/join/*"]
+      }
+    ]
+  }
+}
+EOF
+
+
+----------------------------------------------------------------
+SCHRITT 7 — Platzhalter index.html erstellen
+----------------------------------------------------------------
+
+cat > /var/www/genselfcore/index.html << 'EOF'
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>GEN:SELFCORE</title></head>
+<body style="background:#0A0A0A;color:#F5A623;font-family:-apple-system,sans-serif;text-align:center;padding:80px">
+  <h1 style="font-size:40px;letter-spacing:3px">GEN:SELFCORE</h1>
+  <p style="color:#555;margin-top:12px;font-size:16px">Coming Soon</p>
+</body>
+</html>
+EOF
+
+
+----------------------------------------------------------------
+SCHRITT 8 — npm Pakete installieren
+----------------------------------------------------------------
+
+cd /var/www/genselfcore && npm install
+
+
+----------------------------------------------------------------
+SCHRITT 9 — Testen ob server.js startet (kurz testen, dann stoppen)
 ----------------------------------------------------------------
 
 node server.js &
+
+sleep 2
 
 curl http://localhost:8001/health
 
@@ -83,12 +365,12 @@ kill %1
 
 
 ----------------------------------------------------------------
-SCHRITT 7 — PM2 installieren & Server dauerhaft starten
+SCHRITT 10 — PM2 installieren und Server dauerhaft starten
 ----------------------------------------------------------------
 
 npm install -g pm2
 
-pm2 start server.js --name genselfcore --cwd /var/www/genselfcore
+pm2 start /var/www/genselfcore/server.js --name genselfcore
 
 pm2 save
 
@@ -96,23 +378,13 @@ pm2 startup
 
 
 ----------------------------------------------------------------
-SCHRITT 8 — Status prüfen
-----------------------------------------------------------------
-
-pm2 status
-
-curl http://localhost:8001/health
-
-
-----------------------------------------------------------------
-SCHRITT 9 — Nginx Config erstellen
+SCHRITT 11 — Nginx Config erstellen
 ----------------------------------------------------------------
 
 cat > /etc/nginx/sites-available/genselfcore << 'EOF'
 server {
     listen 80;
     server_name api.genselfcore.de;
-
     location / {
         proxy_pass         http://localhost:8001;
         proxy_http_version 1.1;
@@ -121,23 +393,18 @@ server {
         proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
     }
 }
-
 server {
     listen 80;
     server_name genselfcore.de www.genselfcore.de;
-
     root /var/www/genselfcore;
     index index.html;
-
     location /join {
         try_files $uri /join.html;
     }
-
-    location /.well-known/apple-app-site-association {
+    location /.well-known/ {
+        alias /var/www/genselfcore/.well-known/;
         default_type application/json;
-        alias /var/www/genselfcore/apple-app-site-association;
     }
-
     location / {
         try_files $uri $uri/ /index.html;
     }
@@ -146,10 +413,10 @@ EOF
 
 
 ----------------------------------------------------------------
-SCHRITT 10 — Nginx aktivieren
+SCHRITT 12 — Nginx aktivieren und testen
 ----------------------------------------------------------------
 
-ln -s /etc/nginx/sites-available/genselfcore /etc/nginx/sites-enabled/
+ln -s /etc/nginx/sites-available/genselfcore /etc/nginx/sites-enabled/genselfcore
 
 nginx -t
 
@@ -157,7 +424,7 @@ systemctl reload nginx
 
 
 ----------------------------------------------------------------
-SCHRITT 11 — SSL Zertifikat (HTTPS kostenlos)
+SCHRITT 13 — SSL Zertifikat holen (HTTPS kostenlos)
 ----------------------------------------------------------------
 
 apt install certbot python3-certbot-nginx -y
@@ -166,58 +433,40 @@ certbot --nginx -d api.genselfcore.de -d genselfcore.de -d www.genselfcore.de
 
 
 ----------------------------------------------------------------
-SCHRITT 12 — Index Seite erstellen
-----------------------------------------------------------------
-
-cat > /var/www/genselfcore/index.html << 'EOF'
-<!DOCTYPE html>
-<html>
-<head><meta charset="UTF-8"><title>GEN:SELFCORE</title></head>
-<body style="background:#0A0A0A;color:#F5A623;font-family:sans-serif;text-align:center;padding:80px">
-  <h1 style="font-size:42px;letter-spacing:3px">GEN:SELFCORE</h1>
-  <p style="color:#888;margin-top:12px">Coming Soon</p>
-</body>
-</html>
-EOF
-
-
-----------------------------------------------------------------
-SCHRITT 13 — .well-known Ordner für Apple
-----------------------------------------------------------------
-
-mkdir -p /var/www/genselfcore/.well-known
-
-cp /var/www/genselfcore/apple-app-site-association /var/www/genselfcore/.well-known/
-
-
-----------------------------------------------------------------
-SCHRITT 14 — ALLES TESTEN
+SCHRITT 14 — Alles testen
 ----------------------------------------------------------------
 
 curl https://api.genselfcore.de/health
 
 curl https://genselfcore.de/join?ref=TEST123
 
-pm2 logs genselfcore --lines 20
+pm2 status
 
 
 ================================================================
-FERTIG — Server läuft auf Port 8001
+FERTIG
 ================================================================
 
-Läuft jetzt:
-  Deine andere App  →  Port 3000 (unverändert)
-  GEN:SELFCORE      →  Port 8001
-
-Erreichbar unter:
-  https://api.genselfcore.de/health
-  https://genselfcore.de/join?ref=DEINCODE
+Deine andere App  →  Port 3000  (unverändert)
+GEN:SELFCORE      →  Port 8001
+API erreichbar    →  https://api.genselfcore.de
+Website           →  https://genselfcore.de
 
 ================================================================
-LEKTIONEN HOCHLADEN (optional, wenn du bereit bist)
+NÜTZLICHE PM2 BEFEHLE
 ================================================================
 
-Beispiel-Format für /var/www/genselfcore/data/lessons/awakening.json:
+pm2 status                     — alle laufenden Apps anzeigen
+pm2 logs genselfcore           — Live-Logs anschauen
+pm2 restart genselfcore        — Server neu starten
+pm2 stop genselfcore           — Server stoppen
+pm2 list                       — kurze Übersicht
+
+================================================================
+LEKTIONEN HOCHLADEN
+================================================================
+
+Beispiel für eine Lektion (anpassen und wiederholen für alle 42):
 
 cat > /var/www/genselfcore/data/lessons/awakening.json << 'EOF'
 [
@@ -227,7 +476,7 @@ cat > /var/www/genselfcore/data/lessons/awakening.json << 'EOF'
     "title": "Der erste Schritt",
     "subtitle": "Was Erwachen wirklich bedeutet",
     "order": 1,
-    "contentMarkdown": "# Der erste Schritt\n\nHier kommt dein Lektionstext...",
+    "contentMarkdown": "# Der erste Schritt\n\nHier kommt dein Text...",
     "keyInsights": ["Erkenntnis 1", "Erkenntnis 2"],
     "exercise": {
       "type": "journaling",
@@ -238,24 +487,5 @@ cat > /var/www/genselfcore/data/lessons/awakening.json << 'EOF'
 EOF
 
 pm2 restart genselfcore
-
-================================================================
-TROUBLESHOOTING
-================================================================
-
-Server crasht:
-  pm2 logs genselfcore --lines 50
-
-Port 8001 belegt:
-  lsof -i :8001
-
-Nginx Fehler:
-  nginx -t
-
-Server neu starten:
-  pm2 restart genselfcore
-
-Alle laufenden Server anzeigen:
-  pm2 list
 
 ================================================================
