@@ -1,0 +1,206 @@
+================================================================
+GEN:SELFCORE — SERVER UPDATE
+Einfach Schritt für Schritt copy & paste in Termius
+================================================================
+
+
+================================================================
+SCHRITT 1 — .env mit ALLEN Variablen erstellen
+================================================================
+
+Ersetze die Werte in Anführungszeichen mit DEINEN echten Daten!
+
+cat > /var/www/genselfcore/.env << 'EOF'
+# === SERVER ===
+PORT=8001
+NODE_ENV=production
+JWT_SECRET=Selfcore2024SuperGeheimXyzAbcDef987!
+
+# === E-MAIL (für Passwort-Reset) ===
+# Option A: Gmail (einfachste Lösung)
+#   1. Gehe zu myaccount.google.com → Sicherheit → 2-Faktor aktivieren
+#   2. Dann: myaccount.google.com → Sicherheit → App-Passwörter
+#   3. Neues App-Passwort erstellen → Das ist dein SMTP_PASS
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=deine.email@gmail.com
+SMTP_PASS=dein-app-passwort-hier
+SMTP_FROM=noreply@genselfcore.de
+
+# === CLOUDFLARE R2 (für Audio-Streaming) ===
+#   1. Gehe zu dash.cloudflare.com → R2 Object Storage
+#   2. Bucket erstellen: "selfcore-audio"
+#   3. R2 API Token erstellen (mit Read/Write Zugriff)
+R2_ACCOUNT_ID=deine-cloudflare-account-id
+R2_ACCESS_KEY=dein-r2-access-key
+R2_SECRET_KEY=dein-r2-secret-key
+R2_BUCKET=selfcore-audio
+R2_PUBLIC_URL=https://selfcore-audio.deine-account-id.r2.cloudflarestorage.com
+
+# === APPLE (für In-App-Purchase Validierung) ===
+#   1. App Store Connect → Meine Apps → Shared Secret
+#   2. Oder: appstoreconnect.apple.com → Users → Shared Secret
+APPLE_SHARED_SECRET=dein-apple-shared-secret
+EOF
+
+echo "✅ .env erstellt"
+
+
+================================================================
+SCHRITT 2 — package.json updaten (neue Dependencies)
+================================================================
+
+cat > /var/www/genselfcore/package.json << 'EOF'
+{
+  "name": "genselfcore-server",
+  "version": "2.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "nodemailer": "^6.9.8"
+  }
+}
+EOF
+
+cd /var/www/genselfcore && npm install
+
+echo "✅ Dependencies installiert"
+
+
+================================================================
+SCHRITT 3 — Datenordner erstellen
+================================================================
+
+mkdir -p /var/www/genselfcore/data/lessons/awakening
+mkdir -p /var/www/genselfcore/data/lessons/origin
+mkdir -p /var/www/genselfcore/data/lessons/genesis
+mkdir -p /var/www/genselfcore/data/lessons/foundation
+mkdir -p /var/www/genselfcore/data/lessons/core-journey
+mkdir -p /var/www/genselfcore/db
+
+echo "✅ Ordner erstellt"
+
+
+================================================================
+SCHRITT 4 — server.js ersetzen
+================================================================
+
+WICHTIG: Der neue server.js ist zu lang für Copy-Paste.
+Am einfachsten: Vom GitHub Repo direkt runterladen.
+
+Option A — Direkt von GitHub (empfohlen):
+
+cd /var/www/genselfcore
+curl -o server.js "https://raw.githubusercontent.com/Testerking434/rust-maps/claude/explore-new-features-LZPos/SELFCORE/SERVER/server.js"
+
+Option B — Falls du git auf dem Server hast:
+
+cd /tmp
+git clone https://github.com/Testerking434/rust-maps.git selfcore-temp
+cp selfcore-temp/SELFCORE/SERVER/server.js /var/www/genselfcore/server.js
+cp selfcore-temp/SELFCORE/SERVER/data/courses.json /var/www/genselfcore/data/
+cp selfcore-temp/SELFCORE/SERVER/data/signal_tracks.json /var/www/genselfcore/data/
+cp selfcore-temp/SELFCORE/SERVER/data/lessons/awakening.json /var/www/genselfcore/data/lessons/
+cp selfcore-temp/SELFCORE/SERVER/data/lessons/origin.json /var/www/genselfcore/data/lessons/
+cp selfcore-temp/SELFCORE/SERVER/data/lessons/genesis.json /var/www/genselfcore/data/lessons/
+cp selfcore-temp/SELFCORE/SERVER/data/lessons/foundation.json /var/www/genselfcore/data/lessons/
+cp selfcore-temp/SELFCORE/SERVER/data/lessons/core-journey.json /var/www/genselfcore/data/lessons/
+rm -rf /tmp/selfcore-temp
+
+echo "✅ server.js + Daten kopiert"
+
+
+================================================================
+SCHRITT 5 — dotenv am Anfang von server.js einfügen
+================================================================
+
+Der server.js braucht noch diese eine Zeile GANZ OBEN
+(nach 'use strict'):
+
+sed -i "/^'use strict';/a require('dotenv').config();" /var/www/genselfcore/server.js
+
+echo "✅ dotenv Zeile eingefügt"
+
+
+================================================================
+SCHRITT 6 — Server neu starten
+================================================================
+
+cd /var/www/genselfcore && pm2 restart genselfcore
+
+echo "✅ Server neu gestartet"
+
+
+================================================================
+SCHRITT 7 — Testen
+================================================================
+
+# Health Check
+curl https://api.genselfcore.de/health
+
+# Abo-Preise testen (public endpoint)
+curl https://api.genselfcore.de/v1/abo/tiers
+
+# DNA-Test Fragen testen (public endpoint)
+curl https://api.genselfcore.de/v1/dna-test/questions
+
+# Rechtliche Hinweise testen
+curl https://api.genselfcore.de/v1/legal/digital-purchase-notice
+
+
+================================================================
+SCHRITT 8 — Logs checken
+================================================================
+
+pm2 logs genselfcore --lines 20
+
+
+================================================================
+FERTIG!
+================================================================
+
+Was jetzt auf dem Server läuft:
+- Abo-Stufen: START / PRO / COMPLETE
+- DNA-Test mit Kurs-Empfehlung
+- 5 Kurse × 10 Lektionen
+- 8 Audio-Tracks (Signed URLs)
+- Einmalzahlung für Kurse + Audio
+- Passwort-Reset per E-Mail
+- Daten-Persistenz (überlebt Neustart)
+- Apple IAP Validierung
+- Widerrufsrecht-Hinweise
+
+Datenbank-Dateien:        /var/www/genselfcore/db/
+Lektionen:                /var/www/genselfcore/data/lessons/
+Umgebungsvariablen:       /var/www/genselfcore/.env
+Logs:                     pm2 logs genselfcore
+
+
+================================================================
+WICHTIG: WAS DU NOCH KONFIGURIEREN MUSST
+================================================================
+
+1. E-MAIL (SMTP_USER + SMTP_PASS):
+   → Gmail: myaccount.google.com → Sicherheit → App-Passwörter
+   → Oder: Einen E-Mail-Service wie Resend.com nutzen
+
+2. CLOUDFLARE R2 (für Audio):
+   → dash.cloudflare.com → R2 → Bucket "selfcore-audio" erstellen
+   → API Token erstellen → Keys in .env eintragen
+   → MP3-Dateien hochladen in den Bucket
+
+3. APPLE SHARED SECRET (für In-App-Kauf):
+   → appstoreconnect.apple.com → App → App-Spezifischer Shared Secret
+   → In .env eintragen
+
+Falls du einen Dienst NOCH NICHT nutzt, lass den Wert einfach
+leer — der Server startet trotzdem (Feature ist dann deaktiviert).
+================================================================

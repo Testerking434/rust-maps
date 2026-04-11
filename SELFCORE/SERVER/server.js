@@ -5,6 +5,8 @@
 
 'use strict';
 
+try { require('dotenv').config(); } catch {}
+
 const express    = require('express');
 const bcrypt     = require('bcryptjs');
 const jwt        = require('jsonwebtoken');
