@@ -1,0 +1,182 @@
+[
+  {
+    "id": "cj-01",
+    "courseId": "core-journey",
+    "number": 1,
+    "title": "Integration",
+    "subtitle": "Alles kommt zusammen",
+    "duration": "18 Min",
+    "type": "text",
+    "dimension": "selbstkenntnis",
+    "content": "Du hast erwacht (AWAKENING). Du kennst deine Wurzeln (ORIGIN). Du hast dich neu erschaffen (GENESIS). Du hast ein Fundament gebaut (FOUNDATION). Jetzt beginnt die finale Phase: Integration.\n\nIntegration bedeutet: Alle Teile von dir zusammenbringen. Die hellen und die dunklen. Die starken und die verletzlichen. Du bist nicht entweder mutig oder ängstlich — du bist beides. Du bist nicht entweder stark oder schwach — du bist beides.\n\nDie reifste Version von dir ist nicht die die keine Schwächen hat. Es ist die die alle Teile kennt, akzeptiert und bewusst steuert.",
+    "reflection": [
+      "Welchen Teil von dir hast du bisher am meisten unterdrückt?",
+      "Wie würde es sich anfühlen, alle Teile von dir zu akzeptieren?",
+      "Welche Gegensätze in dir können nebeneinander existieren?"
+    ],
+    "microAction": "Schreibe 5 'Ich bin sowohl... als auch...'-Sätze. Z.B.: 'Ich bin sowohl ehrgeizig als auch ruhebedürftig.'",
+    "isPreview": true
+  },
+  {
+    "id": "cj-02",
+    "courseId": "core-journey",
+    "number": 2,
+    "title": "Purpose finden",
+    "subtitle": "Warum du hier bist",
+    "duration": "22 Min",
+    "type": "text",
+    "dimension": "klarheit",
+    "content": "Purpose ist nicht ein Job. Purpose ist nicht eine Leidenschaft. Purpose ist der Ort wo 4 Dinge sich treffen: Was du liebst, was du kannst, was die Welt braucht, wofür du bezahlt werden kannst. Die Japaner nennen es Ikigai.\n\nDie meisten suchen Purpose in großen Gesten: Die Welt retten, berühmt werden, Geschichte schreiben. Aber Purpose kann auch leise sein: Ein guter Vater sein. Anderen zuhören. Schönheit schaffen.\n\nPurpose findest du nicht durch Nachdenken. Du findest ihn durch Ausprobieren, Reflektieren und Zuhören — Zuhören auf das leise Signal in dir das sagt: 'Ja, DAS ist es.'",
+    "reflection": [
+      "Was würdest du tun wenn Geld keine Rolle spielen würde?",
+      "Wofür kommen Menschen zu dir um Hilfe?",
+      "Was tust du, wobei du die Zeit vergisst?"
+    ],
+    "microAction": "Frag 3 Menschen die dich gut kennen: 'Was ist meiner Meinung nach meine größte Stärke?' Die Antworten überraschen oft.",
+    "isPreview": false
+  },
+  {
+    "id": "cj-03",
+    "courseId": "core-journey",
+    "number": 3,
+    "title": "Authentische Beziehungen",
+    "subtitle": "Tiefe statt Breite",
+    "duration": "17 Min",
+    "type": "text",
+    "dimension": "verbindung",
+    "content": "Du brauchst nicht 500 Freunde. Du brauchst 3-5 Menschen die dich wirklich kennen. Die dich gesehen haben in deinen schlimmsten Momenten und trotzdem geblieben sind.\n\nAuthentische Beziehungen entstehen nicht durch Smalltalk. Sie entstehen durch Verletzlichkeit. Wenn du sagst: 'Mir geht es nicht gut' statt 'Mir geht es gut'. Wenn du fragst: 'Wie geht es dir WIRKLICH?' statt 'Na, was gibt's Neues?'\n\nVerletzlichkeit fühlt sich wie Risiko an. Aber es ist der einzige Weg zu echter Verbindung. Du kannst nicht gleichzeitig eine Maske tragen und dich verbunden fühlen.",
+    "reflection": [
+      "Mit wie vielen Menschen kannst du wirklich du selbst sein?",
+      "Was hält dich davon ab, verletzlicher zu sein?",
+      "Welche Beziehung in deinem Leben verdient mehr Tiefe?"
+    ],
+    "microAction": "Erzähle heute jemandem etwas Echtes über dich — nicht was du tust, sondern wie du dich fühlst.",
+    "isPreview": false
+  },
+  {
+    "id": "cj-04",
+    "courseId": "core-journey",
+    "number": 4,
+    "title": "Mentale Stärke",
+    "subtitle": "Der Muskel den du täglich trainierst",
+    "duration": "16 Min",
+    "type": "text",
+    "dimension": "mut",
+    "content": "Mentale Stärke ist kein Talent. Es ist ein Muskel. Und wie jeder Muskel wird er durch Widerstand stärker.\n\nJedes Mal wenn du etwas Schwieriges tust obwohl du nicht willst, trainierst du mentale Stärke. Die kalte Dusche, das unangenehme Gespräch, die Extra-Wiederholung im Training. Es geht nicht um die Handlung — es geht um den Beweis an dich selbst: Ich kann schwierige Dinge tun.\n\nMentale Stärke ist nicht die Abwesenheit von Angst. Es ist die Entscheidung, trotz der Angst zu handeln. Jedes. Einzelne. Mal.",
+    "reflection": [
+      "Wann hast du das letzte Mal etwas Schwieriges durchgezogen obwohl du aufgeben wolltest?",
+      "Was ist dein aktueller 'mentaler Muskel-Trainer'?",
+      "Wovor hast du Angst — und was würde passieren, wenn du es trotzdem tust?"
+    ],
+    "microAction": "Tu heute bewusst etwas Unangenehmes das du normalerweise aufschiebst. Genieße das Gefühl danach.",
+    "isPreview": false
+  },
+  {
+    "id": "cj-05",
+    "courseId": "core-journey",
+    "number": 5,
+    "title": "Geben und Empfangen",
+    "subtitle": "Der Kreislauf der Fülle",
+    "duration": "15 Min",
+    "type": "text",
+    "dimension": "verbindung",
+    "content": "Die meisten Menschen haben mit einem der beiden ein Problem: Geben oder Empfangen. Geber geben bis sie ausgebrannt sind. Empfänger fühlen sich schuldig wenn sie etwas annehmen.\n\nBeides ist eine Seite der gleichen Münze: Unwürdigkeit. Der Geber denkt: Ich muss mir Liebe verdienen. Der schlechte Empfänger denkt: Ich verdiene es nicht.\n\nGesunder Kreislauf: Du gibst aus Fülle, nicht aus Pflicht. Du empfängst mit Dankbarkeit, nicht mit Schuld. Beides ist ein Akt der Liebe — zu anderen und zu dir selbst.",
+    "reflection": [
+      "Gibst du zu viel — oder zu wenig?",
+      "Kannst du Hilfe annehmen ohne dich schuldig zu fühlen?",
+      "Aus welcher Motivation gibst du meistens: Liebe oder Pflicht?"
+    ],
+    "microAction": "Nimm heute bewusst etwas an ohne sofort etwas zurückgeben zu wollen. Einfach 'Danke' sagen.",
+    "isPreview": false
+  },
+  {
+    "id": "cj-06",
+    "courseId": "core-journey",
+    "number": 6,
+    "title": "Umgang mit Rückschlägen",
+    "subtitle": "Fallen ist menschlich — Aufstehen ist SELFCORE",
+    "duration": "17 Min",
+    "type": "text",
+    "dimension": "mut",
+    "content": "Du wirst fallen. Nicht vielleicht — sicher. Du wirst Tage haben an denen du in alte Muster zurückfällst. Wochen in denen du alle Routinen über Bord wirfst. Momente in denen du denkst: Hat sich überhaupt was geändert?\n\nDas ist normal. Veränderung ist nicht linear. Sie ist eine Spirale — du kommst an den gleichen Themen vorbei, aber jedes Mal auf einem höheren Level.\n\nDer Unterschied zwischen Menschen die sich verändern und solchen die es nicht tun? Nicht Talent. Nicht Glück. Sondern: Wie schnell stehst du wieder auf? Fällt jeder. Aufstehen ist die Entscheidung.",
+    "reflection": [
+      "Was ist dein typisches Muster nach einem Rückschlag?",
+      "Wie sprichst du mit dir selbst wenn du scheiterst?",
+      "Was würdest du einem Freund sagen der gerade gefallen ist?"
+    ],
+    "microAction": "Schreibe deinen persönlichen 'Reset-Plan': 3 Schritte die du tust wenn du in alte Muster fällst.",
+    "isPreview": false
+  },
+  {
+    "id": "cj-07",
+    "courseId": "core-journey",
+    "number": 7,
+    "title": "Legacy",
+    "subtitle": "Was bleibt wenn du gehst?",
+    "duration": "20 Min",
+    "type": "text",
+    "dimension": "klarheit",
+    "content": "Irgendwann wirst du nicht mehr hier sein. Das ist keine Angstmache — es ist die stärkste Motivation die es gibt. Memento Mori — bedenke, dass du sterben wirst.\n\nWas willst du hinterlassen? Nicht materiell. Wie willst du in Erinnerung bleiben? Was sollen Menschen über dich sagen wenn du nicht mehr da bist?\n\nLegacy ist nicht etwas das du am Ende deines Lebens baust. Es ist etwas das du jeden Tag lebst. Jede Interaktion, jede Entscheidung, jede Beziehung — das IST dein Vermächtnis. Nicht irgendwann. Jetzt.",
+    "reflection": [
+      "Was sollen Menschen auf deiner Beerdigung über dich sagen?",
+      "Was würdest du bereuen wenn morgen dein letzter Tag wäre?",
+      "Welches eine Ding willst du in der Welt hinterlassen?"
+    ],
+    "microAction": "Schreibe deine eigene Grabrede — 5 Sätze. Lebst du gerade so, dass sie wahr werden?",
+    "isPreview": false
+  },
+  {
+    "id": "cj-08",
+    "courseId": "core-journey",
+    "number": 8,
+    "title": "Dankbarkeit als Praxis",
+    "subtitle": "Die mächtigste Gewohnheit",
+    "duration": "14 Min",
+    "type": "text",
+    "dimension": "verbindung",
+    "content": "Dankbarkeit ist nicht nur ein Gefühl — es ist eine Praxis. Und die Forschung ist eindeutig: Regelmäßige Dankbarkeitspraxis verbessert Schlaf, reduziert Depressionen, stärkt Beziehungen und erhöht die Lebenszufriedenheit.\n\nAber echte Dankbarkeit ist mehr als '3 Dinge für die ich dankbar bin'. Echte Dankbarkeit ist SPÜREN. Nicht nur denken. Den Moment nehmen und wirklich fühlen: Wie unwahrscheinlich es ist, dass du lebst. Dass du diese Person kennst. Dass du diesen Sonnenuntergang siehst.\n\nDankbarkeit und Angst können nicht gleichzeitig existieren. Das ist neurologisch unmöglich. Wenn du dankbar bist, ist die Angst still.",
+    "reflection": [
+      "Wofür bist du dankbar, das du normalerweise für selbstverständlich hältst?",
+      "Wem bist du dankbar — und hast du es der Person je gesagt?",
+      "Was hat dich heute positiv überrascht, egal wie klein?"
+    ],
+    "microAction": "Schreibe heute Abend 3 spezifische Dinge auf für die du dankbar bist. Fühle jedes einzelne.",
+    "isPreview": false
+  },
+  {
+    "id": "cj-09",
+    "courseId": "core-journey",
+    "number": 9,
+    "title": "Die 5 Dimensionen meistern",
+    "subtitle": "Dein SELFCORE-Profil",
+    "duration": "18 Min",
+    "type": "text",
+    "dimension": "selbstkenntnis",
+    "content": "Du hast 5 Dimensionen: Selbstkenntnis, Authentizität, Klarheit, Mut, Verbindung. Keine ist wichtiger als die andere. Alle zusammen ergeben SELFCORE.\n\nSchau auf dein aktuelles Profil: Wo bist du gewachsen seit du angefangen hast? Wo gibt es noch Potenzial? Welche Dimension brauchst du gerade am meisten?\n\nDas Ziel ist nicht Perfektion in allen 5. Das Ziel ist Balance — und das Bewusstsein, welche Dimension gerade deine Aufmerksamkeit braucht. Mal ist es Mut. Mal ist es Verbindung. Du lernst, das zu spüren.",
+    "reflection": [
+      "Welche Dimension hat sich seit Beginn am meisten verändert?",
+      "Welche überrascht dich — positiv oder negativ?",
+      "Was brauchst du gerade am meisten: Mut, Klarheit oder Verbindung?"
+    ],
+    "microAction": "Mache den DNA-Test erneut und vergleiche mit deinem ersten Ergebnis. Was hat sich verändert?",
+    "isPreview": false
+  },
+  {
+    "id": "cj-10",
+    "courseId": "core-journey",
+    "number": 10,
+    "title": "Der neue Du",
+    "subtitle": "Das Ende ist der Anfang",
+    "duration": "20 Min",
+    "type": "text",
+    "dimension": "mut",
+    "content": "Dies ist die letzte Lektion. Aber es ist nicht das Ende. Es ist der Anfang von allem was kommt.\n\nDu bist nicht mehr die Person die du warst als du angefangen hast. Du kennst dich besser. Du verstehst deine Vergangenheit. Du hast neue Gewohnheiten. Du hast ein Fundament das trägt. Du bist integriert — alle Teile von dir arbeiten zusammen statt gegeneinander.\n\nAb jetzt bist du dein eigener Guide. Du hast die Werkzeuge. Du hast die Erfahrung. Du hast die Stärke. Nutze sie. Nicht perfekt — aber jeden Tag ein bisschen besser.\n\nDas ist SELFCORE. Das bist DU.",
+    "reflection": [
+      "Wer warst du als du angefangen hast — und wer bist du jetzt?",
+      "Was ist die wichtigste Erkenntnis aus allen 5 Kursen?",
+      "Was ist dein nächster Schritt — der erste Schritt deines neuen Kapitels?"
+    ],
+    "microAction": "Schreibe einen Brief an dein zukünftiges Ich, 1 Jahr von heute. Öffne ihn erst dann.",
+    "isPreview": false
+  }
+]

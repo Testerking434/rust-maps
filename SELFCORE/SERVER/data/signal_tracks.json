@@ -1,0 +1,90 @@
+[
+  {
+    "id": "deep-sleep-delta",
+    "title": "Delta Depth",
+    "duration": "60 Min",
+    "frequency": "Delta 0.5–4 Hz",
+    "description": "Tiefschlaf-Induktion durch Delta-Wellen. Optimal als Einschlafhilfe.",
+    "category": "DEEP SLEEP PROTOCOL",
+    "coverColor": "#1A2980",
+    "dimension": "klarheit",
+    "fileKey": "signal/deep-sleep-delta.mp3"
+  },
+  {
+    "id": "deep-sleep-theta",
+    "title": "Theta Gate",
+    "duration": "45 Min",
+    "frequency": "Theta 4–8 Hz",
+    "description": "Traumzustand-Einleitung für aktive Regeneration.",
+    "category": "DEEP SLEEP PROTOCOL",
+    "coverColor": "#26274B",
+    "dimension": "selbstkenntnis",
+    "fileKey": "signal/deep-sleep-theta.mp3"
+  },
+  {
+    "id": "burnout-alpha",
+    "title": "Alpha Reset",
+    "duration": "30 Min",
+    "frequency": "Alpha 8–13 Hz",
+    "description": "Entspannung ohne Erschöpfung. Nervensystem-Regulierung.",
+    "category": "BURNOUT REVERSAL",
+    "coverColor": "#4A0E0E",
+    "dimension": "verbindung",
+    "fileKey": "signal/burnout-alpha.mp3"
+  },
+  {
+    "id": "burnout-theta",
+    "title": "Stress Dissolve",
+    "duration": "20 Min",
+    "frequency": "Theta 6 Hz",
+    "description": "Akute Stressauflösung in 20 Minuten.",
+    "category": "BURNOUT REVERSAL",
+    "coverColor": "#5C1A1A",
+    "dimension": "authentizitaet",
+    "fileKey": "signal/burnout-theta.mp3"
+  },
+  {
+    "id": "burnout-recovery",
+    "title": "Recovery Mode",
+    "duration": "45 Min",
+    "frequency": "Alpha 10 Hz",
+    "description": "Langfristige Erholung für erschöpfte Systeme.",
+    "category": "BURNOUT REVERSAL",
+    "coverColor": "#3D1515",
+    "dimension": "mut",
+    "fileKey": "signal/burnout-recovery.mp3"
+  },
+  {
+    "id": "hyperfocus-alpha",
+    "title": "Flow State",
+    "duration": "50 Min",
+    "frequency": "Alpha 12 Hz",
+    "description": "Erzeuge den Flow-Zustand auf Abruf.",
+    "category": "HYPERFOCUS FREQUENCY",
+    "coverColor": "#004D40",
+    "dimension": "mut",
+    "fileKey": "signal/hyperfocus-alpha.mp3"
+  },
+  {
+    "id": "hyperfocus-beta",
+    "title": "Beta Peak",
+    "duration": "40 Min",
+    "frequency": "Beta 14–30 Hz",
+    "description": "Analytisches Denken und logische Verarbeitung maximieren.",
+    "category": "HYPERFOCUS FREQUENCY",
+    "coverColor": "#00695C",
+    "dimension": "selbstkenntnis",
+    "fileKey": "signal/hyperfocus-beta.mp3"
+  },
+  {
+    "id": "hyperfocus-gamma",
+    "title": "Gamma Insight",
+    "duration": "25 Min",
+    "frequency": "Gamma 40 Hz",
+    "description": "Spitzenkognition und Kreativität auf höchstem Level.",
+    "category": "HYPERFOCUS FREQUENCY",
+    "coverColor": "#007A7A",
+    "dimension": "klarheit",
+    "fileKey": "signal/hyperfocus-gamma.mp3"
+  }
+]

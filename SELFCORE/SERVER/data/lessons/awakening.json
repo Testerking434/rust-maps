@@ -1,0 +1,182 @@
+[
+  {
+    "id": "aw-01",
+    "courseId": "awakening",
+    "number": 1,
+    "title": "Die Maske erkennen",
+    "subtitle": "Wer bist du wirklich?",
+    "duration": "15 Min",
+    "type": "text",
+    "dimension": "selbstkenntnis",
+    "content": "Jeder von uns trägt Masken. Masken, die wir aufsetzen um dazuzugehören, um geliebt zu werden, um Konflikte zu vermeiden. Das Problem ist nicht, dass wir Masken tragen — das Problem ist, wenn wir vergessen, dass es Masken sind.\n\nIn dieser ersten Lektion geht es darum, ehrlich hinzuschauen: Welche Rollen spielst du? Welche Version von dir zeigst du der Welt — und welche versteckst du?\n\nDas ist kein Angriff auf dich. Es ist eine Einladung. Denn erst wenn du erkennst, was nicht echt ist, kannst du entdecken, was echt ist.",
+    "reflection": [
+      "In welchen Situationen fühlst du dich gezwungen, eine Rolle zu spielen?",
+      "Gibt es eine Person, bei der du komplett du selbst sein kannst? Was macht diese Beziehung anders?",
+      "Welche Eigenschaft an dir versteckst du am meisten — und warum?"
+    ],
+    "microAction": "Schreibe heute 3 Dinge auf, die du tust um anderen zu gefallen — obwohl du sie eigentlich nicht willst.",
+    "isPreview": true
+  },
+  {
+    "id": "aw-02",
+    "courseId": "awakening",
+    "number": 2,
+    "title": "Der innere Kritiker",
+    "subtitle": "Die Stimme in deinem Kopf",
+    "duration": "12 Min",
+    "type": "text",
+    "dimension": "selbstkenntnis",
+    "content": "Es gibt eine Stimme in deinem Kopf, die nie zufrieden ist. Sie sagt dir, dass du nicht gut genug bist. Nicht klug genug. Nicht erfolgreich genug. Diese Stimme ist dein innerer Kritiker — und er ist nicht du.\n\nDer innere Kritiker entstand als Schutzmechanismus. Irgendwann in deiner Kindheit hat dein Gehirn gelernt: Wenn ich mich selbst kritisiere bevor andere es tun, tut es weniger weh. Das war damals sinnvoll. Heute hält es dich gefangen.\n\nDer erste Schritt ist nicht, diese Stimme zum Schweigen zu bringen. Der erste Schritt ist, sie zu erkennen. Sie zu hören und zu sagen: 'Ah, da bist du wieder.' Ohne ihr zu glauben.",
+    "reflection": [
+      "Was sagt dein innerer Kritiker am häufigsten zu dir?",
+      "Wessen Stimme klingt da eigentlich? Ein Elternteil? Ein Lehrer? Ein Ex?",
+      "Was würdest du deinem besten Freund sagen, wenn er das über sich selbst denken würde?"
+    ],
+    "microAction": "Wenn du heute den inneren Kritiker hörst, schreib den Satz auf — und daneben schreibe die Wahrheit.",
+    "isPreview": false
+  },
+  {
+    "id": "aw-03",
+    "courseId": "awakening",
+    "number": 3,
+    "title": "Emotionale Landkarte",
+    "subtitle": "Fühle was du fühlst",
+    "duration": "18 Min",
+    "type": "text",
+    "dimension": "selbstkenntnis",
+    "content": "Die meisten Menschen können ihre Emotionen nicht benennen. Sie sagen 'mir geht's gut' oder 'mir geht's schlecht'. Aber zwischen diesen zwei Polen liegt ein ganzes Universum.\n\nBist du traurig — oder enttäuscht? Wütend — oder verletzt? Ängstlich — oder unsicher? Diese Unterscheidung ist nicht nur Wortspielerei. Je genauer du benennen kannst, was du fühlst, desto besser kannst du damit umgehen.\n\nForschung zeigt: Allein das Benennen einer Emotion reduziert ihre Intensität um bis zu 50%. Das nennt man 'Affect Labeling'. Dein Gehirn wechselt vom Fühlen ins Verstehen — und das gibt dir Kontrolle zurück.",
+    "reflection": [
+      "Welche Emotion erlebst du am häufigsten? Kannst du sie genauer benennen?",
+      "Gibt es Gefühle, die du dir nicht erlaubst zu fühlen? Welche?",
+      "Wie hat deine Familie mit Emotionen umgegangen als du aufgewachsen bist?"
+    ],
+    "microAction": "Setze dir heute 3 Alarme. Wenn sie klingeln: Stopp. Benenne deine aktuelle Emotion so genau wie möglich.",
+    "isPreview": false
+  },
+  {
+    "id": "aw-04",
+    "courseId": "awakening",
+    "number": 4,
+    "title": "Deine Werte finden",
+    "subtitle": "Was dir wirklich wichtig ist",
+    "duration": "20 Min",
+    "type": "text",
+    "dimension": "authentizitaet",
+    "content": "Werte sind nicht das, was du sagst dass dir wichtig ist. Werte sind das, wofür du Zeit und Energie investierst. Der Unterschied dazwischen ist oft erschreckend.\n\nViele Menschen leben nach den Werten ihrer Eltern, ihrer Kultur oder ihrer Social-Media-Blase — ohne es zu merken. Sie streben nach Dingen, die sie gar nicht wirklich wollen. Und wundern sich, warum sie sich leer fühlen, wenn sie sie erreichen.\n\nIn dieser Lektion identifizierst du deine ECHTEN Werte. Nicht die, die gut klingen. Die, die du wirklich lebst — oder leben willst.",
+    "reflection": [
+      "Wenn du morgen alles verlieren würdest — was würdest du als erstes wieder aufbauen?",
+      "Wofür gibst du die meiste Zeit aus? Stimmt das mit dem überein, was du als wichtig bezeichnest?",
+      "Welcher Wert wurde dir beigebracht, den du eigentlich nicht teilst?"
+    ],
+    "microAction": "Schreibe 5 Werte auf die dir wichtig sind. Dann ordne sie: Was kommt wirklich zuerst?",
+    "isPreview": false
+  },
+  {
+    "id": "aw-05",
+    "courseId": "awakening",
+    "number": 5,
+    "title": "Trigger-Muster",
+    "subtitle": "Warum dich bestimmte Dinge auslösen",
+    "duration": "15 Min",
+    "type": "text",
+    "dimension": "selbstkenntnis",
+    "content": "Wenn dich etwas unverhältnismäßig aufregt, hat das selten mit der aktuellen Situation zu tun. Es hat mit einer alten Wunde zu tun, die gerade berührt wird.\n\nDein Kollege ignoriert deine Nachricht und du wirst wütend? Vielleicht weil du als Kind das Gefühl hattest, nicht gehört zu werden. Dein Partner kritisiert etwas Kleines und du explodierst? Vielleicht weil du gelernt hast, dass Kritik bedeutet, nicht geliebt zu werden.\n\nTrigger sind keine Schwäche. Sie sind Wegweiser zu dem, was noch heilen muss.",
+    "reflection": [
+      "Was hat dich in der letzten Woche am meisten aufgeregt? War deine Reaktion proportional zur Situation?",
+      "Gibt es ein wiederkehrendes Muster bei deinen emotionalen Reaktionen?",
+      "Welche alte Erfahrung könnte hinter deinem häufigsten Trigger stecken?"
+    ],
+    "microAction": "Wenn du heute getriggert wirst: Stopp. Atme. Frage dich: 'Wie alt fühle ich mich gerade?' Die Antwort zeigt dir, woher der Trigger kommt.",
+    "isPreview": false
+  },
+  {
+    "id": "aw-06",
+    "courseId": "awakening",
+    "number": 6,
+    "title": "Körper-Bewusstsein",
+    "subtitle": "Dein Körper weiß es zuerst",
+    "duration": "14 Min",
+    "type": "text",
+    "dimension": "selbstkenntnis",
+    "content": "Dein Körper reagiert auf alles bevor dein Verstand es verarbeitet hat. Enger Magen vor einem Meeting? Dein Körper spürt die Anspannung. Schwere Schultern am Ende des Tages? Dein Körper trägt den Stress.\n\nWir haben gelernt, den Körper zu ignorieren. Durchzuarbeiten. Müdigkeit zu überspielen. Schmerz zu unterdrücken. Aber der Körper vergisst nicht — er speichert alles.\n\nKörper-Bewusstsein ist keine Esoterik. Es ist Neurobiologie. Dein Nervensystem sendet ständig Signale. Die Frage ist nur: Hörst du zu?",
+    "reflection": [
+      "Wo in deinem Körper spürst du Stress am meisten?",
+      "Wann hast du das letzte Mal bewusst auf deinen Körper gehört?",
+      "Gibt es körperliche Signale die du regelmäßig ignorierst?"
+    ],
+    "microAction": "Body Scan: Schließe die Augen. Geh gedanklich von den Füßen bis zum Kopf. Wo spürst du Spannung? Atme 3x bewusst dorthin.",
+    "isPreview": false
+  },
+  {
+    "id": "aw-07",
+    "courseId": "awakening",
+    "number": 7,
+    "title": "Die Komfortzone",
+    "subtitle": "Wachstum beginnt am Rand",
+    "duration": "16 Min",
+    "type": "text",
+    "dimension": "mut",
+    "content": "Die Komfortzone ist nicht bequem — sie ist nur bekannt. Du verwechselst das Bekannte mit dem Sicheren. Aber in Wahrheit ist der unsicherste Ort der, an dem du aufhörst zu wachsen.\n\nDas bedeutet nicht, dass du jeden Tag aus einem Flugzeug springen sollst. Wachstum passiert in der Stretch-Zone — dem Bereich knapp außerhalb deiner Komfortzone. Weit genug, um dich herauszufordern. Nah genug, um es zu schaffen.\n\nDie Panik-Zone — das ist zu weit. Da lernst du nichts, da überlebst du nur. Der Schlüssel ist die Stretch-Zone: Kontrolliertes Unbehagen.",
+    "reflection": [
+      "Was ist eine Sache die du schon lange tun willst, dich aber nicht traust?",
+      "Was wäre der kleinste erste Schritt in diese Richtung?",
+      "Wann hast du das letzte Mal etwas zum ersten Mal gemacht?"
+    ],
+    "microAction": "Tu heute EINE kleine Sache die dich leicht nervös macht. Sprich jemand Fremden an. Bestelle etwas Neues. Nimm einen anderen Weg.",
+    "isPreview": false
+  },
+  {
+    "id": "aw-08",
+    "courseId": "awakening",
+    "number": 8,
+    "title": "Glaubenssätze",
+    "subtitle": "Die unsichtbaren Regeln",
+    "duration": "20 Min",
+    "type": "text",
+    "dimension": "klarheit",
+    "content": "Du lebst nach Regeln, die du nie bewusst gewählt hast. 'Geld verdient man nur durch harte Arbeit.' 'Männer zeigen keine Schwäche.' 'Ich bin nicht der Typ der...' Diese Sätze laufen wie ein Hintergrundprogramm in deinem Kopf.\n\nGlaubenssätze entstehen durch Erfahrungen — meistens in der Kindheit. Dein Gehirn hat eine Situation erlebt, eine Schlussfolgerung gezogen und diese als Wahrheit abgespeichert. Das Problem: Die Schlussfolgerung eines 6-Jährigen steuert immer noch dein erwachsenes Leben.\n\nDu kannst Glaubenssätze nicht löschen. Aber du kannst sie erkennen und durch neue ersetzen.",
+    "reflection": [
+      "Welchen Satz hast du über dich selbst als Kind gehört, den du immer noch glaubst?",
+      "Welche 'Regel' über das Leben hast du von deinen Eltern übernommen?",
+      "Wenn du diesen Glaubenssatz loslassen könntest — was wäre dann möglich?"
+    ],
+    "microAction": "Schreibe deinen stärksten negativen Glaubenssatz auf. Darunter: 3 Beweise aus deinem Leben, die das Gegenteil zeigen.",
+    "isPreview": false
+  },
+  {
+    "id": "aw-09",
+    "courseId": "awakening",
+    "number": 9,
+    "title": "Vergebung",
+    "subtitle": "Lass los was dich festhält",
+    "duration": "18 Min",
+    "type": "text",
+    "dimension": "verbindung",
+    "content": "Vergebung ist nicht für den anderen. Vergebung ist für dich. Solange du an Groll festhältst, gibst du der Vergangenheit Macht über deine Gegenwart.\n\nDas bedeutet nicht, dass du billigst was passiert ist. Es bedeutet nicht, dass du vergisst. Es bedeutet: Ich entscheide mich, dieses Gift nicht mehr zu trinken und darauf zu warten, dass der andere stirbt.\n\nVergebung ist ein Prozess, keine Entscheidung. Du vergibst nicht einmal und dann ist es vorbei. Du vergibst immer wieder, jeden Tag ein bisschen mehr. Bis der Schmerz seinen Griff lockert.",
+    "reflection": [
+      "Wem gegenüber trägst du noch Groll?",
+      "Was würde sich ändern, wenn du diese Person loslassen könntest?",
+      "Gibt es etwas, das du dir selbst vergeben musst?"
+    ],
+    "microAction": "Schreibe einen Brief an jemanden, dem du vergeben willst. Du musst ihn nicht abschicken. Schreib einfach.",
+    "isPreview": false
+  },
+  {
+    "id": "aw-10",
+    "courseId": "awakening",
+    "number": 10,
+    "title": "Dein neues Fundament",
+    "subtitle": "Wer willst du sein?",
+    "duration": "22 Min",
+    "type": "text",
+    "dimension": "klarheit",
+    "content": "Du hast jetzt hingeschaut. Du hast Masken erkannt, den inneren Kritiker gehört, Trigger verstanden, Werte identifiziert. Jetzt kommt die entscheidende Frage: Wer willst du sein?\n\nNicht was willst du haben. Nicht was willst du tun. Wer willst du SEIN? Das ist der Unterschied zwischen einem Ziel und einer Identität. Ziele erreichst du oder nicht. Eine Identität lebst du jeden Tag.\n\n'Ich will abnehmen' ist ein Ziel. 'Ich bin jemand der auf seinen Körper achtet' ist eine Identität. Der Unterschied klingt klein — er ist gigantisch.",
+    "reflection": [
+      "Beschreibe die beste Version von dir in 3 Sätzen.",
+      "Was ist der größte Unterschied zwischen wer du bist und wer du sein willst?",
+      "Welche eine Gewohnheit würde die beste Version von dir jeden Tag tun?"
+    ],
+    "microAction": "Schreibe deinen persönlichen Identitäts-Satz: 'Ich bin jemand der...' — Lies ihn morgens und abends.",
+    "isPreview": false
+  }
+]

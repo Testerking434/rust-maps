@@ -1,0 +1,57 @@
+[
+  {
+    "id": "awakening",
+    "title": "AWAKENING",
+    "subtitle": "Erwache zu dir selbst",
+    "description": "Der erste Schritt: Erkenne wer du wirklich bist und lege falsche Masken ab.",
+    "lessonCount": 10,
+    "color": "#F5A623",
+    "icon": "sun.rise.fill",
+    "dimension": "selbstkenntnis",
+    "coverImageURL": ""
+  },
+  {
+    "id": "origin",
+    "title": "ORIGIN",
+    "subtitle": "Verstehe deine Wurzeln",
+    "description": "Deine Vergangenheit erklärt deine Gegenwart. Verarbeite, was dich geformt hat.",
+    "lessonCount": 10,
+    "color": "#FF6B9D",
+    "icon": "tree.fill",
+    "dimension": "authentizitaet",
+    "coverImageURL": ""
+  },
+  {
+    "id": "genesis",
+    "title": "GENESIS",
+    "subtitle": "Erschaffe neu",
+    "description": "Aus den Trümmern alter Muster entsteht eine neue Version von dir.",
+    "lessonCount": 10,
+    "color": "#4A90D9",
+    "icon": "sparkles",
+    "dimension": "klarheit",
+    "coverImageURL": ""
+  },
+  {
+    "id": "foundation",
+    "title": "FOUNDATION",
+    "subtitle": "Baue unerschütterlich",
+    "description": "Fundamentale Gewohnheiten und Überzeugungen die dich tragen.",
+    "lessonCount": 10,
+    "color": "#FF6B35",
+    "icon": "building.columns.fill",
+    "dimension": "mut",
+    "coverImageURL": ""
+  },
+  {
+    "id": "core-journey",
+    "title": "CORE JOURNEY",
+    "subtitle": "Deine finale Transformation",
+    "description": "Alles kommt zusammen. Du wirst nicht derselbe sein wie vorher.",
+    "lessonCount": 10,
+    "color": "#5CB85C",
+    "icon": "star.fill",
+    "dimension": "verbindung",
+    "coverImageURL": ""
+  }
+]

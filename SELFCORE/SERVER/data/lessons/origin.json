@@ -1,0 +1,182 @@
+[
+  {
+    "id": "or-01",
+    "courseId": "origin",
+    "number": 1,
+    "title": "Deine Geschichte",
+    "subtitle": "Wo alles begann",
+    "duration": "16 Min",
+    "type": "text",
+    "dimension": "selbstkenntnis",
+    "content": "Du bist nicht zufällig so geworden wie du bist. Jede Eigenschaft, jede Angst, jede Stärke hat eine Entstehungsgeschichte. In diesem Kurs gehen wir dorthin zurück — nicht um in der Vergangenheit zu leben, sondern um die Gegenwart zu verstehen.\n\nDeine Kindheit hat ein Betriebssystem in dir installiert. Dieses Betriebssystem bestimmt, wie du auf Stress reagierst, wie du Liebe gibst und empfängst, was du für möglich hältst. Du kannst es nicht deinstallieren — aber du kannst es updaten.\n\nDafür musst du es erst verstehen. Also fangen wir an: Was ist deine Geschichte?",
+    "reflection": [
+      "Was ist deine früheste Erinnerung? Welches Gefühl ist damit verbunden?",
+      "Wenn du deine Kindheit in einem Wort beschreiben müsstest — welches wäre es?",
+      "Welche Geschichte erzählst du dir über deine Vergangenheit?"
+    ],
+    "microAction": "Zeichne einen Zeitstrahl deines Lebens. Markiere die 5 Momente die dich am meisten geprägt haben.",
+    "isPreview": true
+  },
+  {
+    "id": "or-02",
+    "courseId": "origin",
+    "number": 2,
+    "title": "Familien-Dynamiken",
+    "subtitle": "Die Rollen die du gelernt hast",
+    "duration": "18 Min",
+    "type": "text",
+    "dimension": "authentizitaet",
+    "content": "In jeder Familie gibt es ungeschriebene Rollen. Das verantwortungsvolle Kind. Der Clown. Der Unsichtbare. Der Vermittler. Du hast eine (oder mehrere) dieser Rollen übernommen — nicht weil du es wolltest, sondern weil du es musstest.\n\nDiese Rollen waren Überlebensstrategien. Sie haben dir geholfen, in deiner Familie zu funktionieren. Aber jetzt bist du erwachsen und spielst immer noch die gleiche Rolle — in Beziehungen, im Job, in Freundschaften.\n\nDie Frage ist nicht: War meine Familie perfekt? Keine Familie ist perfekt. Die Frage ist: Welche Rolle habe ich gelernt — und ist sie noch nützlich?",
+    "reflection": [
+      "Welche Rolle hast du in deiner Familie gespielt?",
+      "Spielst du diese Rolle heute noch — z.B. im Job oder in Beziehungen?",
+      "Was wäre wenn du diese Rolle ablegen könntest?"
+    ],
+    "microAction": "Beobachte dich heute: In welchen Momenten rutscht du automatisch in deine Familien-Rolle?",
+    "isPreview": false
+  },
+  {
+    "id": "or-03",
+    "courseId": "origin",
+    "number": 3,
+    "title": "Bindungsstile",
+    "subtitle": "Wie du Nähe und Distanz lebst",
+    "duration": "20 Min",
+    "type": "text",
+    "dimension": "verbindung",
+    "content": "Die Art wie du in den ersten Lebensjahren Nähe erfahren hast, bestimmt wie du heute Beziehungen führst. Die Bindungstheorie unterscheidet vier Stile:\n\nSicher: Du kannst Nähe zulassen und Distanz aushalten. Du vertraust darauf, dass Menschen für dich da sind.\n\nÄngstlich: Du brauchst viel Bestätigung. Wenn jemand sich zurückzieht, gerätst du in Panik. Du klammst — nicht weil du schwach bist, sondern weil du gelernt hast, dass Liebe unzuverlässig ist.\n\nVermeidend: Du hältst Menschen auf Abstand. Du bist stolz auf deine Unabhängigkeit — aber eigentlich hast du Angst vor Verletzung.\n\nDesorganisiert: Du sehnst dich nach Nähe und hast gleichzeitig Angst davor. Ein Hin und Her das erschöpfend ist.\n\nKein Stil ist ein Urteil. Jeder Stil ist eine logische Antwort auf deine Erfahrungen.",
+    "reflection": [
+      "Welcher Bindungsstil beschreibt dich am besten?",
+      "Wie zeigt sich dein Bindungsstil in deiner aktuellen Beziehung (oder der letzten)?",
+      "Was brauchst du in einer Beziehung, das du dir schwer eingestehen kannst?"
+    ],
+    "microAction": "Recherchiere deinen Bindungsstil und schreibe 3 konkrete Situationen auf in denen er sich zeigt.",
+    "isPreview": false
+  },
+  {
+    "id": "or-04",
+    "courseId": "origin",
+    "number": 4,
+    "title": "Unausgesprochenes",
+    "subtitle": "Was nie gesagt wurde",
+    "duration": "15 Min",
+    "type": "text",
+    "dimension": "authentizitaet",
+    "content": "In vielen Familien gibt es Themen über die nicht gesprochen wird. Vielleicht gab es einen Konflikt der nie gelöst wurde. Eine Emotion die nie erlaubt war. Eine Wahrheit die nie ausgesprochen wurde.\n\nDieses Unausgesprochene verschwindet nicht. Es geht in den Untergrund. Es wird zu Spannung, zu Misstrauen, zu unerklärlicher Traurigkeit. Manchmal trägst du Gefühle die gar nicht deine eigenen sind — sondern die deiner Eltern oder Großeltern.\n\nDas Aussprechen des Unausgesprochenen — auch nur für dich selbst — hat eine heilende Kraft die unterschätzt wird.",
+    "reflection": [
+      "Welches Thema war in deiner Familie tabu?",
+      "Gibt es etwas, das du einem Familienmitglied schon immer sagen wolltest?",
+      "Welches Gefühl wurde in deiner Familie nicht erlaubt?"
+    ],
+    "microAction": "Schreibe das auf, was in deiner Familie nie ausgesprochen wurde. Nur für dich.",
+    "isPreview": false
+  },
+  {
+    "id": "or-05",
+    "courseId": "origin",
+    "number": 5,
+    "title": "Innere Kinder",
+    "subtitle": "Die Teile die zurückgeblieben sind",
+    "duration": "18 Min",
+    "type": "text",
+    "dimension": "selbstkenntnis",
+    "content": "In dir lebt immer noch das Kind das du warst. Nicht metaphorisch — neurologisch. Die neuronalen Netzwerke die in deiner Kindheit entstanden sind, existieren immer noch. Wenn du getriggert wirst, übernimmt nicht der 30-Jährige — es übernimmt der 7-Jährige.\n\nInnere-Kind-Arbeit bedeutet: Du gehst zurück zu den Momenten, in denen das Kind etwas gebraucht hat und es nicht bekommen hat. Aufmerksamkeit. Trost. Sicherheit. Und du gibst es ihm jetzt — als Erwachsener.\n\nDas klingt vielleicht seltsam. Aber es funktioniert. Weil dein Gehirn nicht unterscheidet ob die Fürsorge von außen kommt oder von innen. Es braucht nur die Erfahrung.",
+    "reflection": [
+      "Was hat das Kind in dir gebraucht, das es nie bekommen hat?",
+      "In welchen Momenten fühlst du dich heute noch wie ein kleines Kind?",
+      "Was würdest du dem 7-jährigen Du sagen, wenn du ihm begegnen könntest?"
+    ],
+    "microAction": "Schreibe einen kurzen Brief an dein jüngeres Ich. Sag ihm das, was er damals hören musste.",
+    "isPreview": false
+  },
+  {
+    "id": "or-06",
+    "courseId": "origin",
+    "number": 6,
+    "title": "Vererbte Muster",
+    "subtitle": "Was deine Eltern dir weitergegeben haben",
+    "duration": "17 Min",
+    "type": "text",
+    "dimension": "selbstkenntnis",
+    "content": "Deine Eltern haben dir mehr vererbt als Augenfarbe und Haarstruktur. Sie haben dir ihre Ängste vererbt, ihre Bewältigungsmechanismen, ihre unverarbeiteten Erfahrungen.\n\nDein Vater der nie über Gefühle sprach? Hat dir beigebracht, dass Emotionen schwach machen. Deine Mutter die sich für alle aufopferte? Hat dir beigebracht, dass deine eigenen Bedürfnisse unwichtig sind.\n\nDas ist kein Vorwurf. Deine Eltern haben ihr Bestes gegeben — mit dem was sie hatten. Aber du hast jetzt die Chance, den Kreislauf zu durchbrechen.",
+    "reflection": [
+      "Welche Verhaltensweisen deiner Eltern erkennst du bei dir selbst wieder?",
+      "Welches Muster möchtest du bewusst nicht weitergeben?",
+      "Was haben deine Eltern dir beigebracht, ohne es auszusprechen?"
+    ],
+    "microAction": "Frage ein Familienmitglied nach einer Geschichte aus deiner Kindheit, die du nicht kennst.",
+    "isPreview": false
+  },
+  {
+    "id": "or-07",
+    "courseId": "origin",
+    "number": 7,
+    "title": "Scham und Schuld",
+    "subtitle": "Die schwersten Emotionen",
+    "duration": "19 Min",
+    "type": "text",
+    "dimension": "authentizitaet",
+    "content": "Schuld sagt: Ich habe etwas Schlechtes getan. Scham sagt: Ich BIN schlecht. Der Unterschied ist fundamental.\n\nSchuld kann nützlich sein — sie zeigt dir, wenn dein Verhalten nicht mit deinen Werten übereinstimmt. Scham ist nie nützlich. Scham ist der Glaube, dass etwas grundlegend falsch an dir ist.\n\nScham lebt im Verborgenen. Sie wächst in der Dunkelheit. Und sie stirbt, wenn sie ausgesprochen wird. Brené Brown nennt es 'Shame Resilience': Wenn du Scham teilst, verliert sie ihre Macht.",
+    "reflection": [
+      "Wofür schämst du dich am meisten?",
+      "Hast du jemals diese Scham mit jemandem geteilt? Was ist passiert?",
+      "Welcher Unterschied zwischen Schuld und Scham trifft auf dich zu?"
+    ],
+    "microAction": "Teile eine kleine Unsicherheit mit jemandem dem du vertraust. Beobachte was passiert.",
+    "isPreview": false
+  },
+  {
+    "id": "or-08",
+    "courseId": "origin",
+    "number": 8,
+    "title": "Trauer zulassen",
+    "subtitle": "Für das was nicht war",
+    "duration": "16 Min",
+    "type": "text",
+    "dimension": "verbindung",
+    "content": "Es gibt eine Trauer die selten anerkannt wird: Die Trauer um das was nicht war. Die Kindheit die du nicht hattest. Die Beziehung zu deinen Eltern die du dir gewünscht hättest. Die Unschuld die zu früh verloren ging.\n\nDiese Trauer zu fühlen bedeutet nicht, undankbar zu sein. Du kannst gleichzeitig dankbar sein für das was war UND trauern um das was fehlte. Beides ist wahr.\n\nTrauer ist kein Zeichen von Schwäche. Es ist ein Zeichen, dass dir etwas wichtig war. Und es ist der Weg, es loszulassen.",
+    "reflection": [
+      "Worüber hast du nie richtig getrauert?",
+      "Gibt es eine Kindheitserinnerung die dich heute noch traurig macht?",
+      "Was würdest du brauchen um diese Trauer endlich zuzulassen?"
+    ],
+    "microAction": "Nimm dir 10 Minuten in Stille. Erlaube dir zu fühlen was kommt — ohne es zu bewerten.",
+    "isPreview": false
+  },
+  {
+    "id": "or-09",
+    "courseId": "origin",
+    "number": 9,
+    "title": "Narben zu Stärken",
+    "subtitle": "Post-traumatisches Wachstum",
+    "duration": "17 Min",
+    "type": "text",
+    "dimension": "mut",
+    "content": "Die japanische Kunst Kintsugi repariert zerbrochene Keramik mit Gold. Das Ergebnis ist schöner als das Original. Nicht obwohl es zerbrochen war — sondern weil es zerbrochen war.\n\nPost-traumatisches Wachstum ist real. Menschen die Schmerz durchlebt und verarbeitet haben, entwickeln oft tiefere Empathie, klarere Prioritäten und stärkere Beziehungen. Dein Schmerz war nicht umsonst — wenn du bereit bist, ihn zu nutzen.\n\nDas bedeutet nicht, dass der Schmerz gut war. Es bedeutet, dass DU gut genug bist, um etwas Wertvolles daraus zu machen.",
+    "reflection": [
+      "Welche deiner Stärken verdankst du einer schweren Erfahrung?",
+      "Wie hat dich dein größter Rückschlag verändert — zum Positiven?",
+      "Wem könntest du mit deiner Geschichte helfen?"
+    ],
+    "microAction": "Schreibe 3 Stärken auf, die du durch Schmerz entwickelt hast.",
+    "isPreview": false
+  },
+  {
+    "id": "or-10",
+    "courseId": "origin",
+    "number": 10,
+    "title": "Deine Origin Story",
+    "subtitle": "Die neue Erzählung",
+    "duration": "20 Min",
+    "type": "text",
+    "dimension": "klarheit",
+    "content": "Du kannst deine Vergangenheit nicht ändern. Aber du kannst die Geschichte ändern, die du dir darüber erzählst. Das ist keine Verleugnung — das ist Reframing.\n\n'Meine Eltern haben mich nicht genug geliebt' kann werden zu: 'Meine Eltern haben mich auf ihre Art geliebt — und ich habe gelernt, mir selbst die Liebe zu geben die gefehlt hat.'\n\nDeine Origin Story ist nicht das, was dir passiert ist. Deine Origin Story ist, wie du damit umgehst. Und die schreibst du heute neu.",
+    "reflection": [
+      "Wie erzählst du aktuell deine Lebensgeschichte? Als Opfer oder als Held?",
+      "Welchen Teil deiner Geschichte willst du umschreiben?",
+      "Wie lautet deine neue Origin Story in 3 Sätzen?"
+    ],
+    "microAction": "Schreibe deine neue Origin Story: 'Ich bin jemand der ____ durchgemacht hat und dadurch ____ geworden ist.'",
+    "isPreview": false
+  }
+]

@@ -1,0 +1,182 @@
+[
+  {
+    "id": "ge-01",
+    "courseId": "genesis",
+    "number": 1,
+    "title": "Tabula Rasa",
+    "subtitle": "Der bewusste Neuanfang",
+    "duration": "15 Min",
+    "type": "text",
+    "dimension": "klarheit",
+    "content": "Du hast in AWAKENING erkannt wer du bist. In ORIGIN verstanden woher du kommst. Jetzt beginnt die eigentliche Arbeit: Wer willst du werden?\n\nGenesis bedeutet Entstehung. Nicht die zufällige Entstehung die dein Leben bisher war — sondern eine bewusste. Du designst jetzt die Version 2.0 von dir. Nicht basierend auf dem was andere erwarten. Basierend auf dem was du jetzt weißt.\n\nDas ist aufregend und beängstigend gleichzeitig. Denn Freiheit bedeutet auch Verantwortung. Wenn du alles sein kannst — wofür entscheidest du dich?",
+    "reflection": [
+      "Wenn du dein Leben heute komplett neu starten könntest — was würdest du anders machen?",
+      "Was hält dich davon ab, genau das jetzt zu tun?",
+      "Welche Version von dir hat die Welt noch nicht gesehen?"
+    ],
+    "microAction": "Schreibe eine 'Nicht-mehr-Liste': 5 Dinge die du ab heute nicht mehr tust/tolerierst/glaubst.",
+    "isPreview": true
+  },
+  {
+    "id": "ge-02",
+    "courseId": "genesis",
+    "number": 2,
+    "title": "Vision Board 2.0",
+    "subtitle": "Nicht Dinge — Gefühle",
+    "duration": "18 Min",
+    "type": "text",
+    "dimension": "klarheit",
+    "content": "Vergiss klassische Vision Boards mit Lamborghinis und Strandvillen. Die Forschung zeigt: Materielle Ziele motivieren kurzfristig, machen aber nicht nachhaltig glücklich.\n\nStattdessen: Was willst du FÜHLEN? Freiheit? Verbundenheit? Stolz? Ruhe? Diese Gefühle sind dein wahrer Kompass. Und es gibt viele Wege dorthin — nicht nur den einen mit dem hohen Gehalt.\n\nEin echtes Vision Board basiert auf Gefühlen. Dann fragst du: Welches Leben erzeugt diese Gefühle? Die Antwort überrascht oft.",
+    "reflection": [
+      "Welche 3 Gefühle willst du jeden Tag erleben?",
+      "Wann hast du diese Gefühle das letzte Mal erlebt? Was hast du getan?",
+      "Welches Ziel verfolgst du, das dir eigentlich nicht das gewünschte Gefühl bringen wird?"
+    ],
+    "microAction": "Erstelle ein Gefühls-Vision-Board: 3 Gefühle → jeweils 3 Aktivitäten die sie erzeugen.",
+    "isPreview": false
+  },
+  {
+    "id": "ge-03",
+    "courseId": "genesis",
+    "number": 3,
+    "title": "Identitäts-Design",
+    "subtitle": "Vom Ziel zur Person",
+    "duration": "16 Min",
+    "type": "text",
+    "dimension": "authentizitaet",
+    "content": "James Clear sagt: 'Jede Handlung ist eine Stimme für die Person die du werden willst.' Du wirst nicht fit indem du ins Gym gehst. Du gehst ins Gym weil du ein fitter Mensch bist. Der Unterschied ist die Reihenfolge.\n\nIdentitäts-basierte Veränderung funktioniert so:\n1. Entscheide wer du sein willst\n2. Beweise es dir durch kleine Handlungen\n3. Wiederhole bis es Identität wird\n\nDu brauchst keine Motivation. Du brauchst eine klare Identität — und dann nur noch: Was würde DIESE Person jetzt tun?",
+    "reflection": [
+      "Welche 3 Identitäts-Aussagen passen zu der Person die du werden willst?",
+      "Welche tägliche Handlung beweist dir diese Identität?",
+      "Welche alte Identität musst du loslassen?"
+    ],
+    "microAction": "Formuliere 3 Identitäts-Sätze: 'Ich bin jemand der...' Handele heute nach mindestens einem davon.",
+    "isPreview": false
+  },
+  {
+    "id": "ge-04",
+    "courseId": "genesis",
+    "number": 4,
+    "title": "Gewohnheits-Architektur",
+    "subtitle": "Systeme statt Willenskraft",
+    "duration": "20 Min",
+    "type": "text",
+    "dimension": "klarheit",
+    "content": "Willenskraft ist ein endlicher Muskel. Sie wird über den Tag schwächer. Deshalb scheitern Vorsätze: Du verlässt dich auf etwas das aufgebraucht wird.\n\nBesserer Ansatz: Gestalte deine Umgebung so, dass die richtige Entscheidung die einfache Entscheidung ist. Will mehr Wasser trinken? Stell die Flasche auf den Schreibtisch. Will weniger Social Media? Lösch die App vom Homescreen.\n\nDas ist Gewohnheits-Architektur: Du designst die Umgebung, nicht die Willenskraft. James Clear nennt es 'Environment Design' — und es ist der mächtigste Hebel den du hast.",
+    "reflection": [
+      "Welche schlechte Gewohnheit wird durch deine Umgebung begünstigt?",
+      "Wie könntest du deine Umgebung ändern um eine gute Gewohnheit leichter zu machen?",
+      "Welche Gewohnheit würde den größten positiven Effekt auf dein Leben haben?"
+    ],
+    "microAction": "Ändere EINE Sache in deiner Umgebung die eine gute Gewohnheit leichter oder eine schlechte schwerer macht.",
+    "isPreview": false
+  },
+  {
+    "id": "ge-05",
+    "courseId": "genesis",
+    "number": 5,
+    "title": "Grenzen setzen",
+    "subtitle": "Nein ist ein ganzer Satz",
+    "duration": "17 Min",
+    "type": "text",
+    "dimension": "mut",
+    "content": "Grenzen setzen fühlt sich an wie Egoismus. Aber Grenzen sind das Gegenteil von Egoismus — sie sind Selbstrespekt.\n\nOhne Grenzen sagst du zu allem Ja und meinst zu allem Nein. Du wirst resentful — innerlich wütend — und wunderst dich, warum deine Beziehungen leiden. Die Wahrheit: Menschen die keine Grenzen setzen, sind schwerer zu lieben. Weil niemand weiß, wo sie wirklich stehen.\n\nEine Grenze ist kein Angriff. Eine Grenze ist Information: 'So können wir zusammen funktionieren.'",
+    "reflection": [
+      "Wo in deinem Leben sagst du Ja obwohl du Nein meinst?",
+      "Was ist das Schlimmste das passieren könnte, wenn du eine klare Grenze setzt?",
+      "Welche Beziehung würde sich verbessern, wenn du ehrlicher wärst?"
+    ],
+    "microAction": "Sage heute einmal ehrlich Nein zu etwas das du nicht willst. Ohne Ausrede, ohne Erklärung.",
+    "isPreview": false
+  },
+  {
+    "id": "ge-06",
+    "courseId": "genesis",
+    "number": 6,
+    "title": "Energiemanagement",
+    "subtitle": "Nicht Zeit — Energie ist die Währung",
+    "duration": "15 Min",
+    "type": "text",
+    "dimension": "klarheit",
+    "content": "Du hast 24 Stunden am Tag — genau wie Elon Musk und genau wie der Nachbar der Netflix schaut. Der Unterschied ist nicht Zeitmanagement. Der Unterschied ist Energiemanagement.\n\nEs gibt 4 Energie-Typen: Physisch, emotional, mental, spirituell. Die meisten optimieren nur physisch (Schlaf, Sport) und ignorieren den Rest. Aber was nützt ein ausgeschlafener Körper wenn dein Kopf voller Sorgen ist?\n\nIdentifiziere was dir Energie gibt und was sie nimmt. Dann gestalte deinen Tag um diese Erkenntnis herum.",
+    "reflection": [
+      "Welche 3 Aktivitäten geben dir am meisten Energie?",
+      "Welche 3 Aktivitäten rauben dir am meisten Energie?",
+      "Wie sieht dein idealer Tag aus — energetisch betrachtet?"
+    ],
+    "microAction": "Führe heute ein Energie-Tagebuch: Notiere stündlich dein Energielevel (1-10) und was du gerade tust.",
+    "isPreview": false
+  },
+  {
+    "id": "ge-07",
+    "courseId": "genesis",
+    "number": 7,
+    "title": "Radikale Ehrlichkeit",
+    "subtitle": "Die Wahrheit macht frei — aber erst unangenehm",
+    "duration": "16 Min",
+    "type": "text",
+    "dimension": "authentizitaet",
+    "content": "Wie viel deines Tages verbringst du damit, so zu tun als ob? Als ob dir der Job Spaß macht. Als ob die Beziehung okay ist. Als ob du nicht erschöpft bist.\n\nRadikale Ehrlichkeit beginnt bei dir selbst. Du musst nicht sofort allen die Wahrheit ins Gesicht sagen. Aber du musst aufhören, dich selbst anzulügen.\n\nDer erste Schritt ist immer der gleiche: Sag die Wahrheit — mindestens dir selbst. Schreib sie auf. Sprich sie laut aus. Fühl wie sie sich anfühlt. Meistens fühlt sie sich an wie Erleichterung.",
+    "reflection": [
+      "In welchem Lebensbereich belügst du dich selbst?",
+      "Was ist die eine Wahrheit die du dir nicht eingestehen willst?",
+      "Was würde sich ändern, wenn du ab morgen komplett ehrlich wärst?"
+    ],
+    "microAction": "Schreibe 3 unbequeme Wahrheiten über dein aktuelles Leben auf. Lies sie laut.",
+    "isPreview": false
+  },
+  {
+    "id": "ge-08",
+    "courseId": "genesis",
+    "number": 8,
+    "title": "Mindset-Shift",
+    "subtitle": "Von Fixed zu Growth",
+    "duration": "18 Min",
+    "type": "text",
+    "dimension": "mut",
+    "content": "Carol Dweck unterscheidet zwei Mindsets: Fixed Mindset glaubt Talent ist angeboren. Growth Mindset glaubt Fähigkeiten sind entwickelbar.\n\nFixed Mindset sagt: 'Ich bin halt nicht gut in Mathe.' Growth Mindset sagt: 'Ich bin noch nicht gut in Mathe.' Ein Wort Unterschied — eine komplett andere Lebensrealität.\n\nMenschen mit Growth Mindset sehen Fehler als Lernchancen, suchen Herausforderungen und geben nicht auf wenn es schwer wird. Das ist keine Persönlichkeit — das ist eine Entscheidung die du jeden Tag treffen kannst.",
+    "reflection": [
+      "In welchem Bereich hast du ein Fixed Mindset?",
+      "Welchen Satz kannst du mit 'noch nicht' ergänzen?",
+      "Wann hast du das letzte Mal etwas aufgegeben weil du dachtest du bist 'nicht der Typ dafür'?"
+    ],
+    "microAction": "Ersetze heute jeden 'Ich kann nicht...'-Gedanken durch 'Ich kann noch nicht...' und beobachte was passiert.",
+    "isPreview": false
+  },
+  {
+    "id": "ge-09",
+    "courseId": "genesis",
+    "number": 9,
+    "title": "Zukunfts-Ich",
+    "subtitle": "Dein bester Berater",
+    "duration": "17 Min",
+    "type": "text",
+    "dimension": "klarheit",
+    "content": "Stell dir die Version von dir in 10 Jahren vor. Die Version die die Arbeit gemacht hat. Die die Ängste überwunden hat. Die die Beziehungen repariert hat. Was würde diese Person dir raten?\n\nDas ist keine Fantasie — das ist eine Entscheidungsstrategie. Wenn du vor einer schwierigen Wahl stehst, frage nicht: Was fühlt sich jetzt gut an? Frage: Was würde mein Zukunfts-Ich mir raten?\n\nDein Zukunfts-Ich ist dein strengster und gleichzeitig liebevollster Berater. Weil es die Konsequenzen deiner heutigen Entscheidungen bereits kennt.",
+    "reflection": [
+      "Wie sieht dein Leben in 10 Jahren aus wenn du so weitermachst wie jetzt?",
+      "Wie sieht es aus wenn du die Änderungen machst die du weißt dass du machen solltest?",
+      "Was würde dein 80-jähriges Ich dir raten?"
+    ],
+    "microAction": "Schreibe einen Brief von deinem Zukunfts-Ich an dein heutiges Ich. Was steht drin?",
+    "isPreview": false
+  },
+  {
+    "id": "ge-10",
+    "courseId": "genesis",
+    "number": 10,
+    "title": "Der erste Tag",
+    "subtitle": "Genesis beginnt jetzt",
+    "duration": "14 Min",
+    "type": "text",
+    "dimension": "mut",
+    "content": "Du hast jetzt die Werkzeuge. Du hast eine Vision, eine Identität, Gewohnheiten, Grenzen, Ehrlichkeit. Die Frage ist nicht mehr 'Was soll ich tun?' Die Frage ist: 'Wann fange ich an?'\n\nDie Antwort ist immer: Jetzt. Nicht morgen. Nicht Montag. Nicht nach dem Urlaub. Jetzt.\n\nPerfektion ist der Feind des Fortschritts. Du musst nicht alles auf einmal ändern. Du musst nur EINE Sache heute anders machen als gestern. Und morgen wieder eine. Das ist Genesis — der bewusste Neuanfang. Nicht einmal, sondern jeden Tag.",
+    "reflection": [
+      "Was ist die EINE Sache die du heute änderst?",
+      "Was hält dich noch zurück — und ist dieser Grund wirklich gültig?",
+      "Wie feierst du deine ersten kleinen Siege?"
+    ],
+    "microAction": "Wähle EINE Veränderung aus diesem Kurs. Setze sie JETZT um. Nicht nachher. Jetzt.",
+    "isPreview": false
+  }
+]

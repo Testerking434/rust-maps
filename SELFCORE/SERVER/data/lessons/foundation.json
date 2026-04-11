@@ -1,0 +1,182 @@
+[
+  {
+    "id": "fo-01",
+    "courseId": "foundation",
+    "number": 1,
+    "title": "Die 4 Säulen",
+    "subtitle": "Was dein Leben trägt",
+    "duration": "16 Min",
+    "type": "text",
+    "dimension": "klarheit",
+    "content": "Ein stabiles Leben steht auf vier Säulen: Körper, Geist, Beziehungen, Purpose. Wenn eine Säule wackelt, spürst du es überall.\n\nDu kannst beruflich erfolgreich sein aber wenn deine Gesundheit leidet, bricht alles zusammen. Du kannst fit sein aber ohne tiefe Beziehungen fühlst du dich leer. Du kannst geliebt werden aber ohne Sinn fühlst du dich verloren.\n\nIn FOUNDATION bauen wir jede Säule auf — nicht schnell, sondern stabil. Nicht perfekt, sondern unerschütterlich. Das Fundament das bleibt, wenn alles andere wackelt.",
+    "reflection": [
+      "Welche deiner 4 Säulen ist aktuell die schwächste?",
+      "Welche ist die stärkste — und vernachlässigst du sie trotzdem?",
+      "Was wäre der größte Hebel um dein Fundament zu stärken?"
+    ],
+    "microAction": "Bewerte jede Säule von 1-10 (Körper, Geist, Beziehungen, Purpose). Fokussiere diese Woche auf die niedrigste.",
+    "isPreview": true
+  },
+  {
+    "id": "fo-02",
+    "courseId": "foundation",
+    "number": 2,
+    "title": "Morgenroutine",
+    "subtitle": "Die erste Stunde bestimmt den Tag",
+    "duration": "14 Min",
+    "type": "text",
+    "dimension": "klarheit",
+    "content": "Wie du den Morgen verbringst bestimmt wie du den Tag verbringst. Wenn die erste Stunde reaktiv ist — Handy, E-Mails, Social Media — bist du den ganzen Tag im Reaktionsmodus.\n\nEine Morgenroutine ist kein Luxus. Es ist die bewusste Entscheidung, den Tag auf DEINEN Bedingungen zu starten. Das muss nicht 2 Stunden dauern. 15 Minuten reichen.\n\nDie Formel: Bewegung (5 Min) + Stille (5 Min) + Intention (5 Min). Damit deckst du Körper, Geist und Richtung ab. Alles darüber hinaus ist Bonus.",
+    "reflection": [
+      "Wie sieht dein Morgen aktuell aus? Reaktiv oder proaktiv?",
+      "Was ist das erste was du morgens tust — und wie fühlt es sich an?",
+      "Wie würde dein idealer Morgen aussehen?"
+    ],
+    "microAction": "Stelle deinen Wecker morgen 15 Minuten früher. 5 Min Stretching, 5 Min Stille, 5 Min Journaling.",
+    "isPreview": false
+  },
+  {
+    "id": "fo-03",
+    "courseId": "foundation",
+    "number": 3,
+    "title": "Schlaf-Optimierung",
+    "subtitle": "Das unterschätzteste Tool",
+    "duration": "18 Min",
+    "type": "text",
+    "dimension": "selbstkenntnis",
+    "content": "Schlaf ist nicht passiv. Im Schlaf repariert dein Körper Zellen, konsolidiert dein Gehirn Erinnerungen und verarbeitet dein Unterbewusstsein Emotionen. Schlechter Schlaf sabotiert ALLES andere.\n\nDie Basics: 7-9 Stunden. Gleiche Zeit ins Bett. Dunkles, kühles Zimmer (16-18°C). Kein Bildschirm 60 Minuten vorher. Kein Koffein nach 14 Uhr.\n\nDas klingt langweilig. Aber besserer Schlaf verbessert deine Stimmung, Willenskraft, Kreativität, Beziehungen und Gesundheit — alles auf einmal. Es gibt keinen anderen Hebel der so viel gleichzeitig bewirkt.",
+    "reflection": [
+      "Wie viele Stunden schläfst du wirklich? Sei ehrlich.",
+      "Was hält dich abends wach — und ist es das wert?",
+      "Welche eine Schlafgewohnheit könntest du sofort verbessern?"
+    ],
+    "microAction": "Stelle dir einen 'Bett-Alarm': 30 Min vor Schlafenszeit — Handy weg, Licht dimmen.",
+    "isPreview": false
+  },
+  {
+    "id": "fo-04",
+    "courseId": "foundation",
+    "number": 4,
+    "title": "Bewegung als Medizin",
+    "subtitle": "Nicht für den Körper — für den Kopf",
+    "duration": "15 Min",
+    "type": "text",
+    "dimension": "mut",
+    "content": "Sport ist das stärkste Antidepressivum das es gibt — und es hat keine Nebenwirkungen. 20 Minuten moderate Bewegung reduzieren Angst um 20%, verbessern die Stimmung für 12 Stunden und erhöhen die kognitive Leistung sofort.\n\nDu musst kein Gym-Bro werden. Geh spazieren. Tanz in der Küche. Mach 10 Liegestütze. Die Schwelle ist viel niedriger als du denkst.\n\nDer Trick: Mach es nicht für den Körper den du willst. Mach es für den Kopf den du brauchst. Wenn du nach dem Sport duscht und merkst wie klar dein Kopf ist — DAS ist der wahre Grund.",
+    "reflection": [
+      "Welche Bewegungsform macht dir tatsächlich Spaß?",
+      "Was hält dich davon ab, dich regelmäßig zu bewegen?",
+      "Wie fühlst du dich nach Sport? Warum reicht das nicht als Motivation?"
+    ],
+    "microAction": "Bewege dich heute 20 Minuten — egal wie. Spazieren zählt. Danach: Schreibe auf wie du dich fühlst.",
+    "isPreview": false
+  },
+  {
+    "id": "fo-05",
+    "courseId": "foundation",
+    "number": 5,
+    "title": "Digitale Hygiene",
+    "subtitle": "Dein Gehirn ist nicht für Instagram gebaut",
+    "duration": "16 Min",
+    "type": "text",
+    "dimension": "klarheit",
+    "content": "Dein Smartphone checken ist die häufigste Handlung deines Tages. Im Durchschnitt 96 Mal. Jedes Mal kostet es dich Aufmerksamkeit, Energie und oft Selbstwert.\n\nSocial Media ist designed um abhängig zu machen. Die gleichen Mechanismen wie Spielautomaten. Variable Belohnung, Social Validation, FOMO. Du bist nicht schwach wenn du nicht aufhören kannst — du kämpfst gegen Milliarden-Dollar-Algorithmen.\n\nDigitale Hygiene ist kein Digital Detox. Es ist bewusster Umgang: WANN schaust du? WIE LANGE? WIE FÜHLST DU DICH danach? Bewusstsein ist der erste Schritt zur Kontrolle.",
+    "reflection": [
+      "Wie viel Screen Time hast du pro Tag? Check die Einstellungen.",
+      "Wie fühlst du dich nach 30 Minuten Social Media — besser oder schlechter?",
+      "Welche App würdest du löschen wenn du ehrlich wärst?"
+    ],
+    "microAction": "Lösche EINE Social Media App für 24 Stunden. Beobachte: Greifst du automatisch zum Handy?",
+    "isPreview": false
+  },
+  {
+    "id": "fo-06",
+    "courseId": "foundation",
+    "number": 6,
+    "title": "Deep Work",
+    "subtitle": "Konzentration als Superkraft",
+    "duration": "17 Min",
+    "type": "text",
+    "dimension": "klarheit",
+    "content": "Cal Newport definiert Deep Work als: Professionelle Aktivitäten, die in einem Zustand ablenkungsfreier Konzentration ausgeführt werden und deine kognitiven Fähigkeiten an ihre Grenzen bringen.\n\nIn einer Welt voller Ablenkungen ist Konzentration die seltenste und wertvollste Fähigkeit. Die meisten Menschen können keine 15 Minuten am Stück fokussiert arbeiten.\n\nDeep Work ist trainierbar. Fang mit 25-Minuten-Blöcken an (Pomodoro). Handy in einen anderen Raum. Benachrichtigungen aus. Ein klares Ziel für den Block. Nach 2 Wochen kannst du 60 Minuten — nach 2 Monaten 90+.",
+    "reflection": [
+      "Wie lange kannst du dich aktuell am Stück konzentrieren?",
+      "Was sind deine größten Ablenkungen während der Arbeit?",
+      "Welche Aufgabe würde am meisten von Deep Work profitieren?"
+    ],
+    "microAction": "Mache heute einen 25-Min Deep Work Block: Handy weg, eine Aufgabe, keine Unterbrechungen.",
+    "isPreview": false
+  },
+  {
+    "id": "fo-07",
+    "courseId": "foundation",
+    "number": 7,
+    "title": "Ernährung für den Kopf",
+    "subtitle": "Was du isst bestimmt wie du denkst",
+    "duration": "15 Min",
+    "type": "text",
+    "dimension": "selbstkenntnis",
+    "content": "Dein Gehirn verbraucht 20% deiner Gesamtenergie obwohl es nur 2% deines Körpergewichts ausmacht. Was du isst beeinflusst direkt: Stimmung, Konzentration, Energie, Schlaf.\n\nDu musst kein Ernährungsexperte werden. Die Basics reichen: Genug Wasser (2-3L), Proteine bei jeder Mahlzeit, Gemüse als Hauptbestandteil, weniger verarbeitete Lebensmittel, weniger Zucker.\n\nDer einfachste Tipp: Bevor du etwas isst, frage dich: 'Gibt mir das Energie für die nächsten 3 Stunden — oder nimmt es mir Energie?'",
+    "reflection": [
+      "Wie fühlst du dich 1 Stunde nach dem Mittagessen? Energisch oder müde?",
+      "Welches Essen isst du aus Gewohnheit, nicht aus Genuss?",
+      "Wie viel Wasser trinkst du wirklich pro Tag?"
+    ],
+    "microAction": "Trink heute 2,5 Liter Wasser. Stell eine Flasche auf den Schreibtisch als Erinnerung.",
+    "isPreview": false
+  },
+  {
+    "id": "fo-08",
+    "courseId": "foundation",
+    "number": 8,
+    "title": "Stress-Regulation",
+    "subtitle": "Von Überleben zu Steuern",
+    "duration": "18 Min",
+    "type": "text",
+    "dimension": "mut",
+    "content": "Stress ist nicht der Feind. Chronischer Stress ist der Feind. Akuter Stress — ein Workout, eine Präsentation, eine Herausforderung — macht dich stärker. Chronischer Stress — ständige Sorgen, toxische Beziehungen, Überlastung — macht dich krank.\n\nDein Nervensystem hat zwei Modi: Sympathikus (Kampf/Flucht) und Parasympathikus (Ruhe/Regeneration). Die meisten Menschen sind dauerhaft im Sympathikus. Der Körper denkt, er ist in Gefahr — 24/7.\n\nDie schnellste Art den Parasympathikus zu aktivieren: Ausatmen. Doppelt so lang wie einatmen. 4 Sekunden ein, 8 Sekunden aus. 5 Atemzüge. Dein Nervensystem resettet sich in unter 2 Minuten.",
+    "reflection": [
+      "Auf einer Skala von 1-10: Wie gestresst bist du gerade?",
+      "Welcher Stress in deinem Leben ist akut (hilfreich) und welcher chronisch (schädlich)?",
+      "Was ist dein aktueller Bewältigungsmechanismus für Stress?"
+    ],
+    "microAction": "Mache jetzt 5 Atemzüge: 4 Sekunden ein, 8 Sekunden aus. Spüre den Unterschied.",
+    "isPreview": false
+  },
+  {
+    "id": "fo-09",
+    "courseId": "foundation",
+    "number": 9,
+    "title": "Beziehungs-Audit",
+    "subtitle": "Wer verdient deine Energie?",
+    "duration": "16 Min",
+    "type": "text",
+    "dimension": "verbindung",
+    "content": "Du bist der Durchschnitt der 5 Menschen mit denen du die meiste Zeit verbringst. Das ist keine Motivations-Floskel — das ist Soziologie.\n\nWerte, Gewohnheiten, Ambitionen — alles ist ansteckend. Wenn deine 5 engsten Menschen sich beschweren, wirst du dich beschweren. Wenn sie wachsen, wirst du wachsen.\n\nDas bedeutet nicht, alle toxischen Menschen sofort zu streichen. Es bedeutet: Sei dir bewusst wer Energie gibt und wer sie nimmt. Investiere mehr in die Geber. Setze Grenzen bei den Nehmern.",
+    "reflection": [
+      "Wer sind die 5 Menschen mit denen du die meiste Zeit verbringst?",
+      "Wer davon gibt dir Energie — wer nimmt sie?",
+      "Mit wem hast du den Kontakt verloren, den du gerne wieder aufbauen würdest?"
+    ],
+    "microAction": "Schreibe einer Person die dir Energie gibt eine Nachricht — einfach nur um Danke zu sagen.",
+    "isPreview": false
+  },
+  {
+    "id": "fo-10",
+    "courseId": "foundation",
+    "number": 10,
+    "title": "Unerschütterlich",
+    "subtitle": "Wenn das Fundament steht",
+    "duration": "15 Min",
+    "type": "text",
+    "dimension": "mut",
+    "content": "Unerschütterlich heißt nicht, dass nichts dich erschüttern kann. Es heißt, dass du weißt wie du wieder aufstehst. Dass du Systeme hast die dich tragen wenn die Motivation nicht da ist. Dass dein Fundament stark genug ist für die Stürme die kommen werden.\n\nDu hast jetzt die Werkzeuge: Morgenroutine, Schlaf, Bewegung, Ernährung, digitale Hygiene, Deep Work, Stress-Regulation, starke Beziehungen. Du musst nicht alles perfekt machen. Du musst nur jeden Tag ein bisschen besser werden.\n\n1% besser pro Tag = 37x besser in einem Jahr. Das ist die Macht von FOUNDATION.",
+    "reflection": [
+      "Welche Gewohnheit aus diesem Kurs hat den größten Impact auf dein Leben?",
+      "Was ist dein nicht-verhandelbares Daily Minimum?",
+      "Wie bleibst du dran wenn die Motivation nachlässt?"
+    ],
+    "microAction": "Definiere dein 'Non-Negotiable': Die EINE Sache die du jeden Tag tust, egal was passiert.",
+    "isPreview": false
+  }
+]

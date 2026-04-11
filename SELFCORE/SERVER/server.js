@@ -11,10 +11,74 @@ const jwt        = require('jsonwebtoken');
 const cors       = require('cors');
 const path       = require('path');
 const fs         = require('fs');
+const crypto     = require('crypto');
+const nodemailer = require('nodemailer');
 
 const app  = express();
 const PORT = process.env.PORT || 8001;
 const JWT_SECRET = process.env.JWT_SECRET || 'AENDER_MICH_VOR_PRODUKTIONSSTART';
+
+// ============================================================
+// CLOUDFLARE R2 KONFIGURATION (für Audio-Streaming)
+// ============================================================
+const R2_ACCOUNT_ID   = process.env.R2_ACCOUNT_ID || '';
+const R2_ACCESS_KEY   = process.env.R2_ACCESS_KEY || '';
+const R2_SECRET_KEY   = process.env.R2_SECRET_KEY || '';
+const R2_BUCKET       = process.env.R2_BUCKET || 'selfcore-audio';
+const R2_PUBLIC_URL   = process.env.R2_PUBLIC_URL || `https://${R2_BUCKET}.${R2_ACCOUNT_ID}.r2.cloudflarestorage.com`;
+
+// ============================================================
+// E-MAIL KONFIGURATION (Passwort-Reset)
+// ============================================================
+const SMTP_HOST = process.env.SMTP_HOST || 'smtp.gmail.com';
+const SMTP_PORT = process.env.SMTP_PORT || 587;
+const SMTP_USER = process.env.SMTP_USER || '';
+const SMTP_PASS = process.env.SMTP_PASS || '';
+const SMTP_FROM = process.env.SMTP_FROM || 'noreply@genselfcore.de';
+
+const mailTransporter = SMTP_USER ? nodemailer.createTransport({
+  host: SMTP_HOST,
+  port: SMTP_PORT,
+  secure: false,
+  auth: { user: SMTP_USER, pass: SMTP_PASS }
+}) : null;
+
+// ============================================================
+// DATENPERSISTENZ — JSON-Dateien statt In-Memory
+// ============================================================
+const DB_DIR = path.join(__dirname, 'db');
+if (!fs.existsSync(DB_DIR)) fs.mkdirSync(DB_DIR, { recursive: true });
+
+function loadDB(name) {
+  const p = path.join(DB_DIR, `${name}.json`);
+  try {
+    if (fs.existsSync(p)) return JSON.parse(fs.readFileSync(p, 'utf8'));
+  } catch (e) { console.error(`DB load error (${name}):`, e.message); }
+  return null;
+}
+
+function saveDB(name, data) {
+  const p = path.join(DB_DIR, `${name}.json`);
+  try {
+    fs.writeFileSync(p, JSON.stringify(data, null, 2), 'utf8');
+  } catch (e) { console.error(`DB save error (${name}):`, e.message); }
+}
+
+// Periodisch speichern (alle 30 Sekunden)
+setInterval(() => {
+  saveDB('users', users);
+  saveDB('userById', userById);
+  saveDB('referrals_simple', Object.fromEntries(
+    Object.entries(referrals).map(([k, v]) => [k, { ...v, badgeTitles: [...(v.badgeTitles || [])] }])
+  ));
+  saveDB('codeToUser', codeToUser);
+  saveDB('signalExtensions', signalExtensions);
+  saveDB('userReferredBy', userReferredBy);
+  saveDB('userSubscriptions', userSubscriptions);
+  saveDB('userDnaResults', userDnaResults);
+  saveDB('userProgress', userProgress);
+  saveDB('passwordResetTokens', passwordResetTokens);
+}, 30000);
 
 app.use(cors());
 app.use(express.json());
@@ -24,18 +88,31 @@ app.use(express.json());
 // Für Produktion: PostgreSQL (Anleitung am Ende der Datei)
 // ============================================================
 
-const users             = {};   // { normalisierteEmail: { id, name, email, passwordHash, ... } }
-const userById          = {};   // { userId: userData }
-const referrals         = {};   // { userId: { code, totalReferred, friends, rewards, badges } }
-const codeToUser        = {};   // { "MAX2K4": userId }
-const signalExtensions  = {};   // { userId: extraDays }
+// Daten laden (oder leer starten)
+const users             = loadDB('users')             || {};
+const userById          = loadDB('userById')          || {};
+const codeToUser        = loadDB('codeToUser')        || {};
+const signalExtensions  = loadDB('signalExtensions')  || {};
+const userReferredBy    = loadDB('userReferredBy')    || {};
+const userSubscriptions = loadDB('userSubscriptions') || {};
+const userDnaResults    = loadDB('userDnaResults')    || {};
+const userProgress      = loadDB('userProgress')      || {}; // { userId: { lessonId: { completed, completedAt } } }
+const passwordResetTokens = loadDB('passwordResetTokens') || {}; // { token: { email, expiresAt } }
+
+// Referrals mit Set-Wiederherstellung
+const referrals_raw = loadDB('referrals_simple') || {};
+const referrals     = {};
+for (const [k, v] of Object.entries(referrals_raw)) {
+  referrals[k] = { ...v, badgeTitles: new Set(v.badgeTitles || []) };
+}
+
+// Flüchtige Daten (brauchen keine Persistenz)
 const processedReferrals = new Set(); // "newUserId:referralCode"
-const userReferredBy    = {};   // { newUserId: referralCode }
 const rewardIDs         = new Set();
 const registrationLocks = new Set();
 const idempotencyCache  = {};   // { key: { response, expiresAt } }
-const userSubscriptions = {};   // { userId: { tier, courseId, purchasedCourses[], purchasedSignal, ... } }
-const userDnaResults    = {};   // { userId: { answers, type, dimensions, recommendedCourseId } }
+
+console.log(`📂 Datenbank geladen: ${Object.keys(users).length} User, ${Object.keys(userSubscriptions).length} Abos`);
 
 // ============================================================
 // ABO-STUFEN / SUBSCRIPTION TIERS
@@ -367,11 +444,70 @@ app.post('/v1/auth/login', async (req, res) => {
 // AUTH — PASSWORT RESET (E-Mail senden — TODO: echten Mailer einbauen)
 // ============================================================
 
-app.post('/v1/auth/reset-password', (req, res) => {
-  // TODO: nodemailer einbauen und Reset-Link senden
-  // Vorerst: immer 200 zurückgeben (security: nicht verraten ob E-Mail existiert)
-  console.log(`Password reset requested for: ${req.body.email}`);
-  return res.json({ message: 'Falls diese E-Mail registriert ist, wurde ein Link gesendet.' });
+app.post('/v1/auth/reset-password', async (req, res) => {
+  const email = (req.body.email || '').toLowerCase().trim();
+  // Security: immer 200 zurückgeben, egal ob E-Mail existiert
+  const response = { message: 'Falls diese E-Mail registriert ist, wurde ein Link gesendet.' };
+
+  if (!email) return res.json(response);
+
+  const user = users[email];
+  if (!user) return res.json(response); // nicht verraten ob E-Mail existiert
+
+  // Reset-Token generieren (gültig 1 Stunde)
+  const token = crypto.randomBytes(32).toString('hex');
+  passwordResetTokens[token] = {
+    email,
+    expiresAt: Date.now() + 60 * 60 * 1000 // 1 Stunde
+  };
+
+  const resetLink = `https://genselfcore.de/reset?token=${token}`;
+  console.log(`🔑 Password reset for ${email}: ${resetLink}`);
+
+  // E-Mail senden (falls konfiguriert)
+  if (mailTransporter) {
+    try {
+      await mailTransporter.sendMail({
+        from: SMTP_FROM,
+        to: email,
+        subject: 'GEN:SELFCORE — Passwort zurücksetzen',
+        html: `
+          <div style="background:#0A0A0A;color:white;padding:40px;font-family:Arial,sans-serif;">
+            <h1 style="color:#F5A623;">GEN:SELFCORE</h1>
+            <p>Du hast ein neues Passwort angefordert.</p>
+            <p><a href="${resetLink}" style="display:inline-block;padding:12px 30px;background:#F5A623;color:#000;border-radius:8px;text-decoration:none;font-weight:bold;">Passwort zurücksetzen</a></p>
+            <p style="color:#888;font-size:12px;">Dieser Link ist 1 Stunde gültig. Falls du keinen Reset angefordert hast, ignoriere diese E-Mail.</p>
+          </div>
+        `
+      });
+      console.log(`✅ Reset-E-Mail gesendet an ${email}`);
+    } catch (e) {
+      console.error(`❌ E-Mail-Fehler:`, e.message);
+    }
+  }
+
+  return res.json(response);
+});
+
+// Passwort tatsächlich zurücksetzen
+app.post('/v1/auth/reset-password/confirm', async (req, res) => {
+  const { token, newPassword } = req.body;
+  if (!token || !newPassword) return res.status(400).json({ error: 'Token und neues Passwort erforderlich.' });
+  if (newPassword.length < 6) return res.status(400).json({ error: 'Passwort muss mindestens 6 Zeichen lang sein.' });
+
+  const resetData = passwordResetTokens[token];
+  if (!resetData || resetData.expiresAt < Date.now()) {
+    return res.status(400).json({ error: 'Token ungültig oder abgelaufen.' });
+  }
+
+  const user = users[resetData.email];
+  if (!user) return res.status(400).json({ error: 'User nicht gefunden.' });
+
+  user.passwordHash = await bcrypt.hash(newPassword, 12);
+  delete passwordResetTokens[token];
+
+  console.log(`✅ Passwort geändert für ${resetData.email}`);
+  return res.json({ message: 'Passwort erfolgreich geändert. Du kannst dich jetzt einloggen.' });
 });
 
 // ============================================================
@@ -523,12 +659,69 @@ app.get('/v1/courses/:courseId/lessons/:lessonId', authMiddleware, (req, res) =>
 });
 
 app.get('/v1/lessons/:lessonId/workbook-url', authMiddleware, (req, res) => {
-  // TODO: Cloudflare R2 Signed URL generieren
-  return res.json({ url: '' });
+  const fileKey = `workbooks/${req.params.lessonId}.pdf`;
+  const url = generateR2SignedUrl(fileKey);
+  return res.json({ url });
 });
 
+// Lektion als abgeschlossen markieren (mit Persistenz)
 app.post('/v1/lessons/:lessonId/complete', authMiddleware, (req, res) => {
-  return res.json({ message: 'Lektion als abgeschlossen markiert.' });
+  const userId = req.user.userId;
+  const lessonId = req.params.lessonId;
+
+  if (!userProgress[userId]) userProgress[userId] = {};
+
+  if (userProgress[userId][lessonId]) {
+    return res.json({ message: 'Lektion war bereits abgeschlossen.', alreadyCompleted: true });
+  }
+
+  userProgress[userId][lessonId] = {
+    completed: true,
+    completedAt: new Date().toISOString()
+  };
+
+  // Sofort speichern
+  saveDB('userProgress', userProgress);
+
+  const totalCompleted = Object.keys(userProgress[userId]).length;
+  console.log(`✅ Lektion abgeschlossen: User ${userId} → ${lessonId} (gesamt: ${totalCompleted})`);
+
+  return res.json({
+    message: 'Lektion als abgeschlossen markiert!',
+    lessonId,
+    totalCompleted,
+    completedAt: userProgress[userId][lessonId].completedAt
+  });
+});
+
+// Fortschritt abrufen
+app.get('/v1/user/progress', authMiddleware, (req, res) => {
+  const userId = req.user.userId;
+  const progress = userProgress[userId] || {};
+
+  // Pro Kurs aufschlüsseln
+  const courseProgress = {};
+  for (const course of ALL_COURSES) {
+    const prefix = course.id === 'awakening' ? 'aw-' :
+                   course.id === 'origin' ? 'or-' :
+                   course.id === 'genesis' ? 'ge-' :
+                   course.id === 'foundation' ? 'fo-' :
+                   course.id === 'core-journey' ? 'cj-' : '';
+
+    const completedLessons = Object.keys(progress).filter(id => id.startsWith(prefix)).length;
+    courseProgress[course.id] = {
+      completedLessons,
+      totalLessons: course.lessonCount,
+      percent: course.lessonCount > 0 ? Math.round((completedLessons / course.lessonCount) * 100) : 0,
+      isCompleted: completedLessons >= course.lessonCount
+    };
+  }
+
+  return res.json({
+    totalLessonsCompleted: Object.keys(progress).length,
+    completedLessonIds: Object.keys(progress),
+    courseProgress
+  });
 });
 
 // ============================================================
@@ -1149,6 +1342,179 @@ function buildReferralResponse(userId) {
     referredFriends: data.friends
   };
 }
+
+// ============================================================
+// CLOUDFLARE R2 — SIGNED URL GENERIERUNG
+// ============================================================
+
+function generateR2SignedUrl(fileKey, expiresInSeconds = 3600) {
+  if (!R2_ACCESS_KEY || !R2_SECRET_KEY) {
+    console.warn('⚠️ R2 nicht konfiguriert — leere URL zurückgegeben');
+    return '';
+  }
+
+  const now = new Date();
+  const datestamp = now.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+  const dateOnly = datestamp.substring(0, 8);
+
+  const region = 'auto';
+  const service = 's3';
+  const credential = `${R2_ACCESS_KEY}/${dateOnly}/${region}/${service}/aws4_request`;
+
+  const expires = expiresInSeconds;
+  const host = `${R2_BUCKET}.${R2_ACCOUNT_ID}.r2.cloudflarestorage.com`;
+
+  const queryParams = [
+    `X-Amz-Algorithm=AWS4-HMAC-SHA256`,
+    `X-Amz-Credential=${encodeURIComponent(credential)}`,
+    `X-Amz-Date=${datestamp}`,
+    `X-Amz-Expires=${expires}`,
+    `X-Amz-SignedHeaders=host`
+  ].sort().join('&');
+
+  const canonicalRequest = [
+    'GET',
+    `/${fileKey}`,
+    queryParams,
+    `host:${host}`,
+    '',
+    'host',
+    'UNSIGNED-PAYLOAD'
+  ].join('\n');
+
+  const stringToSign = [
+    'AWS4-HMAC-SHA256',
+    datestamp,
+    `${dateOnly}/${region}/${service}/aws4_request`,
+    crypto.createHash('sha256').update(canonicalRequest).digest('hex')
+  ].join('\n');
+
+  function hmac(key, data) {
+    return crypto.createHmac('sha256', key).update(data).digest();
+  }
+
+  const signingKey = hmac(hmac(hmac(hmac(`AWS4${R2_SECRET_KEY}`, dateOnly), region), service), 'aws4_request');
+  const signature = crypto.createHmac('sha256', signingKey).update(stringToSign).digest('hex');
+
+  return `https://${host}/${fileKey}?${queryParams}&X-Amz-Signature=${signature}`;
+}
+
+// ============================================================
+// APPLE IAP — RECEIPT VALIDATION
+// ============================================================
+
+app.post('/v1/iap/validate', authMiddleware, async (req, res) => {
+  const userId = req.user.userId;
+  const { receiptData, productId } = req.body;
+
+  if (!receiptData) return res.status(400).json({ error: 'receiptData erforderlich.' });
+
+  // Apple Server-zu-Server Validierung
+  const verifyUrl = process.env.NODE_ENV === 'production'
+    ? 'https://buy.itunes.apple.com/verifyReceipt'
+    : 'https://sandbox.itunes.apple.com/verifyReceipt';
+
+  try {
+    const response = await fetch(verifyUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        'receipt-data': receiptData,
+        'password': process.env.APPLE_SHARED_SECRET || '',
+        'exclude-old-transactions': true
+      })
+    });
+
+    const result = await response.json();
+
+    // Status 0 = gültig
+    if (result.status === 0) {
+      const latestReceipt = result.latest_receipt_info || [];
+      const activeSubscription = latestReceipt.find(r =>
+        r.product_id === productId && new Date(parseInt(r.expires_date_ms)) > new Date()
+      );
+
+      if (activeSubscription) {
+        // Abo im Server aktivieren
+        const sub = userSubscriptions[userId] || {};
+
+        // Product-ID → Tier zuordnen
+        let tier = 'START';
+        if (productId.includes('complete')) tier = 'COMPLETE';
+        else if (productId.includes('pro')) tier = 'PRO';
+
+        userSubscriptions[userId] = {
+          ...sub,
+          tier,
+          activeSince: new Date(parseInt(activeSubscription.purchase_date_ms)).toISOString(),
+          expiresAt: new Date(parseInt(activeSubscription.expires_date_ms)).toISOString(),
+          billingType: productId.includes('yearly') ? 'yearly' : 'monthly',
+          appleProductId: productId,
+          appleTransactionId: activeSubscription.transaction_id,
+          selectedCourseIds: tier === 'COMPLETE' ? ALL_COURSES.map(c => c.id) : (sub.selectedCourseIds || []),
+          purchasedCourseIds: sub.purchasedCourseIds || [],
+          purchasedSignalTrackIds: sub.purchasedSignalTrackIds || [],
+          purchasedSignalBundle: sub.purchasedSignalBundle || false
+        };
+
+        saveDB('userSubscriptions', userSubscriptions);
+        console.log(`✅ Apple IAP validiert: User ${userId} → ${tier} (${productId})`);
+
+        return res.json({
+          valid: true,
+          tier,
+          expiresAt: userSubscriptions[userId].expiresAt,
+          message: `Abo ${tier} erfolgreich aktiviert!`
+        });
+      }
+
+      // Einmalzahlung (Non-Consumable)
+      const purchase = latestReceipt.find(r => r.product_id === productId);
+      if (purchase) {
+        const sub = userSubscriptions[userId] || {};
+
+        if (productId.includes('course.')) {
+          const courseId = productId.split('course.').pop();
+          if (!sub.purchasedCourseIds) sub.purchasedCourseIds = [];
+          if (!sub.purchasedCourseIds.includes(courseId)) sub.purchasedCourseIds.push(courseId);
+        } else if (productId.includes('signal.bundle')) {
+          sub.purchasedSignalBundle = true;
+        } else if (productId.includes('signal.track.')) {
+          const trackId = productId.split('signal.track.').pop();
+          if (!sub.purchasedSignalTrackIds) sub.purchasedSignalTrackIds = [];
+          if (!sub.purchasedSignalTrackIds.includes(trackId)) sub.purchasedSignalTrackIds.push(trackId);
+        }
+
+        userSubscriptions[userId] = { ...userSubscriptions[userId], ...sub };
+        saveDB('userSubscriptions', userSubscriptions);
+
+        return res.json({ valid: true, message: 'Kauf validiert und freigeschaltet!' });
+      }
+
+      return res.json({ valid: false, error: 'Kein aktives Abo oder Kauf gefunden.' });
+    }
+
+    // Status 21007 = Sandbox-Receipt an Production gesendet → Retry
+    if (result.status === 21007) {
+      console.log('Sandbox receipt detected, retrying with sandbox URL...');
+      const sandboxResponse = await fetch('https://sandbox.itunes.apple.com/verifyReceipt', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 'receipt-data': receiptData, 'password': process.env.APPLE_SHARED_SECRET || '' })
+      });
+      const sandboxResult = await sandboxResponse.json();
+      if (sandboxResult.status === 0) {
+        return res.json({ valid: true, sandbox: true, message: 'Sandbox-Kauf validiert.' });
+      }
+    }
+
+    return res.json({ valid: false, status: result.status, error: 'Receipt ungültig.' });
+
+  } catch (error) {
+    console.error('Apple IAP Fehler:', error.message);
+    return res.status(500).json({ error: 'Validierung fehlgeschlagen. Bitte versuche es erneut.' });
+  }
+});
 
 // ============================================================
 // SERVER STARTEN
