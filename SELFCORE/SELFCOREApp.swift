@@ -33,6 +33,7 @@ struct SELFCOREApp: App {
                         .environmentObject(appState.streakService)
                         .environmentObject(appState.subscriptionService)
                         .environmentObject(appState.healthKitService)
+                        .environmentObject(appState.referralService)
                 } else {
                     LoginView()
                         .environmentObject(appState)

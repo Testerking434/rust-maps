@@ -19,6 +19,12 @@ class AppState: ObservableObject {
     let streakService = StreakService.shared
     let subscriptionService = SubscriptionService.shared
     let healthKitService = HealthKitService.shared
+    let referralService = ReferralService.shared
+
+    // Referral badge count (ungesehene Rewards)
+    var referralBadgeCount: Int {
+        referralService.referralData.rewards.filter { $0.isNew }.count
+    }
 
     init() {
         loadFromCache()

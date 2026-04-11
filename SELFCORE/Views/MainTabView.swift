@@ -4,6 +4,7 @@ import SwiftUI
 struct MainTabView: View {
     @EnvironmentObject var appState: AppState
     @EnvironmentObject var streakService: StreakService
+    @EnvironmentObject var referralService: ReferralService
     @State private var selectedTab: Int = 0
 
     var body: some View {
@@ -39,11 +40,19 @@ struct MainTabView: View {
                     }
                     .tag(4)
 
+                // Referral Tab mit Badge wenn Rewards ausstehen
+                ReferralView()
+                    .tabItem {
+                        Label("Einladen", systemImage: "person.badge.plus")
+                    }
+                    .tag(5)
+                    .badge(appState.referralBadgeCount > 0 ? appState.referralBadgeCount : 0)
+
                 SettingsView()
                     .tabItem {
                         Label("Einstellungen", systemImage: "gearshape.fill")
                     }
-                    .tag(5)
+                    .tag(6)
             }
             .tint(.scGold)
 
@@ -58,8 +67,18 @@ struct MainTabView: View {
                 .transition(.opacity)
                 .zIndex(100)
             }
+
+            // Referral Reward overlay — wenn Freund erfolgreich registriert
+            if referralService.showNewReward, let reward = referralService.latestReward {
+                ReferralRewardView(reward: reward) {
+                    referralService.dismissNewReward()
+                }
+                .transition(.opacity)
+                .zIndex(200)
+            }
         }
         .animation(.easeInOut(duration: 0.3), value: streakService.showMilestoneCelebration)
+        .animation(.easeInOut(duration: 0.3), value: referralService.showNewReward)
     }
 }
 
