@@ -1,0 +1,241 @@
+================================================================================
+GEN:SELFCORE — HETZNER SERVER DEPLOYMENT
+Funktioniert auch komplett vom Handy aus (mit Termius App)
+================================================================================
+
+VORBEREITUNG AM HANDY:
+  1. "Termius" aus dem App Store laden (kostenlos)
+  2. Hetzner Konsole öffnen: console.hetzner.cloud
+  3. Deine Server-IP + Root-Passwort bereithalten
+
+================================================================================
+SCHRITT 1 — MIT TERMIUS VERBINDEN
+================================================================================
+
+In Termius:
+  + New Host
+  Hostname: [deine Hetzner Server IP]
+  Username: root
+  Password: [dein Root-Passwort]
+  → Connect
+
+Du bist jetzt auf dem Server. Alles ab hier sind Befehle die du eintippst.
+
+================================================================================
+SCHRITT 2 — ORDNER FÜR GEN:SELFCORE ERSTELLEN
+================================================================================
+
+  (Deine andere App ist z.B. in /var/www/andere-app — wir machen einen neuen Ordner)
+
+  mkdir -p /var/www/genselfcore/data/lessons
+  cd /var/www/genselfcore
+
+================================================================================
+SCHRITT 3 — NODE.JS PRÜFEN (ist schon installiert wegen anderer App)
+================================================================================
+
+  node --version
+  npm --version
+
+  Wenn beide eine Versionsnummer zeigen: ✅ weiter mit Schritt 4
+  Falls nicht installiert:
+    curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+    apt-get install -y nodejs
+
+================================================================================
+SCHRITT 4 — SERVER-DATEIEN HOCHLADEN
+================================================================================
+
+OPTION A: Per GitHub (empfohlen)
+  cd /var/www/genselfcore
+  git clone https://github.com/testerking434/rust-maps.git temp
+  cp temp/SELFCORE/SERVER/server.js .
+  cp temp/SELFCORE/SERVER/package.json .
+  cp temp/SELFCORE/SERVER/join.html .
+  cp temp/SELFCORE/SERVER/apple-app-site-association .
+  rm -rf temp
+
+OPTION B: Direkt auf Server tippen (kleiner server.js)
+  Dateien per nano erstellen:
+  nano server.js
+  (Inhalt von server.js reinkopieren, dann Ctrl+X → Y → Enter)
+
+================================================================================
+SCHRITT 5 — ABHÄNGIGKEITEN INSTALLIEREN
+================================================================================
+
+  cd /var/www/genselfcore
+  npm install
+
+  (Installiert: express, bcryptjs, jsonwebtoken, cors)
+  Dauert ca. 30 Sekunden.
+
+================================================================================
+SCHRITT 6 — UMGEBUNGSVARIABLEN SETZEN
+================================================================================
+
+  nano .env
+
+  Folgendes reinkopieren (WICHTIG: JWT_SECRET durch einen langen zufälligen
+  String ersetzen — mindestens 32 Zeichen):
+
+  PORT=3001
+  JWT_SECRET=MeinSuperGeheimesPasswortFuerJWT2024Selfcore!XyZ
+
+  Speichern: Ctrl+X → Y → Enter
+
+  Dann in server.js sicherstellen dass .env geladen wird:
+  npm install dotenv
+
+  Ganz oben in server.js als ERSTE Zeile einfügen:
+  require('dotenv').config();
+
+================================================================================
+SCHRITT 7 — PM2 INSTALLIEREN (damit Server nach Neustart weiterläuft)
+================================================================================
+
+  npm install -g pm2
+
+  Server starten:
+  pm2 start server.js --name genselfcore
+
+  Prüfen ob er läuft:
+  pm2 status
+
+  Beim Serverneustart automatisch starten:
+  pm2 startup
+  pm2 save
+
+  Logs anschauen:
+  pm2 logs genselfcore
+
+================================================================================
+SCHRITT 8 — TESTEN OB SERVER LÄUFT
+================================================================================
+
+  curl http://localhost:3001/health
+
+  Antwort sollte sein:
+  {"status":"ok","app":"GEN:SELFCORE","port":3001}
+
+  ✅ Server läuft!
+
+================================================================================
+SCHRITT 9 — NGINX KONFIGURIEREN
+================================================================================
+
+  nano /etc/nginx/sites-available/selfcore
+
+  Den Inhalt von nginx_selfcore.conf reinkopieren.
+  WICHTIG: "DEINE_TEAM_ID" in apple-app-site-association später ersetzen.
+
+  Speichern, dann:
+
+  ln -s /etc/nginx/sites-available/selfcore /etc/nginx/sites-enabled/
+  nginx -t
+
+  Wenn "syntax is ok" erscheint:
+  systemctl reload nginx
+
+================================================================================
+SCHRITT 10 — SSL ZERTIFIKAT (HTTPS, kostenlos)
+================================================================================
+
+  Falls certbot noch nicht installiert:
+  apt install certbot python3-certbot-nginx -y
+
+  Zertifikat holen:
+  certbot --nginx -d api.genselfcore.de -d genselfcore.de -d www.genselfcore.de
+
+  E-Mail eingeben, Bedingungen akzeptieren → fertig!
+  Certbot richtet HTTPS automatisch ein.
+
+================================================================================
+SCHRITT 11 — DNS BEI HETZNER EINSTELLEN
+================================================================================
+
+  In Hetzner DNS Console (dns.hetzner.com):
+
+  Typ    Name    Wert
+  ----   ------  ------------------
+  A      @       [deine Server IP]
+  A      www     [deine Server IP]
+  A      api     [deine Server IP]
+
+  Warten 5-10 Min bis DNS propagiert ist.
+
+================================================================================
+SCHRITT 12 — WEBSITE-ORDNER ERSTELLEN
+================================================================================
+
+  mkdir -p /var/www/genselfcore
+  cp /var/www/genselfcore/join.html /var/www/genselfcore/
+  cp /var/www/genselfcore/apple-app-site-association /var/www/genselfcore/.well-known/
+
+  (Erstmal reicht eine einfache index.html als Platzhalter)
+  echo '<html><body style="background:#0A0A0A;color:#F5A623;font-family:sans-serif;text-align:center;padding:50px"><h1>GEN:SELFCORE</h1><p>Coming Soon</p></body></html>' > /var/www/genselfcore/index.html
+
+================================================================================
+FERTIG — ABSCHLUSS-CHECK
+================================================================================
+
+  Folgendes testen:
+
+  1. https://api.genselfcore.de/health
+     → Antwort: {"status":"ok","app":"GEN:SELFCORE","port":3001}
+
+  2. https://genselfcore.de/join?ref=TEST123
+     → Zeigt die Einladungsseite mit Code TEST123
+
+  3. https://genselfcore.de/.well-known/apple-app-site-association
+     → Zeigt JSON mit applinks
+
+  4. In der App: Login-Screen öffnen, registrieren versuchen
+     → Sollte funktionieren!
+
+================================================================================
+LEKTIONEN HOCHLADEN (deine 42 Lektionen)
+================================================================================
+
+Jede Lektion als JSON-Datei:
+  /var/www/genselfcore/data/lessons/awakening.json
+
+Format für die Lektion-Liste:
+  [
+    {
+      "id": "awakening-01",
+      "courseId": "awakening",
+      "title": "Der erste Schritt",
+      "subtitle": "Was Erwachen wirklich bedeutet",
+      "order": 1,
+      "contentMarkdown": "# Einleitung\n\nDein Text hier...",
+      "keyInsights": ["Erkenntnis 1", "Erkenntnis 2"],
+      "exercise": {
+        "type": "journaling",
+        "prompt": "Was bedeutet Erwachen für dich?"
+      }
+    }
+  ]
+
+Konvertierungs-Tipp: Wenn deine Lektionen als Word/PDF vorliegen:
+  → ChatGPT: "Konvertiere diesen Text in JSON mit den Feldern id, title, contentMarkdown, keyInsights, exercise"
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+Server startet nicht:
+  pm2 logs genselfcore --lines 50
+
+Port schon belegt:
+  lsof -i :3001
+  (zeigt welcher Prozess Port 3001 nutzt)
+
+Nginx Fehler:
+  nginx -t
+  journalctl -u nginx --since "5 min ago"
+
+App kann sich nicht verbinden:
+  Prüfe ob APIConfig.baseURL in der App auf https://api.genselfcore.de/v1 zeigt
+
+================================================================================

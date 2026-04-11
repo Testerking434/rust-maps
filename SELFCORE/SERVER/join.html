@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GEN:SELFCORE — Einladung</title>
+
+  <!-- Open Graph / Link Preview (WhatsApp, iMessage etc.) -->
+  <meta property="og:title"       content="GEN:SELFCORE — Dein Wachstums-Companion">
+  <meta property="og:description" content="Du wurdest eingeladen! 3 Tage GEN:SIGNAL gratis für dich.">
+  <meta property="og:image"       content="https://genselfcore.de/og_image_share.png">
+  <meta property="og:url"         content="https://genselfcore.de/join">
+  <meta property="og:type"        content="website">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0A0A0A;
+      color: white;
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+      text-align: center;
+    }
+    .logo { font-size: 36px; font-weight: 800; color: #F5A623; letter-spacing: 2px; margin-bottom: 12px; }
+    .subtitle { color: #888; font-size: 16px; margin-bottom: 40px; }
+    .card {
+      background: #141414;
+      border: 1px solid #222;
+      border-radius: 20px;
+      padding: 32px;
+      max-width: 380px;
+      width: 100%;
+    }
+    .gift { font-size: 52px; margin-bottom: 16px; }
+    h1 { font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+    p  { color: #888; font-size: 15px; line-height: 1.6; margin-bottom: 24px; }
+    .highlight { color: #00C9C9; font-weight: 600; }
+    .btn {
+      display: block;
+      background: linear-gradient(135deg, #F5A623, #FFD700);
+      color: #000;
+      font-weight: 700;
+      font-size: 17px;
+      padding: 16px 24px;
+      border-radius: 14px;
+      text-decoration: none;
+      margin-bottom: 12px;
+    }
+    .btn-secondary {
+      display: block;
+      color: #888;
+      font-size: 14px;
+      text-decoration: none;
+      padding: 8px;
+    }
+    .code-badge {
+      display: inline-block;
+      background: #1A1A1A;
+      border: 1px solid #F5A623;
+      color: #F5A623;
+      font-family: monospace;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">GEN:SELFCORE</div>
+  <div class="subtitle">Persönlichkeit · Wachstum · Signal</div>
+
+  <div class="card">
+    <div class="gift">🎁</div>
+    <h1>Du wurdest eingeladen!</h1>
+    <p>Dein Freund hat dich zu GEN:SELFCORE eingeladen.<br>
+       Als Willkommensgeschenk bekommst du<br>
+       <span class="highlight">3 Tage GEN:SIGNAL gratis</span>.</p>
+
+    <div class="code-badge" id="codeDisplay">------</div>
+
+    <a href="#" class="btn" id="appStoreBtn">
+      App kostenlos laden →
+    </a>
+    <a href="https://apps.apple.com/app/genselfcore" class="btn-secondary">
+      Direkt zum App Store
+    </a>
+  </div>
+
+  <script>
+    // Ref-Code aus URL extrahieren und in Cookie speichern
+    const params  = new URLSearchParams(window.location.search);
+    const refCode = params.get('ref');
+
+    if (refCode) {
+      // 30 Tage Cookie
+      document.cookie = `selfcore_ref=${refCode}; max-age=2592000; path=/; SameSite=Lax`;
+      document.getElementById('codeDisplay').textContent = refCode;
+
+      // Universal Link — öffnet App direkt falls installiert, sonst App Store
+      const appLink = `https://genselfcore.de/join?ref=${refCode}`;
+      document.getElementById('appStoreBtn').href = appLink;
+    } else {
+      document.getElementById('appStoreBtn').href = 'https://apps.apple.com/app/genselfcore';
+      document.getElementById('codeDisplay').style.display = 'none';
+    }
+
+    // Versuche App zu öffnen (falls schon installiert)
+    if (refCode) {
+      setTimeout(() => {
+        window.location = `selfcore://join?ref=${refCode}`;
+      }, 500);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "DEINE_TEAM_ID.de.genselfcore.app",
+        "paths": ["/join", "/join/*"]
+      }
+    ]
+  }
+}
