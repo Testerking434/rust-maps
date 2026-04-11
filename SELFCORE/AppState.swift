@@ -33,14 +33,53 @@ class AppState: ObservableObject {
         }
     }
 
-    // MARK: - Login
+    // MARK: - Login: Apple ID
 
-    func login(email: String, password: String) async throws {
-        let response = try await APIService.shared.login(email: email, password: password)
-        await loginWithToken(response.token, user: response.user)
+    func loginWithApple(identityToken: String, fullName: PersonNameComponents?, email: String?, referralCode: String?) async throws {
+        let response = try await APIService.shared.loginWithApple(
+            identityToken: identityToken,
+            fullName: fullName,
+            email: email,
+            referralCode: referralCode
+        )
+        await handleAuthResponse(response)
     }
 
-    /// Called after registration (or login) when we already have a token + user object.
+    // MARK: - Login: Google
+
+    func loginWithGoogle(idToken: String, referralCode: String?) async throws {
+        let response = try await APIService.shared.loginWithGoogle(
+            idToken: idToken,
+            referralCode: referralCode
+        )
+        await handleAuthResponse(response)
+    }
+
+    // MARK: - Login: E-Mail
+
+    func loginWithEmail(email: String, password: String) async throws {
+        let response = try await APIService.shared.loginWithEmail(email: email, password: password)
+        await handleAuthResponse(response)
+    }
+
+    func registerWithEmail(name: String, email: String, password: String, referralCode: String?) async throws {
+        let response = try await APIService.shared.registerWithEmail(
+            name: name, email: email, password: password, referralCode: referralCode
+        )
+        await handleAuthResponse(response)
+    }
+
+    // MARK: - Shared auth handler
+
+    private func handleAuthResponse(_ response: LoginResponse) async {
+        APIConfig.token = response.token
+        self.profile = response.user
+        self.isLoggedIn = true
+        cacheProfile(response.user)
+        Task { await refreshData() }
+    }
+
+    /// Legacy: Called after registration (or login) when we already have a token + user object.
     func loginWithToken(_ token: String, user: UserProfile) async {
         APIConfig.token = token
         self.profile = user
@@ -50,6 +89,7 @@ class AppState: ObservableObject {
     }
 
     func logout() {
+        Task { try? await APIService.shared.logout() }
         APIConfig.token = nil
         profile = nil
         courses = Course.allCourses
@@ -57,6 +97,15 @@ class AppState: ObservableObject {
         todayCheckIn = nil
         isLoggedIn = false
         UserDefaults.standard.removeObject(forKey: "cachedProfile")
+    }
+
+    func deleteAccount() async {
+        do {
+            try await APIService.shared.deleteAccount()
+        } catch {
+            print("Account delete error: \(error)")
+        }
+        logout()
     }
 
     // MARK: - Data Refresh

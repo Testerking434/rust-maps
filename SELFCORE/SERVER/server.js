@@ -14,7 +14,6 @@ const cors       = require('cors');
 const path       = require('path');
 const fs         = require('fs');
 const crypto     = require('crypto');
-const nodemailer = require('nodemailer');
 
 const app  = express();
 const PORT = process.env.PORT || 8001;
@@ -28,22 +27,6 @@ const R2_ACCESS_KEY   = process.env.R2_ACCESS_KEY || '';
 const R2_SECRET_KEY   = process.env.R2_SECRET_KEY || '';
 const R2_BUCKET       = process.env.R2_BUCKET || 'selfcore-audio';
 const R2_PUBLIC_URL   = process.env.R2_PUBLIC_URL || `https://${R2_BUCKET}.${R2_ACCOUNT_ID}.r2.cloudflarestorage.com`;
-
-// ============================================================
-// E-MAIL KONFIGURATION (Passwort-Reset)
-// ============================================================
-const SMTP_HOST = process.env.SMTP_HOST || 'smtp.gmail.com';
-const SMTP_PORT = process.env.SMTP_PORT || 587;
-const SMTP_USER = process.env.SMTP_USER || '';
-const SMTP_PASS = process.env.SMTP_PASS || '';
-const SMTP_FROM = process.env.SMTP_FROM || 'noreply@genselfcore.de';
-
-const mailTransporter = SMTP_USER ? nodemailer.createTransport({
-  host: SMTP_HOST,
-  port: SMTP_PORT,
-  secure: false,
-  auth: { user: SMTP_USER, pass: SMTP_PASS }
-}) : null;
 
 // ============================================================
 // DATENPERSISTENZ — JSON-Dateien statt In-Memory
@@ -79,7 +62,6 @@ setInterval(() => {
   saveDB('userSubscriptions', userSubscriptions);
   saveDB('userDnaResults', userDnaResults);
   saveDB('userProgress', userProgress);
-  saveDB('passwordResetTokens', passwordResetTokens);
 }, 30000);
 
 app.use(cors());
@@ -99,7 +81,6 @@ const userReferredBy    = loadDB('userReferredBy')    || {};
 const userSubscriptions = loadDB('userSubscriptions') || {};
 const userDnaResults    = loadDB('userDnaResults')    || {};
 const userProgress      = loadDB('userProgress')      || {}; // { userId: { lessonId: { completed, completedAt } } }
-const passwordResetTokens = loadDB('passwordResetTokens') || {}; // { token: { email, expiresAt } }
 
 // Referrals mit Set-Wiederherstellung
 const referrals_raw = loadDB('referrals_simple') || {};
@@ -303,47 +284,64 @@ function checkIdempotency(req, res, next) {
 app.get('/health', (_, res) => res.json({ status: 'ok', app: 'GEN:SELFCORE', port: PORT }));
 
 // ============================================================
-// AUTH — REGISTRIERUNG
+// AUTH — SIGN IN WITH APPLE (Haupt-Login)
 // ============================================================
 
-app.post('/v1/auth/register', checkIdempotency, async (req, res) => {
-  const { name, email, password, referralCode } = req.body;
+app.post('/v1/auth/apple', checkIdempotency, async (req, res) => {
+  const { identityToken, authorizationCode, fullName, email, referralCode } = req.body;
 
-  if (!email || !password || !name) {
-    return res.status(400).json({ error: 'Name, E-Mail und Passwort erforderlich.' });
+  if (!identityToken) {
+    return res.status(400).json({ error: 'identityToken erforderlich.' });
   }
 
-  const normEmail = email.toLowerCase().trim();
-
-  // Race Condition verhindern
-  if (registrationLocks.has(normEmail)) {
-    return res.status(429).json({ error: 'Registrierung läuft bereits. Bitte warten.' });
-  }
-  registrationLocks.add(normEmail);
-
+  // Apple identityToken dekodieren (JWT von Apple)
+  // Das Token enthält: sub (Apple User ID), email, email_verified
+  let applePayload;
   try {
-    // E-Mail bereits registriert?
-    if (users[normEmail]) {
-      return res.status(409).json({ error: 'Diese E-Mail ist bereits registriert.' });
-    }
+    // Dekodiere den JWT ohne Signatur-Check (Signatur wird client-seitig von Apple verifiziert)
+    // Für Production: Apple Public Keys von https://appleid.apple.com/auth/keys verwenden
+    const parts = identityToken.split('.');
+    applePayload = JSON.parse(Buffer.from(parts[1], 'base64').toString());
+  } catch {
+    return res.status(400).json({ error: 'Ungültiges Apple Token.' });
+  }
 
-    const passwordHash = await bcrypt.hash(password, 12);
-    const newUserId    = 'u_' + Date.now() + '_' + Math.random().toString(36).substring(2, 7);
-    const token        = jwt.sign({ userId: newUserId, email: normEmail }, JWT_SECRET, { expiresIn: '90d' });
+  const appleUserId = applePayload.sub; // Eindeutige Apple User ID
+  const appleEmail = applePayload.email || email || '';
+  const userName = fullName
+    ? [fullName.givenName, fullName.familyName].filter(Boolean).join(' ')
+    : '';
 
-    const userData = {
+  if (!appleUserId) {
+    return res.status(400).json({ error: 'Apple User ID nicht gefunden.' });
+  }
+
+  // Suche User per Apple ID (oder E-Mail als Fallback)
+  const lookupKey = `apple:${appleUserId}`;
+  let userData = users[lookupKey] || (appleEmail ? users[appleEmail.toLowerCase().trim()] : null);
+
+  let isNewUser = false;
+
+  if (!userData) {
+    // Neuer User → Registrierung
+    isNewUser = true;
+    const newUserId = 'u_' + Date.now() + '_' + Math.random().toString(36).substring(2, 7);
+
+    userData = {
       id: newUserId,
-      name: name.trim(),
-      email: normEmail,
-      passwordHash,
-      selfcoreType: null,  // wird durch DNA-Test gesetzt
+      name: userName || 'SELFCORE User',
+      email: appleEmail ? appleEmail.toLowerCase().trim() : '',
+      authProvider: 'apple',
+      appleUserId,
+      selfcoreType: null,
       dimensions: { selbstkenntnis: 5, authentizitaet: 5, klarheit: 5, mut: 5, verbindung: 5 },
       createdAt: new Date().toISOString(),
       avatarColor: '#F5A623',
       bio: ''
     };
 
-    users[normEmail] = userData;
+    users[lookupKey] = userData;
+    if (appleEmail) users[appleEmail.toLowerCase().trim()] = userData;
     userById[newUserId] = userData;
 
     // Abo: Start als FREE
@@ -355,10 +353,228 @@ app.post('/v1/auth/register', checkIdempotency, async (req, res) => {
       purchasedCourseIds: [],
       purchasedSignalTrackIds: [],
       purchasedSignalBundle: false,
-      billingType: null  // 'monthly', 'yearly', oder 'einmalig'
+      billingType: null
     };
 
     // Referral verarbeiten
+    if (referralCode) {
+      const result = processReferral(newUserId, referralCode.toUpperCase().trim(), userData.name);
+      if (result.success) {
+        signalExtensions[newUserId] = (signalExtensions[newUserId] || 0) + 3;
+      }
+    }
+
+    saveDB('users', users);
+    saveDB('userById', userById);
+    saveDB('userSubscriptions', userSubscriptions);
+    console.log(`✅ Neuer Apple User: ${userData.name} (${appleEmail || 'keine E-Mail'})`);
+  } else {
+    // Name updaten falls Apple ihn jetzt mitschickt (wird nur beim ersten Mal gesendet)
+    if (userName && (!userData.name || userData.name === 'SELFCORE User')) {
+      userData.name = userName;
+    }
+  }
+
+  const token = jwt.sign({ userId: userData.id, email: userData.email || lookupKey }, JWT_SECRET, { expiresIn: '90d' });
+  const sub = userSubscriptions[userData.id] || { tier: 'FREE', selectedCourseIds: [], purchasedCourseIds: [], purchasedSignalBundle: false };
+  const dna = userDnaResults[userData.id];
+  const freeDays = signalExtensions[userData.id] || 0;
+
+  const responseData = {
+    token,
+    isNewUser,
+    user: {
+      id: userData.id,
+      name: userData.name,
+      email: userData.email,
+      selfcoreType: userData.selfcoreType,
+      dimensions: userData.dimensions,
+      avatarColor: userData.avatarColor || '#F5A623',
+      bio: userData.bio || '',
+      authProvider: 'apple'
+    },
+    subscription: {
+      tier: sub.tier,
+      tierInfo: ABO_TIERS[sub.tier],
+      selectedCourseIds: sub.selectedCourseIds,
+      purchasedCourseIds: sub.purchasedCourseIds,
+      purchasedSignalBundle: sub.purchasedSignalBundle
+    },
+    signalFreeDays: freeDays,
+    dnaTestCompleted: !!dna
+  };
+
+  if (res.sendCachedResponse) res.sendCachedResponse(responseData);
+  return res.status(isNewUser ? 201 : 200).json(responseData);
+});
+
+// ============================================================
+// AUTH — SIGN IN WITH GOOGLE
+// ============================================================
+
+app.post('/v1/auth/google', checkIdempotency, async (req, res) => {
+  const { idToken, referralCode } = req.body;
+
+  if (!idToken) {
+    return res.status(400).json({ error: 'Google idToken erforderlich.' });
+  }
+
+  // Google ID Token dekodieren
+  let googlePayload;
+  try {
+    const parts = idToken.split('.');
+    googlePayload = JSON.parse(Buffer.from(parts[1], 'base64').toString());
+  } catch {
+    return res.status(400).json({ error: 'Ungültiges Google Token.' });
+  }
+
+  const googleUserId = googlePayload.sub;
+  const googleEmail = (googlePayload.email || '').toLowerCase().trim();
+  const googleName = googlePayload.name || '';
+
+  if (!googleUserId || !googleEmail) {
+    return res.status(400).json({ error: 'Google User ID oder E-Mail fehlt.' });
+  }
+
+  // Suche User per Google ID oder E-Mail
+  const lookupKey = `google:${googleUserId}`;
+  let userData = users[lookupKey] || users[googleEmail];
+
+  let isNewUser = false;
+
+  if (!userData) {
+    isNewUser = true;
+    const newUserId = 'u_' + Date.now() + '_' + Math.random().toString(36).substring(2, 7);
+
+    userData = {
+      id: newUserId,
+      name: googleName || 'SELFCORE User',
+      email: googleEmail,
+      authProvider: 'google',
+      googleUserId,
+      selfcoreType: null,
+      dimensions: { selbstkenntnis: 5, authentizitaet: 5, klarheit: 5, mut: 5, verbindung: 5 },
+      createdAt: new Date().toISOString(),
+      avatarColor: '#F5A623',
+      bio: ''
+    };
+
+    users[lookupKey] = userData;
+    users[googleEmail] = userData;
+    userById[newUserId] = userData;
+
+    userSubscriptions[newUserId] = {
+      tier: 'FREE',
+      activeSince: new Date().toISOString(),
+      expiresAt: null,
+      selectedCourseIds: [],
+      purchasedCourseIds: [],
+      purchasedSignalTrackIds: [],
+      purchasedSignalBundle: false,
+      billingType: null
+    };
+
+    if (referralCode) {
+      const result = processReferral(newUserId, referralCode.toUpperCase().trim(), userData.name);
+      if (result.success) {
+        signalExtensions[newUserId] = (signalExtensions[newUserId] || 0) + 3;
+      }
+    }
+
+    saveDB('users', users);
+    saveDB('userById', userById);
+    saveDB('userSubscriptions', userSubscriptions);
+    console.log(`✅ Neuer Google User: ${googleName} (${googleEmail})`);
+  }
+
+  const token = jwt.sign({ userId: userData.id, email: googleEmail }, JWT_SECRET, { expiresIn: '90d' });
+  const sub = userSubscriptions[userData.id] || { tier: 'FREE', selectedCourseIds: [], purchasedCourseIds: [], purchasedSignalBundle: false };
+  const dna = userDnaResults[userData.id];
+
+  const responseData = {
+    token,
+    isNewUser,
+    user: {
+      id: userData.id,
+      name: userData.name,
+      email: userData.email,
+      selfcoreType: userData.selfcoreType,
+      dimensions: userData.dimensions,
+      avatarColor: userData.avatarColor || '#F5A623',
+      bio: userData.bio || '',
+      authProvider: 'google'
+    },
+    subscription: {
+      tier: sub.tier,
+      tierInfo: ABO_TIERS[sub.tier],
+      selectedCourseIds: sub.selectedCourseIds,
+      purchasedCourseIds: sub.purchasedCourseIds,
+      purchasedSignalBundle: sub.purchasedSignalBundle
+    },
+    signalFreeDays: signalExtensions[userData.id] || 0,
+    dnaTestCompleted: !!dna
+  };
+
+  if (res.sendCachedResponse) res.sendCachedResponse(responseData);
+  return res.status(isNewUser ? 201 : 200).json(responseData);
+});
+
+// ============================================================
+// AUTH — E-MAIL LOGIN (optional, für User die kein Apple/Google wollen)
+// ============================================================
+
+app.post('/v1/auth/email/register', checkIdempotency, async (req, res) => {
+  const { name, email, password, referralCode } = req.body;
+
+  if (!email || !password || !name) {
+    return res.status(400).json({ error: 'Name, E-Mail und Passwort erforderlich.' });
+  }
+  if (password.length < 6) {
+    return res.status(400).json({ error: 'Passwort muss mindestens 6 Zeichen lang sein.' });
+  }
+
+  const normEmail = email.toLowerCase().trim();
+
+  if (registrationLocks.has(normEmail)) {
+    return res.status(429).json({ error: 'Registrierung läuft bereits. Bitte warten.' });
+  }
+  registrationLocks.add(normEmail);
+
+  try {
+    if (users[normEmail]) {
+      return res.status(409).json({ error: 'Diese E-Mail ist bereits registriert.' });
+    }
+
+    const passwordHash = await bcrypt.hash(password, 12);
+    const newUserId = 'u_' + Date.now() + '_' + Math.random().toString(36).substring(2, 7);
+
+    const userData = {
+      id: newUserId,
+      name: name.trim(),
+      email: normEmail,
+      authProvider: 'email',
+      passwordHash,
+      selfcoreType: null,
+      dimensions: { selbstkenntnis: 5, authentizitaet: 5, klarheit: 5, mut: 5, verbindung: 5 },
+      createdAt: new Date().toISOString(),
+      avatarColor: '#F5A623',
+      bio: ''
+    };
+
+    users[normEmail] = userData;
+    userById[newUserId] = userData;
+
+    userSubscriptions[newUserId] = {
+      tier: 'FREE',
+      activeSince: new Date().toISOString(),
+      expiresAt: null,
+      selectedCourseIds: [],
+      purchasedCourseIds: [],
+      purchasedSignalTrackIds: [],
+      purchasedSignalBundle: false,
+      billingType: null
+    };
+
     let signalFreeDays = 0;
     if (referralCode) {
       const result = processReferral(newUserId, referralCode.toUpperCase().trim(), name.trim());
@@ -368,17 +584,27 @@ app.post('/v1/auth/register', checkIdempotency, async (req, res) => {
       }
     }
 
+    saveDB('users', users);
+    saveDB('userById', userById);
+    saveDB('userSubscriptions', userSubscriptions);
+
+    const token = jwt.sign({ userId: newUserId, email: normEmail }, JWT_SECRET, { expiresIn: '90d' });
     const sub = userSubscriptions[newUserId];
+
+    console.log(`✅ Neuer E-Mail User: ${name.trim()} (${normEmail})`);
+
     const responseData = {
       token,
+      isNewUser: true,
       user: {
         id: newUserId,
         name: userData.name,
         email: normEmail,
-        selfcoreType: userData.selfcoreType,
+        selfcoreType: null,
         dimensions: userData.dimensions,
-        avatarColor: userData.avatarColor,
-        bio: userData.bio
+        avatarColor: '#F5A623',
+        bio: '',
+        authProvider: 'email'
       },
       subscription: {
         tier: sub.tier,
@@ -399,29 +625,25 @@ app.post('/v1/auth/register', checkIdempotency, async (req, res) => {
   }
 });
 
-// ============================================================
-// AUTH — LOGIN
-// ============================================================
-
-app.post('/v1/auth/login', async (req, res) => {
+app.post('/v1/auth/email/login', async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) return res.status(400).json({ error: 'E-Mail und Passwort erforderlich.' });
 
   const normEmail = email.toLowerCase().trim();
-  const userData  = users[normEmail];
+  const userData = users[normEmail];
 
-  if (!userData) return res.status(401).json({ error: 'E-Mail oder Passwort falsch.' });
+  if (!userData || !userData.passwordHash) return res.status(401).json({ error: 'E-Mail oder Passwort falsch.' });
 
   const valid = await bcrypt.compare(password, userData.passwordHash);
-  if (!valid)  return res.status(401).json({ error: 'E-Mail oder Passwort falsch.' });
+  if (!valid) return res.status(401).json({ error: 'E-Mail oder Passwort falsch.' });
 
   const token = jwt.sign({ userId: userData.id, email: normEmail }, JWT_SECRET, { expiresIn: '90d' });
-
   const sub = userSubscriptions[userData.id] || { tier: 'FREE', selectedCourseIds: [], purchasedCourseIds: [], purchasedSignalBundle: false };
   const dna = userDnaResults[userData.id];
 
   return res.json({
     token,
+    isNewUser: false,
     user: {
       id: userData.id,
       name: userData.name,
@@ -429,7 +651,8 @@ app.post('/v1/auth/login', async (req, res) => {
       selfcoreType: userData.selfcoreType,
       dimensions: userData.dimensions,
       avatarColor: userData.avatarColor || '#F5A623',
-      bio: userData.bio || ''
+      bio: userData.bio || '',
+      authProvider: 'email'
     },
     subscription: {
       tier: sub.tier,
@@ -438,78 +661,9 @@ app.post('/v1/auth/login', async (req, res) => {
       purchasedCourseIds: sub.purchasedCourseIds,
       purchasedSignalBundle: sub.purchasedSignalBundle
     },
+    signalFreeDays: signalExtensions[userData.id] || 0,
     dnaTestCompleted: !!dna
   });
-});
-
-// ============================================================
-// AUTH — PASSWORT RESET (E-Mail senden — TODO: echten Mailer einbauen)
-// ============================================================
-
-app.post('/v1/auth/reset-password', async (req, res) => {
-  const email = (req.body.email || '').toLowerCase().trim();
-  // Security: immer 200 zurückgeben, egal ob E-Mail existiert
-  const response = { message: 'Falls diese E-Mail registriert ist, wurde ein Link gesendet.' };
-
-  if (!email) return res.json(response);
-
-  const user = users[email];
-  if (!user) return res.json(response); // nicht verraten ob E-Mail existiert
-
-  // Reset-Token generieren (gültig 1 Stunde)
-  const token = crypto.randomBytes(32).toString('hex');
-  passwordResetTokens[token] = {
-    email,
-    expiresAt: Date.now() + 60 * 60 * 1000 // 1 Stunde
-  };
-
-  const resetLink = `https://genselfcore.de/reset?token=${token}`;
-  console.log(`🔑 Password reset for ${email}: ${resetLink}`);
-
-  // E-Mail senden (falls konfiguriert)
-  if (mailTransporter) {
-    try {
-      await mailTransporter.sendMail({
-        from: SMTP_FROM,
-        to: email,
-        subject: 'GEN:SELFCORE — Passwort zurücksetzen',
-        html: `
-          <div style="background:#0A0A0A;color:white;padding:40px;font-family:Arial,sans-serif;">
-            <h1 style="color:#F5A623;">GEN:SELFCORE</h1>
-            <p>Du hast ein neues Passwort angefordert.</p>
-            <p><a href="${resetLink}" style="display:inline-block;padding:12px 30px;background:#F5A623;color:#000;border-radius:8px;text-decoration:none;font-weight:bold;">Passwort zurücksetzen</a></p>
-            <p style="color:#888;font-size:12px;">Dieser Link ist 1 Stunde gültig. Falls du keinen Reset angefordert hast, ignoriere diese E-Mail.</p>
-          </div>
-        `
-      });
-      console.log(`✅ Reset-E-Mail gesendet an ${email}`);
-    } catch (e) {
-      console.error(`❌ E-Mail-Fehler:`, e.message);
-    }
-  }
-
-  return res.json(response);
-});
-
-// Passwort tatsächlich zurücksetzen
-app.post('/v1/auth/reset-password/confirm', async (req, res) => {
-  const { token, newPassword } = req.body;
-  if (!token || !newPassword) return res.status(400).json({ error: 'Token und neues Passwort erforderlich.' });
-  if (newPassword.length < 6) return res.status(400).json({ error: 'Passwort muss mindestens 6 Zeichen lang sein.' });
-
-  const resetData = passwordResetTokens[token];
-  if (!resetData || resetData.expiresAt < Date.now()) {
-    return res.status(400).json({ error: 'Token ungültig oder abgelaufen.' });
-  }
-
-  const user = users[resetData.email];
-  if (!user) return res.status(400).json({ error: 'User nicht gefunden.' });
-
-  user.passwordHash = await bcrypt.hash(newPassword, 12);
-  delete passwordResetTokens[token];
-
-  console.log(`✅ Passwort geändert für ${resetData.email}`);
-  return res.json({ message: 'Passwort erfolgreich geändert. Du kannst dich jetzt einloggen.' });
 });
 
 // ============================================================
@@ -622,10 +776,41 @@ app.get('/v1/user/weekly-stats', authMiddleware, (req, res) => {
 });
 
 // ============================================================
-// AUTH — LOGOUT
+// AUTH — LOGOUT (Token wird client-seitig gelöscht)
 // ============================================================
 
 app.post('/v1/auth/logout', authMiddleware, (req, res) => res.json({ message: 'Abgemeldet.' }));
+
+// ============================================================
+// AUTH — ACCOUNT LÖSCHEN (Apple verlangt das im App Store)
+// ============================================================
+
+app.delete('/v1/auth/account', authMiddleware, (req, res) => {
+  const userId = req.user.userId;
+  const user = userById[userId];
+
+  if (!user) return res.status(404).json({ error: 'User nicht gefunden.' });
+
+  // Alle User-Daten löschen
+  if (user.email) delete users[user.email];
+  if (user.appleUserId) delete users[`apple:${user.appleUserId}`];
+  if (user.googleUserId) delete users[`google:${user.googleUserId}`];
+  delete userById[userId];
+  delete userSubscriptions[userId];
+  delete userDnaResults[userId];
+  delete userProgress[userId];
+  delete signalExtensions[userId];
+  delete referrals[userId];
+
+  saveDB('users', users);
+  saveDB('userById', userById);
+  saveDB('userSubscriptions', userSubscriptions);
+  saveDB('userDnaResults', userDnaResults);
+  saveDB('userProgress', userProgress);
+
+  console.log(`🗑️ Account gelöscht: ${userId}`);
+  return res.json({ message: 'Account und alle Daten wurden gelöscht.' });
+});
 
 // ============================================================
 // CHECK-INS

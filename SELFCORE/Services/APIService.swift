@@ -128,33 +128,80 @@ actor APIService {
         }
     }
 
-    // MARK: - Auth
+    // MARK: - Auth: Sign in with Apple
 
-    func login(email: String, password: String) async throws -> LoginResponse {
-        let body = LoginRequest(email: email, password: password)
-        return try await makeRequest(endpoint: "/auth/login", method: "POST", body: body, requiresAuth: false)
-    }
-
-    /// Register a new account.
-    ///
-    /// Uses a **stable idempotency key** stored in UserDefaults so that retries
-    /// (network failure, app crash) never create duplicate accounts or double-credit
-    /// the referral reward on the server side.
-    func register(name: String, email: String, password: String, referralCode: String?) async throws -> LoginResponse {
-        // Retrieve – or generate once – a stable key for this registration attempt.
-        // Cleared only after a successful registration, so all retries carry the same key.
+    func loginWithApple(identityToken: String, fullName: PersonNameComponents?, email: String?, referralCode: String?) async throws -> LoginResponse {
         let idempotencyKey = Self.registrationIdempotencyKey()
 
-        let body = RegisterRequest(name: name, email: email, password: password, referralCode: referralCode)
+        struct AppleAuthRequest: Encodable {
+            let identityToken: String
+            let fullName: FullNamePayload?
+            let email: String?
+            let referralCode: String?
+        }
+
+        struct FullNamePayload: Encodable {
+            let givenName: String?
+            let familyName: String?
+        }
+
+        let namePayload = fullName.map { FullNamePayload(givenName: $0.givenName, familyName: $0.familyName) }
+        let body = AppleAuthRequest(identityToken: identityToken, fullName: namePayload, email: email, referralCode: referralCode)
+
         let response: LoginResponse = try await makeRequest(
-            endpoint: "/auth/register",
+            endpoint: "/auth/apple",
             method: "POST",
             body: body,
             requiresAuth: false,
             idempotencyKey: idempotencyKey
         )
 
-        // Success → clear the key so the next registration attempt gets a fresh one
+        Self.clearRegistrationIdempotencyKey()
+        return response
+    }
+
+    // MARK: - Auth: Sign in with Google
+
+    func loginWithGoogle(idToken: String, referralCode: String?) async throws -> LoginResponse {
+        let idempotencyKey = Self.registrationIdempotencyKey()
+
+        struct GoogleAuthRequest: Encodable {
+            let idToken: String
+            let referralCode: String?
+        }
+
+        let body = GoogleAuthRequest(idToken: idToken, referralCode: referralCode)
+        let response: LoginResponse = try await makeRequest(
+            endpoint: "/auth/google",
+            method: "POST",
+            body: body,
+            requiresAuth: false,
+            idempotencyKey: idempotencyKey
+        )
+
+        Self.clearRegistrationIdempotencyKey()
+        return response
+    }
+
+    // MARK: - Auth: E-Mail (optional)
+
+    func loginWithEmail(email: String, password: String) async throws -> LoginResponse {
+        let body = LoginRequest(email: email, password: password)
+        return try await makeRequest(endpoint: "/auth/email/login", method: "POST", body: body, requiresAuth: false)
+    }
+
+    func registerWithEmail(name: String, email: String, password: String, referralCode: String?) async throws -> LoginResponse {
+        let idempotencyKey = Self.registrationIdempotencyKey()
+
+        let body = RegisterRequest(name: name, email: email, password: password, referralCode: referralCode)
+        let response: LoginResponse = try await makeRequest(
+            endpoint: "/auth/email/register",
+            method: "POST",
+            body: body,
+            requiresAuth: false,
+            idempotencyKey: idempotencyKey
+        )
+
         Self.clearRegistrationIdempotencyKey()
         return response
     }
@@ -165,15 +212,10 @@ actor APIService {
         APIConfig.token = nil
     }
 
-    func resetPassword(email: String) async throws {
-        struct Body: Encodable { let email: String }
-        struct Empty: Decodable {}
-        let _: Empty = try await makeRequest(
-            endpoint: "/auth/reset-password",
-            method: "POST",
-            body: Body(email: email),
-            requiresAuth: false
-        )
+    func deleteAccount() async throws {
+        struct MessageResponse: Decodable { let message: String }
+        let _: MessageResponse = try await makeRequest(endpoint: "/auth/account", method: "DELETE")
+        APIConfig.token = nil
     }
 
     // MARK: - User
