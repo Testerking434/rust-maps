@@ -5,8 +5,7 @@
 ## Project
 
 - **Repo:** `testerking434/rust-maps`
-- **Purpose:** Personal Rust (game) custom maps — `.map` files for the Rust game server.
-- **Working file:** `grand-falls.map`
+- **Purpose:** ⚠️ Repo name is coincidental — **NOT about the Rust game**. Actual purpose still to be clarified with the user. Treat as a general-purpose workspace / skill playground.
 - **Owner language:** German. Reply in German by default.
 - **Primary working branch:** `claude/install-ui-ux-repo-A8tE6`
 - **Never** push directly to `main` without explicit permission.
@@ -63,7 +62,17 @@ Full iOS 26+ framework coverage: SwiftUI (all aspects + `swiftui-pro`, `swiftui-
   - Apple-native: `spritekit`, `scenekit`, `realitykit`, `gamekit`, `tabletopkit`, `metrickit`
   - **Godot:** `godot-randroids`, `godot-godogen`, `godot-godot-api`, `godot-visual-qa`
   - **Unreal:** `unreal-randroids`
-- **Custom:** `rust-map-format` — Rust (Facepunch) `.map` format, WorldSerialization protobuf, RustEdit conventions
+### 9. Marketing / Growth / Social Media (~85) — **NEW**
+Full arsenal for solo founders and creators. Sources: coreyhaines31/marketingskills (36), OpenClaudia/openclaudia-skills (47 unique), aaaronmiller/create-viral-content.
+- **Viral content / hooks:** `create-viral-content`, `thread-writer` (Twitter/X threads, Reddit), `copywriting`, `copy-editing`, `marketing-psychology` (mental models, triggers), `marketing-ideas`
+- **Social platforms:** `social-content`, `linkedin-content`, `content-calendar`, `content-repurposing`, `bluesky`, `reddit-marketing`, `podcast-marketing`, `community-marketing`, `newsletter`
+- **Video ads analysis:** `video-ad-analysis`, `ad-creative`, `facebook-ads`, `google-ads`, `linkedin-ads`, `paid-ads`, `google-ads-report`
+- **Email:** `email-sequence`, `email-subject-lines`, `cold-email`, `apollo-outreach`
+- **SEO:** `seo-audit`, `seo-content-brief`, `programmatic-seo`, `ai-seo`, `schema-markup`, `site-architecture`, `write-blog`, `write-landing`, `keyword-research`, `serp-analyzer`, `content-gap-analysis`, `ahrefs-research`, `semrush-research`, `backlink-audit`, `search-console`, `geo-query-finder`
+- **CRO / Conversion:** `page-cro`, `signup-flow-cro`, `onboarding-cro`, `popup-cro`, `form-cro`, `paywall-upgrade-cro`, `ab-test-setup`, `analytics-tracking`, `google-analytics`
+- **Growth / strategy:** `growth-strategy`, `launch-strategy`, `demand-gen`, `icp-builder`, `customer-research`, `competitor-analysis`, `competitor-alternatives`, `content-strategy`, `product-marketing`, `product-marketing-context`, `pricing-strategy`, `referral-program`, `affiliate-marketing`, `free-tool-strategy`, `lead-magnets`, `lead-magnet`, `sales-enablement`, `revops`, `churn-prevention`, `aso-audit`
+- **Brand research / monitoring:** `brand-research`, `brand-monitor`, `google-reviews`, `domain-research`
+- **Bots / integrations:** `telegram-bot`, `discord-bot`, `slack-bot`, `feishu-lark`, `hubspot`, `i18n`, `stock-images`, `ai-image-gen`
 
 ### 7. Media / Video / Audio / AI-Gen (~12)
 - **Video:** `ffmpeg`, `moviepy`, `remotion`, `playwright-recording`, `ltx2` (AI video gen)
@@ -78,18 +87,11 @@ Full iOS 26+ framework coverage: SwiftUI (all aspects + `swiftui-pro`, `swiftui-
 
 1. **This CLAUDE.md** — project-level persistent memory. Append important decisions here as they come up.
 2. **Skills as second brain** — each skill has its own SKILL.md with references. I load the right skill on demand instead of keeping everything in head.
-3. **Optional MCP memory server** for cross-session knowledge graph — can be added via `.claude/settings.json`:
-   ```json
-   {
-     "mcpServers": {
-       "memory": {
-         "command": "npx",
-         "args": ["-y", "@modelcontextprotocol/server-memory"]
-       }
-     }
-   }
-   ```
-   Not installed yet — enable only when really needed to avoid slowing startup.
+3. **✅ MCP memory server IS ACTIVE** — configured in `.claude/settings.json`, uses `@modelcontextprotocol/server-memory`. Knowledge graph stored in `.claude/memory.json` (gitignored, private). Claude can create entities, relations, and observations that persist across all future sessions in this project.
+   - Use `mcp__memory__create_entities` to store new facts/decisions
+   - Use `mcp__memory__add_observations` to enrich existing entities
+   - Use `mcp__memory__search_nodes` to recall prior context
+   - This complements CLAUDE.md: CLAUDE.md = static docs, memory.json = dynamic graph
 
 ## Workflow rules
 
@@ -110,4 +112,5 @@ Full iOS 26+ framework coverage: SwiftUI (all aspects + `swiftui-pro`, `swiftui-
 ## Changelog
 
 - **2026-04-14 (1):** Initial install of UI/UX Pro Max + 200 skills (Apple, web, game-dev). Created CLAUDE.md as persistent memory.
-- **2026-04-14 (2):** Added 100+ skills closing all gaps: Android/Kotlin/Compose (android-skill, android-ninja, jetpack-compose), Unreal + Godot (unreal-randroids, godot-*), backend languages (python-pro, rust-engineer, golang-pro, java-architect, csharp-developer, cpp-pro, php-pro, rails-expert, …), DevOps + Terraform + K8s (devops-engineer, terraform-engineer, kubernetes-specialist, sre-engineer, monitoring-expert + 20 lgbarn workflow skills), Video/Audio (ffmpeg, moviepy, remotion, elevenlabs, acestep, ltx2, qwen-edit, runpod, playwright-recording), Data Science (scikit-learn, pytorch-lightning, transformers, matplotlib, seaborn, dask, statistical-analysis, exploratory-data-analysis, pandas-pro). Built 2 custom skills: `ubuntu-server-deploy` (production Ubuntu playbook) and `rust-map-format` (Rust game .map file format, protobuf, RustEdit).
+- **2026-04-14 (2):** Added 100+ skills closing all gaps: Android/Kotlin/Compose, Unreal + Godot, backend languages (Python/Rust/Go/Java/.NET/C++/PHP/Ruby), DevOps + Terraform + K8s + 20 workflow skills, Video/Audio/AI-gen (ffmpeg/moviepy/remotion/elevenlabs/acestep/ltx2/qwen-edit), Data Science. Built custom skill `ubuntu-server-deploy`.
+- **2026-04-14 (3):** User clarified: repo name coincidental, **NOT about Rust game**. Removed `rust-map-format` custom skill. Added 84 marketing/growth skills (coreyhaines31/marketingskills + OpenClaudia/openclaudia-skills + create-viral-content) covering viral hooks, copywriting, SEO, CRO, ads, email, social platforms, growth. **Activated MCP memory server** (`@modelcontextprotocol/server-memory`) via `.claude/settings.json` for persistent cross-session knowledge graph in `.claude/memory.json`.
