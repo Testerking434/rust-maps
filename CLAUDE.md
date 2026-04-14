@@ -5,7 +5,13 @@
 ## Project
 
 - **Repo:** `testerking434/rust-maps`
-- **Purpose:** ⚠️ Repo name is coincidental — **NOT about the Rust game**. Actual purpose still to be clarified with the user. Treat as a general-purpose workspace / skill playground.
+- **Purpose:** ⚠️ Repo name is coincidental — **NOT about the Rust game**. This repo is the user's **"second brain"**: a central skill/memory hub serving every project they work on (trading EAs, social media growth, mobile apps, web, Ubuntu deploys, etc.). Treat as a persistent workspace, not a single-project repo.
+- **Active project lines the user cares about:**
+  1. **Trading bots / Expert Advisors** — building profitable MT5 EAs, especially for XAUUSD (Gold). Focus: survivable risk management, not martingale/guru scams.
+  2. **Social media growth** — TikTok / Instagram Reels / YouTube Shorts / X, viral hook engineering, algorithm exploitation, creator economy.
+  3. **Ubuntu server deploys** — frequent, production-grade.
+  4. **Apple / iOS apps** — SwiftUI production apps.
+  5. More to come.
 - **Owner language:** German. Reply in German by default.
 - **Primary working branch:** `claude/install-ui-ux-repo-A8tE6`
 - **Never** push directly to `main` without explicit permission.
