@@ -926,3 +926,84 @@ Diese Reihenfolge ist wichtig. Pinterest mag Accounts, die "fertig" wirken, bevo
 ---
 
 *Ende Board 7 (Pins 25–28). Weiter mit Board 8: Lebensdesign & Vision.*
+
+---
+
+## Board 8 — Lebensdesign & Vision
+
+### Board-Setup
+
+**Name:** `Lebensdesign & Vision`
+
+**Beschreibung (zum Kopieren):**
+> Dein Leben bewusst gestalten — ohne Goal-Setting-Workshops, ohne Vision Boards mit Stockfotos. Werte-Klarheit, Sinnfindung, Lebensentwurf. Für Menschen, die wissen wollen, wer sie werden — nicht nur, was sie erreichen. Lebensvision, Werte, Sinn im Leben, Life Design auf Deutsch.
+
+**Keywords:** lebensvision · werte · life design · lebensentwurf · sinnfindung · purpose · lebensziele · authentisches leben
+
+**Cover-Pin:** Pin 29 ("Deine Werte kennen — bevor du Ziele setzt.")
+
+> 💡 **Hinweis:** Dieses Board ist bewusst klein (3 Pins). Lebensdesign-Themen funktionieren auf Pinterest besonders gut, wenn sie **anders** sind als die übliche "Goal Setting" Flut. Deine 3 Pins setzen sich aktiv von Vision-Board-Klischees ab.
+
+---
+
+### Pin 29 — "Deine Werte kennen, bevor du Ziele setzt"
+
+**Headline:**
+> Deine Werte kennen,
+> bevor du Ziele setzt.
+
+**Sub-Line:**
+> In dieser Reihenfolge — sonst wird's ein anderes Leben.
+
+**Pinterest-Beschreibung:**
+> Die meisten Menschen setzen Ziele, ohne zu wissen, was ihnen wichtig ist. Sie kopieren Ziele aus Büchern, von LinkedIn, von Freunden. Und dann erreichen sie sie — und es fühlt sich nach nichts an. Ziele ohne Werte sind wie ein Auto ohne Lenkrad. Du fährst, aber du landest nirgendwo, wo du wirklich hinwolltest. Die richtige Reihenfolge ist: Erst Werte. Dann Ziele. Werte fragen nicht *"Was willst du?"* — sie fragen *"Was ist dir wichtig?"* Und das sind zwei sehr verschiedene Fragen. genselfcore.de
+
+**Hashtags:** `#werte #lifedesign #lebensvision #authentischleben`
+
+**Link-Ziel:** `https://genselfcore.de/foundation`
+
+**Psychologie:** Order-Reversal-Hook. Du nimmst eine bekannte Reihenfolge ("Ziele setzen") und drehst sie um. Plus: das Auto-Bild ist konkret und merkbar. Direkter Bezug zu FOUNDATION (Stufe 4), wo Werte-Arbeit stattfindet.
+
+---
+
+### Pin 30 — "Wenn du nicht weißt wohin — fang bei deinem Warum an"
+
+**Headline:**
+> Wenn du nicht weißt wohin —
+> fang bei deinem Warum an.
+
+**Sub-Line:**
+> Nicht bei der Roadmap. Bei der Wurzel.
+
+**Pinterest-Beschreibung:**
+> Du sitzt vor einer leeren Seite und sollst dein Leben planen. Nichts kommt. Du kennst das. Es liegt nicht daran, dass du faul oder unmotiviert bist. Es liegt daran, dass die Frage falsch ist. *"Wo will ich hin?"* funktioniert nur, wenn du weißt, wer du bist. Wenn nicht, jagst du Dinge, die zu jemand anderem gehören. Die richtige erste Frage ist nicht *"Was sind meine Ziele?"* — sondern *"Warum bin ich überhaupt hier?"* Nicht im großen, esoterischen Sinn. Im einfachen: Was zieht dich, wenn niemand zuschaut? Was würdest du tun, wenn du keinem mehr was beweisen müsstest? Da fängst du an. genselfcore.de
+
+**Hashtags:** `#sinnfindung #purpose #lebensvision #selbsterkenntnis`
+
+**Link-Ziel:** `https://genselfcore.de/origin`
+
+**Psychologie:** Adressiert eine sehr konkrete Avatar-Frustration: das leere-Vision-Board-Gefühl. Statt "schreib mehr Ziele auf" → "stell die richtige Frage". Plus: Die zwei Sub-Fragen am Ende sind so spezifisch, dass viele sie sofort mental zu beantworten anfangen — und das ist der Klick.
+
+---
+
+### Pin 31 — "Die 10-Werte-Übung (10 Minuten)"
+
+**Headline:**
+> Die 10-Werte-Übung.
+> 10 Minuten. Verändert alles.
+
+**Sub-Line:**
+> Speichern. Heute Abend machen.
+
+**Pinterest-Beschreibung:**
+> So einfach, dass es fast peinlich ist. So tief, dass die meisten Menschen es nach 10 Minuten nicht mehr loslassen. So geht's: 1 — Schreib in 5 Minuten 20 Werte auf, die dir wichtig sind. (Familie, Freiheit, Ruhe, Wachstum, Wahrheit, Sicherheit, Schönheit, etc.) Egal was — Hauptsache, es kommt aus dir, nicht aus einer Liste. 2 — Streich in den nächsten 3 Minuten 10 davon weg. Die unwichtigeren. 3 — Streich in den letzten 2 Minuten nochmal 5 weg. Was übrig bleibt, sind 5 Werte. Das sind die, nach denen du leben *willst*. Vergleich sie mit den 5 Werten, nach denen du gerade *lebst*. Wo ist die Lücke? Diese Lücke ist die wichtigste Information, die du dieses Jahr bekommen wirst. genselfcore.de
+
+**Hashtags:** `#wertearbeit #lifedesign #übung #werte`
+
+**Link-Ziel:** `https://genselfcore.de/foundation`
+
+**Psychologie:** Save-Magnet (nummerierte Übung, klare Zeitangabe, "speichern"-Aufforderung). Plus: die Übung selbst ist tief — sie zwingt zur Ehrlichkeit ohne zu überfordern. Und der letzte Satz (*"Diese Lücke ist die wichtigste Info dieses Jahr"*) ist ein psychologischer Anker, der hängenbleibt.
+
+---
+
+*Ende Board 8 (Pins 29–31). Weiter mit Board 9: Zitate für tiefe Denker.*
