@@ -725,3 +725,104 @@ Diese Reihenfolge ist wichtig. Pinterest mag Accounts, die "fertig" wirken, bevo
 ---
 
 *Ende Board 5 (Pins 17–20). Weiter mit Board 6: Morgen- & Abend-Rituale.*
+
+---
+
+## Board 6 — Morgen- & Abend-Rituale
+
+### Board-Setup
+
+**Name:** `Morgen- & Abend-Rituale`
+
+**Beschreibung (zum Kopieren):**
+> Rituale für Klarheit, Fokus und Selbstverbindung — ohne 5-Uhr-Aufstehen, ohne Eisbäder, ohne 90-Minuten-Routinen. Kleine, ehrliche Praktiken für hochfunktionale Menschen, die schon zu viel zu tun haben. Morgen-Routinen, Abend-Rituale, slow morning, achtsamer Tagesabschluss auf Deutsch.
+
+**Keywords:** morgenroutine · abendroutine · morning ritual · evening ritual · slow morning · achtsamkeit · daily ritual · selbstfürsorge
+
+**Cover-Pin:** Pin 22 ("5 Minuten, die deinen Tag tragen.")
+
+> 💡 **Warum Rituale-Pins funktionieren:** "Morning routine" ist eines der meistgesuchten Themen auf Pinterest weltweit. Aber 95% der Pins zeigen unerreichbare 90-Minuten-Routinen mit perfekt gestylten Bildern. Deine Chance: ehrliche, kleine, machbare Rituale. Genau das, was niemand sonst anbietet.
+
+---
+
+### Pin 21 — "Dein Morgen entscheidet, wer du heute bist"
+
+**Headline:**
+> Dein Morgen entscheidet,
+> wer du heute bist.
+
+**Sub-Line:**
+> Nicht die nächsten 12 Stunden. Die ersten 12 Minuten.
+
+**Pinterest-Beschreibung:**
+> Du musst nicht um 5 Uhr aufstehen. Du musst nicht meditieren. Du musst nicht ins Eisbad. Was du brauchst, sind 12 Minuten am Morgen, in denen du dich nicht direkt nach außen verkaufst. 12 Minuten, in denen du nicht funktionieren musst. Kein Handy. Kein Newsfeed. Keine Mails. Nur du, und ein bisschen Stille — bevor der Tag dich findet. Wenn du das schaffst, hast du den Tag schon gewonnen, bevor er anfängt. Nicht weil du produktiver bist. Sondern weil du *du* bist, bevor die Welt entscheidet, wer du heute sein sollst. genselfcore.de
+
+**Hashtags:** `#morgenroutine #slowmorning #achtsamkeit #morningritual`
+
+**Link-Ziel:** `https://genselfcore.de/awakening`
+
+**Psychologie:** Anti-Hype-Hook. Setzt sich aktiv ab von der Hustle-Culture-Morning-Routine, die der Avatar satt hat. Niedrige Hürde (12 Minuten statt 90), aber tiefe Aussage. Gibt dem Avatar Erlaubnis, *weniger* zu tun statt mehr.
+
+---
+
+### Pin 22 — "5 Minuten, die deinen Tag tragen"
+
+**Headline:**
+> 5 Minuten,
+> die deinen Tag tragen.
+
+**Sub-Line:**
+> Das einfachste Morgen-Ritual, das es gibt. Pin speichern.
+
+**Pinterest-Beschreibung:**
+> Schritt 1 — Setz dich hin. Wo auch immer. Bett, Stuhl, Boden. Egal. Schritt 2 — Atme einmal richtig durch. Lange aus. Lass die Schultern fallen. Schritt 3 — Frag dich: *"Was brauche ich heute wirklich — und nicht, was muss ich tun?"* Schritt 4 — Hör zu. Wirklich zu. Auch wenn die Antwort dich überrascht. Schritt 5 — Steh auf, mit dem, was du gehört hast, im Hinterkopf. Das ist es. Kein Journal nötig. Keine App. Keine Routine. 5 Minuten. Jeden Morgen. Wenn du es 7 Tage machst, verstehst du dich besser als nach 7 Selbsthilfebüchern. genselfcore.de
+
+**Hashtags:** `#5minutenmorgen #morgenritual #achtsamkeit #selbstverbindung`
+
+**Link-Ziel:** `https://genselfcore.de/awakening`
+
+**Psychologie:** Save-Magnet (5 nummerierte Schritte = perfekt zum Speichern). Plus: extrem niedrige Hürde (kein Material, keine App, keine Vorbereitung). Pin spricht direkt zu erschöpften Avatar: *"Du musst nicht mehr machen. Nur das hier."*
+
+---
+
+### Pin 23 — "Das Abend-Ritual, das niemand macht"
+
+**Headline:**
+> Das Abend-Ritual,
+> das niemand macht.
+
+**Sub-Line:**
+> (Aber alles verändert.)
+
+**Pinterest-Beschreibung:**
+> Alle reden über Morgen-Routinen. Niemand redet über Abend-Routinen — dabei sind sie viel mächtiger. Hier ist eines, das in 4 Minuten geht und das ich noch nirgendwo sonst gesehen habe: 1. Augen schließen. Stell dir den Tag vor wie einen Film. 2. Drück auf "Pause" beim ehrlichsten Moment des Tages — egal ob gut oder schmerzhaft. 3. Frag dich: *"Was wollte mir dieser Moment sagen?"* 4. Schreib dir EINE Antwort auf einen Zettel. Mehr nicht. Lass den Zettel auf dem Nachttisch liegen. Lies ihn morgens. Du wirst innerhalb einer Woche merken, dass du anders aufwachst — weil dein Tag jetzt einen Faden bekommt, statt auseinanderzufallen. genselfcore.de
+
+**Hashtags:** `#abendroutine #eveningritual #achtsamkeit #journaling`
+
+**Link-Ziel:** `https://genselfcore.de/awakening`
+
+**Psychologie:** Klassischer Curiosity-Hook ("das niemand macht") + sehr **konkrete**, sofort umsetzbare Übung. Plus: dieser Pin ist organisch teilbar, weil er ein "Geheim-Ritual" verspricht, das wirklich kein anderer auf Pinterest so anbietet.
+
+---
+
+### Pin 24 — "3 Fragen vor dem Schlafen"
+
+**Headline:**
+> 3 Fragen vor dem Schlafen.
+> Mehr braucht es nicht.
+
+**Sub-Line:**
+> Speichern. Heute Abend probieren.
+
+**Pinterest-Beschreibung:**
+> Statt deinen Tag mit Doomscrolling zu beenden, probier mal das hier. Drei Fragen — eine Minute pro Frage. Mehr nicht. 1. *"Wo war ich heute echt — und wo war ich nur höflich?"* 2. *"Was hat mich heute heimlich berührt — auch wenn es klein war?"* 3. *"Was nehme ich morgen mit, was ich heute gelernt habe?"* Du musst sie nicht aufschreiben. Nur ehrlich beantworten. Diese drei Fragen, jeden Abend, ändern in einer Woche mehr als jede Therapie-Session — weil du zum ersten Mal mit dir selbst sprichst, nicht über dich selbst. genselfcore.de
+
+**Hashtags:** `#abendroutine #journaling #selbstreflexion #schlafritual`
+
+**Link-Ziel:** `https://genselfcore.de/awakening`
+
+**Psychologie:** Save-Magnet (3 nummerierte Fragen). Plus: Die Fragen sind sehr **ehrlich** — sie würden in einem typischen Selbsthilfe-Pin nicht stehen. Das macht den Unterschied zwischen "noch ein Pin" und "den muss ich speichern".
+
+---
+
+*Ende Board 6 (Pins 21–24). Weiter mit Board 7: Selbstwert & Grenzen.*
