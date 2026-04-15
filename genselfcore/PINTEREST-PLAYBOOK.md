@@ -324,3 +324,102 @@ Diese Reihenfolge ist wichtig. Pinterest mag Accounts, die "fertig" wirken, bevo
 ---
 
 *Ende Board 1 (Pins 1–4). Weiter mit Board 2: Die Reise zu dir.*
+
+---
+
+## Board 2 — Die Reise zu dir — Transformation
+
+### Board-Setup
+
+**Name:** `Die Reise zu dir — Transformation`
+
+**Beschreibung (zum Kopieren):**
+> Persönliche Transformation für Menschen, die wirklich bereit sind. Kein Hype, keine schnellen Fixes, keine Floskeln — sondern ehrliche Wege zurück zu dir selbst. Wandel, Neuanfang, persönliches Wachstum auf Augenhöhe. Für alle, die spüren: "So nicht mehr." Transformation, persönliches Wachstum, Selbstfindung, Neuanfang auf Deutsch.
+
+**Keywords:** transformation · persönliches wachstum · lebensveränderung · neuanfang · selbstfindung · self transformation · personal growth · authentisch leben
+
+**Cover-Pin:** Pin 7 ("Die Reise zurück zu dir — in 5 Stufen.")
+
+---
+
+### Pin 5 — "Du bist nicht kaputt"
+
+**Headline:**
+> Du bist nicht kaputt.
+> Du bist nur müde vom Performen.
+
+**Sub-Line:**
+> Es gibt nichts zu reparieren. Nur etwas zu erinnern.
+
+**Pinterest-Beschreibung:**
+> Wir leben in einer Welt, in der jedes Unwohlsein sofort in eine Diagnose gepresst wird. Aber manchmal bist du nicht "depressiv". Manchmal bist du nicht "burnout-gefährdet". Manchmal bist du einfach nur erschöpft, weil du seit Jahren eine Version von dir spielst, die nicht ganz du ist. Das ist nicht krank. Das ist eine Einladung. Eine Einladung, die du dir selbst aussprichst — wenn du den Mut hast hinzuhören. genselfcore.de
+
+**Hashtags:** `#selbstheilung #burnoutprävention #authentischleben #innerearbeit`
+
+**Link-Ziel:** `https://genselfcore.de/awakening`
+
+**Psychologie:** Belief-Reframe (Brunson Expert Secrets). Der Avatar glaubt insgeheim "mit mir stimmt was nicht" — du nimmst diese Überzeugung und drehst sie um. Das ist kein Trost. Das ist eine neue Sicht auf die alte Geschichte.
+
+---
+
+### Pin 6 — "Selbsterkenntnis muss nicht esoterisch sein"
+
+**Headline:**
+> Selbsterkenntnis
+> muss nicht esoterisch sein.
+
+**Sub-Line:**
+> Sie kann strukturiert sein. Ehrlich. Klar.
+
+**Pinterest-Beschreibung:**
+> Wenn du nach Selbstfindung suchst, landest du irgendwann in einem Meer aus Engelkarten, Mondzyklen und "höheren Selbsten". Wenn das deins ist — schön. Wenn nicht: Es gibt einen anderen Weg. Strukturiert wie ein Studium. Ehrlich wie ein guter Freund. Klar wie ein Gespräch beim zweiten Kaffee. Ohne Ritual-Esoterik, ohne Guru-Posen, ohne Lichtarbeit. Nur ein durchdachter Prozess in 5 Stufen, der wirklich verändert was er versprechen soll. genselfcore.de
+
+**Hashtags:** `#selbsterkenntnis #ohneesoterik #strukturiertepersönlicheentwicklung #selfwork`
+
+**Link-Ziel:** `https://genselfcore.de`
+
+**Psychologie:** Contrarian-Hook + Differentiation. Du grenzt dich aktiv von der größten Konkurrenz in deiner Nische ab (Esoterik-Accounts) und sprichst exakt die Avatar-Gruppe an, die davon abgeschreckt ist. Polarisierung schafft Klarheit.
+
+---
+
+### Pin 7 — "Die Reise zurück zu dir — in 5 Stufen"
+
+**Headline:**
+> Die Reise zurück zu dir.
+> In 5 bewussten Stufen.
+
+**Sub-Line:**
+> AWAKENING · ORIGIN · GENESIS · FOUNDATION · CORE JOURNEY
+
+**Pinterest-Beschreibung:**
+> Selbstfindung ist kein einmaliger "Aha-Moment". Es ist ein Prozess — und er hat eine Struktur. GEN:SELFCORE bricht die Reise in 5 bewusste Stufen herunter: 1. AWAKENING — die Masken erkennen. 2. ORIGIN — die Wurzeln verstehen. 3. GENESIS — Erkenntnis wird Handlung. 4. FOUNDATION — das neue Fundament. 5. CORE JOURNEY — der wahre Kern. Jede Stufe baut auf der vorherigen auf. Du gehst nicht im Kreis. Du kommst voran. genselfcore.de
+
+**Hashtags:** `#selbstfindung #transformation #5stufen #persönlichkeitsentwicklung`
+
+**Link-Ziel:** `https://genselfcore.de` (Hauptseite — der "Ladder Pin", der die ganze Reise erklärt)
+
+**Psychologie:** Klarheits-Pin + Produkt-Teaser. Zeigt dem Avatar das **Mechanismus** (Schwartz Stage 3-4) — nicht nur "Selbstfindung" generisch, sondern eine konkrete, sequenzielle Methode. Das macht dich glaubwürdig. Plus: Die Stufen-Namen wecken Neugier ("Was ist Origin?").
+
+---
+
+### Pin 8 — "Was passiert, wenn die Maske fällt"
+
+**Headline:**
+> Was passiert,
+> wenn die Maske fällt.
+
+**Sub-Line:**
+> (Spoiler: nicht das, was du denkst.)
+
+**Pinterest-Beschreibung:**
+> Die meisten Menschen haben Angst vor dem Moment, in dem ihre Maske fällt. Sie denken: "Dann bin ich nichts mehr." Aber das Gegenteil ist wahr. Wenn die Maske fällt, ist da kein Loch — da ist der Mensch, der die ganze Zeit unten drunter gewartet hat. Müde, neugierig, lebendig. Nicht perfekt. Aber endlich echt. Es ist nicht der Tod von dir, den du fürchtest. Es ist die Geburt. genselfcore.de
+
+**Hashtags:** `#authentisch #wahresselbst #masken #innerearbeit`
+
+**Link-Ziel:** `https://genselfcore.de/awakening`
+
+**Psychologie:** Reframe + Belief-Break. Der Avatar trägt eine versteckte Angst: "Wenn ich aufhöre zu performen, ist nichts mehr da." Du benennst diese Angst und drehst sie um. Genau diese Mini-Erleichterung im Pin macht den Klick.
+
+---
+
+*Ende Board 2 (Pins 5–8). Weiter mit Board 3: Journaling & Reflexion.*
