@@ -1,0 +1,122 @@
+# GEN:SELFCORE — Pinterest Premium Playbook
+
+> **Dein komplettes, rechtssicheres, psychologisch optimiertes Content-System für Pinterest.**
+> Alles in diesem Dokument. Nichts mehr recherchieren.
+
+**Version:** 1.0
+**Für:** genselfcore.de
+**Methode:** Eugene Schwartz Awareness + Brunson Hook-Story-Offer + Schwartz Mass Desire — angewandt auf Pinterest für deinen spezifischen Avatar.
+
+---
+
+## Inhaltsverzeichnis
+
+1. **Strategie-Fundament** — Avatar, Voice, Positioning
+2. **Pinterest-Setup** — Profil, Bio, erste 24 Stunden
+3. **Die 10 Boards** — jedes Board mit Beschreibung, Keywords, Pins
+4. **Alle 40 Pins** — Headline, Sub, Description, Hashtags, Link, Psychologie
+5. **30-Tage Posting-Plan** — Tag-für-Tag
+6. **Design-Guide** — Farben, Fonts, Layout, Format
+7. **Kostenlose Tools** — kein Canva Pro nötig
+8. **Rechts-Check** — Coaching-Wording-Fix + Safe-Disclaimer
+9. **Launch-Checkliste** — was vor dem ersten Pin fertig sein muss
+
+---
+
+# TEIL 1 — Strategie-Fundament
+
+## 1.1 Dein Avatar (der Mensch, für den du schreibst)
+
+**In einem Satz:**
+> Hochfunktionale Menschen, 28–42, die äußerlich alles haben (Job, Beziehung, Routine, Fitness) und innerlich spüren: *"Das hier ist nicht mein Leben. Das ist nur eine Rolle, die ich gut spiele. Aber wer bin ich eigentlich?"* Sie haben schon alles probiert. Therapie, Bücher, Kurse, Podcasts. Nichts hat gegriffen. Sie suchen keine Tipps mehr — sie suchen endlich eine Antwort, die stimmt.
+
+### Was sie NICHT sind
+- ❌ Nicht krank (keine Therapie-Zielgruppe)
+- ❌ Nicht ungebildet (sie haben viel gelesen)
+- ❌ Nicht motivationslos (sie performen zu viel, nicht zu wenig)
+- ❌ Nicht offen für Esoterik (sie wollen Substanz, keine Sternzeichen)
+- ❌ Nicht auf der Suche nach noch einem Guru
+
+### Was sie wirklich fühlen (deren innere Sätze, die du nutzen wirst)
+- *"Ich weiß nicht mehr, wer ich bin, wenn ich nicht funktioniere."*
+- *"Ich hab alles, was ich wollte — und es fühlt sich nach nichts an."*
+- *"Ich hab schon alles versucht. Es muss was mit mir sein."*
+- *"Ich will nicht noch einen Kurs. Ich will endlich eine Antwort."*
+- *"Mein Kalender ist voll, mein Herz ist leer."*
+- *"Ich bin nicht depressiv. Ich bin nicht gebrochen. Ich bin nur… nicht da."*
+
+Diese Sätze sind **Copy-Gold**. Sie werden immer wieder in deinen Pins auftauchen — weil sie exakt das sagen, was dein Avatar denkt aber selten ausspricht. Wer das liest, fühlt sich verstanden. Wer sich verstanden fühlt, klickt.
+
+### Wo er/sie sich aufhält
+- **Pinterest** — ja, besonders abends und sonntags
+- **Podcasts** — stundenlang, oft auf dem Weg zur Arbeit
+- **Bücher** — Selbstentwicklung, Psychologie-Bestseller, Philosophie-Leicht
+- **Instagram** — beobachtet, postet kaum
+- **TikTok** — heimlich, nachts
+
+## 1.2 Deine Markenstimme
+
+Drei Wörter, die GEN:SELFCORE IST:
+1. **Ehrlich** (keine Beschönigung, keine Hype-Versprechen)
+2. **Auf Augenhöhe** (kein "ich oben, du unten", kein Guru-Ton)
+3. **Klar** (kein Schwurbeln, keine Esoterik-Sprache)
+
+Drei Wörter, die GEN:SELFCORE NICHT IST:
+1. ❌ **Hype** ("BLOW YOUR MIND!!! 🔥🚀")
+2. ❌ **Esoterisch** ("Aktiviere dein höchstes Selbst ✨")
+3. ❌ **Belehrend** ("Du musst endlich aufhören zu…")
+
+### Der Stimm-Test (gilt für jeden Pin, jede Beschreibung, jede E-Mail)
+Würde ein kluger, ruhiger Freund dir das **so** sagen, beim Kaffee, ohne dich zu bekehren oder zu verkaufen?
+- **Ja** → schreib es so.
+- **Nein** → umschreiben.
+
+### Beispiel
+- ❌ *"Aktiviere JETZT dein wahres Selbst! In nur 6 Wochen transformierst du dein Leben für immer!"*
+- ❌ *"Lass die Dunkelheit los und umarme dein Lichtwesen ✨"*
+- ✅ *"Du weißt, dass etwas fehlt. Du kannst es nur nicht benennen. Das ist kein Problem — das ist der Anfang."*
+
+## 1.3 Dein Positioning
+
+> **GEN:SELFCORE ist der einzige sequenzielle 5-Stufen-Prozess für hochfunktionale Menschen, die alles im Außen haben und innerlich nichts fühlen. Kein Coaching. Kein Therapie-Ersatz. Keine Esoterik. Ein ehrlicher, strukturierter Weg zurück zu dir selbst.**
+
+### Die Lücke, die du füllst (und warum nichts sonst passt)
+
+| Andere Lösungen | Warum sie für deinen Avatar nicht funktionieren |
+|---|---|
+| **Therapeuten** | Zu klinisch — "Ich bin doch nicht krank" |
+| **Business-Coaches** | Zu zielorientiert — "Ich weiß doch gar nicht was ich will" |
+| **Spirituelle Accounts** | Zu schwammig — "Ich brauche Struktur, keine Engelbotschaften" |
+| **Self-Help Bücher** | Theorie ohne Transformation — "Ich weiß viel und fühle nichts" |
+| **Gurus / Programme** | Alle versprechen Erleuchtung — keiner liefert Substanz |
+
+**Die Lücke zwischen "zu klinisch" und "zu schwammig", zwischen "zu zielorientiert" und "zu theoretisch" — dort lebt GEN:SELFCORE.**
+
+## 1.4 Die 5 Stufen (dein einzigartiges System)
+
+Dein USP: **Sequenziell, strukturiert, ehrlich, in 5 bewussten Stufen.**
+
+1. **AWAKENING** (29,99 €) — Der erste Schritt. Die Masken erkennen. Erkennen, dass da etwas ist.
+2. **ORIGIN** (39,99 €) — Die Wurzeln. Wer du warst, bevor du wurdest, was du musstest.
+3. **GENESIS** (49,99 €) — Der Moment, in dem Erkenntnis zu Handlung wird.
+4. **FOUNDATION** (59,99 €) — Das Fundament deines neuen Selbst.
+5. **CORE JOURNEY** (69,99 €) — Die Vollendung. Der Kern, den du gesucht hast.
+
+**Bundle:** ALLE 5 STUFEN — 149,99 € (statt 249,95 €)
+**Premium:** KOMPLETT + BEGLEITUNG — 249,98 € (ersetzt "Coaching" rechtssicher, siehe Teil 8)
+
+## 1.5 Content-Säulen (worüber du postest)
+
+Jeder Pin fällt in eine dieser 5 Säulen. So bleibt dein Content **konsistent** ohne langweilig zu werden:
+
+1. **Erkenntnis** — "Du bist nicht kaputt. Du bist nur müde vom Performen." (Avatar-Spiegel)
+2. **Werkzeug** — "7 Journaling-Fragen, die niemand stellt" (Praktische Hilfe ohne Verkauf)
+3. **Widerspruch** — "Glück ist nicht das Ziel. Es ist ein Nebenprodukt." (Gegen gängige Meinungen)
+4. **Einladung** — "Die Reise zurück zu dir — in 5 Stufen" (Produkt-Teaser)
+5. **Verbindung** — "Du bist nicht allein mit diesem Gefühl." (Zugehörigkeit)
+
+**Verteilung pro Woche:** 2× Erkenntnis, 2× Werkzeug, 1× Widerspruch, 1× Einladung, 1× Verbindung. Rotierend.
+
+---
+
+*Ende Teil 1. Weiter mit Teil 2: Pinterest-Setup.*
