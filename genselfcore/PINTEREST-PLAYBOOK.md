@@ -198,3 +198,129 @@ Diese Reihenfolge ist wichtig. Pinterest mag Accounts, die "fertig" wirken, bevo
 ---
 
 *Ende Teil 2. Weiter mit Teil 3: Die 10 Boards.*
+
+---
+
+# TEIL 3 — Die 10 Boards (Übersicht)
+
+| # | Board-Name | Pins | Inhalt |
+|---|---|---|---|
+| 1 | Self Awareness & Inner Work | 4 | Wer bin ich wirklich? Reflexion, Selbsterkenntnis |
+| 2 | Die Reise zu dir — Transformation | 4 | Persönlicher Wandel, Neuanfang, Wachstum |
+| 3 | Journaling & Reflexion | 4 | Schreibübungen, Prompts, stille Selbstbeobachtung |
+| 4 | Mindset & Mentale Klarheit | 4 | Denkweisen, Perspektivwechsel, neue Sichtweisen |
+| 5 | Muster erkennen & innere Arbeit | 4 | Wiederkehrende Themen verstehen, Trigger lesen |
+| 6 | Morgen- & Abend-Rituale | 4 | Rituale für Klarheit, Fokus, Selbstverbindung |
+| 7 | Selbstwert & Grenzen | 4 | Eigener Wert, gesunde Grenzen, Selbstrespekt |
+| 8 | Lebensdesign & Vision | 3 | Bewusst leben, Werte, Sinn finden |
+| 9 | Zitate für tiefe Denker | 3 | Worte, die zum Innehalten einladen |
+| 10 | GEN:SELFCORE — Deine Transformation | 6 | Dein Marken-Board mit allen Produkten |
+| | **Total** | **40** | |
+
+---
+
+# TEIL 4 — Alle 40 Pins (Board für Board)
+
+> **So nutzt du diesen Teil:**
+> Jeder Pin enthält alles, was du brauchst: Headline, Sub-Line, Pinterest-Beschreibung (zum Kopieren), Hashtags, Link-Ziel und eine Notiz, warum dieser Hook psychologisch funktioniert.
+>
+> Im Pin-Design selbst stehen nur **Headline + Sub-Line** (groß auf dem Bild). Die Beschreibung kommt in das Pinterest-Beschreibungsfeld unter dem Pin (wichtig für SEO!).
+
+## Board 1 — Self Awareness & Inner Work
+
+### Board-Setup
+
+**Name:** `Self Awareness & Inner Work`
+
+**Beschreibung (zum Kopieren):**
+> Wer bin ich wirklich? Inhalte für Menschen, die hinter ihre Masken schauen wollen. Selbsterkenntnis, innere Arbeit, ehrliche Selbstwahrnehmung — ohne Esoterik, ohne Klischees. Für alle, die spüren, dass da mehr ist, und endlich wissen wollen was. Self awareness, inner work, persönliche Entwicklung, Selbstreflexion auf Deutsch.
+
+**Keywords:** selbsterkenntnis · self awareness · inner work · selbstreflexion · innere arbeit · selbstwahrnehmung · persönliche entwicklung · authentisches leben
+
+**Cover-Pin:** Pin 1 ("Du weißt, dass etwas fehlt — du kannst es nur nicht benennen.")
+
+---
+
+### Pin 1 — "Du weißt, dass etwas fehlt"
+
+**Headline (groß auf Pin):**
+> Du weißt, dass etwas fehlt.
+> Du kannst es nur nicht benennen.
+
+**Sub-Line (kleiner darunter):**
+> Das ist kein Problem. Das ist der Anfang.
+
+**Pinterest-Beschreibung** (in das Beschreibungsfeld unter dem Pin):
+> Dieses leise Gefühl, dass irgendwas nicht stimmt — auch wenn äußerlich alles passt. Job läuft, Beziehung läuft, dein Leben sieht von außen gut aus. Aber innen ist da diese stille Frage, die du nicht laut aussprichst. Wenn du das kennst: Du bist nicht allein. Und du bist nicht kaputt. Du bist einfach an dem Punkt, an dem die meisten Menschen wegschauen — und du nicht mehr kannst. Genau dort beginnt die Arbeit, die wirklich was verändert. Mehr auf genselfcore.de
+
+**Hashtags:** `#selbsterkenntnis #innerwork #persönlicheentwicklung #authentischleben`
+
+**Link-Ziel:** `https://genselfcore.de/awakening`
+
+**Psychologie:** Pacing-Statement. Spiegelt das Gefühl des Avatars exakt wider, ohne ihn zu kategorisieren oder zu pathologisieren. Erzeugt sofortige Identifikation: *"Das bin ich."* Das ist der wichtigste erste Klick.
+
+---
+
+### Pin 2 — "3 leise Zeichen, dass du dich selbst verloren hast"
+
+**Headline:**
+> 3 leise Zeichen,
+> dass du dich selbst verloren hast.
+
+**Sub-Line:**
+> (Niemand sieht sie. Du auch nicht — bis jetzt.)
+
+**Pinterest-Beschreibung:**
+> Es sind nicht die offensichtlichen Krisen. Es sind die kleinen, alltäglichen Signale, die wir alle übersehen, weil wir zu sehr im Funktionieren sind. 1 — Du weißt nicht mehr, was du wirklich magst (nur was du sagst, dass du magst). 2 — Du bist erschöpft, ohne dass irgendwas Großes passiert ist. 3 — Du fühlst dich in deinem eigenen Leben wie ein Gast. Wenn dir auch nur eines davon bekannt vorkommt: Es gibt einen Weg zurück. Strukturiert, ehrlich, in 5 Stufen. genselfcore.de
+
+**Hashtags:** `#selbstverlust #innerearbeit #selbsterkenntnis #selfawareness`
+
+**Link-Ziel:** `https://genselfcore.de/awakening`
+
+**Psychologie:** "X Zeichen, dass…" ist eine der bestperformenden Pin-Strukturen weltweit (Listicle + Curiosity Gap). Die drei Zeichen sind sehr spezifisch — nicht generisch. Wer eines erkennt, klickt.
+
+---
+
+### Pin 3 — "Funktionieren ist nicht leben"
+
+**Headline:**
+> Funktionieren
+> ist nicht
+> leben.
+
+**Sub-Line:**
+> Der Unterschied, den niemand erklärt.
+
+**Pinterest-Beschreibung:**
+> Du erledigst Dinge. Du kommst pünktlich. Du erfüllst Erwartungen. Aber wann hast du das letzte Mal gespürt, dass du *lebst* — und nicht nur einen Tag *überstehst*? Es gibt einen Unterschied zwischen einem Leben, das funktioniert, und einem Leben, das sich wie deins anfühlt. Hochfunktionale Menschen verwechseln das oft. Bis irgendwas in ihnen sagt: Stop. Wenn du an diesem Punkt bist — du bist nicht der erste. Und du musst nicht alles über den Haufen werfen. Du brauchst nur einen ehrlichen ersten Schritt. genselfcore.de
+
+**Hashtags:** `#hochfunktional #selbsterkenntnis #burnoutprävention #authentischleben`
+
+**Link-Ziel:** `https://genselfcore.de/awakening`
+
+**Psychologie:** Schwartz "Performance vs Mechanism" — eine generische Wahrheit ("etwas stimmt nicht") bekommt einen sehr präzisen Namen ("funktionieren ≠ leben"). Wer sich darin erkennt, fühlt: *"Endlich jemand, der es genau benennt."*
+
+---
+
+### Pin 4 — "Die eine Frage, die niemand stellt"
+
+**Headline:**
+> Die eine Frage,
+> die niemand stellt.
+> (Aber alles verändert.)
+
+**Sub-Line:**
+> Spoiler: Sie hat nichts mit deinen Zielen zu tun.
+
+**Pinterest-Beschreibung:**
+> Wir leben in einer Welt, in der uns alle fragen, was wir machen. Was wir wollen. Wo wir hin wollen. Aber niemand fragt das eine: *Wer warst du, bevor du wurdest, was du musstest?* Diese eine Frage, ehrlich beantwortet, kann mehr verändern als zehn Jahre Selbsthilfe-Bücher. Nicht, weil sie magisch ist — sondern weil sie der Schlüssel zu allem anderen ist. Genau dort beginnt die Arbeit bei GEN:SELFCORE. Stufe 1: AWAKENING. genselfcore.de
+
+**Hashtags:** `#selbsterkenntnis #identität #innerarbeit #wahresselbst`
+
+**Link-Ziel:** `https://genselfcore.de/awakening`
+
+**Psychologie:** Curiosity-Gap-Hook in seiner reinsten Form. Die Frage selbst ist eine direkte Brücke zu deinem Produkt ORIGIN (Stufe 2). Wer hier klickt, ist schon im Funnel.
+
+---
+
+*Ende Board 1 (Pins 1–4). Weiter mit Board 2: Die Reise zu dir.*
