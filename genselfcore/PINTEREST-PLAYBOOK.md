@@ -1346,3 +1346,187 @@ Diese 10 Pins habe ich bewusst aus dem 30-Tage-Plan rausgelassen, damit du sie a
 ---
 
 *Ende Teil 5. Weiter mit Teil 6: Design-Guide.*
+
+---
+
+# TEIL 6 — Design-Guide
+
+## 6.1 Pinterest Pin-Format (zwingend einhalten)
+
+| Spec | Wert |
+|---|---|
+| **Format (aspect ratio)** | 2:3 (vertikal) |
+| **Maße** | **1080 × 1620 px** (Standard) |
+| **Größere Variante** | 1500 × 2250 px (für extra crisp display) |
+| **Maximale Größe** | 32 MB (PNG/JPG) |
+| **Empfohlenes Format** | PNG (für Text-on-Image, weil verlustfrei) |
+
+**Wichtig:** Andere Formate (1:1, 16:9, square) bekommen weniger Reichweite. Pinterest pusht 2:3 vertikal aktiv. Halt dich daran.
+
+## 6.2 Marken-Farben (aus deiner Website extrahiert)
+
+| Rolle | Hex | Wofür |
+|---|---|---|
+| **Hintergrund 1 (Hauptfarbe)** | `#0A0A14` | Dunkler, fast schwarzer Nacht-Ton (wie auf genselfcore.de) |
+| **Hintergrund 2 (Variante)** | `#000000` | Reines Schwarz für maximalen Kontrast |
+| **Hintergrund 3 (Akzent)** | `#13131F` | Sehr dunkles Blau-Schwarz für Sektions-Wechsel |
+| **Akzent / Headline** | `#F5A623` | Dein goldenes Orange (das Logo + CTAs) |
+| **Akzent hell (alternativ)** | `#FFC857` | Helleres Gold für Highlights |
+| **Text Haupt** | `#FFFFFF` | Reines Weiß für Headlines auf dunklem BG |
+| **Text Sub / Grau** | `#A0A0B0` | Gedämpftes Hellgrau für Sub-Lines |
+| **Text Footer (URL)** | `#8A8A9A` | Dezentes Grau für genselfcore.de unten |
+
+**Farb-Regel:** Nutze **maximal 3 Farben pro Pin**. Mehr wird visuell laut. Schwarz/dunkel + Gold + Weiß ist die Kombi, die für deine Marke immer funktioniert.
+
+## 6.3 Schriften (Google Fonts — kostenlos)
+
+Drei kombinierbare Fonts. Alle sind kostenlos auf [fonts.google.com](https://fonts.google.com).
+
+| Rolle | Font | Wofür |
+|---|---|---|
+| **Headline** | **Montserrat Bold** (700) oder **Poppins Bold** (700) | Die große Aussage. Sehr fett, sehr lesbar. |
+| **Headline (alternativ Serif für Quotes-Pins)** | **Cormorant Garamond** (Bold) | Für die Zitat-Pins (Board 9), wirkt edler |
+| **Sub-Line** | **Inter Regular** oder **Montserrat Regular** | Klein, ruhig, klar. Nicht ablenken vom Hauptmessage. |
+| **URL Footer** | **Inter Regular** | `genselfcore.de` ganz unten |
+
+**Schrift-Regel:** Maximal 2 Fonts pro Pin (1 Headline + 1 Sub). Mehr wirkt unprofessionell.
+
+## 6.4 Pin-Layout-Template
+
+Das Layout das du für ALLE Pins verwendest (außer Quotes-Pins, die haben eine Variante):
+
+```
+┌─────────────────────────────────┐
+│  ●  GEN:SELFCORE                │  ← Logo + Schriftzug oben links (klein)
+│                                 │     Höhe: ~80px / 1620px
+│                                 │
+│                                 │
+│   [HAUPT-HEADLINE]              │  ← Mitte, sehr groß (Schriftgröße ~80-110px)
+│   2 oder 3 Zeilen               │     Farbe: Weiß ODER Gold
+│   Bold, lesbar                  │     Centered
+│                                 │
+│   [Sub-Line]                    │  ← Direkt darunter, kleiner (~40-50px)
+│   eine ruhige Zeile             │     Farbe: Grau (#A0A0B0)
+│                                 │
+│                                 │
+│                                 │
+│   ─────                         │  ← Optionaler Trenn-Strich (gold)
+│   GENSELFCORE.DE                │  ← URL ganz unten (klein, ~30-35px)
+│                                 │     Farbe: Grau (#8A8A9A)
+└─────────────────────────────────┘
+   1080 × 1620 px (2:3)
+```
+
+**Padding (Abstand zum Rand):** Mindestens 80 px auf allen Seiten. Sonst sieht es eng aus.
+
+## 6.5 Quote-Pin-Variante (für Board 9)
+
+Quote-Pins (32, 33, 34) bekommen ein leicht anderes Layout:
+
+```
+┌─────────────────────────────────┐
+│  ●  GEN:SELFCORE                │
+│                                 │
+│                                 │
+│                                 │
+│         „                       │  ← Großes Anführungszeichen (gold, dezent)
+│                                 │
+│   Du bist nicht hier,           │  ← Quote in Cormorant Garamond Italic
+│   um zu funktionieren.          │     Sehr ruhig, nicht zu fett
+│   Du bist hier,                 │
+│   um zu leben.                  │
+│                                 │
+│                       "         │  ← Schließendes Anführungszeichen
+│                                 │
+│   — GEN:SELFCORE                │  ← Signatur in Inter, klein, gold
+│                                 │
+│   ─────                         │
+│   GENSELFCORE.DE                │
+└─────────────────────────────────┘
+```
+
+## 6.6 Was du visuell **vermeiden** musst
+
+- ❌ **Stockfotos von "happy people"** — wirkt generisch und billig
+- ❌ **Bunte Verläufe / Regenbogen-Farben** — passt nicht zur Marken-Stimmung
+- ❌ **Mehr als 3 Farben pro Pin**
+- ❌ **Mehr als 2 Schriften pro Pin**
+- ❌ **Emojis im Pin-Bild** (in der Beschreibung okay, im Bild nein)
+- ❌ **Wasserzeichen anderer Plattformen** (Insta, TikTok) — Pinterest dropped die
+- ❌ **Pin-Designs die wie Werbung aussehen** (zu poliert, zu "verkäuferisch")
+
+**Daumenregel:** Ein guter GEN:SELFCORE-Pin sieht aus wie eine **leise Aussage in einer dunklen Galerie**. Nicht wie ein Werbebanner.
+
+## 6.7 Figma-Aufbau-Anleitung (Schritt für Schritt)
+
+Wenn du Figma nutzen willst (kostenlos auf [figma.com](https://figma.com), kein Account-Limit, alles unbegrenzt). 15 Minuten Einmalig-Aufwand:
+
+### Schritt 1 — Datei + Frame anlegen
+1. figma.com → "New design file"
+2. Tastenkürzel **F** (für Frame) → in der rechten Sidebar **"Custom Size"** → Width `1080`, Height `1620`
+3. Frame umbenennen zu `Pin Template GEN:SELFCORE`
+
+### Schritt 2 — Color Styles erstellen
+1. Klick aufs Frame → Fill → ändere auf `#0A0A14`
+2. Im Fill-Picker: kleines `+` → "Create style" → Name: `BG / Dark`
+3. Wiederhol für: `Accent / Gold` (`#F5A623`), `Text / White` (`#FFFFFF`), `Text / Subtle` (`#A0A0B0`)
+
+Damit hast du **Markenfarben global definiert** — nutzbar in allen zukünftigen Pins.
+
+### Schritt 3 — Text Styles erstellen
+1. Tastenkürzel **T** → klick irgendwo aufs Frame → tippe `Headline`
+2. Schrift: **Montserrat Bold**, Size: `100`, Line Height: `110%`, Letter Spacing: `-2%`, Color: `Text / White`
+3. Im Text-Panel rechts: kleines `+` → "Create style" → Name: `Headline / Display`
+4. Wiederhol für `Sub / Body` (Inter Regular, 44 px, Color `Text / Subtle`) und `Footer / URL` (Inter Regular, 32 px, Color `Text / Subtle`)
+
+### Schritt 4 — Logo-Element oben einfügen
+1. Tastenkürzel **T** → Position oben links (X: 80, Y: 80)
+2. Tippe `● GEN:SELFCORE`
+3. Schrift: Inter Bold, 36 px, Farbe: `Accent / Gold`
+
+### Schritt 5 — Headline-Bereich (Mitte)
+1. **T** → Position centered, Y: ca. 600
+2. Text: `[Headline hier]`
+3. Style: `Headline / Display`
+4. Width: 920 px (mit Auto-Resize Vertical), Centered horizontally
+
+### Schritt 6 — Sub-Line (direkt unter Headline)
+1. **T** → unter Headline
+2. Text: `[Sub-Line hier]`
+3. Style: `Sub / Body`
+
+### Schritt 7 — Footer (genselfcore.de)
+1. **T** → Position unten centered (Y: ca. 1480)
+2. Text: `genselfcore.de`
+3. Style: `Footer / URL`
+4. Farbe: leicht goldener Touch falls gewünscht
+
+### Schritt 8 — Als Komponente speichern (wichtig!)
+1. Frame komplett markieren
+2. Rechtsklick → "Create component" (oder `Cmd+Alt+K`)
+3. Name: `Pin / Template`
+
+**Jetzt hast du eine wiederverwendbare Komponente.** Für jeden neuen Pin: rechte Sidebar → "Assets" → Pin Template ziehen → nur Texte ändern.
+
+### Schritt 9 — Export
+1. Pin-Frame markieren
+2. Rechte Sidebar unten: "Export" → `1×` → `PNG` → Export
+3. Du bekommst eine `pin.png` Datei → direkt auf Pinterest hochladen
+
+**40 Pins in Figma:** Mit Template ~1-2 Min pro Pin. Insgesamt also ca. 1 Stunde für alle 40.
+
+## 6.8 Alternativen zu Figma
+
+Falls Figma nichts für dich ist:
+
+| Tool | Vorteil | Nachteil |
+|---|---|---|
+| **Canva Free** | Sehr einfach, viele Templates | Nicht alle Features kostenlos |
+| **Photopea** (photopea.com) | Photoshop-Klon im Browser, kostenlos | Steile Lernkurve |
+| **HTML-Pin-Generator** (von mir gebaut) | Keine Software, lokal im Browser, vollkommen kostenlos | Eigene Datei, siehe `pin-generator.html` im selben Ordner |
+
+**Mein Tipp:** Wenn du **0 Lust** auf Tools hast → nutze den HTML-Pin-Generator (`pin-generator.html` im genselfcore-Ordner). Wenn du **gerne** mit Designtools arbeitest und mehr Kontrolle willst → Figma. Wenn du Canva schon kennst → Canva Free.
+
+---
+
+*Ende Teil 6. Weiter mit Teil 7: Kostenlose Tools.*
