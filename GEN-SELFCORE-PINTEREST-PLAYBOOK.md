@@ -120,3 +120,81 @@ Jeder Pin fällt in eine dieser 5 Säulen. So bleibt dein Content **konsistent**
 ---
 
 *Ende Teil 1. Weiter mit Teil 2: Pinterest-Setup.*
+
+---
+
+# TEIL 2 — Pinterest-Setup
+
+**Du brauchst:** Einen **kostenlosen Pinterest Business Account**. Nicht den normalen Account — den Business-Account, weil du nur damit Analytics + Rich Pins + Werbe-Features bekommst (alles kostenlos).
+
+**Setup-Link:** https://business.pinterest.com (oder bestehenden Account auf Business umstellen — dauert 30 Sekunden)
+
+## 2.1 Profil-Daten (1:1 zum Eintragen)
+
+| Feld | Inhalt |
+|---|---|
+| **Profilname** | `GEN:SELFCORE` |
+| **Username (URL)** | `genselfcore` (also pinterest.com/genselfcore) |
+| **Profilbild** | Dein goldenes Auge-Logo auf schwarzem Hintergrund (das aus den Screenshots), 165×165 px |
+| **Header-Bild** | Schwarz mit goldenen Akzenten + dem Schriftzug „GEN:SELFCORE — Die Reise zu deinem wahren Ich" (1600×900 px) |
+| **Website** | `https://genselfcore.de` (claim die Domain in den Pinterest-Settings — dauert 5 Min und gibt dir mehr Reichweite) |
+| **Standort** | Deutschland (oder dein Bundesland) |
+
+## 2.2 Bio-Text (zum Kopieren)
+
+**Variante A — kurz & klar (empfohlen für Start):**
+
+> *Die Reise zu deinem wahren Ich — in 5 bewussten Stufen.*
+> *Für Menschen, die alles im Außen haben und innerlich nichts fühlen.*
+> *Kein Coaching. Kein Therapie-Ersatz. Keine Esoterik.*
+> *↓ Beginn deiner Reise auf genselfcore.de*
+
+**Variante B — etwas länger, mehr Geschichte:**
+
+> *Du funktionierst perfekt — und fühlst dich trotzdem leer?*
+> *Du hast schon alles probiert — und nichts greift?*
+> *GEN:SELFCORE ist ein 5-stufiger Weg zurück zu dir selbst.*
+> *Ehrlich. Strukturiert. Ohne Hype.*
+> *↓ genselfcore.de*
+
+**Wähl A für den Start.** B kannst du später testen wenn A nicht performt.
+
+## 2.3 Domain claimen (sehr wichtig — verdoppelt deine Reichweite)
+
+Pinterest gibt dir mehr Reichweite, wenn deine Website "claimed" ist. So geht's in 5 Minuten:
+
+1. Pinterest Business Settings → "Claim" → Website
+2. Pinterest gibt dir einen HTML-Meta-Tag oder eine kleine HTML-Datei
+3. Du fügst sie auf genselfcore.de ein (Header oder Root-Verzeichnis)
+4. Pinterest verifiziert → fertig
+
+**Effekt:** Deine Pins werden als "von der verifizierten Marke" markiert + Pinterest schickt mehr Traffic auf deine Website + du bekommst Analytics für jeden Pin der zu deiner Domain führt.
+
+## 2.4 Rich Pins aktivieren (auch wichtig, kostet nichts)
+
+Rich Pins ziehen automatisch Titel, Beschreibung und Bild von deiner Webseite. Pins sehen dann **professioneller** aus und konvertieren besser.
+
+So aktivierst du sie:
+1. Open Graph Tags auf jeder Produkt-Seite einbauen (deine Webseite hat das wahrscheinlich schon — wenn nicht, sage Bescheid, ich kann den Code generieren)
+2. Pinterest Rich Pins Validator aufrufen: https://developers.pinterest.com/tools/url-debugger/
+3. Eine deiner URLs eingeben → "Validate"
+4. Pinterest aktiviert Rich Pins für deine ganze Domain
+
+## 2.5 Erste 24 Stunden (was du machst, BEVOR du den ersten Pin postest)
+
+Diese Reihenfolge ist wichtig. Pinterest mag Accounts, die "fertig" wirken, bevor sie aktiv werden:
+
+| Zeit | Aktion |
+|---|---|
+| **0:00–0:30** | Business Account erstellen, Profilbild + Header hochladen, Bio einfügen |
+| **0:30–0:45** | Domain claimen (Schritt 2.3) |
+| **0:45–1:00** | Rich Pins aktivieren (Schritt 2.4) |
+| **1:00–2:00** | Alle 10 Boards aus Teil 3 anlegen — leer ist okay, nur Name + Beschreibung + Cover |
+| **2:00–2:30** | 5–10 fremde, hochwertige Pins zu jedem Board pinnen (Pinterest mag aktive Accounts) |
+| **24h später** | Erst dann den ersten **eigenen** Pin posten |
+
+**Warum 24h warten?** Pinterest beobachtet neue Accounts. Wenn du sofort mit eigenen Pins startest, bevor das Profil "etabliert" wirkt, drosselt der Algorithmus deine Reichweite. Mit dem 24h-Setup oben startest du als "vertrauenswürdiges, organisches" Profil.
+
+---
+
+*Ende Teil 2. Weiter mit Teil 3: Die 10 Boards.*
