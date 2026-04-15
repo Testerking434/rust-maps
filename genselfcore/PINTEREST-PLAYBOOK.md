@@ -1091,3 +1091,148 @@ Diese Reihenfolge ist wichtig. Pinterest mag Accounts, die "fertig" wirken, bevo
 ---
 
 *Ende Board 9 (Pins 32–34). Weiter mit Board 10: GEN:SELFCORE Brand (Produkt-Pins).*
+
+---
+
+## Board 10 — GEN:SELFCORE — Deine Transformation
+
+### Board-Setup
+
+**Name:** `GEN:SELFCORE — Deine Transformation`
+
+**Beschreibung (zum Kopieren):**
+> Die 5 Stufen deiner Reise zurück zu dir selbst. Strukturierte digitale Kurse für hochfunktionale Menschen, die innerlich bereit sind. AWAKENING · ORIGIN · GENESIS · FOUNDATION · CORE JOURNEY. Sofort-Download. Einmalig. Kein Abo. Auf genselfcore.de
+
+**Keywords:** genselfcore · transformationskurs · selbstfindung kurs · persönliche entwicklung · awakening · origin · genesis · foundation · core journey
+
+**Cover-Pin:** Pin 40 (KOMPLETT-Bundle, das ist dein Bestseller-Pin)
+
+> 💡 **Dies ist dein Verkaufs-Board.** Hier landen alle, die durch andere Pins inspiriert wurden und mehr wissen wollen. Jeder dieser 6 Pins ist ein direkter Eingang in deinen Funnel. Pinne sie regelmäßig — und cross-poste sie auch in andere Boards (z.B. Pin 7 "Die Reise zurück zu dir" passt auch in Board 2).
+
+---
+
+### Pin 35 — AWAKENING (Stufe 1)
+
+**Headline:**
+> AWAKENING
+> Dein erster Schritt zurück zu dir.
+
+**Sub-Line:**
+> 29,99 € · Sofort-Download · Einmalig. Kein Abo.
+
+**Pinterest-Beschreibung:**
+> Stufe 1 von GEN:SELFCORE. Hier beginnt alles. AWAKENING ist für den Moment, in dem du spürst: *"Etwas stimmt nicht — aber ich kann es nicht benennen."* In 6 Modulen mit 41 Lektionen lernst du, deine Masken zu erkennen, deinen Funktionsmodus zu sehen, und endlich zu fühlen, was darunter ist. Kein Coaching. Kein Therapie-Ersatz. Keine Esoterik. Ein ehrlicher, strukturierter erster Schritt. 29,99 € · Einmalig · Sofort-Download. genselfcore.de/awakening
+
+**Hashtags:** `#awakening #selbsterkenntnis #genselfcore #transformationskurs`
+
+**Link-Ziel:** `https://genselfcore.de/awakening`
+
+**Psychologie:** Niederschwelligster Einstiegs-Pin (29,99 € = unter der "kein Risiko"-Grenze für Pinterest-Käufer). Klare Schmerzdefinition + klare Lösung + keine Hype-Versprechen. *"Erster Schritt"* nimmt jeden Druck raus — es ist nicht das ganze System, nur der Anfang.
+
+---
+
+### Pin 36 — ORIGIN (Stufe 2)
+
+**Headline:**
+> ORIGIN
+> Wo deine echte Geschichte beginnt.
+
+**Sub-Line:**
+> Stufe 2 · 39,99 € · Wer du warst, bevor du wurdest, was du musstest.
+
+**Pinterest-Beschreibung:**
+> Du hast gespürt, dass etwas fehlt (AWAKENING). Jetzt geht es darum zu verstehen, woher das kommt. ORIGIN führt dich zurück zu deinen Wurzeln — nicht im familienforschungs-Sinn, sondern in dem Sinn, in dem es wirklich zählt: Welche Geschichten hast du übernommen, ohne sie zu wählen? Welche Rollen hast du gelernt, weil du musstest? Wer wärst du, wenn du dich nicht hättest anpassen müssen? In dieser Stufe findest du nicht "die Antwort". Du findest die echte Frage. genselfcore.de/origin
+
+**Hashtags:** `#origin #wurzeln #identität #genselfcore`
+
+**Link-Ziel:** `https://genselfcore.de/origin`
+
+**Psychologie:** Bridge-Pin. Verbindet AWAKENING (Schmerzdefinition) mit ORIGIN (Verstehen woher der Schmerz kommt). Wer AWAKENING gekauft hat, sieht hier die natürliche Fortsetzung. Das ist Brunsons "Value Ladder" auf Pinterest.
+
+---
+
+### Pin 37 — GENESIS (Stufe 3)
+
+**Headline:**
+> GENESIS
+> Wenn aus Erkenntnis
+> Handlung wird.
+
+**Sub-Line:**
+> Stufe 3 · 49,99 € · Der Wendepunkt der Reise.
+
+**Pinterest-Beschreibung:**
+> Erkenntnis allein verändert nichts. Du kennst es: Du verstehst etwas — und tust es trotzdem nicht. GENESIS ist der Wendepunkt zwischen "ich weiß" und "ich tue". Es ist die Stufe, in der die Worte aus AWAKENING und ORIGIN zu Bewegung werden. Nicht durch Willenskraft. Nicht durch Disziplin. Sondern durch eine Verschiebung in dir, die du nicht erzwingen, nur einladen kannst. Ohne diese Stufe bleibst du in der Reflexionsschleife. Mit ihr beginnt der echte Wandel. genselfcore.de/genesis
+
+**Hashtags:** `#genesis #handlung #transformation #genselfcore`
+
+**Link-Ziel:** `https://genselfcore.de/genesis`
+
+**Psychologie:** Die "Wendepunkt"-Stufe. Adressiert eine konkrete Avatar-Frustration: *"Ich weiß so viel und tue so wenig."* Plus: das Pin verspricht keinen Hype-Wandel ("In 30 Tagen anders!"), sondern einen ehrlichen inneren Shift.
+
+---
+
+### Pin 38 — FOUNDATION (Stufe 4)
+
+**Headline:**
+> FOUNDATION
+> Das Fundament
+> deines neuen Selbst.
+
+**Sub-Line:**
+> Stufe 4 · 59,99 € · Werte, Vision, Lebensdesign.
+
+**Pinterest-Beschreibung:**
+> In FOUNDATION baust du auf, was die ersten drei Stufen freigelegt haben. Du arbeitest mit deinen echten Werten, nicht mit übernommenen Zielen. Du gestaltest dein Leben nach dem, was wirklich zu dir gehört — nicht nach dem, was du zu wollen gelernt hast. Diese Stufe ist der Übergang von "Erkennen" zu "Bauen". Nicht alles auf einmal. Stein für Stein. Ehrlich. Strukturiert. Endlich deins. genselfcore.de/foundation
+
+**Hashtags:** `#foundation #lebensdesign #werte #genselfcore`
+
+**Link-Ziel:** `https://genselfcore.de/foundation`
+
+**Psychologie:** "Aufbau"-Stufe. Wer durch die ersten drei Stufen gegangen ist, sucht jetzt aktiv nach dem nächsten Schritt. Dieser Pin ist ihre Antwort.
+
+---
+
+### Pin 39 — CORE JOURNEY (Stufe 5)
+
+**Headline:**
+> CORE JOURNEY
+> Der Kern,
+> den du gesucht hast.
+
+**Sub-Line:**
+> Stufe 5 · 69,99 € · Die Vollendung der Reise.
+
+**Pinterest-Beschreibung:**
+> Du hast erkannt (AWAKENING). Du hast verstanden (ORIGIN). Du hast bewegt (GENESIS). Du hast aufgebaut (FOUNDATION). Jetzt kommt der Teil, von dem die meisten dachten, er sei der erste: der Kern. CORE JOURNEY ist die Integration. Hier wird aus dem Prozess ein neuer Mensch. Nicht eine perfekte Version von dir. Sondern endlich die echte. Diese Stufe ist nicht für jeden. Sie ist für die, die wirklich angekommen sein wollen. genselfcore.de/core-journey
+
+**Hashtags:** `#corejourney #integration #wahresselbst #genselfcore`
+
+**Link-Ziel:** `https://genselfcore.de/core-journey`
+
+**Psychologie:** Die "Vollendungs"-Stufe. Höchster Einzelpreis, wird nur von denen gekauft, die schon die anderen Stufen gemacht haben (oder direkt das Bundle nehmen). Pin verkauft Identität: *"Du wirst endlich die echte Version von dir."*
+
+---
+
+### Pin 40 — KOMPLETT-BUNDLE (Bestseller)
+
+**Headline:**
+> Alle 5 Stufen.
+> Die komplette Reise.
+> 149,99 €
+
+**Sub-Line:**
+> Statt 249,95 €. Spare 99,96 € · Sofort-Download · Einmalig.
+
+**Pinterest-Beschreibung:**
+> Wenn du weißt, dass du den ganzen Weg gehen willst — nimm das Bundle. AWAKENING + ORIGIN + GENESIS + FOUNDATION + CORE JOURNEY. Alle 5 Stufen. 30 Module. 190 Lektionen. Ein durchdachter, sequenzieller Prozess. Du sparst 99,96 € gegenüber dem Einzelkauf — das ist nur ca. 30 € pro Stufe. Beliebteste Wahl bei GEN:SELFCORE. Sofort-Download. Einmalig. Kein Abo. Du kaufst es einmal — und besitzt deine Reise. genselfcore.de
+
+**Hashtags:** `#genselfcore #komplettbundle #transformation #5stufen`
+
+**Link-Ziel:** `https://genselfcore.de` (Hauptseite mit Bundle-Auswahl)
+
+**Psychologie:** Bestseller-Pin mit klarem Anker (249,95 € → 149,99 €). Brunson Value-Stack: alle 5 Komponenten + Lektion-Anzahl + Module-Anzahl + Spar-Berechnung. Plus ehrlicher Tonfall (*"Wenn du weißt, dass du den ganzen Weg gehen willst…"*) — keine Drucktaktik.
+
+---
+
+*Ende Board 10 (Pins 35–40). **Alle 40 Pins fertig.** Weiter mit Teil 5: 30-Tage Posting-Plan.*
