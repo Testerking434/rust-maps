@@ -826,3 +826,103 @@ Diese Reihenfolge ist wichtig. Pinterest mag Accounts, die "fertig" wirken, bevo
 ---
 
 *Ende Board 6 (Pins 21–24). Weiter mit Board 7: Selbstwert & Grenzen.*
+
+---
+
+## Board 7 — Selbstwert & Grenzen
+
+### Board-Setup
+
+**Name:** `Selbstwert & Grenzen`
+
+**Beschreibung (zum Kopieren):**
+> Selbstwert, gesunde Grenzen, Selbstrespekt — ohne "Boundaries are sexy"-Sprüche, ohne Toxic Positivity. Ehrliche Inhalte für Menschen, die gelernt haben, sich selbst zuletzt zu nehmen, und langsam aufhören wollen damit. Selbstwert, Grenzen setzen, gesunde Grenzen, self worth, boundaries auf Deutsch.
+
+**Keywords:** selbstwert · grenzen setzen · gesunde grenzen · selbstrespekt · self worth · boundaries · selbstliebe · people pleasing
+
+**Cover-Pin:** Pin 27 ("3 Sätze, die deinen Selbstwert verändern.")
+
+---
+
+### Pin 25 — "Hör auf, für andere zu performen"
+
+**Headline:**
+> Hör auf,
+> für andere zu performen.
+
+**Sub-Line:**
+> Sie merken es nicht. Du stirbst leise daran.
+
+**Pinterest-Beschreibung:**
+> Du machst alles richtig. Du sagst die richtigen Sätze. Du erfüllst die Erwartungen. Du bist die Person, die alle gerne in ihrer Nähe haben. Aber abends, wenn niemand mehr da ist, fühlst du dich nicht stolz — du fühlst dich leer. Das ist kein Charakterfehler. Das ist Performance-Erschöpfung. Du hast über Jahre gelernt, dass dein Wert davon abhängt, was du für andere bist. Aber das ist eine Lüge, die dich krank macht. Du musst nicht weniger nett sein. Du musst nur aufhören, dich selbst dabei zu verlieren. genselfcore.de
+
+**Hashtags:** `#peoplepleasing #selbstwert #performanceerschöpfung #grenzen`
+
+**Link-Ziel:** `https://genselfcore.de/origin`
+
+**Psychologie:** Avatar-Schmerz direkt benannt + Reframe ohne Beschuldigung. Das ist wichtig: du sagst NICHT *"Du bist ein People-Pleaser, hör auf damit"* (das ist belehrend). Du sagst: *"Du hast das gelernt, weil du musstest. Es darf jetzt anders werden."* Genau dieser Ton ist der Unterschied.
+
+---
+
+### Pin 26 — "Grenzen sind kein Egoismus"
+
+**Headline:**
+> Grenzen sind kein Egoismus.
+> Sie sind die Form,
+> in der Selbstrespekt sichtbar wird.
+
+**Sub-Line:**
+> Lies das nochmal, langsam.
+
+**Pinterest-Beschreibung:**
+> Wenn du Grenzen setzt, fühlt es sich oft an, als würdest du etwas Falsches tun. Egoistisch. Hart. Unangenehm. Aber Grenzen sind nichts davon. Grenzen sind die einfachste Sprache, in der du dir selbst sagst: *"Mein Wohlergehen zählt auch."* Sie sind kein Akt gegen andere. Sie sind ein Akt für dich. Und je länger du sie verzögerst, desto höher der Preis — den am Ende sowieso du zahlst. Grenzen sind keine Wand. Sie sind eine Tür, an der nur die rein dürfen, die dich nicht verbrauchen wollen. genselfcore.de
+
+**Hashtags:** `#grenzensetzen #selbstrespekt #boundaries #selbstwert`
+
+**Link-Ziel:** `https://genselfcore.de`
+
+**Psychologie:** Reframe-Pin. Nimmt eine Scham (*"Wenn ich Grenzen setze, bin ich egoistisch"*) und dreht sie in eine Wahrheit (*"Grenzen sind Selbstrespekt"*). Plus: das Bild von "Tür statt Wand" ist ein konkretes Mental-Model, das hängenbleibt.
+
+---
+
+### Pin 27 — "3 Sätze, die deinen Selbstwert verändern"
+
+**Headline:**
+> 3 Sätze,
+> die deinen Selbstwert verändern.
+
+**Sub-Line:**
+> Speichern. Lesen. Glauben — Schritt für Schritt.
+
+**Pinterest-Beschreibung:**
+> Selbstwert kommt nicht von Affirmationen vor dem Spiegel. Er kommt von neuen Sätzen, die deine alten ersetzen — die so wahr klingen, dass dein Körper aufhört, zu protestieren. Hier sind drei davon. Für später. Für schwere Tage. Für jetzt: 1. *"Ich darf da sein, ohne nützlich sein zu müssen."* 2. *"Mein Wert hängt nicht davon ab, wie ich gerade funktioniere."* 3. *"Ich darf einen Tag haben, an dem ich nichts beweisen muss — und der zählt trotzdem."* Drei Sätze. Pin speichern. Du wirst sie brauchen. genselfcore.de
+
+**Hashtags:** `#selbstwert #affirmationen #selbstliebe #innerwork`
+
+**Link-Ziel:** `https://genselfcore.de/awakening`
+
+**Psychologie:** Save-Magnet (3 nummerierte Sätze, explizit als "speichern für später" markiert). Plus: die Sätze sind ungewöhnlich tief — keine generischen "Ich bin genug"-Floskeln, sondern sehr konkrete Anti-Sätze gegen Performance-Mentalität.
+
+---
+
+### Pin 28 — "Warum 'Nein' die tiefste Form von Liebe sein kann"
+
+**Headline:**
+> Warum 'Nein' manchmal
+> die tiefste Form von Liebe ist.
+
+**Sub-Line:**
+> Auch wenn es sich nicht so anfühlt.
+
+**Pinterest-Beschreibung:**
+> Nein zu sagen fühlt sich falsch an, wenn du gelernt hast, dass Liebe aus Verfügbarkeit besteht. Dass du nur dann gemocht wirst, wenn du immer da bist. Aber das stimmt nicht — und du weißt es eigentlich auch. Wirkliche Liebe verlangt keine Selbstaufgabe. Wirkliche Beziehungen halten ein Nein aus. Wenn du Nein sagst und der andere Mensch geht, war es nie Liebe — es war Bedarf. Wenn er bleibt, war es Liebe, und du hast sie gerade vertieft. Beides ist okay zu wissen. Du musst nicht verfügbar sein, um wertvoll zu sein. genselfcore.de
+
+**Hashtags:** `#neinsagen #grenzen #beziehungen #selbstliebe`
+
+**Link-Ziel:** `https://genselfcore.de/origin`
+
+**Psychologie:** Tiefer Reframe für People-Pleaser. Adressiert die unterliegende Angst (*"Wenn ich Nein sage, bin ich nicht liebenswert"*) und gibt eine alternative Wahrheit. Plus: der Pin **filtert** sogar die Beziehungen des Avatars für ihn — was eine ungewöhnlich konkrete Hilfe ist.
+
+---
+
+*Ende Board 7 (Pins 25–28). Weiter mit Board 8: Lebensdesign & Vision.*
