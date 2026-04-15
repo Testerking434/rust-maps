@@ -524,3 +524,104 @@ Diese Reihenfolge ist wichtig. Pinterest mag Accounts, die "fertig" wirken, bevo
 ---
 
 *Ende Board 3 (Pins 9–12). Weiter mit Board 4: Mindset & Mentale Klarheit.*
+
+---
+
+## Board 4 — Mindset & Mentale Klarheit
+
+### Board-Setup
+
+**Name:** `Mindset & Mentale Klarheit`
+
+**Beschreibung (zum Kopieren):**
+> Neue Denkweisen, Perspektivwechsel, mentale Klarheit. Für Menschen, die tiefer denken wollen als der Durchschnitt — ohne in Toxic-Positivity-Sprüche zu verfallen. Ehrliche Gedanken über Identität, Erwartungen, Überzeugungen und die Geschichten, die wir uns selbst erzählen. Mindset, mental clarity, growth mindset, Denkmuster, Perspektivwechsel auf Deutsch.
+
+**Keywords:** mindset · mental clarity · growth mindset · denkmuster · perspektivwechsel · überzeugungen · selbstgespräch · identität
+
+**Cover-Pin:** Pin 13 ("Glück ist nicht das Ziel.")
+
+---
+
+### Pin 13 — "Glück ist nicht das Ziel"
+
+**Headline:**
+> Glück ist nicht das Ziel.
+> Es ist ein Nebenprodukt.
+
+**Sub-Line:**
+> Wovon? Davon, dass du dir endlich treu wirst.
+
+**Pinterest-Beschreibung:**
+> Wir wurden so erzogen, dass Glück das Ziel ist. Glück macht uns angeblich zu besseren Menschen. Glück soll der Beweis sein, dass wir es richtig machen. Aber Glück ist kein Ziel — es ist ein Nebenprodukt. Es entsteht, wenn dein Leben mit dir übereinstimmt. Mit deinen echten Werten, nicht denen, die andere für dich gewählt haben. Wenn du glücklich sein willst, hör auf, Glück zu jagen. Fang an, ehrlich zu werden. Das eine kommt, wenn das andere passiert. Nicht andersrum. genselfcore.de
+
+**Hashtags:** `#mindset #glück #lebensphilosophie #authentischleben`
+
+**Link-Ziel:** `https://genselfcore.de`
+
+**Psychologie:** Klassischer Contrarian-Hook (Schwartz Stage 4). Du widersprichst einer breit akzeptierten Wahrheit ("Glück ist das Ziel") und gibst einen alternativen Mechanismus, der intuitiv stimmt. Das erzeugt einen kleinen "Aha"-Moment — und Aha-Momente werden geteilt.
+
+---
+
+### Pin 14 — "Was du denkst, dass du willst"
+
+**Headline:**
+> Was du denkst, dass du willst.
+> Und was du wirklich willst.
+
+**Sub-Line:**
+> (Es ist selten dasselbe.)
+
+**Pinterest-Beschreibung:**
+> Wir alle haben Listen. Was wir wollen, was wir erreichen wollen, was unser Leben aussehen soll. Aber wenn du genauer hinschaust, bemerkst du etwas: Die meisten dieser Wünsche sind nicht deine. Sie sind die deiner Eltern. Deiner Freunde. Deines Berufsfelds. Deiner Kultur. Du hast sie irgendwann übernommen, ohne sie zu hinterfragen — und jetzt jagst du Dinge, die dich, wenn du sie hast, leer zurücklassen. Die wichtigste Übung der Selbstfindung ist nicht, herauszufinden was du willst. Sondern, was du zu wollen *gelernt* hast — und was darunter wirklich da ist. genselfcore.de
+
+**Hashtags:** `#selbsterkenntnis #lebensziele #werte #identität`
+
+**Link-Ziel:** `https://genselfcore.de/origin`
+
+**Psychologie:** Belief-Reframe + Identifikation. Adressiert direkt einen der größten unausgesprochenen Verdachte des Avatars: *"Vielleicht ist das alles gar nicht meins."* Plus: Direkter Bezug zu ORIGIN (Stufe 2), wo dieses Thema im Produkt vertieft wird.
+
+---
+
+### Pin 15 — "3 Denkfehler hochfunktionaler Menschen"
+
+**Headline:**
+> 3 Denkfehler,
+> die hochfunktionale Menschen
+> gemeinsam haben.
+
+**Sub-Line:**
+> Speichern und ehrlich prüfen.
+
+**Pinterest-Beschreibung:**
+> Hochfunktionale Menschen sind klug, organisiert, leistungsstark — und genau deshalb tappen sie immer wieder in dieselben drei Denkfehler. 1 — *"Wenn ich nur härter arbeite, fühle ich mich irgendwann gut."* (Falsch. Mehr Leistung verstärkt nur das Loch unten drunter.) 2 — *"Ich bin doch eigentlich glücklich. Ich darf mich nicht beschweren."* (Falsch. Privilegien und innere Leere schließen sich nicht aus.) 3 — *"Ich muss das alleine schaffen."* (Falsch. Selbstfindung ist nicht weniger ehrlich, nur weil sie geführt wird.) Erkennst du dich? Du bist nicht allein. genselfcore.de
+
+**Hashtags:** `#hochfunktional #denkmuster #mindset #burnoutprävention`
+
+**Link-Ziel:** `https://genselfcore.de`
+
+**Psychologie:** Listicle (3 Fehler = scannbar) + sehr **spezifisch** für Avatar (nicht "Menschen", sondern "hochfunktionale Menschen"). Das erzeugt ein "Ja, das bin ich" auf jeder Zeile. Plus: Fehler #3 demontiert subtil die Idee, dass man Selbstentwicklung alleine machen muss — was deinem Produkt den Weg ebnet.
+
+---
+
+### Pin 16 — "Mentale Klarheit beginnt mit einer unbequemen Frage"
+
+**Headline:**
+> Mentale Klarheit
+> beginnt mit einer
+> unbequemen Frage.
+
+**Sub-Line:**
+> Bist du bereit, sie zu hören?
+
+**Pinterest-Beschreibung:**
+> Wir denken, mentale Klarheit kommt durch Listen, Routinen, Meditation, Optimierung. Aber sie kommt durch etwas anderes: durch unbequeme Ehrlichkeit. Hier ist die Frage, mit der du anfangen kannst — wenn du bereit bist: *"Welche Lüge erzähle ich mir gerade, damit ich nichts ändern muss?"* Lies sie nochmal. Setz dich hin. Nimm dir 10 Minuten. Was kommt? Mentale Klarheit ist kein Tool. Sie ist der Mut, hinzusehen. genselfcore.de
+
+**Hashtags:** `#mentaleklarheit #ehrlichkeit #selbstreflexion #innerwork`
+
+**Link-Ziel:** `https://genselfcore.de/awakening`
+
+**Psychologie:** Direkter Identitäts-Trigger. Die Frage selbst ist so unbequem, dass viele sie nicht beantworten *wollen* — aber genau deshalb pinnen sie den Pin (zum Speichern für später). Das ist Pinterest-Gold: Pins, die zu unbequem sind um sofort gelesen zu werden, aber zu wichtig um vergessen zu werden.
+
+---
+
+*Ende Board 4 (Pins 13–16). Weiter mit Board 5: Muster erkennen & innere Arbeit.*
