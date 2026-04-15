@@ -1236,3 +1236,113 @@ Diese Reihenfolge ist wichtig. Pinterest mag Accounts, die "fertig" wirken, bevo
 ---
 
 *Ende Board 10 (Pins 35–40). **Alle 40 Pins fertig.** Weiter mit Teil 5: 30-Tage Posting-Plan.*
+
+---
+
+# TEIL 5 — Der 30-Tage Posting-Plan
+
+## Die Regeln
+
+1. **1 Pin pro Tag.** Mehr ist nicht besser. Pinterest belohnt **Konsistenz**, nicht Volumen.
+2. **Nie 2 Tage hintereinander dasselbe Board.** Der Algorithmus mag Variation.
+3. **Content-Säulen rotieren** (Erkenntnis, Werkzeug, Widerspruch, Einladung, Verbindung).
+4. **Brand-Pins verteilt** — ca. 1 pro Woche, nicht klumpig. Letzte 2 Tage: Conversion-Push.
+5. **Save-Magnets** (Pin 9, 12, 16, 22, 24, 27, 31) bewusst über die Wochen verteilt.
+6. **Cross-Posting** — bestimmte Pins können auf 2-3 Boards gepinnt werden (siehe Spalte "Auch auf").
+7. **Beste Posting-Zeit auf Pinterest (DACH-Raum):** abends 19:00–22:00 Uhr **oder** sonntags vormittags. Nicht nachts, nicht montags früh.
+
+## Phasen-Logik des 30-Tage Plans
+
+| Woche | Phase | Strategie |
+|---|---|---|
+| **1 (Tag 1–7)** | Warm-up | Identifikation + Erkenntnis. Hauptsächlich Avatar-Spiegel-Pins. 1 Brand-Pin am Tag 4. |
+| **2 (Tag 8–14)** | Vertiefung | Werkzeuge + Reframes. Save-Magnets eingestreut. 1 Brand-Pin Tag 12 (Ladder). |
+| **3 (Tag 15–21)** | Authority | Save-Magnets dominieren. Tieferer Content. 1 Brand-Pin Tag 16. |
+| **4 (Tag 22–30)** | Conversion | Mehr Brand-Pins. Tag 29 + 30 = der Push. |
+
+---
+
+## Der vollständige 30-Tage Plan
+
+| Tag | Pin # | Pin-Name | Board | Säule | Auch auf | Posting-Zeit |
+|---|---|---|---|---|---|---|
+| **Woche 1 — Warm-up** ||||||
+| 1  | 1  | Du weißt, dass etwas fehlt              | Self Awareness    | Erkenntnis | – | Mo 20:00 |
+| 2  | 9  | 7 Journaling-Fragen 🧲                  | Journaling        | Werkzeug   | Self Awareness | Di 20:00 |
+| 3  | 13 | Glück ist nicht das Ziel                | Mindset           | Widerspruch | – | Mi 20:00 |
+| 4  | 35 | **AWAKENING** Stufe 1                   | **Brand**         | **Einladung** | Reise zu dir | Do 20:00 |
+| 5  | 21 | Dein Morgen entscheidet                 | Rituale           | Werkzeug   | – | Fr 20:00 |
+| 6  | 5  | Du bist nicht kaputt                    | Reise zu dir      | Verbindung | Self Awareness | Sa 11:00 |
+| 7  | 32 | Der längste Weg ist der zu dir selbst   | Quotes            | Verbindung | Reise zu dir | So 10:00 |
+| **Woche 2 — Vertiefung** ||||||
+| 8  | 2  | 3 leise Zeichen 🧲                      | Self Awareness    | Werkzeug   | Muster | Mo 20:00 |
+| 9  | 22 | 5 Minuten, die deinen Tag tragen 🧲     | Rituale           | Werkzeug   | – | Di 20:00 |
+| 10 | 14 | Was du denkst, dass du willst           | Mindset           | Widerspruch | Lebensdesign | Mi 20:00 |
+| 11 | 25 | Hör auf, für andere zu performen        | Selbstwert        | Erkenntnis | – | Do 20:00 |
+| 12 | 7  | **Die 5 Stufen — Ladder-Pin**           | Reise zu dir      | **Einladung** | **Brand** | Fr 20:00 |
+| 13 | 17 | Das, was sich wiederholt                | Muster            | Erkenntnis | – | Sa 11:00 |
+| 14 | 33 | Du bist nicht hier um zu funktionieren  | Quotes            | Verbindung | Selbstwert | So 10:00 |
+| **Woche 3 — Authority** ||||||
+| 15 | 12 | 10 Prompts für leere Tage 🧲            | Journaling        | Werkzeug   | Self Awareness | Mo 20:00 |
+| 16 | 36 | **ORIGIN** Stufe 2                      | **Brand**         | **Einladung** | Muster | Di 20:00 |
+| 17 | 18 | Trigger sind keine Schwäche             | Muster            | Reframe    | – | Mi 20:00 |
+| 18 | 27 | 3 Sätze für deinen Selbstwert 🧲        | Selbstwert        | Werkzeug   | – | Do 20:00 |
+| 19 | 30 | Wenn du nicht weißt wohin               | Lebensdesign      | Erkenntnis | Mindset | Fr 20:00 |
+| 20 | 23 | Das Abend-Ritual, das niemand macht     | Rituale           | Werkzeug   | – | Sa 11:00 |
+| 21 | 6  | Selbsterkenntnis muss nicht esoterisch sein | Reise zu dir | Widerspruch | – | So 10:00 |
+| **Woche 4 — Conversion** ||||||
+| 22 | 16 | Mentale Klarheit beginnt mit unbequemer Frage 🧲 | Mindset | Erkenntnis | Self Awareness | Mo 20:00 |
+| 23 | 37 | **GENESIS** Stufe 3                     | **Brand**         | **Einladung** | – | Di 20:00 |
+| 24 | 28 | Nein als tiefste Form von Liebe         | Selbstwert        | Reframe    | Reise zu dir | Mi 20:00 |
+| 25 | 31 | Die 10-Werte-Übung 🧲                   | Lebensdesign      | Werkzeug   | – | Do 20:00 |
+| 26 | 19 | Warum du immer am gleichen Punkt landest | Muster | Erkenntnis | **Brand (Origin)** | Fr 20:00 |
+| 27 | 11 | Warum dein Journal nichts bringt        | Journaling        | Widerspruch | – | Sa 11:00 |
+| 28 | 34 | Selbstfindung ist kein Trend            | Quotes            | Verbindung | – | So 10:00 |
+| **Tage 29 + 30 — Conversion-Push** ||||||
+| 29 | 38 | **FOUNDATION** Stufe 4                  | **Brand**         | **Einladung** | Lebensdesign | Mo 20:00 |
+| 30 | 40 | **KOMPLETT-BUNDLE 149,99 €** 🏆         | **Brand**         | **Einladung** | Reise zu dir | Di 20:00 |
+
+🧲 = Save-Magnet (besonders speicher-stark) · **Fett** = Brand/Conversion-Pin
+
+## Buffer-Pins (für Tage 31+, falls du weitermachst)
+
+Diese 10 Pins habe ich bewusst aus dem 30-Tage-Plan rausgelassen, damit du sie als Reserve hast — für Wiederholungs-Wochen, A/B-Tests, oder Tage an denen ein anderer Pin nicht performt:
+
+| Pin # | Pin-Name | Board |
+|---|---|---|
+| 3  | Funktionieren ist nicht leben | Self Awareness |
+| 4  | Die eine Frage, die niemand stellt | Self Awareness |
+| 8  | Was passiert, wenn die Maske fällt | Reise zu dir |
+| 10 | Die 5-Minuten Reflexion | Journaling |
+| 15 | 3 Denkfehler hochfunktionaler Menschen | Mindset |
+| 20 | Die Muster, die niemand sieht | Muster |
+| 24 | 3 Fragen vor dem Schlafen | Rituale |
+| 26 | Grenzen sind kein Egoismus | Selbstwert |
+| 29 | Deine Werte kennen, bevor du Ziele setzt | Lebensdesign |
+| 39 | CORE JOURNEY Stufe 5 | Brand |
+
+## Was nach Tag 30 passiert
+
+**Wiederhol-Modus:** Pinterest belohnt es, wenn ein Pin mehrfach gepinnt wird — auf verschiedenen Boards, mit minimal anderer Beschreibung. Ab Tag 31 fängst du wieder mit Pin 1 an, **aber:**
+
+1. **Variiere die Beschreibung leicht** (1-2 Sätze umformulieren) — Pinterest erkennt Duplikate und drosselt sie
+2. **Pin auf ein anderes Board** als beim ersten Mal
+3. **Bau die Buffer-Pins ein** (3, 4, 8, 10, 15, 20, 24, 26, 29, 39)
+4. **Erstelle 5-10 neue Pins pro Monat** in derselben Stimmung — so wächst dein Content-Stock
+5. **Beobachte Analytics** (verfügbar im Pinterest Business Account ab Tag 30): welche Pins funktionieren, welche nicht. Doppele die Gewinner.
+
+## Realistische Erwartungen
+
+| Woche | Was du sehen wirst |
+|---|---|
+| **Woche 1** | Wenig bis nichts. Pinterest "lernt" deinen Account noch. Nicht aufgeben. |
+| **Woche 2** | Erste Impressionen (50–500 pro Tag). Vereinzelte Saves. Noch keine Klicks. |
+| **Woche 3** | Erste echte Klicks zur Website (5–30 pro Tag). Erste Save-Magnets gehen viral. |
+| **Woche 4** | Steigender Traffic. Erste Sales möglich (besonders nach Tag 23/29/30 mit Brand-Pins). |
+| **Monat 2-3** | Wachstum durch organisches Pinterest-SEO. Pins von Tag 1-30 bringen weiter Traffic — auch wenn du nichts mehr postest. |
+
+**Realität-Check:** Pinterest ist **Marathon, kein Sprint**. Aber im Gegensatz zu TikTok/Instagram **arbeiten deine Pins auch noch in 6 Monaten für dich**. Ein guter Pin auf Pinterest = jahrelang passiver Traffic.
+
+---
+
+*Ende Teil 5. Weiter mit Teil 6: Design-Guide.*
