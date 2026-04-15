@@ -625,3 +625,103 @@ Diese Reihenfolge ist wichtig. Pinterest mag Accounts, die "fertig" wirken, bevo
 ---
 
 *Ende Board 4 (Pins 13–16). Weiter mit Board 5: Muster erkennen & innere Arbeit.*
+
+---
+
+## Board 5 — Muster erkennen & innere Arbeit
+
+### Board-Setup
+
+**Name:** `Muster erkennen & innere Arbeit`
+
+**Beschreibung (zum Kopieren):**
+> Wiederkehrende Themen, Trigger, alte Geschichten — und wie du sie verstehst, ohne dich davon zu verlieren. Innere Arbeit für Menschen, die ehrlich hinsehen wollen, ohne sich in Drama oder Schuld zu verlieren. Praktisch, klar, ohne Therapie-Sprache. Schattenarbeit, Trigger verstehen, wiederkehrende Muster, Verhaltensmuster auf Deutsch.
+
+**Keywords:** muster erkennen · innere arbeit · trigger verstehen · verhaltensmuster · schattenarbeit · self awareness · wiederkehrende themen · selbstreflexion
+
+**Cover-Pin:** Pin 19 ("Warum du immer wieder am gleichen Punkt landest.")
+
+---
+
+### Pin 17 — "Das, was sich wiederholt, will gesehen werden"
+
+**Headline:**
+> Das, was sich wiederholt,
+> will gesehen werden.
+
+**Sub-Line:**
+> Nicht bekämpft. Nicht erklärt. Gesehen.
+
+**Pinterest-Beschreibung:**
+> Du kennst sie — diese Situation, die immer wieder in dein Leben kommt. Mit anderen Menschen, an anderen Orten, in anderem Gewand. Aber im Kern dieselbe. Die meisten versuchen, sie zu vermeiden. Oder sie zu erklären. Beides funktioniert nicht. Was funktioniert: Sie als das zu erkennen, was sie ist — ein Hinweis. Auf etwas in dir, das noch nicht zu Ende erzählt ist. Du musst es nicht "lösen". Du musst es nur sehen. Der Rest passiert oft von selbst, sobald du nicht mehr wegschaust. genselfcore.de
+
+**Hashtags:** `#mustererkennen #innerarbeit #selbstreflexion #wahresselbst`
+
+**Link-Ziel:** `https://genselfcore.de/origin`
+
+**Psychologie:** Sanfte, philosophische Tiefe — keine Belehrung, keine Therapie-Sprache. Pacing-Statement: "Du kennst sie." Nimmt den Avatar ernst, bietet einen alternativen Blick ohne Forderung.
+
+---
+
+### Pin 18 — "Deine Trigger sind keine Schwäche"
+
+**Headline:**
+> Deine Trigger
+> sind keine Schwäche.
+
+**Sub-Line:**
+> Sie sind die Stelle, an der du noch nicht angekommen bist.
+
+**Pinterest-Beschreibung:**
+> Wenn dich etwas triggert — eine Bemerkung, eine Situation, ein Ton — denken die meisten: "Ich bin zu sensibel. Ich muss härter werden." Aber Trigger sind keine Schwäche. Sie sind Wegweiser. Sie zeigen dir präzise die Stellen, an denen du dich selbst noch nicht ganz angekommen hast. Du musst nicht aufhören, getriggert zu sein. Du musst nur lernen, neugierig zu werden statt beschämt: *"Was wollte hier gerade gesehen werden?"* Diese Frage allein verändert mehr als zehn Bücher über Resilienz. genselfcore.de
+
+**Hashtags:** `#triggerverstehen #emotionaleregulation #innerwork #selbstreflexion`
+
+**Link-Ziel:** `https://genselfcore.de/origin`
+
+**Psychologie:** Belief-Reframe ohne Esoterik. Statt *"Trigger sind Geschenke aus deinem höheren Selbst"* (Esoterik) → *"Trigger zeigen dir, wo du noch nicht angekommen bist"* (klar, praktisch, ehrlich). Adressiert eine konkrete Avatar-Scham (*"Ich bin zu sensibel"*) und nimmt sie weg.
+
+---
+
+### Pin 19 — "Warum du immer wieder am gleichen Punkt landest"
+
+**Headline:**
+> Warum du immer wieder
+> am gleichen Punkt landest.
+
+**Sub-Line:**
+> Spoiler: Es liegt nicht an den anderen.
+
+**Pinterest-Beschreibung:**
+> Du wechselst den Job. Du wechselst die Beziehung. Du ziehst um. Und nach einer Weile bist du wieder da. Dasselbe Gefühl. Dasselbe Stuck. Wie kommt das? Es liegt nicht am Pech. Es liegt nicht an "den falschen Menschen". Es liegt an einer Geschichte, die du über dich selbst trägst — eine, die du vielleicht nicht mal bewusst kennst. Solange diese Geschichte unerzählt bleibt, schreibt sie dein Leben weiter. Der erste Schritt ist nicht, sie zu ändern. Der erste Schritt ist, sie überhaupt zu sehen. Genau dort beginnt ORIGIN, Stufe 2 von GEN:SELFCORE. genselfcore.de/origin
+
+**Hashtags:** `#mustererkennen #wiederholungen #innerarbeit #identitätsarbeit`
+
+**Link-Ziel:** `https://genselfcore.de/origin`
+
+**Psychologie:** Direkter Avatar-Spiegel + Curiosity Gap. Adressiert ein **sehr** spezifisches Gefühl, das fast jeder kennt aber selten benennt. Plus: Direkter Bezug zu ORIGIN — der Pin verkauft das Produkt nicht, er beschreibt den Schmerz, für den ORIGIN die Antwort ist.
+
+---
+
+### Pin 20 — "Die Muster, die niemand sieht — außer du selbst"
+
+**Headline:**
+> Die Muster, die niemand sieht.
+> Außer du selbst —
+> wenn du bereit bist hinzusehen.
+
+**Sub-Line:**
+> 5 leise Hinweise, die alles verraten.
+
+**Pinterest-Beschreibung:**
+> Manche Muster sind laut. Streit, Drama, große Krisen. Aber die wichtigsten sind leise. Sie verstecken sich in Dingen, die niemand außer dir bemerkt: Wie oft du "Tut mir leid" sagst, ohne dass etwas passiert ist. Wie du immer der bist, der nachgibt — auch bei Kleinigkeiten, die dir wichtig sind. Was du fühlst, wenn jemand wirklich etwas Nettes über dich sagt (Spoiler: Unbehagen). Wie du im Spiegel auf dich schaust, wenn niemand zuschaut. Was du tust, wenn du fünf Minuten lang nichts zu tun hast. Diese Mikro-Muster sagen mehr über dich aus als jede große Lebensentscheidung. Sie sind die Spuren deiner echten inneren Geschichte. genselfcore.de
+
+**Hashtags:** `#selbstwahrnehmung #mustererkennen #innerwork #selbstreflexion`
+
+**Link-Ziel:** `https://genselfcore.de/awakening`
+
+**Psychologie:** Ultra-spezifische Mikro-Beobachtungen, die genau den Avatar treffen. Der Pin liest sich wie ein Spiegel — und das ist der Punkt. Wer sich in 2 von 5 wiedererkennt, klickt. Wer sich in 4 von 5 wiedererkennt, kauft.
+
+---
+
+*Ende Board 5 (Pins 17–20). Weiter mit Board 6: Morgen- & Abend-Rituale.*
