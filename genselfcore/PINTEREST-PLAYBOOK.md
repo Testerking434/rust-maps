@@ -1530,3 +1530,172 @@ Falls Figma nichts für dich ist:
 ---
 
 *Ende Teil 6. Weiter mit Teil 7: Kostenlose Tools.*
+
+---
+
+# TEIL 7 — Kostenlose Tools (alles 0 €)
+
+> Du brauchst **kein einziges Bezahl-Tool**, um diesen Plan durchzuziehen. Hier ist der komplette Stack — alle kostenlos, alle erprobt.
+
+## 7.1 Pin-Design (was ist am besten?)
+
+Drei Wege, sortiert von **schnell** zu **mehr Kontrolle**:
+
+### 🥇 Option 1 — HTML-Pin-Generator (mein Top-Tipp)
+**Datei:** `genselfcore/pin-generator.html` (in diesem Ordner)
+
+| Pro | Contra |
+|---|---|
+| ✅ 0 Software, 0 Account, 0 Lernen | ❌ Weniger Anpassung als Figma |
+| ✅ Funktioniert offline im Browser | ❌ Limitiert auf das vorgegebene Layout |
+| ✅ Konsistentes Markendesign automatisch | |
+| ✅ ~45 Sek pro Pin | |
+| ✅ Marken-Farben + Fonts hardcoded | |
+
+**Nutzen:** Datei runterladen → Doppelklick → tippen → Screenshot → fertig.
+**40 Pins fertig in:** ~30 Minuten
+
+### 🥈 Option 2 — Canva Free
+[canva.com](https://canva.com)
+
+| Pro | Contra |
+|---|---|
+| ✅ Bekanntestes Design-Tool | ❌ Pro-Features kosten 12 €/Monat (brauchst du NICHT) |
+| ✅ Pinterest-Templates eingebaut | ❌ Manche schöne Fonts sind Pro-only |
+| ✅ Schnell zu lernen | ❌ "Limited"-Markierung auf manchen Elementen |
+
+**Setup:** Konto erstellen → "Pinterest Pin" Format wählen → Template duplizieren → Texte ändern → Export PNG.
+**40 Pins fertig in:** ~1-2 Stunden (langsamer wegen Tool-Bedienung)
+
+**Was du in Canva Free wirklich brauchst:** Nur Text + Hintergrundfarbe. Keine Premium-Elemente, keine Magic-Tools, keine Pro-Templates. Du baust dein eigenes 1080×1620-Template einmal, dann nur Texte ändern.
+
+### 🥉 Option 3 — Figma (kostenlos, mehr Kontrolle)
+[figma.com](https://figma.com)
+
+| Pro | Contra |
+|---|---|
+| ✅ 100% kostenlos, keine Limits | ❌ Steile Lernkurve |
+| ✅ Profi-Tool, mehr Kontrolle | ❌ Etwas Übung nötig |
+| ✅ Wiederverwendbare Komponenten | |
+
+**Setup:** Komplette Anleitung in **Teil 6 / Abschnitt 6.7** (oben).
+**40 Pins fertig in:** ~1 Stunde (schneller als Canva, sobald Template steht)
+
+### Vergleichs-Tabelle
+
+| Aspekt | HTML-Generator | Canva Free | Figma |
+|---|---|---|---|
+| Zeit pro Pin | 45 Sek | 2 Min | 1-2 Min |
+| Setup-Zeit | 0 | 5 Min | 15 Min |
+| Lernkurve | Keine | Niedrig | Mittel |
+| Internet nötig? | Nein (offline) | Ja | Ja |
+| Account nötig? | Nein | Ja | Ja |
+| Versteckte Kosten | 0 € | 0 € (mit Pro-Locks) | 0 € |
+
+**Mein Tipp:** **HTML-Generator zuerst** ausprobieren (1 Pin testen). Wenn dir Layout & Stil gefällt → alle 40 Pins damit machen. Wenn du mehr Kontrolle willst → Figma.
+
+## 7.2 Pinterest Management
+
+| Tool | Was es macht | Kosten | Empfehlung |
+|---|---|---|---|
+| **Pinterest Business Account** | Posten, Analytics, Anzeigen | **0 €** | ✅ Pflicht |
+| **Pinterest Native Scheduler** | Pins vorab planen (in Pinterest selbst) | **0 €** | ✅ Pflicht — direkt in Pinterest, du brauchst kein externes Tool |
+| **Tailwind Free** | Externes Schedule + Communities | **0 €** (limitiert auf 20 Pins/Monat) | ⚠️ Optional — Native Scheduler reicht |
+| **Buffer Free** | Schedule für mehrere Plattformen | **0 €** (10 Pins/Monat) | ⚠️ Nur wenn du auch IG/X postest |
+| **Pinterest Trends** | Trending Suchbegriffe | **0 €** | ✅ Wöchentlich checken: `trends.pinterest.com` |
+
+**Pinterest hat einen eingebauten Scheduler.** Du kannst jeden Pin bis zu 30 Tage im Voraus planen, ohne Tailwind oder Buffer. Damit kannst du **alle 30 Pins an einem Sonntag vorausplanen** und einen Monat lang nichts mehr tun.
+
+## 7.3 Stock-Bilder (falls Pin-Hintergründe benötigt)
+
+Für deine Marken-Stimmung wahrscheinlich nicht nötig (du nutzt schwarz/dunkel + Text), aber falls doch:
+
+| Tool | URL | Was es bietet |
+|---|---|---|
+| **Unsplash** | unsplash.com | Hochwertige, kostenlose Fotos. Gut für Stimmungsbilder. |
+| **Pexels** | pexels.com | Ähnlich Unsplash, andere Auswahl. |
+| **Pixabay** | pixabay.com | Größere Auswahl, manchmal niedrigere Qualität. |
+
+**Lizenz:** Alle drei haben ihre eigene "free for commercial use"-Lizenz. Lies den Footer der jeweiligen Bildseite, aber 95% sind völlig freigegeben.
+
+## 7.4 Schriften (Google Fonts)
+
+[fonts.google.com](https://fonts.google.com) — alle kostenlos für kommerzielle Nutzung.
+
+Du brauchst **3 Schriften:**
+1. **Montserrat** (für Headlines) — fonts.google.com/specimen/Montserrat
+2. **Inter** (für Sub-Lines + URL) — fonts.google.com/specimen/Inter
+3. **Cormorant Garamond** (für Quote-Pins, optional) — fonts.google.com/specimen/Cormorant+Garamond
+
+**Lizenz:** SIL Open Font License — uneingeschränkt kommerziell nutzbar, auch in Designs/Logos.
+
+## 7.5 Farb-Tools (für Variationen)
+
+| Tool | URL | Wofür |
+|---|---|---|
+| **Coolors** | coolors.co | Farbpaletten generieren, deine Marken-Farben speichern |
+| **ColorHexa** | colorhexa.com | Hex-Code → alle Varianten (heller, dunkler, Komplementär) |
+| **WebAIM Contrast Checker** | webaim.org/resources/contrastchecker | Lesbarkeit prüfen — wichtig für Mobile! |
+
+## 7.6 Screenshots & Kompression
+
+| Tool | URL/Methode | Wofür |
+|---|---|---|
+| **Mac Screenshot** | `Cmd + Shift + 4` (Bereich) | Pin-Screenshot vom HTML-Generator |
+| **Windows Snipping Tool** | Windows-Taste + Shift + S | Wie oben |
+| **Lightshot** | app.prntscr.com | Cross-platform Screenshot-Tool |
+| **TinyPNG** | tinypng.com | PNG-Dateien verkleinern (für schnelles Upload) |
+| **Squoosh** | squoosh.app | Bildkompression im Browser, sehr gut |
+
+## 7.7 SEO & Keyword-Research
+
+| Tool | URL | Was es macht |
+|---|---|---|
+| **Pinterest Trends** | trends.pinterest.com | Aktuelle Such-Trends in deiner Nische |
+| **Pinterest Predicts** | business.pinterest.com/predicts | Jährlicher Trend-Report von Pinterest |
+| **Pinterest Search** | pinterest.com/search/?q=selbsterkenntnis | Manuelle Keyword-Recherche: tippe ein Wort, schau auf Auto-Suggest |
+| **Answer the Public** | answerthepublic.com | Welche Fragen Menschen zu deinem Thema stellen (limitiert kostenlos) |
+
+**Pro-Tipp:** Tippe in Pinterest selbst dein Keyword (z.B. "selbsterkenntnis") in die Suche. Pinterest schlägt dir live die meistgesuchten verwandten Begriffe vor — das sind deine Long-Tail-Keywords für die Pin-Beschreibungen.
+
+## 7.8 Analytics
+
+| Tool | URL | Was es liefert |
+|---|---|---|
+| **Pinterest Analytics** | im Business Account, kostenlos | Impressionen, Saves, Klicks, Top-Pins, Top-Boards |
+| **Google Analytics 4** | analytics.google.com | Welche Pinterest-Pins Traffic auf genselfcore.de bringen |
+| **Google Search Console** | search.google.com/search-console | SEO-Health deiner Website (separat von Pinterest) |
+
+**Setup-Tipp:** GA4 + UTM-Parameter. Wenn du Pinterest-Links taggst (`?utm_source=pinterest&utm_medium=organic&utm_campaign=board1_pin1`), siehst du in Google Analytics genau, **welcher Pin** wieviel Traffic + Sales bringt.
+
+## 7.9 Der komplette Tool-Stack auf einer Seite
+
+```
+Pin-Design:        HTML-Pin-Generator (in diesem Ordner)
+                  ODER Canva Free / Figma
+
+Pinterest:        Pinterest Business Account (gratis)
+                  + Pinterest Native Scheduler (gratis)
+
+Schriften:        Google Fonts (Montserrat, Inter, Cormorant Garamond)
+
+Bilder:           Unsplash / Pexels (falls nötig)
+
+Farben:           Coolors.co / ColorHexa
+
+Screenshots:      Mac Cmd+Shift+4 / Windows Snipping Tool
+
+Kompression:      TinyPNG.com / Squoosh.app
+
+Keywords:         Pinterest Trends + Pinterest Search Suggest
+
+Analytics:        Pinterest Analytics + Google Analytics 4
+
+Gesamtkosten:     0 € / Monat
+```
+
+**Das ist alles.** Kein Canva Pro nötig, kein Tailwind nötig, kein Premium-Account nötig. Du hast einen vollwertigen Pinterest-Workflow für 0 € pro Monat.
+
+---
+
+*Ende Teil 7. Weiter mit Teil 8: Rechts-Check & Coaching-Wording-Fix.*
