@@ -1699,3 +1699,159 @@ Gesamtkosten:     0 € / Monat
 ---
 
 *Ende Teil 7. Weiter mit Teil 8: Rechts-Check & Coaching-Wording-Fix.*
+
+---
+
+# TEIL 8 — Rechts-Check & Coaching-Wording-Fix
+
+> **Diesen Teil ernst nehmen.** Falsche Wortwahl kann in Deutschland zu Abmahnungen führen. Die gute Nachricht: du musst fast nichts ändern — nur ein paar Wörter ersetzen.
+
+## 8.1 Das Coaching-Problem
+
+In Deutschland ist der Begriff **"Coaching"** rechtlich nicht geschützt, ABER: in Kombination mit psychologischer Arbeit (Selbstfindung, Trauma, Muster, innere Arbeit) entsteht schnell der **Eindruck einer Heilbehandlung**. Das kann Probleme geben mit:
+- **Heilpraktikergesetz (HeilprG)** — psychologische Beratung ohne Zulassung
+- **Wettbewerbsrecht (UWG)** — irreführende Werbung
+- **Abmahnanwälte** — die gezielt nach solchen Fällen suchen
+
+**Lösung:** Wort "Coaching" ersetzen + Disclaimer einfügen. Das reicht.
+
+## 8.2 Wording-Ersetzungen (zum 1:1 Umsetzen auf genselfcore.de)
+
+| ❌ Aktuell auf deiner Seite | ✅ Ersetzen durch |
+|---|---|
+| "KOMPLETT + COACHING" | **"KOMPLETT + BEGLEITUNG"** oder **"KOMPLETT + DEEP DIVE"** |
+| "Coaching" (überall) | **"Begleitung"** / **"Mentoring"** / **"Vertiefung"** |
+| "Coach" | **"Begleiter"** / **"Guide"** / **"Mentor"** |
+| "Ich coache dich" | **"Ich begleite dich durch den Prozess"** |
+| "Persönliches Coaching" | **"Persönliche Begleitung"** / **"Individuelle Vertiefung"** |
+| "Coaching-Session" | **"Begleitungs-Session"** / **"1:1 Session"** |
+
+## 8.3 Safe-Disclaimer (auf deine Seite kopieren)
+
+**Platzierung:** AGB-Seite + Footer + Checkout-Seite (vor dem Kaufen-Button)
+
+> *Die angebotenen Inhalte und Begleitungen von GEN:SELFCORE dienen der persönlichen Entwicklung und Selbstreflexion. Sie stellen keine Heilbehandlung, keine Psychotherapie, keine medizinische oder psychologische Beratung und keine Lebens- oder Finanzberatung im rechtlichen Sinne dar. GEN:SELFCORE ersetzt keinen Arzt, Therapeuten oder Heilpraktiker. Bei psychischen oder gesundheitlichen Beschwerden wende dich bitte an eine/n approbierte/n Therapeut/in oder Arzt/Ärztin.*
+
+## 8.4 Was du in deinen Pin-Beschreibungen NICHT schreiben darfst
+
+| ❌ Verboten / Riskant | ✅ Safe Alternative |
+|---|---|
+| "Heilt deine Angst / Depression" | "Hilft dir, dich besser zu verstehen" |
+| "Therapie-Ersatz" | "Ergänzung zur Selbstreflexion" |
+| "Diagnose: Du hast Trauma X" | "Wenn du das Gefühl kennst, dass..." |
+| "Garantiert Heilung" | "Ein ehrlicher Prozess der Selbsterkenntnis" |
+| "Psychologische Beratung" | "Strukturierte Selbstreflexion" |
+| "Klinisch getestet" | Gar nicht verwenden |
+| "Du bist depressiv weil..." | "Wenn du dich leer fühlst..." |
+
+**Goldene Regel:** Du darfst **beschreiben** was jemand fühlt. Du darfst **nicht diagnostizieren** warum.
+
+- ✅ *"Wenn du dich leer fühlst, obwohl äußerlich alles stimmt..."* (beschreibend)
+- ❌ *"Du hast ein Burnout-Syndrom das durch X verursacht wird"* (diagnostisch)
+
+## 8.5 Impressum & Pflicht-Angaben (kurzer Check)
+
+Als gewerbliche Seite in Deutschland brauchst du:
+
+| Pflicht | Hast du es? |
+|---|---|
+| **Impressum** (§5 TMG) | Prüfen: vollständiger Name, Adresse, E-Mail, ggf. Steuernummer |
+| **Datenschutzerklärung** (DSGVO) | Prüfen: Stripe, Cookies, Analytics, Kontaktformular erwähnt? |
+| **AGB** (empfohlen, nicht Pflicht) | Empfohlen mit Disclaimer aus 8.3 |
+| **Widerrufsbelehrung** (§ 312g BGB) | ✅ Du hast die Checkbox auf der Checkout-Seite (§ 356 Abs. 5 BGB) — korrekt |
+| **Preisangaben** (PAngV) | Prüfen: "inkl. MwSt." bei jedem Preis? |
+
+**Wichtig:** Prüfe ob bei deinen Preisen (29,99 € etc.) irgendwo **"inkl. MwSt."** oder **"Alle Preise inkl. gesetzl. MwSt."** steht. Wenn nicht: sofort ergänzen. Pflicht nach Preisangabenverordnung.
+
+## 8.6 Pinterest-spezifische Pin-Beschreibungen — Rechts-Check
+
+Alle 40 Pin-Beschreibungen in diesem Playbook sind bereits **rechtssicher formuliert**:
+- ✅ Keine Heilversprechen
+- ✅ Keine Diagnosen
+- ✅ Keine Therapie-Claims
+- ✅ Keine medizinischen Aussagen
+- ✅ Beschreibend statt diagnostisch
+- ✅ Kein Wort "Coaching" in den Pins
+
+Du kannst sie **1:1 so verwenden** wie sie hier stehen.
+
+---
+
+*Ende Teil 8. Weiter mit Teil 9: Launch-Checkliste.*
+
+---
+
+# TEIL 9 — Launch-Checkliste
+
+> **Hake alles ab bevor du den ersten eigenen Pin postest.** Reihenfolge ist wichtig.
+
+## Vor dem ersten Pin (einmalig)
+
+- [ ] Pinterest Business Account erstellt (business.pinterest.com)
+- [ ] Profilbild hochgeladen (GEN:SELFCORE Logo)
+- [ ] Bio-Text eingefügt (Variante A aus Teil 2)
+- [ ] Website genselfcore.de verlinkt
+- [ ] **Domain claimed** in Pinterest Settings (siehe Teil 2, Schritt 2.3)
+- [ ] **Rich Pins aktiviert** (siehe Teil 2, Schritt 2.4)
+- [ ] Alle **10 Boards angelegt** (Name + Beschreibung aus Teil 3/4)
+- [ ] Pro Board **5-10 fremde Pins** gepinnt (hochwertige, thematisch passende Pins anderer Accounts)
+- [ ] **24 Stunden gewartet** nach dem Board-Setup (bevor eigene Pins)
+- [ ] "Coaching" auf genselfcore.de durch "Begleitung" ersetzt (siehe Teil 8)
+- [ ] Safe-Disclaimer auf genselfcore.de eingefügt (siehe Teil 8, Abschnitt 8.3)
+- [ ] "inkl. MwSt." bei allen Preisen geprüft
+- [ ] Impressum + Datenschutz aktuell
+- [ ] Pin-Design-Tool bereit (HTML-Generator getestet ODER Figma-Template gebaut ODER Canva-Template)
+- [ ] Erste 7 Pins als PNG-Dateien exportiert (Tag 1-7 aus dem 30-Tage Plan)
+
+## Am Launch-Tag (Tag 1)
+
+- [ ] Pin 1 gepostet auf Board "Self Awareness & Inner Work" (20:00 Uhr)
+- [ ] **Auch auf** Board "GEN:SELFCORE" cross-gepinnt (gleicher Pin, zweites Board)
+- [ ] Pinterest-Beschreibung (aus diesem Playbook) eingefügt
+- [ ] Link zu genselfcore.de/awakening gesetzt
+- [ ] Hashtags eingefügt (max 4-5)
+- [ ] Pin überprüft: wird er korrekt angezeigt? Ist der Link klickbar?
+- [ ] Nächste 6 Pins (Tag 2-7) im **Pinterest Native Scheduler** vorausgeplant
+
+## Woche 1-Routine (täglich 5 Minuten)
+
+- [ ] 1 eigener Pin gepostet (laut 30-Tage Plan)
+- [ ] 2-3 fremde Pins auf deine Boards gepinnt (zeigt Pinterest: aktiver Account)
+- [ ] Kommentare auf eigene Pins beantwortet (falls vorhanden)
+- [ ] **Nichts** analysiert — Woche 1 ist zu früh für Daten
+
+## Ab Woche 3 (wöchentlich 15 Minuten)
+
+- [ ] Pinterest Analytics gecheckt: welche Pins haben die meisten Saves? Klicks?
+- [ ] Top-3-Pins identifiziert → ähnliche Pins für nächsten Monat erstellen
+- [ ] Underperformer identifiziert → andere Headline oder Sub-Line testen
+- [ ] Neue Keywords aus Pinterest Search Suggest gesammelt
+
+## Monatlich (30 Minuten)
+
+- [ ] Nächste 30 Pins erstellt (Buffer-Pins + neue Pins im gleichen Stil)
+- [ ] Analytics-Review: Traffic auf genselfcore.de von Pinterest (Google Analytics)
+- [ ] Falls Sales: welcher Pin → welches Produkt? (UTM-Tracking)
+- [ ] 5-10 neue fremde Pins pro Board gepinnt
+- [ ] Pin-Beschreibungen der Top-Performer leicht variiert und neu gepinnt (Recycling)
+
+---
+
+# ENDE DES PLAYBOOKS
+
+> **Du hast jetzt alles, was du brauchst.**
+>
+> 📋 1 Strategie-Fundament (Avatar + Voice + Positioning)
+> ⚙️ 1 Pinterest-Setup-Anleitung (Profil bis Rich Pins)
+> 📌 10 Boards mit Beschreibungen und Keywords
+> 📝 40 fertige Pins (Headline + Sub-Line + Pinterest-Beschreibung + Hashtags + Link + Psychologie)
+> 📅 1 vollständiger 30-Tage Posting-Plan (abwechselnd, mit Cross-Posting)
+> 🎨 1 Design-Guide (Farben + Fonts + Layouts + Figma-Anleitung)
+> 🛠️ 1 HTML-Pin-Generator (`pin-generator.html`)
+> 🆓 1 kompletter kostenlosen Tool-Stack
+> ⚖️ 1 Rechts-Check mit Coaching-Fix + Disclaimer
+> ✅ 1 Launch-Checkliste (Before + During + After)
+>
+> **Nächster Schritt:** Öffne die Launch-Checkliste oben und fang beim ersten Punkt an. Nicht nachdenken. Machen.
+>
+> *— Erstellt mit GEN:SELFCORE Skills + Claude Code*
