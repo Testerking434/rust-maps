@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="NEXUS 2500 – Willkommen im Jahr 2500. Eine holografische Reise ins Jenseits der Zeit." />
+  <title>NEXUS 2500 // Willkommen im Jahr 2500</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Noto+Sans+JP:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="stars" aria-hidden="true"></canvas>
+
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="grid-floor" aria-hidden="true"></div>
+
+  <header class="hud">
+    <div class="hud-left">
+      <span class="dot"></span>
+      <span>SYS.LINK // NEXUS-ORBITAL</span>
+    </div>
+    <div class="hud-center" id="clock">—</div>
+    <div class="hud-right">
+      <span id="coords">LAT 0.000 · LON 0.000</span>
+      <span class="dot dot-red"></span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="badge">EST. 2500 · SECTOR 07</div>
+      <h1 class="glitch" data-text="NEXUS 2500">NEXUS 2500</h1>
+      <p class="subtitle jp">未来へようこそ</p>
+      <p class="tagline">
+        Willkommen im Jahr <span class="neon">2500</span>. Eine
+        <span class="neon pink">holografische</span> Zeitkapsel zwischen
+        Sternenstaub, Quantennetzen und neon-blauem Regen.
+      </p>
+
+      <div class="cta-row">
+        <a class="btn primary" href="#transmission">// TRANSMISSION STARTEN</a>
+        <a class="btn ghost" href="#chrono">CHRONO-INDEX</a>
+      </div>
+
+      <div class="typing" id="typing" aria-live="polite"></div>
+    </section>
+
+    <section id="transmission" class="panel">
+      <div class="panel-head">
+        <span>[ 01 ] &nbsp;TRANSMISSION</span>
+        <span class="flicker">● LIVE</span>
+      </div>
+      <div class="panel-body">
+        <p>
+          Das Jahr 2500. Städte schweben über kristallenen Ozeanen. Erinnerungen
+          werden als Licht versendet. Wir haben das Schweigen besiegt — und
+          sprechen nun mit den Sternen.
+        </p>
+        <p>
+          Diese Seite ist ein <strong>Artefakt</strong>. Ein kleines Fragment
+          menschlicher Neugier, versiegelt in HTML &amp; CSS, geliefert über ein
+          bescheidenes Netcup-Hosting, das es zufällig überlebt hat.
+        </p>
+      </div>
+    </section>
+
+    <section id="chrono" class="chrono">
+      <h2>CHRONO-INDEX</h2>
+      <div class="timeline">
+        <div class="t-item"><span class="year">2025</span><p>Du liest das hier. Vermutlich.</p></div>
+        <div class="t-item"><span class="year">2077</span><p>Neon-Regen über Neo-Berlin. Erste Bewusstseins-Upload-Lizenz.</p></div>
+        <div class="t-item"><span class="year">2183</span><p>Warp-Ping zum Mars unter 12 ms.</p></div>
+        <div class="t-item"><span class="year">2312</span><p>Die Ozeane lernen zu sprechen.</p></div>
+        <div class="t-item"><span class="year">2500</span><p>Du bist hier. <span class="neon pink">Jetzt.</span></p></div>
+      </div>
+    </section>
+
+    <section class="cards">
+      <article class="card">
+        <div class="card-glow"></div>
+        <h3>QUANTUM MESH</h3>
+        <p>Datenströme, verwoben aus Wahrscheinlichkeiten. Jedes Byte existiert und existiert nicht.</p>
+        <div class="meter"><div class="meter-fill" style="--w:94%"></div></div>
+      </article>
+      <article class="card">
+        <div class="card-glow pink"></div>
+        <h3>NEO KORTEX</h3>
+        <p>Gedanken schneller als Licht. Träume als Binärcode, archiviert im Orbit.</p>
+        <div class="meter"><div class="meter-fill pink" style="--w:78%"></div></div>
+      </article>
+      <article class="card">
+        <div class="card-glow yellow"></div>
+        <h3>SOLAR DRIFT</h3>
+        <p>Energie direkt aus zerfallenden Sonnen. Unendlich. Fast.</p>
+        <div class="meter"><div class="meter-fill yellow" style="--w:61%"></div></div>
+      </article>
+    </section>
+
+    <section class="console">
+      <div class="panel-head">
+        <span>[ 99 ] &nbsp;BORD-KONSOLE</span>
+        <span class="flicker">● AKTIV</span>
+      </div>
+      <pre id="console-out" aria-live="polite"></pre>
+    </section>
+  </main>
+
+  <footer>
+    <div>© 2500 · NEXUS ORBITAL · alle Realitäten reserviert</div>
+    <div class="mono">uplink: netcup.node — build 2500.04.18</div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
