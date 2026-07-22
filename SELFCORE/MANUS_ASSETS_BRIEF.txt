@@ -1,0 +1,382 @@
+================================================================================
+GEN:SELFCORE APP — COMPLETE VISUAL ASSETS BRIEF FOR MANUS AI
+================================================================================
+App Name: GEN:SELFCORE
+Platform: iOS (iPhone App)
+Style: Dark premium, minimal luxury
+Primary Color (Gold): #F5A623
+Secondary Color (Cyan): #00C9C9
+Background Color: #0A0A0A
+Card Background: #141414
+================================================================================
+
+
+--------------------------------------------------------------------------------
+ASSET 01 — APP ICON
+--------------------------------------------------------------------------------
+WHERE IT APPEARS:
+  - iPhone home screen (the app icon the user taps to open the app)
+  - App Store listing page
+  - iPhone Settings app
+  - Spotlight Search results
+
+FILENAME TO SAVE AS: AppIcon_1024.png
+
+EXACT SIZE: 1024 x 1024 pixels, PNG, NO transparent background, NO rounded corners
+(Apple adds rounded corners automatically)
+
+AI IMAGE PROMPT:
+"App icon for a premium personal growth app.
+Solid dark background #0A0A0A.
+A minimal geometric symbol: five thin lines radiating
+outward from a central glowing gold hexagonal core,
+like a compass rose meets DNA. Gold color #F5A623,
+subtle cyan glow #00C9C9 at center.
+Ultra clean flat design, no text, no letters,
+rounded square format 1024x1024. Apple App Store style.
+Modern minimal luxury aesthetic."
+
+AFTER GENERATING: Upload to appicon.ai to get all required Xcode sizes automatically.
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+ASSET 02 — COURSE COVER IMAGE: AWAKENING
+--------------------------------------------------------------------------------
+WHERE IT APPEARS:
+  - CoursesView.swift — the large card image at the top of the AWAKENING course card
+  - LessonListView.swift — the header image when user opens the AWAKENING course
+  - This is the FIRST and MAIN course in the app
+
+FILENAME TO SAVE AS: course_cover_awakening.png
+
+EXACT SIZE: 800 x 450 pixels (16:9 ratio), PNG or JPG
+
+AI IMAGE PROMPT:
+"Abstract digital art for a personal development course called AWAKENING.
+Dark background #0A0A0A. A human silhouette emerging from darkness
+into golden light, geometric rays of gold #F5A623 breaking through,
+cinematic minimal luxury aesthetic, no text, no letters,
+16:9 aspect ratio, ultra HD photorealistic."
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+ASSET 03 — COURSE COVER IMAGE: ORIGIN
+--------------------------------------------------------------------------------
+WHERE IT APPEARS:
+  - CoursesView.swift — the card image for the ORIGIN course (DNA personality test course)
+  - LessonListView.swift — header image when user opens the ORIGIN course
+  - This is the DNA / personality profiling course
+
+FILENAME TO SAVE AS: course_cover_origin.png
+
+EXACT SIZE: 800 x 450 pixels (16:9 ratio), PNG or JPG
+
+AI IMAGE PROMPT:
+"Abstract art for a personality DNA test course called ORIGIN.
+Dark background #0A0A0A. Glowing double helix DNA strand,
+gold #F5A623 and cyan #00C9C9 colors,
+scientific luxury aesthetic, no text, no letters,
+16:9 aspect ratio, ultra clean futuristic minimal."
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+ASSET 04 — COURSE COVER IMAGE: VERBINDUNG
+--------------------------------------------------------------------------------
+WHERE IT APPEARS:
+  - CoursesView.swift — the card image for the VERBINDUNG course (relationships/connection)
+
+FILENAME TO SAVE AS: course_cover_verbindung.png
+
+EXACT SIZE: 800 x 450 pixels (16:9 ratio), PNG or JPG
+
+AI IMAGE PROMPT:
+"Abstract art for a human connection and relationships course.
+Dark background #0A0A0A, two geometric hexagon shapes
+connected by glowing lines, green color #5CB85C,
+warm and connected feeling, minimal luxury, no text, no letters, 16:9."
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+ASSET 05 — COURSE COVER IMAGE: MUT
+--------------------------------------------------------------------------------
+WHERE IT APPEARS:
+  - CoursesView.swift — the card image for the MUT course (courage course)
+
+FILENAME TO SAVE AS: course_cover_mut.png
+
+EXACT SIZE: 800 x 450 pixels (16:9 ratio), PNG or JPG
+
+AI IMAGE PROMPT:
+"Abstract art for a courage course called MUT (German for courage).
+Dark background #0A0A0A, upward-pointing geometric arrow or flame shape,
+orange-red color #FF6B35, bold dynamic upward energy,
+minimal luxury aesthetic, no text, no letters, 16:9 aspect ratio."
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+ASSET 06 — AUDIO TRACK COVER: STANDARD TEMPLATE
+--------------------------------------------------------------------------------
+WHERE IT APPEARS:
+  - GenSignalView.swift — the square cover image next to each audio track in the list
+  - AudioPlayerView.swift — the large square artwork shown in the full-screen audio player
+    (center of screen, above the play button, like Apple Music album art)
+  - This is the DEFAULT cover used for tracks that don't have their own custom cover
+
+FILENAME TO SAVE AS: track_cover_default.png
+
+EXACT SIZE: 600 x 600 pixels (square), PNG
+
+AI IMAGE PROMPT:
+"Abstract sound wave visualization for a mindfulness audio app.
+Pure black background #0A0A0A. Glowing cyan waveform #00C9C9,
+smooth flowing curves, meditation zen aesthetic,
+minimal premium design, no text, no letters, perfect square 600x600."
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+ASSET 07 — AUDIO TRACK COVER: GRATITUDE FLOW (EXCLUSIVE REFERRAL REWARD)
+--------------------------------------------------------------------------------
+WHERE IT APPEARS:
+  - GenSignalView.swift — cover image for the "Gratitude Flow" track
+  - AudioPlayerView.swift — large artwork when user plays this track
+  - ReferralView.swift — shown as reward preview when user reaches 3 referrals
+  - This is a SPECIAL EXCLUSIVE track only unlocked when user refers 3 friends
+
+FILENAME TO SAVE AS: track_cover_gratitude_flow.png
+
+EXACT SIZE: 600 x 600 pixels (square), PNG
+
+AI IMAGE PROMPT:
+"Abstract art for an exclusive gratitude meditation audio track called Gratitude Flow.
+Dark background #0A0A0A, soft golden particles floating gently upward,
+warm glowing golden atmosphere, luxury spiritual aesthetic,
+no text, no letters, perfect square 600x600, premium minimal."
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+ASSET 08 — AUDIO TRACK COVER: MORNING FOCUS
+--------------------------------------------------------------------------------
+WHERE IT APPEARS:
+  - GenSignalView.swift — cover image for the morning focus/energy track
+  - AudioPlayerView.swift — large artwork in full-screen player
+
+FILENAME TO SAVE AS: track_cover_morning_focus.png
+
+EXACT SIZE: 600 x 600 pixels (square), PNG
+
+AI IMAGE PROMPT:
+"Abstract sunrise visualization for a morning energy meditation track.
+Dark to gold gradient background, geometric sun rays #F5A623,
+energizing premium aesthetic, meditation app cover art,
+no text, no letters, perfect square 600x600."
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+ASSET 09 — AUDIO TRACK COVER: DEEP SLEEP
+--------------------------------------------------------------------------------
+WHERE IT APPEARS:
+  - GenSignalView.swift — cover image for the sleep/night track
+  - AudioPlayerView.swift — large artwork in full-screen player
+  - SleepTimerView.swift — small thumbnail next to sleep timer settings
+
+FILENAME TO SAVE AS: track_cover_deep_sleep.png
+
+EXACT SIZE: 600 x 600 pixels (square), PNG
+
+AI IMAGE PROMPT:
+"Abstract night sky for a deep sleep meditation audio track.
+Deep blue #0A1628 to black background, subtle geometric star patterns,
+calming cyan glow #00C9C9, peaceful sleep aesthetic,
+no text, no letters, perfect square 600x600."
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+ASSET 10 — ONBOARDING ILLUSTRATION: DNA TEST (Screen 1 of 3)
+--------------------------------------------------------------------------------
+WHERE IT APPEARS:
+  - Onboarding flow — the FIRST screen shown to new users before they register
+  - Takes up the top ~60% of the screen
+  - Below it is the text "Erkenne dich selbst" and a "Weiter" button
+
+FILENAME TO SAVE AS: onboarding_01_dna.png
+
+EXACT SIZE: 1125 x 800 pixels, PNG, transparent or dark background
+
+AI IMAGE PROMPT:
+"Abstract illustration for a personality DNA test app onboarding screen.
+Dark background #0A0A0A. Human silhouette with 5 glowing geometric
+points on body like chakra nodes, each a different color:
+gold #F5A623, pink #FF6B9D, blue #4A90D9, orange #FF6B35, green #5CB85C.
+DNA helix faintly visible in background.
+Minimal luxury style, no text, no letters, wide format 16:9."
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+ASSET 11 — ONBOARDING ILLUSTRATION: SIGNAL AUDIO (Screen 2 of 3)
+--------------------------------------------------------------------------------
+WHERE IT APPEARS:
+  - Onboarding flow — the SECOND screen shown to new users
+  - Explains the GEN:SIGNAL audio feature
+
+FILENAME TO SAVE AS: onboarding_02_signal.png
+
+EXACT SIZE: 1125 x 800 pixels, PNG, transparent or dark background
+
+AI IMAGE PROMPT:
+"Abstract illustration for a premium audio meditation app onboarding.
+Dark background #0A0A0A, person silhouette with headphones,
+sound waves visualized as golden #F5A623 geometric patterns
+radiating outward, cyan glow #00C9C9 accents,
+premium minimal aesthetic, no text, no letters, wide 16:9 format."
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+ASSET 12 — ONBOARDING ILLUSTRATION: GROWTH (Screen 3 of 3)
+--------------------------------------------------------------------------------
+WHERE IT APPEARS:
+  - Onboarding flow — the THIRD and final screen before user registers
+  - Explains the streak and growth tracking features
+
+FILENAME TO SAVE AS: onboarding_03_growth.png
+
+EXACT SIZE: 1125 x 800 pixels, PNG, transparent or dark background
+
+AI IMAGE PROMPT:
+"Abstract growth visualization for a personal development app onboarding.
+Dark background #0A0A0A, 5 vertical bars rising upward to different heights,
+each a different color: gold #F5A623, pink #FF6B9D, blue #4A90D9,
+orange-red #FF6B35, green #5CB85C. Strong upward momentum energy.
+Minimal luxury aesthetic, no text, no letters, wide 16:9 format."
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+ASSET 13 — OG:IMAGE (Social Share Preview / Link Preview)
+--------------------------------------------------------------------------------
+WHERE IT APPEARS:
+  - When a user shares their referral link (https://genselfcore.de/join?ref=CODE)
+    via WhatsApp, iMessage, Instagram, etc., THIS image appears as the link preview
+  - Also used as the meta og:image on the website genselfcore.de
+
+FILENAME TO SAVE AS: og_image_share.png
+
+EXACT SIZE: 1200 x 630 pixels, PNG or JPG
+
+DESIGN INSTRUCTIONS (build in Canva):
+  - Background: solid #0A0A0A
+  - LEFT SIDE: App icon (AppIcon_1024.png) displayed large, ~280x280px
+  - RIGHT SIDE TOP: Text "GEN:SELFCORE" in gold color #F5A623, large bold font
+  - RIGHT SIDE MIDDLE: Text "Erkenne dich selbst. Wachse täglich." in white, smaller
+  - BOTTOM RIGHT: Small text "Kostenlos starten — 3 Tage GEN:SIGNAL gratis" in cyan #00C9C9
+  - Subtle thin gold border around entire image
+--------------------------------------------------------------------------------
+
+
+--------------------------------------------------------------------------------
+ASSET 14 — APP STORE SCREENSHOTS (6 screenshots)
+--------------------------------------------------------------------------------
+WHERE IT APPEARS:
+  - App Store listing page — the first thing potential users see before downloading
+  - These are the most important marketing assets
+
+HOW TO CREATE:
+  1. Open Xcode, run app in iPhone 15 Pro Max Simulator
+  2. Navigate to each screen listed below
+  3. Press Cmd+S in Simulator to take screenshot (saves to Desktop)
+  4. Open Canva, search "App Store Screenshot Template Dark"
+  5. Insert each screenshot into a frame with device mockup + caption
+
+FILENAME PATTERN: screenshot_01_home.png, screenshot_02_dna.png, etc.
+
+EXACT SIZE: 1290 x 2796 pixels (iPhone 15 Pro Max)
+
+THE 6 SCREENS TO CAPTURE:
+
+  screenshot_01_home.png
+    SCREEN: Home tab
+    SHOWS: Streak banner at top, Daily Energy card, Daily Quote card
+    CAPTION TEXT TO ADD IN CANVA: "Dein täglicher Wachstums-Companion"
+
+  screenshot_02_dna.png
+    SCREEN: Profile tab → DNA Test result
+    SHOWS: The 5 dimension bars (Selbstkenntnis, Authentizität, Klarheit, Mut, Verbindung)
+    CAPTION TEXT TO ADD IN CANVA: "Dein persönliches DNA-Profil"
+
+  screenshot_03_signal.png
+    SCREEN: Signal tab → Full-screen audio player open
+    SHOWS: Large track artwork, waveform animation, play controls, sleep timer button
+    CAPTION TEXT TO ADD IN CANVA: "GEN:SIGNAL — Audio für dein Wachstum"
+
+  screenshot_04_courses.png
+    SCREEN: Kurse tab → Course overview
+    SHOWS: AWAKENING course card, lesson list with progress
+    CAPTION TEXT TO ADD IN CANVA: "42 Lektionen. Dein Weg nach innen."
+
+  screenshot_05_referral.png
+    SCREEN: Einladen tab → Referral view
+    SHOWS: Referral link card, milestone badges, stats
+    CAPTION TEXT TO ADD IN CANVA: "Freunde einladen. Gemeinsam wachsen."
+
+  screenshot_06_widget.png
+    SCREEN: iPhone home screen with app widget visible
+    SHOWS: Medium-size widget with streak count and energy mode
+    CAPTION TEXT TO ADD IN CANVA: "Immer auf dem Startbildschirm dabei"
+--------------------------------------------------------------------------------
+
+
+================================================================================
+SUMMARY — TOTAL ASSETS NEEDED
+================================================================================
+
+  01. AppIcon_1024.png                    — App icon (home screen + App Store)
+  02. course_cover_awakening.png          — Course 1 card image
+  03. course_cover_origin.png             — Course 2 card image
+  04. course_cover_verbindung.png         — Course 3 card image
+  05. course_cover_mut.png                — Course 4 card image
+  06. track_cover_default.png             — Default audio track artwork
+  07. track_cover_gratitude_flow.png      — Exclusive referral reward track
+  08. track_cover_morning_focus.png       — Morning audio track
+  09. track_cover_deep_sleep.png          — Sleep audio track
+  10. onboarding_01_dna.png               — Onboarding screen 1
+  11. onboarding_02_signal.png            — Onboarding screen 2
+  12. onboarding_03_growth.png            — Onboarding screen 3
+  13. og_image_share.png                  — Social media link preview
+  14. screenshot_01_home.png              — App Store screenshot 1
+  15. screenshot_02_dna.png               — App Store screenshot 2
+  16. screenshot_03_signal.png            — App Store screenshot 3
+  17. screenshot_04_courses.png           — App Store screenshot 4
+  18. screenshot_05_referral.png          — App Store screenshot 5
+  19. screenshot_06_widget.png            — App Store screenshot 6
+
+TOTAL: 19 image files
+
+================================================================================
+TOOLS TO USE
+================================================================================
+
+  DALL-E (free): bing.com/images/create
+    → Use for: Assets 01-12 (icon, covers, onboarding illustrations)
+    → Copy-paste the prompt, download best result
+
+  appicon.ai (free): appicon.ai
+    → Use for: Asset 01 only (converts single icon into all required Xcode sizes)
+    → Upload AppIcon_1024.png → Download ZIP → gives you AppIcon.xcassets folder
+
+  Canva (free): canva.com
+    → Use for: Asset 13 (OG image) and Assets 14-19 (App Store screenshots frames)
+    → Search "App Store Screenshot Template" → choose dark theme
+
+================================================================================
+END OF BRIEF
+================================================================================

@@ -1,0 +1,102 @@
+[
+  {
+    "id": "awakening",
+    "stage": 1,
+    "title": "AWAKENING",
+    "subtitle": "Erwache zu dir selbst",
+    "description": "Der erste Schritt auf deiner Reise. Du erkennst, wer du wirklich bist — jenseits von Erwartungen und Masken.",
+    "lessonCount": 42,
+    "moduleCount": 6,
+    "color": "#F5A623",
+    "dnaType": "ACHIEVER",
+    "coverImageURL": "",
+    "modules": [
+      { "id": "m1", "title": "Wer bist du wirklich?", "lessonCount": 7, "order": 1 },
+      { "id": "m2", "title": "Deine Geschichte neu schreiben", "lessonCount": 7, "order": 2 },
+      { "id": "m3", "title": "Die innere Stimme", "lessonCount": 7, "order": 3 },
+      { "id": "m4", "title": "Muster erkennen & lösen", "lessonCount": 7, "order": 4 },
+      { "id": "m5", "title": "Deine Werte verankern", "lessonCount": 7, "order": 5 },
+      { "id": "m6", "title": "Der neue Standard", "lessonCount": 7, "order": 6 }
+    ]
+  },
+  {
+    "id": "origin",
+    "stage": 2,
+    "title": "ORIGIN",
+    "subtitle": "Dein DNA-Profil verstehen",
+    "description": "Du tauchst tief in deine Persönlichkeitsstruktur ein. Was formt dich? Woher kommen deine Stärken und Wunden?",
+    "lessonCount": 36,
+    "moduleCount": 6,
+    "color": "#4A90D9",
+    "dnaType": "GUARDIAN",
+    "coverImageURL": "",
+    "modules": [
+      { "id": "m1", "title": "Die 5 Dimensionen", "lessonCount": 6, "order": 1 },
+      { "id": "m2", "title": "Dein Schatten", "lessonCount": 6, "order": 2 },
+      { "id": "m3", "title": "Glaubenssätze entlarven", "lessonCount": 6, "order": 3 },
+      { "id": "m4", "title": "Familienprägungen", "lessonCount": 6, "order": 4 },
+      { "id": "m5", "title": "Authentizität als Kraft", "lessonCount": 6, "order": 5 },
+      { "id": "m6", "title": "Dein Origin-Code", "lessonCount": 6, "order": 6 }
+    ]
+  },
+  {
+    "id": "genesis",
+    "stage": 3,
+    "title": "GENESIS",
+    "subtitle": "Erschaffe dein neues Selbst",
+    "description": "Du designst bewusst dein zukünftiges Selbst. Vision, Klarheit und konkreter Plan für das Leben, das du willst.",
+    "lessonCount": 38,
+    "moduleCount": 6,
+    "color": "#5CB85C",
+    "dnaType": "CREATOR",
+    "coverImageURL": "",
+    "modules": [
+      { "id": "m1", "title": "Die Macht der Klarheit", "lessonCount": 6, "order": 1 },
+      { "id": "m2", "title": "Dein ideales Leben skizzieren", "lessonCount": 7, "order": 2 },
+      { "id": "m3", "title": "Identität vor Handlung", "lessonCount": 6, "order": 3 },
+      { "id": "m4", "title": "Systeme statt Willenskraft", "lessonCount": 7, "order": 4 },
+      { "id": "m5", "title": "Kreative Kraft entfesseln", "lessonCount": 6, "order": 5 },
+      { "id": "m6", "title": "Genesis — der Anfang", "lessonCount": 6, "order": 6 }
+    ]
+  },
+  {
+    "id": "foundation",
+    "stage": 4,
+    "title": "FOUNDATION",
+    "subtitle": "Baue auf felsigem Grund",
+    "description": "Mut ist keine Abwesenheit von Angst. Du lernst, mit Widerstand umzugehen und standfest zu bleiben.",
+    "lessonCount": 35,
+    "moduleCount": 6,
+    "color": "#FF6B35",
+    "dnaType": "PIONEER",
+    "coverImageURL": "",
+    "modules": [
+      { "id": "m1", "title": "Was Mut wirklich bedeutet", "lessonCount": 6, "order": 1 },
+      { "id": "m2", "title": "Angst als Kompass", "lessonCount": 6, "order": 2 },
+      { "id": "m3", "title": "Grenzen setzen & halten", "lessonCount": 6, "order": 3 },
+      { "id": "m4", "title": "Entscheidungen treffen", "lessonCount": 5, "order": 4 },
+      { "id": "m5", "title": "Widerstand überwinden", "lessonCount": 6, "order": 5 },
+      { "id": "m6", "title": "Dein Foundation-Eid", "lessonCount": 6, "order": 6 }
+    ]
+  },
+  {
+    "id": "core-journey",
+    "stage": 5,
+    "title": "CORE JOURNEY",
+    "subtitle": "Die Reise zum Kern",
+    "description": "Die tiefste Reise. Verbindung — zu dir selbst, zu anderen, zur Welt. Das Fundament für alles.",
+    "lessonCount": 40,
+    "moduleCount": 6,
+    "color": "#C0C0C0",
+    "dnaType": "CONNECTOR",
+    "coverImageURL": "",
+    "modules": [
+      { "id": "m1", "title": "Die Kunst des Zuhörens", "lessonCount": 7, "order": 1 },
+      { "id": "m2", "title": "Verletzlichkeit als Stärke", "lessonCount": 7, "order": 2 },
+      { "id": "m3", "title": "Tiefe Beziehungen gestalten", "lessonCount": 7, "order": 3 },
+      { "id": "m4", "title": "Konflikte als Wachstum", "lessonCount": 6, "order": 4 },
+      { "id": "m5", "title": "Deine Wirkung auf andere", "lessonCount": 6, "order": 5 },
+      { "id": "m6", "title": "Core — wer du wirklich bist", "lessonCount": 7, "order": 6 }
+    ]
+  }
+]
