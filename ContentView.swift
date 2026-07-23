@@ -7,6 +7,7 @@ struct ContentView: View {
     @State private var pickerItem: PhotosPickerItem?
     @State private var image: UIImage?
     @State private var recognizedText = ""
+    @State private var statusMessage = "Noch kein Text erkannt."
     @State private var isWorking = false
     @State private var didCopy = false
 
@@ -20,6 +21,7 @@ struct ContentView: View {
                         .padding()
                 }
                 .buttonStyle(.borderedProminent)
+                .disabled(isWorking)
 
                 if let image {
                     Image(uiImage: image)
@@ -34,7 +36,7 @@ struct ContentView: View {
                 }
 
                 ScrollView {
-                    Text(recognizedText.isEmpty ? "Noch kein Text erkannt." : recognizedText)
+                    Text(recognizedText.isEmpty ? statusMessage : recognizedText)
                         .font(.system(.body, design: .monospaced))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .textSelection(.enabled)
@@ -62,20 +64,56 @@ struct ContentView: View {
     }
 
     private func load(_ item: PhotosPickerItem?) async {
-        guard let item,
-              let data = try? await item.loadTransferable(type: Data.self),
-              let uiImage = UIImage(data: data) else { return }
+        guard let item else { return }
 
-        image = uiImage
+        image = nil
         recognizedText = ""
         didCopy = false
         isWorking = true
-        recognizedText = recognize(uiImage)
-        isWorking = false
+        defer { isWorking = false }
+
+        guard let data = try? await item.loadTransferable(type: Data.self),
+              let uiImage = UIImage(data: data) else {
+            statusMessage = "Das Bild konnte nicht geladen werden. Bitte wähle ein anderes Bild."
+            return
+        }
+
+        let preparedImage = downscaled(uiImage, maxDimension: 3000)
+        image = preparedImage
+
+        guard let text = recognize(preparedImage) else {
+            statusMessage = "Bei der Texterkennung ist ein Fehler aufgetreten."
+            return
+        }
+
+        if text.isEmpty {
+            statusMessage = "Kein Text auf dem Bild gefunden."
+        }
+        recognizedText = text
     }
 
-    private func recognize(_ uiImage: UIImage) -> String {
-        guard let cgImage = uiImage.cgImage else { return "" }
+    // Sehr große Fotos (z. B. 48-MP-Aufnahmen) vor der Erkennung verkleinern,
+    // damit der Speicherverbrauch begrenzt bleibt. Das gezeichnete Ergebnis
+    // hat immer Ausrichtung .up, die Orientierungs-Umrechnung bleibt korrekt.
+    private func downscaled(_ uiImage: UIImage, maxDimension: CGFloat) -> UIImage {
+        let size = uiImage.size
+        let largestSide = max(size.width, size.height)
+        guard largestSide > maxDimension else { return uiImage }
+
+        let scale = maxDimension / largestSide
+        let newSize = CGSize(width: size.width * scale,
+                             height: size.height * scale)
+
+        let format = UIGraphicsImageRendererFormat.default()
+        format.scale = 1
+        let renderer = UIGraphicsImageRenderer(size: newSize, format: format)
+        return renderer.image { _ in
+            uiImage.draw(in: CGRect(origin: .zero, size: newSize))
+        }
+    }
+
+    private func recognize(_ uiImage: UIImage) -> String? {
+        guard let cgImage = uiImage.cgImage else { return nil }
 
         let request = VNRecognizeTextRequest()
         request.recognitionLevel = .accurate
@@ -90,13 +128,14 @@ struct ContentView: View {
         do {
             try handler.perform([request])
         } catch {
-            return "Fehler bei der Erkennung."
+            return nil
         }
 
         let observations = request.results ?? []
         return observations
             .compactMap { $0.topCandidates(1).first?.string }
             .joined(separator: "\n")
+            .trimmingCharacters(in: .whitespacesAndNewlines)
     }
 
     private func cgOrientation(_ orientation: UIImage.Orientation) -> CGImagePropertyOrientation {
