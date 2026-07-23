@@ -10,6 +10,18 @@ struct ContentView: View {
     @State private var statusMessage = "Noch kein Text erkannt."
     @State private var isWorking = false
     @State private var didCopy = false
+    @State private var joinLines = false
+
+    // Verbindet die erkannten Einzelzeilen zu Fließtext, wenn der Schalter
+    // aktiv ist. Der ursprünglich erkannte Text bleibt unverändert erhalten,
+    // der Schalter ist also jederzeit umkehrbar.
+    private var displayText: String {
+        guard joinLines, !recognizedText.isEmpty else { return recognizedText }
+        return recognizedText
+            .components(separatedBy: "\n")
+            .map { $0.trimmingCharacters(in: .whitespaces) }
+            .joined(separator: " ")
+    }
 
     var body: some View {
         NavigationStack {
@@ -35,8 +47,11 @@ struct ContentView: View {
                     ProgressView("Erkenne Text…")
                 }
 
+                Toggle("Fließtext (Zeilenumbrüche entfernen)", isOn: $joinLines)
+                    .disabled(recognizedText.isEmpty)
+
                 ScrollView {
-                    Text(recognizedText.isEmpty ? statusMessage : recognizedText)
+                    Text(recognizedText.isEmpty ? statusMessage : displayText)
                         .font(.system(.body, design: .monospaced))
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .textSelection(.enabled)
@@ -44,7 +59,7 @@ struct ContentView: View {
                 .frame(maxWidth: .infinity)
 
                 Button {
-                    UIPasteboard.general.string = recognizedText
+                    UIPasteboard.general.string = displayText
                     didCopy = true
                 } label: {
                     Label(didCopy ? "Kopiert" : "Text kopieren",
