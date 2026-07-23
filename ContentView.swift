@@ -58,17 +58,27 @@ struct ContentView: View {
                 }
                 .frame(maxWidth: .infinity)
 
-                Button {
-                    UIPasteboard.general.string = displayText
-                    didCopy = true
-                } label: {
-                    Label(didCopy ? "Kopiert" : "Text kopieren",
-                          systemImage: didCopy ? "checkmark" : "doc.on.doc")
-                        .frame(maxWidth: .infinity)
-                        .padding()
+                HStack(spacing: 12) {
+                    Button {
+                        UIPasteboard.general.string = displayText
+                        didCopy = true
+                    } label: {
+                        Label(didCopy ? "Kopiert" : "Kopieren",
+                              systemImage: didCopy ? "checkmark" : "doc.on.doc")
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                    }
+                    .buttonStyle(.bordered)
+                    .disabled(recognizedText.isEmpty)
+
+                    ShareLink(item: displayText) {
+                        Label("Teilen", systemImage: "square.and.arrow.up")
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                    }
+                    .buttonStyle(.bordered)
+                    .disabled(recognizedText.isEmpty)
                 }
-                .buttonStyle(.bordered)
-                .disabled(recognizedText.isEmpty)
             }
             .padding()
             .navigationTitle("Textklar")
