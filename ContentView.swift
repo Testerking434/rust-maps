@@ -62,6 +62,10 @@ struct ContentView: View {
                     Button {
                         UIPasteboard.general.string = displayText
                         didCopy = true
+                        Task {
+                            try? await Task.sleep(for: .seconds(1.5))
+                            didCopy = false
+                        }
                     } label: {
                         Label(didCopy ? "Kopiert" : "Kopieren",
                               systemImage: didCopy ? "checkmark" : "doc.on.doc")
@@ -93,6 +97,7 @@ struct ContentView: View {
 
         image = nil
         recognizedText = ""
+        statusMessage = "Noch kein Text erkannt."
         didCopy = false
         isWorking = true
         defer { isWorking = false }
