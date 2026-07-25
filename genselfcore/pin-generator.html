@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEN:SELFCORE — Pin Generator</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #1a1a24;
+    color: #fff;
+    padding: 24px;
+    min-height: 100vh;
+  }
+  .layout { display: grid; grid-template-columns: 380px 1fr; gap: 32px; max-width: 1400px; margin: 0 auto; }
+  @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
+
+  .controls {
+    background: #0a0a14;
+    border: 1px solid #2a2a3a;
+    border-radius: 12px;
+    padding: 24px;
+    height: fit-content;
+    position: sticky;
+    top: 24px;
+  }
+  .controls h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px;
+    margin-bottom: 4px;
+    color: #f5a623;
+  }
+  .controls .sub {
+    font-size: 13px;
+    color: #a0a0b0;
+    margin-bottom: 24px;
+  }
+  .field { margin-bottom: 18px; }
+  .field label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #a0a0b0;
+    margin-bottom: 6px;
+  }
+  .field input, .field textarea, .field select {
+    width: 100%;
+    background: #13131f;
+    border: 1px solid #2a2a3a;
+    border-radius: 8px;
+    padding: 10px 12px;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    resize: vertical;
+  }
+  .field input:focus, .field textarea:focus, .field select:focus {
+    outline: none;
+    border-color: #f5a623;
+  }
+  .field textarea { min-height: 60px; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  .preview-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .preview-info {
+    background: #0a0a14;
+    border: 1px solid #2a2a3a;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: #a0a0b0;
+    max-width: 560px;
+    text-align: center;
+  }
+  .preview-info b { color: #f5a623; }
+
+  /*
+    THE PIN.
+    1080x1620 native, scaled to fit screen.
+  */
+  .pin {
+    width: 540px;            /* 1080 / 2 = 540 (Retina) */
+    height: 810px;           /* 1620 / 2 = 810 */
+    background: #0a0a14;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+  }
+  .pin.style-default { background: #0a0a14; }
+  .pin.style-pure-black { background: #000; }
+  .pin.style-deep-blue { background: #13131f; }
+
+  .pin .logo {
+    padding: 40px 40px 0 40px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: #f5a623;
+    letter-spacing: 0.02em;
+  }
+  .pin .logo .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #f5a623; margin-right: 8px; vertical-align: middle; box-shadow: 0 0 12px rgba(245,166,35,0.5); }
+
+  .pin .body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 50px;
+    text-align: center;
+  }
+  .pin .headline {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 50px;
+    line-height: 1.1;
+    color: #fff;
+    margin-bottom: 24px;
+    white-space: pre-line;
+    letter-spacing: -0.01em;
+  }
+  .pin .headline.gold { color: #f5a623; }
+  .pin .headline.serif {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 700;
+    font-size: 56px;
+    line-height: 1.15;
+  }
+  .pin .subline {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.4;
+    color: #a0a0b0;
+    white-space: pre-line;
+  }
+
+  .pin .footer {
+    padding: 0 40px 40px 40px;
+    text-align: center;
+  }
+  .pin .footer .divider {
+    width: 60px;
+    height: 2px;
+    background: #f5a623;
+    margin: 0 auto 16px;
+    opacity: 0.6;
+  }
+  .pin .footer .url {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #8a8a9a;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .pin.style-quote .body {
+    position: relative;
+  }
+  .pin.style-quote .body::before {
+    content: '"';
+    position: absolute;
+    top: -30px;
+    left: 50px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 140px;
+    color: #f5a623;
+    opacity: 0.3;
+    line-height: 1;
+  }
+  .pin.style-quote .signature {
+    margin-top: 28px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #f5a623;
+    letter-spacing: 0.08em;
+  }
+
+  .help {
+    background: #0a0a14;
+    border: 1px solid #2a2a3a;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-top: 16px;
+    font-size: 13px;
+    color: #a0a0b0;
+    line-height: 1.6;
+    max-width: 560px;
+  }
+  .help b { color: #fff; }
+  .help ol { padding-left: 20px; margin-top: 8px; }
+  .help li { margin-bottom: 4px; }
+  .btn {
+    background: #f5a623;
+    color: #0a0a14;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .btn:hover { background: #ffc857; }
+</style>
+</head>
+<body>
+
+<div class="layout">
+  <!-- LEFT: CONTROLS -->
+  <div class="controls">
+    <h1>GEN:SELFCORE Pin Generator</h1>
+    <div class="sub">Tippe Headline + Sub-Line — Pin erscheint rechts. Screenshot = fertig.</div>
+
+    <div class="field">
+      <label>Headline (mehrzeilig erlaubt)</label>
+      <textarea id="headline" rows="3">Du weißt, dass etwas fehlt.
+Du kannst es nur nicht benennen.</textarea>
+    </div>
+
+    <div class="field">
+      <label>Sub-Line</label>
+      <textarea id="subline" rows="2">Das ist kein Problem. Das ist der Anfang.</textarea>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label>Headline-Style</label>
+        <select id="headline-style">
+          <option value="default">Sans (Montserrat)</option>
+          <option value="serif">Serif (Cormorant)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Headline-Farbe</label>
+        <select id="headline-color">
+          <option value="white">Weiß</option>
+          <option value="gold">Gold</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Hintergrund</label>
+      <select id="bg">
+        <option value="default">Dunkles Nacht-Schwarz (#0A0A14)</option>
+        <option value="pure-black">Reines Schwarz (#000000)</option>
+        <option value="deep-blue">Tiefes Blau-Schwarz (#13131F)</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Quote-Modus (Anführungszeichen + Signatur)</label>
+      <select id="quote-mode">
+        <option value="off">Aus (normaler Pin)</option>
+        <option value="on">An (für Quote-Pins)</option>
+      </select>
+    </div>
+
+    <div class="field" id="signature-field" style="display: none;">
+      <label>Signatur</label>
+      <input type="text" id="signature" value="— GEN:SELFCORE">
+    </div>
+
+    <button class="btn" onclick="window.print()">Pin als PDF drucken</button>
+  </div>
+
+  <!-- RIGHT: PREVIEW -->
+  <div class="preview-wrapper">
+    <div class="preview-info">
+      Pin-Vorschau · 1080 × 1620 px (skaliert auf 540×810 für die Anzeige) · <b>Format Pinterest 2:3</b>
+    </div>
+
+    <div id="pin" class="pin style-default">
+      <div class="logo"><span class="dot"></span>GEN:SELFCORE</div>
+      <div class="body">
+        <div class="headline" id="pin-headline">Du weißt, dass etwas fehlt.
+Du kannst es nur nicht benennen.</div>
+        <div class="subline" id="pin-subline">Das ist kein Problem. Das ist der Anfang.</div>
+        <div class="signature" id="pin-signature" style="display:none;">— GEN:SELFCORE</div>
+      </div>
+      <div class="footer">
+        <div class="divider"></div>
+        <div class="url">GENSELFCORE.DE</div>
+      </div>
+    </div>
+
+    <div class="help">
+      <b>So nutzt du diesen Pin-Generator:</b>
+      <ol>
+        <li>Tippe Headline + Sub-Line in die Felder links</li>
+        <li>Wähle Style (Sans/Serif), Farbe, Hintergrund</li>
+        <li>Pin erscheint sofort rechts in deinen Markenfarben</li>
+        <li>Mach einen <b>Screenshot</b> nur vom Pin-Bereich (Mac: <kbd>Cmd+Shift+4</kbd>, Windows: Snipping Tool)</li>
+        <li>Lade den Screenshot direkt auf Pinterest hoch — fertig</li>
+      </ol>
+      <br>
+      <b>Tipp für höchste Qualität:</b> Wenn du einen schärferen Pin willst, browse diese Datei auf einem Retina/4K-Monitor — der Screenshot wird automatisch hochauflösend.
+    </div>
+  </div>
+</div>
+
+<script>
+const el = (id) => document.getElementById(id);
+const $headline = el('headline');
+const $subline = el('subline');
+const $headlineStyle = el('headline-style');
+const $headlineColor = el('headline-color');
+const $bg = el('bg');
+const $quoteMode = el('quote-mode');
+const $signature = el('signature');
+const $signatureField = el('signature-field');
+
+const $pin = el('pin');
+const $pinHeadline = el('pin-headline');
+const $pinSubline = el('pin-subline');
+const $pinSignature = el('pin-signature');
+
+function update() {
+  // Text
+  $pinHeadline.textContent = $headline.value;
+  $pinSubline.textContent = $subline.value;
+
+  // Headline style
+  $pinHeadline.classList.remove('serif', 'gold');
+  if ($headlineStyle.value === 'serif') $pinHeadline.classList.add('serif');
+  if ($headlineColor.value === 'gold') $pinHeadline.classList.add('gold');
+
+  // Background
+  $pin.classList.remove('style-default', 'style-pure-black', 'style-deep-blue');
+  $pin.classList.add('style-' + $bg.value);
+
+  // Quote mode
+  $pin.classList.remove('style-quote');
+  if ($quoteMode.value === 'on') {
+    $pin.classList.add('style-quote');
+    $pinSignature.style.display = 'block';
+    $pinSignature.textContent = $signature.value;
+    $signatureField.style.display = 'block';
+  } else {
+    $pinSignature.style.display = 'none';
+    $signatureField.style.display = 'none';
+  }
+}
+
+[$headline, $subline, $headlineStyle, $headlineColor, $bg, $quoteMode, $signature].forEach(input => {
+  input.addEventListener('input', update);
+  input.addEventListener('change', update);
+});
+
+update();
+</script>
+
+</body>
+</html>
